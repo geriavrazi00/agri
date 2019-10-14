@@ -7,9 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Label extends Model
 {
     /**
-     * Get the category associated with the label.
+     * Get the category that owns the label.
      */
     public function category() {
-        return $this->hasOne('App\Category');
+        return $this->belongsTo('App\Category');
     }
 }
