@@ -7,9 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Culture extends Model
 {
     /**
-     * Get the category associated with the culture.
+     * Get the category that owns the culture.
      */
     public function category() {
-        return $this->hasOne('App\Category');
+        return $this->belongsTo('App\Category');
     }
 }

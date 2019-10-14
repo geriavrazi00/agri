@@ -12,4 +12,11 @@ class Category extends Model
     public function labels() {
         return $this->hasMany('App\Label');
     }
+
+    /**
+     * Get the cultures for the category.
+     */
+    public function cultures() {
+        return $this->hasMany('App\Culture');
+    }
 }
