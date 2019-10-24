@@ -10,7 +10,7 @@ class Category extends Model
      * Get the labels for the category.
      */
     public function labels() {
-        return $this->hasMany('App\Label');
+        return $this->hasMany('App\Label')->orderBy('order');
     }
 
     /**
