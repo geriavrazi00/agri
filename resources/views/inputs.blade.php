@@ -36,7 +36,7 @@
                     <tr>
                         <td>{{trans('business_data.' . $labels['business'][1]->value)}}</td>
                         <td>
-                            <select class="form-control" id="business-1-{{$i}}">
+                            <select class="form-control" id="business-1-{{$i}}" name="business-1-{{$i}}">
                                 <option value="null">{{trans('messages.none')}}</option>
                                 @for($j = 0; $j < sizeof($technologies); $j++)
                                     <option value="{{$technologies[$j]->id}}">{{$technologies[$j]->name}}</option>
@@ -47,7 +47,7 @@
                     <tr>
                         <td>{{trans('business_data.' . $labels['business'][2]->value)}}</td>
                         <td>
-                            <select class="form-control" id="business-2-{{$i}}">
+                            <select class="form-control" id="business-2-{{$i}}" name="business-2-{{$i}}">
                                 <option value="null">{{trans('messages.none')}}</option>
                                 @for($j = 0; $j < sizeof($cultures); $j++)
                                     <option value="{{$cultures[$j]->id}}">{{$cultures[$j]->name}}</option>
@@ -58,7 +58,7 @@
                     <tr>
                         <td>{{trans('business_data.' . $labels['business'][3]->value)}}</td>
                         <td>
-                            <select class="form-control" id="business-3-{{$i}}">
+                            <select class="form-control" id="business-3-{{$i}}" name="business-3-{{$i}}">
                                 <option value="null">{{trans('messages.none')}}</option>
                                @for($j = 0; $j < sizeof($cultures); $j++)
                                     <option value="{{$cultures[$j]->id}}">{{$cultures[$j]->name}}</option>
@@ -82,19 +82,19 @@
                 </tr>
                 <tr>
                     <td>{{trans('loan_data.' . $labels['loans'][1]->value)}}</td>
-                    <td><input type="number" name="loan-0" class="form-control"></td>
+                    <td><input type="number" id="loan-0" name="loan-0" class="form-control"></td>
                 </tr>
                 <tr>
                     <td>{{trans('loan_data.' . $labels['loans'][2]->value)}}</td>
-                    <td><input type="number" name="loan-1" class="form-control"></td>
+                    <td><input type="number" id="loan-1" name="loan-1" class="form-control"></td>
                 </tr>
                 <tr>
                     <td>{{trans('loan_data.' . $labels['loans'][3]->value)}}</td>
-                    <td><input type="number" name="loan-2" class="form-control"></td>
+                    <td><input type="number" id="loan-2" name="loan-2" class="form-control"></td>
                 </tr>
                 <tr>
                     <td>{{trans('loan_data.' . $labels['loans'][4]->value)}}</td>
-                    <td><input type="date" name="loan-3" class="form-control"></td>
+                    <td><input type="date" id="loan-3" name="loan-3" class="form-control"></td>
                 </tr>
             </table>
         </div>

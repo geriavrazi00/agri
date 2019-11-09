@@ -15,6 +15,9 @@ return [
 	'loan_data' => 'Të dhëna për huanë', 
 	'total' => 'Total', 
 
+	//Result labels
+	'result' => 'Rezultati', 
+
 	//Button
 	'generate' => 'Gjenero', 
 ];

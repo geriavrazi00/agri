@@ -15,6 +15,9 @@ return [
 	'loan_data' => 'Loan data', 
 	'total' => 'Total', 
 
+	//Result labels
+	'result' => 'Result', 
+
 	//Button
 	'generate' => 'Generate', 
 ];

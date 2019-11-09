@@ -1,0 +1,10 @@
+/* your styles go here */
+#seretable {
+  width: 1000px;
+  height: 415px;
+  border: 1px solid #17508c;
+  display: none;
+}
+tr {
+  margin-left: 10px;
+}
