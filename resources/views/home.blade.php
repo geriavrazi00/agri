@@ -38,8 +38,6 @@
 
                 </div>
 
-
-
                 @for($i = 0; $i < sizeof($categories); $i++) <div class="button">
                     <div class="rtable-cell item-cell-type">
                         <a href="#" onclick="selectCategories('{{$categories[$i]->id}}');">

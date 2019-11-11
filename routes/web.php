@@ -12,10 +12,18 @@
 */
 
 Route::get('/', function () {
-    if(Auth::check())
+    return view('/welcome');
+});
+
+Route::get('/welcome', function() {
+	return view('/welcome');
+});
+
+Route::get('/login', function() {
+	if(Auth::check())
 		return redirect('/home');
     else 
-    	return view('auth/login');
+    	return view('/login');
 });
 
 Auth::routes();
