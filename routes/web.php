@@ -23,7 +23,7 @@ Route::get('/login', function() {
 	if(Auth::check())
 		return redirect('/home');
     else 
-    	return view('/login');
+    	return view('/auth/login');
 });
 
 Auth::routes();
