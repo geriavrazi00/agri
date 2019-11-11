@@ -38,17 +38,18 @@
         <header class="header">
             <nav class="navbar navbar-expand-lg fixed-top">
                 <div class="container">
-                    <a class="navbar-brand" href="./"><img alt="" class="img-fluid" src="img/logoafa.png" style="width:50px;height:60px;"></a>
+                    <a class="navbar-brand" href="./"><img alt="" class="img-fluid" src="img/logo/logoafa.png" style="width:50px;height:60px;">
+                    </a>
                     <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler navbar-toggler-right" data-target="#navbarSupportedContent" data-toggle="collapse" type="button">Menu<i class="fa fa-bars ml-2"></i>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav ml-auto">
                             <!-- Link -->
                             <li class="nav-item">
-                                <a class="nav-link" href="index.html">Home</a>
+                                <a class="nav-link" href="./">Home</a>
                             </li>
                         </ul>
-                        <a class="btn btn-primary navbar-btn ml-0 ml-lg-3" href="#">Afa</a>
+                        <a class="btn btn-primary navbar-btn ml-0 ml-lg-3" href="/login">Afa</a>
                     </div>
                 </div>
             </nav>
