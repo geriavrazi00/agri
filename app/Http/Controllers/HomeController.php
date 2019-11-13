@@ -31,34 +31,40 @@ class HomeController extends Controller
      */
     public function index() {
         $categories = Category::orderBy('name')->get();
-        $selectedCategory = null;
-        return view('home', compact('categories', 'selectedCategory'));
-    }
-
-    public function selectCategory(Request $request) {
-        $categories = Category::all();
         $technologies = Technology::all();
         $cultures = Culture::all();
-        $selectedCategory = null;
 
-        $labels["investments"] = array();
-        $labels["business"] = array();
-        $labels["loans"] = array();
+        $categoriesData = $this->loadAllCategoryData($categories);
 
-        if($request->selectedCategory != "null") {
-            $selectedCategory = Category::find($request->selectedCategory);
+        return view('home', compact('categories', 'categoriesData', 'technologies', 'cultures'));
+    }
 
-            for($i = 0; $i < sizeof($selectedCategory->labels); $i++) {
-                if($selectedCategory->labels[$i]->type == Constants::INVESTMENT_LABELS) {
-                    array_push($labels["investments"], $selectedCategory->labels[$i]);
-                } else if($selectedCategory->labels[$i]->type == Constants::BUSINESS_LABELS) {
-                    array_push($labels["business"], $selectedCategory->labels[$i]);
-                } else if($selectedCategory->labels[$i]->type == Constants::LOAN_LABELS) {
-                    array_push($labels["loans"], $selectedCategory->labels[$i]);
+    private function loadAllCategoryData($categories) {
+        $technologies = Technology::all();
+        $cultures = Culture::all();
+        $result = array();
+
+        foreach ($categories as $key => $category) {
+            $labels["investments"] = array();
+            $labels["business"] = array();
+            $labels["loans"] = array();
+
+            for($i = 0; $i < sizeof($category->labels); $i++) {
+                if($category->labels[$i]->type == Constants::INVESTMENT_LABELS) {
+                    array_push($labels["investments"], $category->labels[$i]);
+                } else if($category->labels[$i]->type == Constants::BUSINESS_LABELS) {
+                    array_push($labels["business"], $category->labels[$i]);
+                } else if($category->labels[$i]->type == Constants::LOAN_LABELS) {
+                    array_push($labels["loans"], $category->labels[$i]);
                 }
             }
+
+            $result[$category->id] = $category;
+            $result[$category->id]["investments"] = $labels["investments"];
+            $result[$category->id]["business"] = $labels["business"];
+            $result[$category->id]["loans"] = $labels["loans"];
         }
 
-        return view('inputs', compact('categories', 'technologies', 'cultures', 'selectedCategory', 'labels'))->render();
+        return $result;
     }
 }

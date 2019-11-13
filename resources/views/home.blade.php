@@ -38,64 +38,72 @@
 
                 </div>
 
-                @for($i = 0; $i < sizeof($categories); $i++) <div class="button">
-                    <div class="rtable-cell item-cell-type">
-                        <a href="#" onclick="selectCategories('{{$categories[$i]->id}}');">
-                            <img src="img/product-images/sera.png" style="width:100px;height:100px;" />
-                        </a>
-                        <input class="form-control in-odd-row item-name" hidden name="item-name-1" type="text" value="Product or Service Name 1" />
+                @for($i = 0; $i < sizeof($categories); $i++) 
+                    <div class="button">
+                        <div class="rtable-cell item-cell-type">
+                            <a onclick="selectCategories('{{$categories[$i]->id}}');" style="cursor: pointer;">
+                                <img src="img/product-images/sera.png" style="width:100px;height:100px;" />
+                            </a>
+                            <input class="form-control in-odd-row item-name" hidden name="item-name-1" type="text" value="Product or Service Name 1" />
+                        </div>
+                        <p>{{$categories[$i]->name}}</p>
                     </div>
-                    <p>{{$categories[$i]->name}}</p>
+                @endfor
+
+                <br/><br/>
+
+                @foreach($categoriesData as $key => $category)
+                    @if($category['loans'] != null)
+                        <div id="category-{{$key}}" style="display: none; width: 100%;">
+                            @include('inputs')
+                        </div>
+                    @endif
+                @endforeach
+
+                <div style="display: none;">
+                    <center>
+                        <button id="generate" name="generate" class="btn btn-primary" type="submit">
+                            {{trans('messages.generate')}}
+                        </button>
+                    </center>
+                </div>
             </div>
-            @endfor
 
-            <div id="category-{{$categories[0]->id}}" style="display: none;">
-                @include('inputs')
-            </div>
+            <div class="rtable rtable--collapse" style="display: none;">
+                <!-- Table Heading Start -->
+                <div class="rtable-row rtable-row--head">
+                    <div class="rtable-cell item-cell column-heading" style="text-align:center">{{trans('messages.enter_data')}}</div>
+                </div>
+                <!-- Table Heading End -->
+                <div class="card-body">
+                    <form method="POST" action="/result">
+                        @csrf
+                        <label for="applicant-name">{{trans('messages.applicant_name')}}</label>
+                        <input class="form-control" type="text" name="applicant-name" />
 
-        </div>
-
-
-        <div class="rtable rtable--collapse">
-
-            <!-- Table Heading Start -->
-            <div class="rtable-row rtable-row--head">
-                <div class="rtable-cell item-cell column-heading" style="text-align:center">{{trans('messages.enter_data')}}</div>
-            </div>
-            <!-- Table Heading End -->
-            <div class="card-body">
-                <form method="POST" action="/result">
-                    @csrf
-                    <label for="applicant-name">{{trans('messages.applicant_name')}}</label>
-                    <input class="form-control" type="text" name="applicant-name" />
-
-                    <label for="farm-type">{{trans('messages.farm_type')}}</label>
-                    <select class="form-control" id="farm-type" name="farm-type" onchange="chooseCategory();">
-                        <option value="null">{{trans('messages.none')}}</option>
-                        @for($i = 0; $i < sizeof($categories); $i++) <option value="{{$categories[$i]->id}}">{{$categories[$i]->name}}</option>
+                        <label for="farm-type">{{trans('messages.farm_type')}}</label>
+                        <select class="form-control" id="farm-type" name="farm-type" onchange="chooseCategory();">
+                            <option value="null">{{trans('messages.none')}}</option>
+                            @for($i = 0; $i < sizeof($categories); $i++) 
+                                <option value="{{$categories[$i]->id}}">{{$categories[$i]->name}}</option>
                             @endfor
-                    </select>
+                        </select>
 
-                    <br />
+                        <br/>
 
-                    <fieldset>
-                        <legend>Zgjidh ndonjë gjë</legend>
-                        @for($i = 0; $i < sizeof($categories); $i++) <div>
-                            <input type="checkbox" id="{{$categories[$i]->id}}" name="{{$categories[$i]->id}}" value="{{$categories[$i]->id}}" />
-                            <label for="{{$categories[$i]->id}}">{{$categories[$i]->name}}</label>
+                        <fieldset style="display: none;">
+                            <legend>Zgjidh ndonjë gjë</legend>
+                            @for($i = 0; $i < sizeof($categories); $i++) 
+                                <div>
+                                    <input type="checkbox" id="{{$categories[$i]->id}}" name="{{$categories[$i]->id}}" value="{{$categories[$i]->id}}" />
+                                    <label for="{{$categories[$i]->id}}">{{$categories[$i]->name}}</label>
+                                </div>
+                            @endfor
+                        </fieldset>
+                    </form>
+                </div>
             </div>
-            @endfor
-            </fieldset>
-
         </div>
+    </div>
 </section>
-
-
-@include('inputs')
-</form>
-</div>
-</div>
-</div>
-</div>
-</div>
 @endsection

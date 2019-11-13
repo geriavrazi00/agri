@@ -15,7 +15,7 @@ function calculateTotal(index, totalTables, totalFields) {
 	document.getElementById("total-loan").innerHTML = totalLoan.toLocaleString();
 }
 
-function chooseCategory() {
+/*function chooseCategory() {
 	var selectedCategory = document.getElementById("farm-type").value;
 	$CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
 
@@ -27,10 +27,14 @@ function chooseCategory() {
 			$('#content').html(result);
 		}
 	});
-}
+}*/
 
 function selectCategories(id) {
-	document.getElementById("seretable").style.display = "block";
+	if(document.getElementById("category-" + id).style.display === "none")
+		document.getElementById("category-" + id).style.display = "block";
+	else
+		document.getElementById("category-" + id).style.display = "none";
+
   	//document.getElementById("table2").style.display = "none";
   	//document.getElementById("table3").style.display = "none";
   	//document.getElementById("table4").style.display = "none";

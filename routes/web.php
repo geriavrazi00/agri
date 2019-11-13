@@ -30,6 +30,4 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/home/category', 'HomeController@selectCategory');
-
 Route::post('/result', 'ResultController@index');
