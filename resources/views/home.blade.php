@@ -42,7 +42,7 @@
                     <div class="button">
                         <div class="rtable-cell item-cell-type">
                             <a onclick="selectCategories('{{$categories[$i]->id}}');" style="cursor: pointer;">
-                                <img src="img/product-images/sera.png" style="width:100px;height:100px;" />
+                                <img src="img/product-images/sera.png" style="width:100px; height:100px;" />
                             </a>
                             <input class="form-control in-odd-row item-name" hidden name="item-name-1" type="text" value="Product or Service Name 1" />
                         </div>
@@ -53,14 +53,18 @@
                 <br/><br/>
 
                 @foreach($categoriesData as $key => $category)
-                    @if($category['loans'] != null)
+                    @if($category['investments'] != null)
                         <div id="category-{{$key}}" style="display: none; width: 100%;">
                             @include('inputs')
                         </div>
                     @endif
                 @endforeach
+                
+                <div id="loan" style="display: none; width: 100%;">
+                    @include('loan')
 
-                <div style="display: none;">
+                    <br/>
+
                     <center>
                         <button id="generate" name="generate" class="btn btn-primary" type="submit">
                             {{trans('messages.generate')}}

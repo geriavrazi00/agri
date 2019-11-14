@@ -30,10 +30,14 @@ function calculateTotal(index, totalTables, totalFields) {
 }*/
 
 function selectCategories(id) {
-	if(document.getElementById("category-" + id).style.display === "none")
+	if(document.getElementById("category-" + id).style.display === "none") {
 		document.getElementById("category-" + id).style.display = "block";
-	else
+		document.getElementById("loan").style.display = "block";
+	}
+	else {
 		document.getElementById("category-" + id).style.display = "none";
+		document.getElementById("loan").style.display = "none";
+	}
 
   	//document.getElementById("table2").style.display = "none";
   	//document.getElementById("table3").style.display = "none";

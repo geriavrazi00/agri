@@ -32,16 +32,12 @@ class HomeController extends Controller
     public function index() {
         $categories = Category::orderBy('name')->get();
         $technologies = Technology::all();
-        $cultures = Culture::all();
-
         $categoriesData = $this->loadAllCategoryData($categories);
 
-        return view('home', compact('categories', 'categoriesData', 'technologies', 'cultures'));
+        return view('home', compact('categories', 'categoriesData', 'technologies'));
     }
 
     private function loadAllCategoryData($categories) {
-        $technologies = Technology::all();
-        $cultures = Culture::all();
         $result = array();
 
         foreach ($categories as $key => $category) {
