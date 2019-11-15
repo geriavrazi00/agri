@@ -6,20 +6,21 @@
                     <th>{{trans('messages.investment_plan')}}</th>
                     <th>{{trans('messages.value')}}</th>
                 </tr>
-                @for($j = 0; $j < sizeof($category['investments']); $j++)
+                @for($j = 0; $j < sizeof($category['investments']); $j++) <tr>
+                    <td>{{trans('investment_plan.' . $category['investments'][$j]->value)}}</td>
+                    <td>
+                        <input type="number" id="investment-{{$j}}-{{$i}}" name="investment-{{$j}}-{{$i}}" class="form-control" oninput="calculateTotal('{{$i}}', '{{$category->option_number}}', '{{sizeof($category['investments'])}}')">
+                    </td>
+                    </tr>
+                    @endfor
                     <tr>
-                        <td>{{trans('investment_plan.' . $category['investments'][$j]->value)}}</td>
+                        <td>Totali</td>
                         <td>
-                            <input type="number" id="investment-{{$j}}-{{$i}}" name="investment-{{$j}}-{{$i}}" class="form-control" oninput="calculateTotal('{{$i}}', '{{$category->option_number}}', '{{sizeof($category['investments'])}}')">
+                            <center><label id="total-investment-{{$i}}">0</label></center>
                         </td>
                     </tr>
-                @endfor
-                <tr>
-                    <td>Totali</td>
-                    <td><center><label id="total-investment-{{$i}}">0</label></center></td>
-                </tr>
             </table>
-        @endfor
+            @endfor
     </div>
 
     <div style="display: flex;">
@@ -35,12 +36,18 @@
                 <tr>
                     <td>{{trans('business_data.' . $category['business'][1]->value)}}</td>
                     <td>
-                        <select class="form-control" id="business-1-{{$i}}" name="business-1-{{$i}}">
+
+                        <input type="range" min="1" max="3" value="1" class="slider" id="myRange">
+                        <p id="demo">
+
+                        </p>
+
+                        <!-- <select class="form-control" id="business-1-{{$i}}" name="business-1-{{$i}}">
                             <option value="null">{{trans('messages.none')}}</option>
                             @for($j = 0; $j < sizeof($technologies); $j++)
                                 <option value="{{$technologies[$j]->id}}">{{$technologies[$j]->name}}</option>
                             @endfor
-                        </select>
+                        </select> -->
                     </td>
                 </tr>
                 <tr>
@@ -48,9 +55,8 @@
                     <td>
                         <select class="form-control" id="business-2-{{$i}}" name="business-2-{{$i}}">
                             <option value="null">{{trans('messages.none')}}</option>
-                            @for($j = 0; $j < sizeof($cultures); $j++)
-                                <option value="{{$cultures[$j]->id}}">{{$cultures[$j]->name}}</option>
-                            @endfor
+                            @for($j = 0; $j < sizeof($cultures); $j++) <option value="{{$cultures[$j]->id}}">{{$cultures[$j]->name}}</option>
+                                @endfor
                         </select>
                     </td>
                 </tr>
@@ -59,14 +65,13 @@
                     <td>
                         <select class="form-control" id="business-3-{{$i}}" name="business-3-{{$i}}">
                             <option value="null">{{trans('messages.none')}}</option>
-                           @for($j = 0; $j < sizeof($cultures); $j++)
-                                <option value="{{$cultures[$j]->id}}">{{$cultures[$j]->name}}</option>
-                            @endfor
+                            @for($j = 0; $j < sizeof($cultures); $j++) <option value="{{$cultures[$j]->id}}">{{$cultures[$j]->name}}</option>
+                                @endfor
                         </select>
                     </td>
                 </tr>
             </table>
-        @endfor
+            @endfor
     </div>
 
     <div>
@@ -77,7 +82,9 @@
             </tr>
             <tr>
                 <td>{{trans('loan_data.' . $category['loans'][0]->value)}}</td>
-                <td><center><label id="total-loan">0</label></center></td>
+                <td>
+                    <center><label id="total-loan">0</label></center>
+                </td>
             </tr>
             <tr>
                 <td>{{trans('loan_data.' . $category['loans'][1]->value)}}</td>
@@ -98,5 +105,5 @@
         </table>
     </div>
 
-    
+
 </div>

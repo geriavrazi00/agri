@@ -3345,6 +3345,12 @@ pre code {
         flex: 0 0 66.666667%;
         max-width: 66.666667%;
     }
+    .col-md-8-login {
+        -ms-flex: 0 0 66.666667%;
+        flex: 0 0 66.666667%;
+        max-width: 66.666667%;
+        padding-top: 200px;
+    }
     .col-md-9 {
         -ms-flex: 0 0 75%;
         flex: 0 0 75%;
@@ -14868,7 +14874,7 @@ a.text-dark:hover {
     background-color: #e9ecef;
 }
 select.form-control:not([size]):not([multiple]) {
-    height: calc(2.25rem + 2px);
+    height: fit-content;
 }
 select.form-control:focus::-ms-value {
     color: #495057;

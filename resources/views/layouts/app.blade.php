@@ -26,6 +26,7 @@
     <link href="{{ asset('css/main.blue.css') }}" rel="stylesheet">
     <link href="{{ asset('css/order-2.blue.css') }}" rel="stylesheet">
     <link href="{{ asset('css/styles.blue.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
 
 </head>
 
