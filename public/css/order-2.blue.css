@@ -398,12 +398,12 @@ input.form-control.total-sum {
     padding-left: 95px;
 }
 .item-cell-type:hover {
-    background-color: #19589b;
+    background-color: #1e69b8;
 }
 
 .item-cell-type {
     border-radius: 25px;
-    border: 2px solid #1c61a9;
+    border: 2px solid #1e68b867;
     text-align: center;
     padding: 20px;
 }

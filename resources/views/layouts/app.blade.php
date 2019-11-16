@@ -26,6 +26,7 @@
     <link href="{{ asset('css/main.blue.css') }}" rel="stylesheet">
     <link href="{{ asset('css/order-2.blue.css') }}" rel="stylesheet">
     <link href="{{ asset('css/styles.blue.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
 
 </head>
 
@@ -38,7 +39,7 @@
         <header class="header">
             <nav class="navbar navbar-expand-lg fixed-top">
                 <div class="container">
-                    <a class="navbar-brand" href="./"><img alt="" class="img-fluid" src="img/logo/logoafa.png" style="width:50px;height:60px;">
+                    <a class="navbar-brand" href="./"><img alt="" class="img-fluid" src="img/logo/logoafa.png" style="width:30px;height:40px;">
                     </a>
                     <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler navbar-toggler-right" data-target="#navbarSupportedContent" data-toggle="collapse" type="button">Menu<i class="fa fa-bars ml-2"></i>
                     </button>

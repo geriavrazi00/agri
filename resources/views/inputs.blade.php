@@ -1,6 +1,8 @@
 <div id="content">
-    <center><h3>{{$category->name}}</h3></center>
-    
+    <center>
+        <h3>{{$category->name}}</h3>
+    </center>
+
     <div style="display: flex;">
         @for($i = 0; $i < $category->option_number; $i++)
             <table class="table">
@@ -8,20 +10,21 @@
                     <th>{{trans('messages.investment_plan')}}</th>
                     <th>{{trans('messages.value')}}</th>
                 </tr>
-                @for($j = 0; $j < sizeof($category['investments']); $j++)
+                @for($j = 0; $j < sizeof($category['investments']); $j++) <tr>
+                    <td>{{trans('investment_plan.' . $category['investments'][$j]->value)}}</td>
+                    <td>
+                        <input type="number" id="investment-{{$j}}-{{$i}}" name="investment-{{$j}}-{{$i}}" class="form-control" oninput="calculateTotal('{{$i}}', '{{$category->option_number}}', '{{sizeof($category['investments'])}}')">
+                    </td>
+                    </tr>
+                    @endfor
                     <tr>
-                        <td>{{trans('investment_plan.' . $category['investments'][$j]->value)}}</td>
+                        <td>Totali</td>
                         <td>
-                            <input type="number" id="investment-{{$j}}-{{$i}}" name="investment-{{$j}}-{{$i}}" class="form-control" oninput="calculateTotal('{{$i}}', '{{$category->option_number}}', '{{sizeof($category['investments'])}}')">
+                            <center><label id="total-investment-{{$i}}">0</label></center>
                         </td>
                     </tr>
-                @endfor
-                <tr>
-                    <td>Totali</td>
-                    <td><center><label id="total-investment-{{$i}}">0</label></center></td>
-                </tr>
             </table>
-        @endfor
+            @endfor
     </div>
 
     <div style="display: flex;">
@@ -39,10 +42,9 @@
                     <td>
                         <select class="form-control" id="business-1-{{$i}}" name="business-1-{{$i}}" style="padding: 0px; border-radius: 5px;">
                             <option value="null">{{trans('messages.none')}}</option>
-                            @for($j = 0; $j < sizeof($technologies); $j++)
-                                <option value="{{$technologies[$j]->id}}">{{$technologies[$j]->name}}</option>
-                            @endfor
-                        </select>
+                            @for($j = 0; $j < sizeof($technologies); $j++) <option value="{{$technologies[$j]->id}}">{{$technologies[$j]->name}}</option>
+                                @endfor
+                        </select> -->
                     </td>
                 </tr>
 
@@ -56,13 +58,13 @@
                                     <option value="{{$category->cultures[$k]->id}}">
                                         {{$category->cultures[$k]->name}}
                                     </option>
-                                @endfor
+                                    @endfor
                             </select>
                         </td>
                     </tr>
-                @endfor
+                    @endfor
 
             </table>
-        @endfor
+            @endfor
     </div>
 </div>
