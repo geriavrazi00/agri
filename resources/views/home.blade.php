@@ -47,34 +47,35 @@
                     </div>
                     <p>{{$categories[$i]->name}}</p>
             </div>
-            <p>{{$categories[$i]->name}}</p>
-        </div>
-        @endfor
-        <br />
-        <div class="divider">
-            <div class="dividermask"></div>
-        </div>
 
-        <br />
 
-        @foreach($categoriesData as $key => $category)
-        @if($category['investments'] != null)
-        <div id="category-{{$key}}" style="display: none; width: 100%;">
-            @include('inputs')
-        </div>
-        @endif
-        @endforeach
-
-        <div id="loan" style="display: none; width: 100%;">
-            @include('loan')
+            @endfor
+            <br />
+            <div class="divider">
+                <div class="dividermask"></div>
+            </div>
 
             <br />
 
-            <center>
-                <button id="generate" name="generate" class="btn btn-primary" type="submit">
-                    {{trans('messages.generate')}}
-                </button>
-            </center>
+            @foreach($categoriesData as $key => $category)
+            @if($category['investments'] != null)
+            <div id="category-{{$key}}" style="display: none; width: 100%;">
+                @include('inputs')
+            </div>
+            @endif
+            @endforeach
+
+            <div id="loan" style="display: none; width: 100%;">
+                @include('loan')
+
+                <br />
+
+                <center>
+                    <button id="generate" name="generate" class="btn btn-primary" type="submit">
+                        {{trans('messages.generate')}}
+                    </button>
+                </center>
+            </div>
         </div>
     </div>
     </div>
