@@ -43,10 +43,12 @@ var selectedCategories = new Array();
 function selectCategories(id) {
 	if(document.getElementById("category-" + id).style.display === "none") {
 		document.getElementById("category-" + id).style.display = "block";
+		document.getElementById("category-" + id + "-div").style.backgroundColor = "#1e69b8";
 		selectedCategories.push(id);
 	}
 	else {
 		document.getElementById("category-" + id).style.display = "none";
+		document.getElementById("category-" + id + "-div").style.backgroundColor = "";
 		var index = selectedCategories.indexOf(id);
 		if (index !== -1) selectedCategories.splice(index, 1);
 	}
