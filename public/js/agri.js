@@ -38,17 +38,24 @@ function calculateTotal(index, totalTables, totalFields) {
 	});
 }*/
 
-function selectCategories(id) {
-    if (document.getElementById("category-" + id).style.display === "none") {
-        document.getElementById("category-" + id).style.display = "block";
-        document.getElementById("loan").style.display = "block";
-    } else {
-        document.getElementById("category-" + id).style.display = "none";
-        document.getElementById("loan").style.display = "none";
-    }
+var selectedCategories = new Array();
 
-    //document.getElementById("table2").style.display = "none";
-    //document.getElementById("table3").style.display = "none";
-    //document.getElementById("table4").style.display = "none";
-    //document.getElementById("table" + nr).style.display = "block";
+function selectCategories(id) {
+	if(document.getElementById("category-" + id).style.display === "none") {
+		document.getElementById("category-" + id).style.display = "block";
+		selectedCategories.push(id);
+	}
+	else {
+		document.getElementById("category-" + id).style.display = "none";
+		var index = selectedCategories.indexOf(id);
+		if (index !== -1) selectedCategories.splice(index, 1);
+	}
+
+	if(selectedCategories.length > 0) {
+		document.getElementById("loan").style.display = "block";
+	} else {
+		document.getElementById("loan").style.display = "none";
+	}
+
+	console.log(selectedCategories);
 }
