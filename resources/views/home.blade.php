@@ -41,7 +41,7 @@
                 @for($i = 0; $i < sizeof($categories); $i++) <div class="button">
                     <div class="rtable-cell item-cell-type">
                         <a onclick="selectCategories('{{$categories[$i]->id}}');" style="cursor: pointer;">
-                            <img src="img/product-images/sera.png" style="width:100px; height:100px;" />
+                            <img src="img/product-images/{{$categories[$i]->image}}" style="width:100px; height:100px;" />
                         </a>
                         <input class="form-control in-odd-row item-name" hidden name="item-name-1" type="text" value="Product or Service Name 1" />
                     </div>
