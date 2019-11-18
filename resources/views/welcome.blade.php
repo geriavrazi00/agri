@@ -78,7 +78,7 @@
           </div>
         </div><a> <i></i></a>
       </div>
-      <div class="col-lg-5 mt-5 mt-lg-0"><img src="img/illustration-about-blue.svg" alt="" class="divider-image img-fluid">
+      <div class="col-lg-5 mt-5 mt-lg-0"><img src="img/logo/logotractor.png" alt="" class="divider-image img-fluid">
       </div>
     </div>
   </div>
@@ -111,10 +111,10 @@
         <img src="img/logo/bankaeuropiane.png" style="width:200px; height:200px;">
       </div>
       <div class="col-lg-3">
-        <img src="img/logo/ministriabujqesise.png" style="width:200px; height:200px;">
+        <img src="img/logo/ministriabujqesise.png" style="width:250px; height:200px;">
       </div>
       <div class="col-lg-3">
-        <img src="img/logo/ministriafinancave.png" style="width:200px; height:200px;">
+        <img src="img/logo/ministriafinancave.png" style="width:250px; height:200px;">
       </div>
     </div>
   </div>
@@ -122,12 +122,10 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-6 text-center text-lg-left">
-          <p class="copyrights-text mb-3 mb-lg-0">&copy; 2019. With <i class="fa fa-heart"></i> by <a href="https://themeforest.net/user/ultimatewebsolutions" class="external footer-link" target="_blank">UltimateWebsolutions </a></p>
+          <p class="copyrights-text mb-3 mb-lg-0">&copy; 2019. </p>
         </div>
         <div class="col-lg-6 text-center text-lg-right">
-          <ul class="list-inline social mb-0">
-            <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-facebook"></i></a><a href="#" class="social-link"><i class="fa fa-twitter"></i></a><a href="#" class="social-link"><i class="fa fa-youtube-play"></i></a><a href="#" class="social-link"><i class="fa fa-vimeo"></i></a><a href="#" class="social-link"><i class="fa fa-pinterest"></i></a></li>
-          </ul>
+
         </div>
       </div>
     </div>

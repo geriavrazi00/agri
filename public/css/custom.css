@@ -81,3 +81,19 @@ tr {
     border-radius: 125px / 12px;
     box-shadow: 0 0 8px #1e69b8;
 }
+
+/*
+* =====================================================
+*     TABLES
+* =====================================================
+*/
+
+.table {
+    width: 95%;
+    margin-bottom: 1rem;
+    margin-right: 50px;
+    margin-left: 20px;
+    color: #212529;
+    border: 2px solid #2372c780;
+    border-radius: 30px;
+}

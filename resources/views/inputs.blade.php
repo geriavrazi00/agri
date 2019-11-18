@@ -44,7 +44,8 @@
                             <option value="null">{{trans('messages.none')}}</option>
                             @for($j = 0; $j < sizeof($technologies); $j++) <option value="{{$technologies[$j]->id}}">{{$technologies[$j]->name}}</option>
                                 @endfor
-                        </select> -->
+                        </select>
+
                     </td>
                 </tr>
 
