@@ -48,7 +48,6 @@
                 </tr>
                 <tr>
                     <td>{{trans('business_data.' . $category['business'][1]->value)}}</td>
-                    <td>
                         <select class="form-control" id="business-1-{{$i}}-{{$key}}" name="business-1-{{$i}}-{{$key}}" style="padding: 0px; border-radius: 5px;" required>
                             <option value="">{{trans('messages.none')}}</option>
                             @for($j = 0; $j < sizeof($technologies); $j++) 

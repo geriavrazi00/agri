@@ -2534,9 +2534,7 @@ svg {
     overflow: hidden;
     vertical-align: middle;
 }
-table {
-    border-collapse: collapse;
-}
+
 caption {
     padding-top: 0.75rem;
     padding-bottom: 0.75rem;
@@ -2546,10 +2544,12 @@ caption {
 }
 th {
     text-align: inherit;
+    color: rgb(30, 105, 184);
 }
 label {
     display: inline-block;
     margin-bottom: 0.5rem;
+    color: #1b1d1f;
 }
 button {
     border-radius: 0;
@@ -3819,7 +3819,7 @@ pre code {
 .table th {
     padding: 0.75rem;
     vertical-align: top;
-    border-top: 1px solid #dee2e6;
+    padding-left: 30px;
 }
 .table thead th {
     vertical-align: bottom;
@@ -9773,7 +9773,6 @@ button.bg-dark:hover {
 }
 .pb-4,
 .py-4 {
-    padding-bottom: 1.5rem !important;
 }
 .pl-4,
 .px-4 {
@@ -13463,7 +13462,6 @@ nav.navbar .dropdown-menu {
 }
 footer.main-footer {
     padding: 7rem 0;
-    background: #222;
     color: #fff;
     padding-bottom: 0;
 }
@@ -14461,6 +14459,7 @@ h2 {
 .h3,
 h3 {
     font-size: 1.65rem;
+    color: #1e68b89f;
 }
 .h4,
 h4 {

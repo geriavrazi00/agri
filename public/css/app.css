@@ -204,9 +204,6 @@ svg {
 svg {
     overflow: hidden;
 }
-table {
-    border-collapse: collapse;
-}
 caption {
     padding-top: 0.75rem;
     padding-bottom: 0.75rem;
@@ -1324,7 +1321,6 @@ pre code {
 .table th {
     padding: 0.75rem;
     vertical-align: top;
-    border-top: 1px solid #dee2e6;
 }
 .table thead th {
     vertical-align: bottom;
@@ -6468,7 +6464,6 @@ button.bg-dark:hover {
 }
 .pb-4,
 .py-4 {
-    padding-bottom: 1.5rem !important;
 }
 .pl-4,
 .px-4 {
@@ -7732,9 +7727,7 @@ a.text-dark:hover {
     .badge {
         border: 1px solid #000;
     }
-    .table {
-        border-collapse: collapse !important;
-    }
+
     .table td,
     .table th {
         background-color: #fff !important;
