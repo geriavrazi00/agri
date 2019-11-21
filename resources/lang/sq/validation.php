@@ -118,4 +118,19 @@ return [
 
     'attributes' => [],
 
+    //Custom field validation messages
+    'applicant_name_required' => 'Ju lutem plotësoni emrin e aplikantit.', 
+    
+    //Loan data validation
+    'interest_rate_required' => 'Ju lutem plotësoni normën aktuale të interesit.', 
+    'repayment_period_required' => 'Ju lutem plotësoni periudhën e shlyerjes në vite.', 
+    'yearly_payments_required' => 'Ju lutem plotësoni pagesat për vit.', 
+    'first_payment_date_required' => 'Ju lutem plotësoni datën e pagesës së parë.', 
+
+    //Business data validation
+    'technology_required' => 'Ju lutem zgjidhni një teknologji.', 
+    'field_required' => 'Ju lutem plotësoni fushën.', 
+
+    //Investment plan validation
+    'non_negative_field' => 'Vlera e fushës nuk mund të jetë negative.', 
 ];

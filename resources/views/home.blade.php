@@ -38,44 +38,56 @@
 
                 </div>
 
-                @for($i = 0; $i < sizeof($categories); $i++) <div class="button">
+                @for($i = 0; $i < sizeof($categories); $i++) 
+                <div class="button">
                     <div id="category-{{$categories[$i]->id}}-div" class="rtable-cell item-cell-type">
-                        <a onclick="selectCategories('{{$categories[$i]->id}}');" style="cursor: pointer;">
+                        <a onclick="selectCategories('{{$categories[$i]}}', '{{$categories}}');" style="cursor: pointer;">
                             <img src="img/product-images/{{$categories[$i]->image}}" style="width:100px; height:100px;" />
                         </a>
                         <input class="form-control in-odd-row item-name" hidden name="item-name-1" type="text" value="Product or Service Name 1" />
                     </div>
-                    <p>{{$categories[$i]->name}}</p>
-            </div>
-
-
+                    <div><p>{{$categories[$i]->name}}</p></div>
+                </div>
             @endfor
+
             <br />
             <div class="divider">
                 <div class="dividermask"></div>
             </div>
 
-            <br />
-
-            @foreach($categoriesData as $key => $category)
-            @if($category['investments'] != null)
-            <div id="category-{{$key}}" style="display: none; width: 100%;">
-                @include('inputs')
-            </div>
-            @endif
-            @endforeach
-
-            <div id="loan" style="display: none; width: 100%;">
-                @include('loan')
+            <form method="POST" action="/result" style="width: 100%;" class="needs-validation" novalidate>
+                @csrf
+                <div class="form-row" id="applicant-name-div" style="display: none; width: 100%;">
+                    <label for="applicant-name" >{{trans('messages.applicant_name')}}</label>
+                    <input class="form-control" type="text" name="applicant-name" required/>
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{trans('validation.applicant_name_required')}}</strong>
+                    </span>
+                </div>
 
                 <br />
 
-                <center>
-                    <button id="generate" name="generate" class="btn btn-primary" type="submit">
-                        {{trans('messages.generate')}}
-                    </button>
-                </center>
-            </div>
+                @foreach($categoriesData as $key => $category)
+                    @if($category['investments'] != null)
+                        <div id="category-{{$key}}" style="display: none; width: 100%; padding-top: 20px;">
+                            @include('inputs')
+                        </div>
+                    @endif
+                @endforeach
+
+                <div id="loan" style="display: none; width: 100%;">
+                    @include('loan')
+
+                    <input type="hidden" id="selected-categories[]" name="selected-categories[]"/>
+                    <br />
+
+                    <center>
+                        <button id="generate" name="generate" class="btn btn-primary" type="submit">
+                            {{trans('messages.generate')}}
+                        </button>
+                    </center>
+                </div>
+            </form>
         </div>
     </div>
     </div>

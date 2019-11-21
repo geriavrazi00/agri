@@ -147,4 +147,19 @@ return [
 
     'attributes' => [],
 
+    //Custom field validation messages
+    'applicant_name_required' => 'Please enter an applicant name.', 
+
+    //Loan data validation
+    'interest_rate_required' => 'Please enter the yearly interest norm.', 
+    'repayment_period_required' => 'Please enter the repayment period in years.', 
+    'yearly_payments_required' => 'Please enter the number of payments per year.', 
+    'first_payment_date_required' => 'Please enter the date of the first payment.', 
+
+    //Business data validation
+    'technology_required' => 'Please select a technology.' ,
+    'field_required' => 'Please fill out the field.', 
+
+    //Investment plan validation
+    'non_negative_field' => 'The value of the field cannot be negative.', 
 ];

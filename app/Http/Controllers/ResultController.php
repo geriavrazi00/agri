@@ -38,50 +38,57 @@ class ResultController extends Controller
     }
 
     private function buildInputs($request) {
-    	$selectedCategory = Category::find($request->get('farm-type'));
-    	$investmentVariableNr = sizeof($selectedCategory->labels->where('type', '=', Constants::INVESTMENT_LABELS));
-    	$businessVariableNr = sizeof($selectedCategory->labels->where('type', '=', Constants::BUSINESS_LABELS));
-    	$loanVariableNr = sizeof($selectedCategory->labels->where('type', '=', Constants::LOAN_LABELS));
+        $selectedCategories = explode(',', $request->get('selected-categories')[0]);
+        $loanVariableNr = Constants::LOAN_FIELDS;
+        $inputs = array();
 
-    	$inputs = new Inputs();
-    	$inputs->setApplicantName($request->get('applicant-name'));
-    	$inputs->setFarmCategory($selectedCategory);
+        foreach($selectedCategories as $categoryId) {
+            $selectedCategory = Category::find($categoryId);
+            $investmentVariableNr = sizeof($selectedCategory->labels->where('type', '=', Constants::INVESTMENT_LABELS));
+            $businessVariableNr = sizeof($selectedCategory->labels->where('type', '=', Constants::BUSINESS_LABELS));
 
-    	$investmentPlans = array();
-    	$allBusinessData = array();
-    	$allLoanData = array();
+            $input = new Inputs();
+            $input->setApplicantName($request->get('applicant-name'));
+            $input->setFarmCategory($selectedCategory);
 
-    	for($i = 0; $i < $selectedCategory->option_number; $i++) {
-    		$investmentPlan = array();
-    		$businessData = array();
-    		$totalInvestment = 0;
+            $investmentPlans = array();
+            $allBusinessData = array();
+            $allLoanData = array();
 
-    		for($j = 0; $j < $investmentVariableNr; $j++) {
-    			$value = $request->get('investment-' . $j . '-' . $i) == null ? 0 : (float)$request->get('investment-' . $j . '-' . $i);
-    			$totalInvestment += $value;
-    			array_push($investmentPlan, $value);
-    		}
+            for($i = 0; $i < $selectedCategory->option_number; $i++) {
+                $investmentPlan = array();
+                $businessData = array();
+                $totalInvestment = 0;
 
-    		array_push($investmentPlan, $totalInvestment);
+                for($j = 0; $j < $investmentVariableNr; $j++) {
+                    $value = $request->get('investment-' . $j . '-' . $i . '-' . $selectedCategory->id) == null ? 0 : (float)$request->get('investment-' . $j . '-' . $i . '-' . $selectedCategory->id);
+                    $totalInvestment += $value;
+                    array_push($investmentPlan, $value);
+                }
 
-    		for($j = 0; $j < $businessVariableNr; $j++) {
-    			$value = $request->get('business-' . $j . '-' . $i) == null ? 0 : (float)$request->get('business-' . $j . '-' . $i);
-    			array_push($businessData, $value);
-    		}
+                array_push($investmentPlan, $totalInvestment);
 
-    		array_push($investmentPlans, $investmentPlan);
-    		array_push($allBusinessData, $businessData);
-    	}
+                for($j = 0; $j < $businessVariableNr; $j++) {
+                    $value = $request->get('business-' . $j . '-' . $i . '-' . $selectedCategory->id) == null ? 0 : (float)$request->get('business-' . $j . '-' . $i . '-' . $selectedCategory->id);
+                    array_push($businessData, $value);
+                }
 
-    	for($i = 0; $i < $loanVariableNr; $i++) {
-    		$value = $request->get('loan-' . $i) == null ? 0 : $request->get('loan-' . $i);
-    		array_push($allLoanData, $value);
-    	}
+                array_push($investmentPlans, $investmentPlan);
+                array_push($allBusinessData, $businessData);
+            }
 
-    	$inputs->setInvestmentPlans($investmentPlans);
-    	$inputs->setBusinessData($allBusinessData);
-    	$inputs->setLoanData($allLoanData);
+            for($i = 0; $i < $loanVariableNr; $i++) {
+                $value = $request->get('loan-' . $i) == null ? 0 : $request->get('loan-' . $i);
+                array_push($allLoanData, $value);
+            }
 
+            $input->setInvestmentPlans($investmentPlans);
+            $input->setBusinessData($allBusinessData);
+            $input->setLoanData($allLoanData);
+
+            array_push($inputs, $input);
+        }
+    	
     	return $inputs;
     }
 
@@ -94,61 +101,66 @@ class ResultController extends Controller
     	$totalExpense = 0;
     	$totalAmortization = 0;
 
-    	//Amortization values.
-        $amortizationConstants = $inputs->getFarmCategory()->labels()->where('type', '=', Constants::INVESTMENT_LABELS)->get();
+        foreach($inputs as $input) {
+            //Amortization values.
+            $amortizationConstants = $input->getFarmCategory()->labels()->where('type', '=', Constants::INVESTMENT_LABELS)->get();
 
-        $amortizationConstant1 = $amortizationConstants[0]->amortization;
-        $amortizationConstant2 = $amortizationConstants[1]->amortization;
-        $amortizationConstant3 = $amortizationConstants[2]->amortization;
-        $amortizationConstant4 = $amortizationConstants[3]->amortization;
-        $amortizationConstant5 = $amortizationConstants[4]->amortization;
+            $amortizationConstant1 = $amortizationConstants[0]->amortization;
+            $amortizationConstant2 = $amortizationConstants[1]->amortization;
+            $amortizationConstant3 = $amortizationConstants[2]->amortization;
+            $amortizationConstant4 = $amortizationConstants[3]->amortization;
+            $amortizationConstant5 = $amortizationConstants[4]->amortization;
 
-        for($i = 0; $i < sizeof($inputs->getInvestmentPlans()); $i++) {
-        	//Amortization
-        	$totalAmortization += $amortizationConstant1 != 0 ? $inputs->getInvestmentPlans()[$i][0]/$amortizationConstant1 : 0;
-        	$totalAmortization += $amortizationConstant2 != 0 ? $inputs->getInvestmentPlans()[$i][1]/$amortizationConstant2 : 0;
-        	$totalAmortization += $amortizationConstant3 != 0 ? $inputs->getInvestmentPlans()[$i][2]/$amortizationConstant3 : 0;
-        	$totalAmortization += $amortizationConstant4 != 0 ? $inputs->getInvestmentPlans()[$i][3]/$amortizationConstant4 : 0;
-        	$totalAmortization += $amortizationConstant5 != 0 ? $inputs->getInvestmentPlans()[$i][4]/$amortizationConstant5 : 0;
+            for($i = 0; $i < sizeof($input->getInvestmentPlans()); $i++) {
+                //Amortization
+                $totalAmortization += $amortizationConstant1 != 0 ? $input->getInvestmentPlans()[$i][0]/$amortizationConstant1 : 0;
+                $totalAmortization += $amortizationConstant2 != 0 ? $input->getInvestmentPlans()[$i][1]/$amortizationConstant2 : 0;
+                $totalAmortization += $amortizationConstant3 != 0 ? $input->getInvestmentPlans()[$i][2]/$amortizationConstant3 : 0;
+                $totalAmortization += $amortizationConstant4 != 0 ? $input->getInvestmentPlans()[$i][3]/$amortizationConstant4 : 0;
+                $totalAmortization += $amortizationConstant5 != 0 ? $input->getInvestmentPlans()[$i][4]/$amortizationConstant5 : 0;
 
-        	$totalBruteIncome += $inputs->getInvestmentPlans()[$i][0] + $inputs->getInvestmentPlans()[$i][1] + $inputs->getInvestmentPlans()[$i][2] + $inputs->getInvestmentPlans()[$i][3] + $inputs->getInvestmentPlans()[$i][4];
+                $totalBruteIncome += $input->getInvestmentPlans()[$i][0] + $input->getInvestmentPlans()[$i][1] + $input->getInvestmentPlans()[$i][2] + $input->getInvestmentPlans()[$i][3] + $input->getInvestmentPlans()[$i][4];
+            }
+
+            Log::info($totalBruteIncome);
+
+            for($i = 0; $i < sizeof($input->getBusinessData()); $i++) {
+                for($j = 0; $j < $input->getFarmCategory()->culture_number; $j++) {
+                    $culture = array();
+
+                    if($input->getBusinessData()[$i][$j+2] == 'null') continue; 
+
+                    $selectedCulture = Culture::find($input->getBusinessData()[$i][$j+2]);
+
+                    $valuesCulture = Value::where('technology_id', '=', $input->getBusinessData()[$i][1])
+                        ->where('culture_id', '=', $selectedCulture->id)
+                        ->first();
+                    $mainVariable = $input->getBusinessData()[$i][0];
+
+                    $income = $valuesCulture->efficiency * $valuesCulture->price * $mainVariable;
+                    $expenses = $valuesCulture->efficiency * $valuesCulture->cost * $mainVariable;
+
+                    array_push($culture, $selectedCulture->name);
+                    array_push($culture, $mainVariable);
+                    array_push($culture, $valuesCulture->efficiency);
+                    array_push($culture, $valuesCulture->efficiency * $mainVariable);
+                    array_push($culture, $income/$mainVariable);
+                    array_push($culture, ($income/$mainVariable) * $mainVariable);
+                    array_push($culture, $expenses);
+
+                    array_push($cultures, $culture);
+
+                    $totalIncome += $income;
+                    $totalExpense += $expenses;
+                }
+            }
         }
 
         //Credit
-        $credit = $this->calculateCredit($inputs->getLoanData()[0]/100, $inputs->getLoanData()[1], $inputs->getLoanData()[2], $totalBruteIncome);
+        $credit = $this->calculateCredit($inputs[0]->getLoanData()[0]/100, $inputs[0]->getLoanData()[1], $inputs[0]->getLoanData()[2], $totalBruteIncome);
 
-       	$fullInterest = array_sum($credit["paymentsPerYear"]);
-        $yearlyInterest = $fullInterest / $inputs->getLoanData()[1];
-
-    	for($i = 0; $i < sizeof($inputs->getBusinessData()); $i++) {
-    		for($j = 0; $j < $inputs->getFarmCategory()->culture_number; $j++) {
-    			$culture = array();
-
-    			$selectedCulture = Culture::find($inputs->getBusinessData()[$i][$j+2]);
-    			Log::info($inputs->getBusinessData()[$i]);
-
-    			$valuesCulture = Value::where('technology_id', '=', $inputs->getBusinessData()[$i][1])
-		        	->where('culture_id', '=', $selectedCulture->id)
-		            ->first();
-		        $mainVariable = $inputs->getBusinessData()[$i][0];
-
-		        $income = $valuesCulture->efficiency * $valuesCulture->price * $mainVariable;
-		        $expenses = $valuesCulture->efficiency * $valuesCulture->cost * $mainVariable;
-
-		        array_push($culture, $selectedCulture->name);
-		        array_push($culture, $mainVariable);
-		        array_push($culture, $valuesCulture->efficiency);
-		        array_push($culture, $valuesCulture->efficiency * $mainVariable);
-		        array_push($culture, $income/$mainVariable);
-		        array_push($culture, ($income/$mainVariable) * $mainVariable);
-		        array_push($culture, $expenses);
-
-		        array_push($cultures, $culture);
-
-		        $totalIncome += $income;
-		        $totalExpense += $expenses;
-    		}
-    	}
+        $fullInterest = array_sum($credit["paymentsPerYear"]);
+        $yearlyInterest = $fullInterest / $inputs[0]->getLoanData()[1];
 
     	$tax = Constants::LOW; 
         if($totalIncome >= Constants::THRESHOLD) $tax = Constants::HIGH;
@@ -157,7 +169,7 @@ class ResultController extends Controller
         $totalNetIncome = $totalIncome - $totalExpense - $totalAmortization - $yearlyInterest - $incomeTax;
         $moneyFlux = $totalIncome - $totalExpense - $incomeTax;
         $firstYearCredit = $credit["firstYearCredit"];
-        $dscr = $moneyFlux / $firstYearCredit;
+        $dscr = $firstYearCredit != 0 ? $moneyFlux / $firstYearCredit : 0;
 
         //Setting final results
     	$result->setCultures($cultures);

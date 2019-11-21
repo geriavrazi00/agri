@@ -11,11 +11,11 @@
 	                <table border="1">
 	                	<tr>
 	                		<th>Kultura</th>
-	                		<th>Siperfaqe (dy)</th>
-	                		<th>Rendimenti (kg/dy)</th>
-	                		<th>Prodhimi (kg)</th>
-	                		<th>Ardhura bruto per njesi (leke/dy)</th>
-	                		<th>Ardhura bruto totale (leke)</th>
+	                		<th>Siperfaqe</th>
+	                		<th>Rendimenti</th>
+	                		<th>Prodhimi</th>
+	                		<th>Të ardhura bruto për njesi</th>
+	                		<th>Të ardhura bruto totale</th>
 	                		<th>Shpenzime prodhimi</th>
 	                	</tr>
 	                	

@@ -11,4 +11,7 @@ final class Constants {
 	const LOW = 0.075;
 	const HIGH = 0.15;
 	const THRESHOLD = 12000000;
+
+	//Loan fields
+	const LOAN_FIELDS = 4;
 }

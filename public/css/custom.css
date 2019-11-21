@@ -81,3 +81,11 @@ tr {
     border-radius: 125px / 12px;
     box-shadow: 0 0 8px #1e69b8;
 }
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0; 
+}
