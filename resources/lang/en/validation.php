@@ -147,6 +147,11 @@ return [
 
     'attributes' => [],
 
+
+    //Login
+    'email_required' => 'Please enter your e-mail.', 
+    'password_required' => 'Please enter your password.', 
+
     //Custom field validation messages
     'applicant_name_required' => 'Please enter an applicant name.', 
 

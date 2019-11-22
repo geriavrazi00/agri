@@ -40,7 +40,7 @@
                 <tr>
                     <td>{{trans('business_data.' . $category['business'][0]->value)}}</td>
                     <td>
-                        <input type="number" name="business-0-{{$i}}-{{$key}}" class="form-control" required min="0">
+                        <input type="number" name="business-0-{{$i}}-{{$key}}" class="form-control" min="0">
                         <span class="invalid-feedback" role="alert">
                             <strong>{{trans('validation.field_required')}}</strong>
                         </span>
@@ -48,12 +48,13 @@
                 </tr>
                 <tr>
                     <td>{{trans('business_data.' . $category['business'][1]->value)}}</td>
-                        <select class="form-control" id="business-1-{{$i}}-{{$key}}" name="business-1-{{$i}}-{{$key}}" style="padding: 0px; border-radius: 5px;" required>
+                    <td>
+                        <select class="form-control" id="business-1-{{$i}}-{{$key}}" name="business-1-{{$i}}-{{$key}}" style="padding: 0px; border-radius: 5px;" >
                             <option value="">{{trans('messages.none')}}</option>
                             @for($j = 0; $j < sizeof($technologies); $j++) 
                                 <option value="{{$technologies[$j]->id}}">{{$technologies[$j]->name}}</option>
                             @endfor
-                        </select> -->
+                        </select>
 
                         <span class="invalid-feedback" role="alert">
                             <strong>{{trans('validation.technology_required')}}</strong>

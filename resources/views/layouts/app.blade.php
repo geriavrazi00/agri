@@ -50,7 +50,19 @@
                                 <a class="nav-link" href="./">Home</a>
                             </li>
                         </ul>
-                        <a class="btn btn-primary navbar-btn ml-0 ml-lg-3" href="/login">Afa</a>
+
+                        @guest
+                            <a class="btn btn-primary navbar-btn ml-0 ml-lg-3" href="/login">Afa</a>
+                        @endguest
+
+                        @auth
+                            <form method="POST" action="/logout">
+                                @csrf
+                                <button type="submit" class="btn btn-primary navbar-btn ml-0 ml-lg-3">
+                                    Logout
+                                </button>
+                            </form>
+                        @endauth
                     </div>
                 </div>
             </nav>

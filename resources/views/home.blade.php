@@ -55,7 +55,7 @@
                 <div class="dividermask"></div>
             </div>
 
-            <form method="POST" action="/result" style="width: 100%;" class="needs-validation" novalidate>
+            <form method="POST" action="/result" style="width: 100%;" class="needs-validation" novalidate id="home-form">
                 @csrf
                 <div class="form-row" id="applicant-name-div" style="display: none; width: 100%;">
                     <label for="applicant-name" >{{trans('messages.applicant_name')}}</label>
@@ -82,7 +82,7 @@
                     <br />
 
                     <center>
-                        <button id="generate" name="generate" class="btn btn-primary" type="submit">
+                        <button class="btn btn-primary" type="submit">
                             {{trans('messages.generate')}}
                         </button>
                     </center>

@@ -93,6 +93,11 @@ function fillField(element) {
 	if (element.value === "") element.value = "0";
 }
 
+function submitForm() {
+	var form = document.getElementById("home-form");
+	if(form.valid()) form.submit();
+}
+
 // Example starter JavaScript for disabling form submissions if there are invalid fields
 (function() {
   'use strict';

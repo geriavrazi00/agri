@@ -118,6 +118,10 @@ return [
 
     'attributes' => [],
 
+    //Login
+    'email_required' => 'Ju lutem plotësoni e-mailin.', 
+    'password_required' => 'Ju lutem plotësoni fjalëkalimin.', 
+
     //Custom field validation messages
     'applicant_name_required' => 'Ju lutem plotësoni emrin e aplikantit.', 
     
