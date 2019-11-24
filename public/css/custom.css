@@ -81,13 +81,24 @@ tr {
     border-radius: 125px / 12px;
     box-shadow: 0 0 8px #1e69b8;
 }
+#tabledesc {
+    text-align: center;
+    font-size: 18px;
+    padding-top: 20px;
+    width: 100%;
+}
 
+#servicename {
+    width: 80%;
+    padding-left: 20px;
+    text-align: center;
+    padding-top: 3px;
+}
 /*
 * =====================================================
 *     TABLES
 * =====================================================
 */
-
 .table {
     width: 95%;
     margin-bottom: 1rem;
@@ -95,14 +106,60 @@ tr {
     margin-left: 20px;
     color: #212529;
     border: 2px solid #2372c780;
-    border-radius: 30px;
+    border-radius: 15px;
+}
+.resulttable {
+    width: 95%;
+    margin-bottom: 1rem;
+    margin-right: 50px;
+    margin-left: 20px;
+    color: #212529;
+    border: 2px solid #2372c780;
+    border-radius: 15px;
+    background-color: white;
+}
+
+.resulttablehead {
+    color: rgb(30, 105, 184);
+    font-size: 20px;
+    padding: 10px;
+}
+.resulttabledata {
+    padding: 10px;
+    font-size: 18px;
+    border-top: 1px solid #2372c780;
 }
 
 /* Number fields */
-input[type=number]::-webkit-inner-spin-button, 
-input[type=number]::-webkit-outer-spin-button { 
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    margin: 0; 
+    margin: 0;
 }
+
+/* Applicant name */
+#applicantname {
+    font-size: 1.65rem;
+    color: #1e68b89f;
+    text-align: center;
+    font-weight: 500;
+    padding-left: 455px;
+}
+
+#applicantnameinput {
+    background: transparent;
+    border: 1px solid #2372c780;
+    border-bottom: 2px solid #2372c780;
+    border-radius: 10px;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    -webkit-transition: none;
+    height: 35px;
+    width: 600px;
+    font-size: 16px;
+    font-weight: 400;
+    padding-left: 20px;
+    resize: none;
+    margin-left: 250px;

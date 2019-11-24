@@ -49,11 +49,11 @@
                 <tr>
                     <td>{{trans('business_data.' . $category['business'][1]->value)}}</td>
                     <td>
-                        <select class="form-control" id="business-1-{{$i}}-{{$key}}" name="business-1-{{$i}}-{{$key}}" style="padding: 0px; border-radius: 5px;" >
+                        <select class="form-control" id="business-1-{{$i}}-{{$key}}" name="business-1-{{$i}}-{{$key}}" style="border-radius: 5px;">
+
                             <option value="">{{trans('messages.none')}}</option>
-                            @for($j = 0; $j < sizeof($technologies); $j++) 
-                                <option value="{{$technologies[$j]->id}}">{{$technologies[$j]->name}}</option>
-                            @endfor
+                            @for($j = 0; $j < sizeof($technologies); $j++) <option value="{{$technologies[$j]->id}}">{{$technologies[$j]->name}}</option>
+                                @endfor
                         </select>
 
                         <span class="invalid-feedback" role="alert">
@@ -66,18 +66,18 @@
                     <tr>
                         <td>{{trans('business_data.' . $category['business'][$j+2]->value)}}</td>
                         <td>
-                            <select class="form-control" id="business-{{$j+2}}-{{$i}}-{{$key}}" name="business-{{$j+2}}-{{$i}}-{{$key}}" style="padding: 0px; border-radius: 5px;">
+                            <select class="form-control" id="business-{{$j+2}}-{{$i}}-{{$key}}" name="business-{{$j+2}}-{{$i}}-{{$key}}" style=" border-radius: 5px;">
                                 <option value="null">{{trans('messages.none')}}</option>
                                 @for($k = 0; $k < sizeof($category->cultures); $k++)
                                     <option value="{{$category->cultures[$k]->id}}">
                                         {{$category->cultures[$k]->name}}
                                     </option>
-                                @endfor
+                                    @endfor
                             </select>
                         </td>
                     </tr>
-                @endfor
+                    @endfor
             </table>
-        @endfor
+            @endfor
     </div>
 </div>

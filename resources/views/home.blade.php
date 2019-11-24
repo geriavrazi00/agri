@@ -38,16 +38,17 @@
 
                 </div>
 
-                @for($i = 0; $i < sizeof($categories); $i++) 
-                <div class="button">
+                @for($i = 0; $i < sizeof($categories); $i++) <div class="button">
                     <div id="category-{{$categories[$i]->id}}-div" class="rtable-cell item-cell-type">
                         <a onclick="selectCategories('{{$categories[$i]}}', '{{$categories}}');" style="cursor: pointer;">
                             <img src="img/product-images/{{$categories[$i]->image}}" style="width:100px; height:100px;" />
                         </a>
                         <input class="form-control in-odd-row item-name" hidden name="item-name-1" type="text" value="Product or Service Name 1" />
                     </div>
-                    <div><p>{{$categories[$i]->name}}</p></div>
-                </div>
+                    <div>
+                        <p id="servicename">{{$categories[$i]->name}}</p>
+                    </div>
+            </div>
             @endfor
 
             <br />
@@ -58,27 +59,27 @@
             <form method="POST" action="/result" style="width: 100%;" class="needs-validation" novalidate id="home-form">
                 @csrf
                 <div class="form-row" id="applicant-name-div" style="display: none; width: 100%;">
-                    <label for="applicant-name" >{{trans('messages.applicant_name')}}</label>
-                    <input class="form-control" type="text" name="applicant-name" required/>
+                    <label for="applicant-name" id="applicantname">{{trans('messages.applicant_name')}}</label>
+                    <input class="form-control" id="applicantnameinput" type="text" name="applicant-name" required />
                     <span class="invalid-feedback" role="alert">
-                        <strong>{{trans('validation.applicant_name_required')}}</strong>
+                        <strongname>{{trans('validation.applicant_name_required')}}</strongname>
                     </span>
                 </div>
 
                 <br />
 
                 @foreach($categoriesData as $key => $category)
-                    @if($category['investments'] != null)
-                        <div id="category-{{$key}}" style="display: none; width: 100%; padding-top: 20px;">
-                            @include('inputs')
-                        </div>
-                    @endif
+                @if($category['investments'] != null)
+                <div id="category-{{$key}}" style="display: none; width: 100%; padding-top: 20px;">
+                    @include('inputs')
+                </div>
+                @endif
                 @endforeach
 
                 <div id="loan" style="display: none; width: 100%;">
                     @include('loan')
 
-                    <input type="hidden" id="selected-categories[]" name="selected-categories[]"/>
+                    <input type="hidden" id="selected-categories[]" name="selected-categories[]" />
                     <br />
 
                     <center>

@@ -42,7 +42,7 @@
   </div>
 </section>
 <section class>
-  <div class="container text-center text-lg-right">
+  <div class="container text-center text-lg-left">
     <div class="row align-items-center">
       <div class="col-lg-5 mt-5 mt-lg-0"><img src="img/logo/logoferme.png" alt="" class="divider-image img-fluid">
       </div>
