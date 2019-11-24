@@ -144,8 +144,8 @@ class ResultController extends Controller
                     array_push($culture, $mainVariable);
                     array_push($culture, $valuesCulture->efficiency);
                     array_push($culture, $valuesCulture->efficiency * $mainVariable);
-                    array_push($culture, $income/$mainVariable);
-                    array_push($culture, ($income/$mainVariable) * $mainVariable);
+                    array_push($culture, $mainVariable != 0 ? $income/$mainVariable : 0);
+                    array_push($culture, $mainVariable != 0 ? (($income/$mainVariable) * $mainVariable) : 0);
                     array_push($culture, $expenses);
 
                     array_push($cultures, $culture);

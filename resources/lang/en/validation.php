@@ -160,10 +160,13 @@ return [
     'repayment_period_required' => 'Please enter the repayment period in years.', 
     'yearly_payments_required' => 'Please enter the number of payments per year.', 
     'first_payment_date_required' => 'Please enter the date of the first payment.', 
+    'interest_min_value' => 'The actual norm of yearly interest must be greater than :value.', 
+    'interest_max_value' => 'The actual norm of yearly interest must have a maximum value of :value.', 
 
     //Business data validation
     'technology_required' => 'Please select a technology.' ,
     'field_required' => 'Please fill out the field.', 
+    'one_subculture_required' => 'Please choose at least one subproduct.',
 
     //Investment plan validation
     'non_negative_field' => 'The value of the field cannot be negative.', 
