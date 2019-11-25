@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'AFA') }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -47,19 +47,19 @@
                         <ul class="navbar-nav ml-auto">
                             <!-- Link -->
                             <li class="nav-item">
-                                <a class="nav-link" href="./">Home</a>
+                                <a class="nav-link" href="./">Kryefaqja</a>
                             </li>
                         </ul>
 
                         @guest
-                            <a class="btn btn-primary navbar-btn ml-0 ml-lg-3" href="/login">Afa</a>
+                            <a class="btn btn-primary navbar-btn ml-0 ml-lg-3" href="/login">Kyçu</a>
                         @endguest
 
                         @auth
                             <form method="POST" action="/logout">
                                 @csrf
                                 <button type="submit" class="btn btn-primary navbar-btn ml-0 ml-lg-3">
-                                    Logout
+                                    Dil
                                 </button>
                             </form>
                         @endauth

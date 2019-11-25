@@ -59,8 +59,8 @@
             <form method="POST" action="/result" style="width: 100%;">
                 @csrf
                 <div class="form-row" id="applicant-name-div" style="display: none; width: 100%;">
-                    <label for="applicant-name" id="applicantname">{{trans('messages.applicant_name')}}</label>
-                    <input ilass="form-control" id="applicantnameinput" type="text" name="applicant-name" required oninvalid="createInvalidMsg(this, '{{trans('validation.applicant_name_required')}}', '');" oninput="createInvalidMsg(this, '', '');"/>
+                    <label for="applicant-name" id="applicantname" style="font-weight: 700;">{{trans('messages.applicant_name')}}</label>
+                    <input class="form-control" id="applicantnameinput" type="text" name="applicant-name" required oninvalid="createInvalidMsg(this, '{{trans('validation.applicant_name_required')}}', '');" oninput="createInvalidMsg(this, '', '');"/>
                 </div>
 
                 <br />

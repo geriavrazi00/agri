@@ -81,8 +81,6 @@ function selectCategories(category, categories) {
 			}
 		}
 
-		console.log(categories);
-
 		calculateTotal(category.option_number, category.labels.length, category.id, categories);
 		manageSelectedCategories(category, false);
 	}
@@ -93,6 +91,7 @@ function selectCategories(category, categories) {
 	} else {
 		loanElement.style.display = "none";
 		applicantNameElement.style.display = "none";
+		document.getElementById("applicantnameinput").value = "";
 	}
 
 	document.getElementById("selected-categories[]").value = selectedCategories;

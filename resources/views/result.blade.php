@@ -10,11 +10,11 @@
 				<div style="padding-top:100px;">
 					<table class="resulttable">
 						<tr class="resulttablerow">
-							<th class="resulttablehead">Kultura</th>
-							<th class="resulttablehead">Siperfaqe</th>
+							<th class="resulttablehead">Nënprodukti</th>
+							<th class="resulttablehead">Njësi</th>
 							<th class="resulttablehead">Rendimenti</th>
 							<th class="resulttablehead">Prodhimi</th>
-							<th class="resulttablehead">Të ardhura bruto për njesi</th>
+							<th class="resulttablehead">Të ardhura bruto për njësi</th>
 							<th class="resulttablehead">Të ardhura bruto totale</th>
 							<th class="resulttablehead">Shpenzime prodhimi</th>
 						</tr>
@@ -23,7 +23,7 @@
 							<tr class="resulttablerow">
 								<td class="resulttabledata">{{$result->getCultures()[$i][0]}}</td>
 								<td class="resulttabledata">{{$result->getCultures()[$i][1]}}</td>
-								<td class="resulttabledata">{{$result->getCultures()[$i][2]}}</td>
+								<td class="resulttabledata">{{$result->getCultures()[$i][2] + 0}}</td>
 								<td class="resulttabledata">{{$result->getCultures()[$i][3]}}</td>
 								<td class="resulttabledata">{{$result->getCultures()[$i][4]}}</td>
 								<td class="resulttabledata">{{$result->getCultures()[$i][5]}}</td>
@@ -39,15 +39,15 @@
 							<th class="resulttablehead" colspan="2" style="text-align:center;">Perfitueshmeria e investimit</th>
 						</tr>
 						<tr>
-							<td class="resulttabledata">Totali i te ardhurave viti 1</td>
+							<td class="resulttabledata">Totali i të ardhurave, viti 1</td>
 							<td class="resulttabledata" style="color:#2372c7dc; text-align: right;">{{$result->getTotalIncome()}}</td>
 						</tr>
 						<tr>
-							<td class="resulttabledata">Shpenzime prodhimi totale ne ferme</td>
+							<td class="resulttabledata">Shpenzime prodhimi totale</td>
 							<td class="resulttabledata" style="color:#2372c7dc; text-align: right;">{{$result->getTotalExpense()}}</td>
 						</tr>
 						<tr>
-							<td class="resulttabledata">Amortizimi stalles</td>
+							<td class="resulttabledata">Amortizimi</td>
 							<td class="resulttabledata" style="color:#2372c7dc; text-align: right;">{{$result->getTotalAmortization()}}</td>
 						</tr>
 						<tr>
@@ -55,23 +55,23 @@
 							<td class="resulttabledata" style="color:#2372c7dc; text-align: right;">{{$result->getYearlyInterest()}}</td>
 						</tr>
 						<tr>
-							<td class="resulttabledata">Tatimi mbi fitimin (mesatarisht 7.5%)</td>
+							<td class="resulttabledata">Tatimi mbi fitimin</td>
 							<td class="resulttabledata" style="color:#2372c7dc; text-align: right;">{{$result->getIncomeTax()}}</td>
 						</tr>
 						<tr>
-							<td class="resulttabledata">Fitimi neto total (leke)</td>
+							<td class="resulttabledata">Fitimi neto total</td>
 							<td class="resulttabledata" style="color:#2372c7dc; text-align: right;">{{$result->getTotalNetIncome()}}</td>
 						</tr>
 						<tr>
-							<td class="resulttabledata">Fluksi i parase i vlefshem per pagesa kredie</td>
+							<td class="resulttabledata">Fluksi i parase i vlefshëm për pagesa kredie</td>
 							<td class="resulttabledata" style="color:#2372c7dc; text-align: right;">{{$result->getMoneyFlux()}}</td>
 						</tr>
 						<tr>
-							<td class="resulttabledata">Keste kredie per 1 vit</td>
+							<td class="resulttabledata">Këste kredie për 1 vit</td>
 							<td class="resulttabledata" style="color:#2372c7dc; text-align: right;">{{$result->getFirstYearCredit()}}</td>
 						</tr>
 						<tr>
-							<td class="resulttabledata">DSCR (Debt Service Coverage Ratio)</td>
+							<td class="resulttabledata">DSCR</td>
 							<td class="resulttabledata" style="color:#2372c7dc; text-align: right;">{{$result->getDscr()}}</td>
 						</tr>
 					</table>
