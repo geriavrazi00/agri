@@ -11,6 +11,7 @@
 					<table class="resulttable">
 						<tr class="resulttablerow">
 							<th class="resulttablehead">Nënprodukti</th>
+							<th class="resulttablehead">Kategoria</th>
 							<th class="resulttablehead">Njësi</th>
 							<th class="resulttablehead">Rendimenti</th>
 							<th class="resulttablehead">Prodhimi</th>
@@ -23,11 +24,12 @@
 							<tr class="resulttablerow">
 								<td class="resulttabledata">{{$result->getCultures()[$i][0]}}</td>
 								<td class="resulttabledata">{{$result->getCultures()[$i][1]}}</td>
-								<td class="resulttabledata">{{$result->getCultures()[$i][2] + 0}}</td>
-								<td class="resulttabledata">{{$result->getCultures()[$i][3]}}</td>
+								<td class="resulttabledata">{{$result->getCultures()[$i][2]}}</td>
+								<td class="resulttabledata">{{$result->getCultures()[$i][3] + 0}}</td>
 								<td class="resulttabledata">{{$result->getCultures()[$i][4]}}</td>
 								<td class="resulttabledata">{{$result->getCultures()[$i][5]}}</td>
 								<td class="resulttabledata">{{$result->getCultures()[$i][6]}}</td>
+								<td class="resulttabledata">{{$result->getCultures()[$i][7]}}</td>
 							</tr>
 							@endfor
 					</table>

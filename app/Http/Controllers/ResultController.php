@@ -105,19 +105,26 @@ class ResultController extends Controller
             //Amortization values.
             $amortizationConstants = $input->getFarmCategory()->labels()->where('type', '=', Constants::INVESTMENT_LABELS)->get();
 
-            $amortizationConstant1 = $amortizationConstants[0]->amortization;
+            /*$amortizationConstant1 = $amortizationConstants[0]->amortization;
             $amortizationConstant2 = $amortizationConstants[1]->amortization;
             $amortizationConstant3 = $amortizationConstants[2]->amortization;
             $amortizationConstant4 = $amortizationConstants[3]->amortization;
-            $amortizationConstant5 = $amortizationConstants[4]->amortization;
+            $amortizationConstant5 = $amortizationConstants[4]->amortization;*/
 
             for($i = 0; $i < sizeof($input->getInvestmentPlans()); $i++) {
+
+                for($j = 0; $j < sizeof($amortizationConstants); $j++) {
+                    $totalAmortization += $amortizationConstants[$j]->amortization != 0 
+                        ? $input->getInvestmentPlans()[$i][$j]/$amortizationConstants[$j]->amortization 
+                        : 0; 
+                }
+
                 //Amortization
-                $totalAmortization += $amortizationConstant1 != 0 ? $input->getInvestmentPlans()[$i][0]/$amortizationConstant1 : 0;
+                /*$totalAmortization += $amortizationConstant1 != 0 ? $input->getInvestmentPlans()[$i][0]/$amortizationConstant1 : 0;
                 $totalAmortization += $amortizationConstant2 != 0 ? $input->getInvestmentPlans()[$i][1]/$amortizationConstant2 : 0;
                 $totalAmortization += $amortizationConstant3 != 0 ? $input->getInvestmentPlans()[$i][2]/$amortizationConstant3 : 0;
                 $totalAmortization += $amortizationConstant4 != 0 ? $input->getInvestmentPlans()[$i][3]/$amortizationConstant4 : 0;
-                $totalAmortization += $amortizationConstant5 != 0 ? $input->getInvestmentPlans()[$i][4]/$amortizationConstant5 : 0;
+                $totalAmortization += $amortizationConstant5 != 0 ? $input->getInvestmentPlans()[$i][4]/$amortizationConstant5 : 0;*/
 
                 $totalBruteIncome += $input->getInvestmentPlans()[$i][0] + $input->getInvestmentPlans()[$i][1] + $input->getInvestmentPlans()[$i][2] + $input->getInvestmentPlans()[$i][3] + $input->getInvestmentPlans()[$i][4];
             }
@@ -141,6 +148,7 @@ class ResultController extends Controller
                     $expenses = $valuesCulture->efficiency * $valuesCulture->cost * $mainVariable;
 
                     array_push($culture, $selectedCulture->name);
+                    array_push($culture, $input->getFarmCategory()->name);
                     array_push($culture, $mainVariable);
                     array_push($culture, $valuesCulture->efficiency);
                     array_push($culture, $valuesCulture->efficiency * $mainVariable);

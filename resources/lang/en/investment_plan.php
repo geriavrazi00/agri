@@ -15,4 +15,27 @@ return [
 	'food_purchases' => 'Basic food purchases', 
 	'equipment_purchases' => 'Equipment purchases', 
 
+	//Sheep category labels
+	'buying_country_sheep' => 'Buying country sheep', 
+
+	//Alpine goats category
+	'buying_alpine_goats' => 'Buying alpine goats', 
+
+	//Country goats labels
+	'buying_country_goats' => 'Buying country goats', 
+
+	//Cows category
+	'buying_cows' => 'Buying cows for breeding', 
+
+	//Corn and sonflowers category
+	'agricultural_mechanic' => 'Agricultural mechanic', 
+	'well_opening' => 'Well opening', 
+	'visual_irrigation' => 'Visual irrigation', 
+
+	//Hazelnut category
+	'new_orchard' => 'New orchard', 
+	'hazelnut_cultivation' => 'Hazelnut cultivation', 
+
+	//Apple category
+	'anti_hail' => 'Agricultural mechanic/antihail net', 
 ];

@@ -4,6 +4,7 @@ return [
 
 	//Commons
 	'technology' => 'Teknologjia/Investimi', 
+	'other' => 'Tjetër', 
 
 	//Greenhouse category labels
 	'surface' => 'Sipërfaqe (dynym)', 
@@ -18,4 +19,15 @@ return [
 	'subproduct_4' => 'Nënprodukt 4', 
 	'subproduct_5' => 'Nënprodukt 5', 
 
+	//Hazelnut category labels
+	'hazelnut_cultivation' => 'Kultivim lajthie', 
+
+	//Apple category labels
+	'apple_cultivation' => 'Kultivim molle', 
+
+	//Chaerry category labels
+	'cherry_cultivation' => 'Kultivim qershie', 
+
+	//Grape category labels
+	'grape_cultivation' => 'Kultivim rrush tavoline', 
 ];
