@@ -14,4 +14,8 @@ final class Constants {
 
 	//Loan fields
 	const LOAN_FIELDS = 4;
+
+	//Roles of the system
+	const ROLE_ADMIN = "admin";
+	const ROLE_WEB = "web";
 }

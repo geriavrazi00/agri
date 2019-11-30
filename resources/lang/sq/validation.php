@@ -84,7 +84,7 @@ return [
     ],
     'string'               => 'Fusha duhet të jetë një tekst.',
     'timezone'             => 'Fusha duhet të jetë një zonë e vlefshme.',
-    'unique'               => 'Fusha është zënë tashmë.',
+    'unique'               => 'Vlera e dhënë ekziston në sistem.',
     'uploaded'             => 'Fusha nuk u ngarkua me sukses.',
     'url'                  => 'Formati i fushës nuk është i vlefshëm.',
 
@@ -140,4 +140,7 @@ return [
 
     //Investment plan validation
     'non_negative_field' => 'Vlera e fushës nuk mund të jetë negative.', 
+
+    //Admin users validation
+    'wrong_format' => 'Ju lutem jepni të dhënat e fushës në një format të vlefshëm.',
 ];

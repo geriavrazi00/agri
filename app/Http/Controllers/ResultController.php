@@ -116,7 +116,9 @@ class ResultController extends Controller
                 for($j = 0; $j < sizeof($amortizationConstants); $j++) {
                     $totalAmortization += $amortizationConstants[$j]->amortization != 0 
                         ? $input->getInvestmentPlans()[$i][$j]/$amortizationConstants[$j]->amortization 
-                        : 0; 
+                        : 0;
+
+                    $totalBruteIncome += $input->getInvestmentPlans()[$i][$j];
                 }
 
                 //Amortization
@@ -126,7 +128,7 @@ class ResultController extends Controller
                 $totalAmortization += $amortizationConstant4 != 0 ? $input->getInvestmentPlans()[$i][3]/$amortizationConstant4 : 0;
                 $totalAmortization += $amortizationConstant5 != 0 ? $input->getInvestmentPlans()[$i][4]/$amortizationConstant5 : 0;*/
 
-                $totalBruteIncome += $input->getInvestmentPlans()[$i][0] + $input->getInvestmentPlans()[$i][1] + $input->getInvestmentPlans()[$i][2] + $input->getInvestmentPlans()[$i][3] + $input->getInvestmentPlans()[$i][4];
+                /*$totalBruteIncome += $input->getInvestmentPlans()[$i][0] + $input->getInvestmentPlans()[$i][1] + $input->getInvestmentPlans()[$i][2] + $input->getInvestmentPlans()[$i][3] + $input->getInvestmentPlans()[$i][4];*/
             }
 
             Log::info($totalBruteIncome);

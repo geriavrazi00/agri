@@ -163,3 +163,17 @@ input[type="number"]::-webkit-outer-spin-button {
     padding-left: 20px;
     resize: none;
     margin-left: 250px;
+}
+
+.edit-buttons {
+    font-size: 20px;
+    padding-left: 10px;
+    padding-right: 7px;
+}
+
+.action-buttons {
+    font-size: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+

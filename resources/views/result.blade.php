@@ -5,8 +5,6 @@
 	<div class="row justify-content-center">
 		<div class="col-md-12">
 			<div>
-
-
 				<div style="padding-top:100px;">
 					<table class="resulttable">
 						<tr class="resulttablerow">

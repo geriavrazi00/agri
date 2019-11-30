@@ -170,4 +170,7 @@ return [
 
     //Investment plan validation
     'non_negative_field' => 'The value of the field cannot be negative.', 
+
+    //Admin users validation
+    'wrong_format' => 'Please enter the data of the field in the right format.',
 ];

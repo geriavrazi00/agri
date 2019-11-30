@@ -13507,6 +13507,7 @@ footer.main-footer {
     background: url(../img/bg/hero-bg-blue-yellow.svg) no-repeat;
     background-size: cover;
     background-position: bottom left;
+    /*background-attachment: fixed;*/
 }
 .subscription-form .form-group {
     position: relative;

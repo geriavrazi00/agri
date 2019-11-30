@@ -1,3 +1,6 @@
+$(document).ready(function() {
+	$('[data-toggle="tooltip"]').tooltip();
+});
 
 var selectedCategories = new Array();
 
@@ -130,11 +133,15 @@ function blockSpecialCharactersInInputNumber(event) {
 	return true;
 }
 
-function createInvalidMsg(input, requiredMessage, nonNegativeMessage) {
+function createInvalidMsg(input, requiredMessage, alternativeMessage) {
 	if (input.value == '') {
         input.setCustomValidity(requiredMessage);
     } else if(input.value < 0) {
-    	input.setCustomValidity(nonNegativeMessage);
+    	input.setCustomValidity(alternativeMessage);
+    } else if(input.validity.typeMismatch) {
+        input.setCustomValidity(alternativeMessage);
+    } else if(input.validity.patternMismatch) {
+    	input.setCustomValidity(alternativeMessage);
     } else {
         input.setCustomValidity('');
     }
@@ -187,4 +194,21 @@ function manageSelectedCategories(category, enable) {
 			}
 		}
 	}
+}
+
+function areYouSure(e, element) {
+	e.preventDefault();
+	var form = $(element).parents('form');
+
+	swal ({
+    	title: 'Jeni të sigurt?',
+      	text: 'Pas fshirjes nuk mund ti rimerrni të dhënat mbrapsht!',
+      	icon: 'warning',
+      	buttons: ['Anullo', 'Ok!'],
+  		dangerMode: true,
+  	}).then((willDelete) => {
+  		if (willDelete) {
+  			form.submit();
+  		}
+  	});
 }
