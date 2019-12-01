@@ -42,11 +42,11 @@
 
                     <div class="form-group row mb-0">
                         <div class="col-md-6 offset-md-4">
-                            <button type="submit" class="btn btn-primary">
+                            <button type="submit" class="btn btn-success">
                                 Ruaj
                             </button>
 
-                            <a href="/users" class="btn btn-danger">
+                            <a href="{{ url()->previous() }}" class="btn btn-primary">
                                 Kthehu
                             </a>
                         </div>
