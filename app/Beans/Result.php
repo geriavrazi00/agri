@@ -93,4 +93,21 @@ class Result {
 	public function getDscr() {
 		return $this->dscr;
 	}
+
+	public function convertToJson() {
+		$data = array();
+
+		$data["cultures"] = $this->getCultures();
+		$data["totalIncome"] = $this->getTotalIncome();
+		$data["totalExpense"] = $this->getTotalExpense();
+		$data["totalAmortization"] = $this->getTotalAmortization();
+		$data["yearlyInterest"] = $this->getYearlyInterest();
+		$data["incomeTax"] = $this->getIncomeTax();
+		$data["totalNetIncome"] = $this->getTotalNetIncome();
+		$data["moneyFlux"] = $this->getMoneyFlux();
+		$data["firstYearCredit"] = $this->getFirstYearCredit();
+		$data["dscr"] = $this->getDscr();
+
+		return $data;
+	}
 }

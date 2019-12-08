@@ -7762,6 +7762,6 @@ a.text-dark:hover {
     display: block;
     position: absolute;
     top: 50%;
-    right: 20px;
+    /*right: 20px;*/
     transform: translateY(-50%);
 }

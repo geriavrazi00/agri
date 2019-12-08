@@ -7,11 +7,17 @@ use Illuminate\Http\Request;
 use App\Category;
 use App\Constants;
 use App\Culture;
+use App\Plan;
 use App\Value;
 
 use App\Beans\Inputs;
 use App\Beans\Result;
 
+use App\Exports\PlanExport;
+use Maatwebsite\Excel\Facades\Excel;
+
+use Auth;
+use DateTime;
 use Log;
 
 class ResultController extends Controller
@@ -33,8 +39,9 @@ class ResultController extends Controller
     public function index(Request $request) {
     	$inputs = $this->buildInputs($request);
     	$result = $this->calculateResult($inputs);
+        $planId = $this->savePlan($inputs, $result);
 
-    	return view('result', compact('inputs', 'result'));
+    	return view('result', compact('inputs', 'result', 'planId'));
     }
 
     private function buildInputs($request) {
@@ -44,12 +51,30 @@ class ResultController extends Controller
 
         foreach($selectedCategories as $categoryId) {
             $selectedCategory = Category::find($categoryId);
-            $investmentVariableNr = sizeof($selectedCategory->labels->where('type', '=', Constants::INVESTMENT_LABELS));
-            $businessVariableNr = sizeof($selectedCategory->labels->where('type', '=', Constants::BUSINESS_LABELS));
+
+            $investmentLabelObjects = $selectedCategory->labels->where('type', '=', Constants::INVESTMENT_LABELS);
+            $businessLabelObjects = $selectedCategory->labels->where('type', '=', Constants::BUSINESS_LABELS);
+            $investmentLabels = array();
+            $businessLabels = array();
+
+            foreach ($investmentLabelObjects as $key => $labels) {
+                array_push($investmentLabels, $labels->value);
+            }
+
+            foreach ($businessLabelObjects as $key => $labels) {
+                array_push($businessLabels, $labels->value);
+            }
+
+            $investmentVariableNr = sizeof($investmentLabels);
+            $businessVariableNr = sizeof($businessLabels);
+
+            array_push($investmentLabels, 'total');
 
             $input = new Inputs();
             $input->setApplicantName($request->get('applicant-name'));
             $input->setFarmCategory($selectedCategory);
+            $input->setInvestmentLabels($investmentLabels);
+            $input->setBusinessLabels($businessLabels);
 
             $investmentPlans = array();
             $allBusinessData = array();
@@ -105,24 +130,31 @@ class ResultController extends Controller
             //Amortization values.
             $amortizationConstants = $input->getFarmCategory()->labels()->where('type', '=', Constants::INVESTMENT_LABELS)->get();
 
-            $amortizationConstant1 = $amortizationConstants[0]->amortization;
+            /*$amortizationConstant1 = $amortizationConstants[0]->amortization;
             $amortizationConstant2 = $amortizationConstants[1]->amortization;
             $amortizationConstant3 = $amortizationConstants[2]->amortization;
             $amortizationConstant4 = $amortizationConstants[3]->amortization;
-            $amortizationConstant5 = $amortizationConstants[4]->amortization;
+            $amortizationConstant5 = $amortizationConstants[4]->amortization;*/
 
             for($i = 0; $i < sizeof($input->getInvestmentPlans()); $i++) {
+
+                for($j = 0; $j < sizeof($amortizationConstants); $j++) {
+                    $totalAmortization += $amortizationConstants[$j]->amortization != 0 
+                        ? $input->getInvestmentPlans()[$i][$j]/$amortizationConstants[$j]->amortization 
+                        : 0;
+
+                    $totalBruteIncome += $input->getInvestmentPlans()[$i][$j];
+                }
+
                 //Amortization
-                $totalAmortization += $amortizationConstant1 != 0 ? $input->getInvestmentPlans()[$i][0]/$amortizationConstant1 : 0;
+                /*$totalAmortization += $amortizationConstant1 != 0 ? $input->getInvestmentPlans()[$i][0]/$amortizationConstant1 : 0;
                 $totalAmortization += $amortizationConstant2 != 0 ? $input->getInvestmentPlans()[$i][1]/$amortizationConstant2 : 0;
                 $totalAmortization += $amortizationConstant3 != 0 ? $input->getInvestmentPlans()[$i][2]/$amortizationConstant3 : 0;
                 $totalAmortization += $amortizationConstant4 != 0 ? $input->getInvestmentPlans()[$i][3]/$amortizationConstant4 : 0;
-                $totalAmortization += $amortizationConstant5 != 0 ? $input->getInvestmentPlans()[$i][4]/$amortizationConstant5 : 0;
+                $totalAmortization += $amortizationConstant5 != 0 ? $input->getInvestmentPlans()[$i][4]/$amortizationConstant5 : 0;*/
 
-                $totalBruteIncome += $input->getInvestmentPlans()[$i][0] + $input->getInvestmentPlans()[$i][1] + $input->getInvestmentPlans()[$i][2] + $input->getInvestmentPlans()[$i][3] + $input->getInvestmentPlans()[$i][4];
+                /*$totalBruteIncome += $input->getInvestmentPlans()[$i][0] + $input->getInvestmentPlans()[$i][1] + $input->getInvestmentPlans()[$i][2] + $input->getInvestmentPlans()[$i][3] + $input->getInvestmentPlans()[$i][4];*/
             }
-
-            Log::info($totalBruteIncome);
 
             for($i = 0; $i < sizeof($input->getBusinessData()); $i++) {
                 for($j = 0; $j < $input->getFarmCategory()->culture_number; $j++) {
@@ -141,11 +173,12 @@ class ResultController extends Controller
                     $expenses = $valuesCulture->efficiency * $valuesCulture->cost * $mainVariable;
 
                     array_push($culture, $selectedCulture->name);
+                    array_push($culture, $input->getFarmCategory()->name);
                     array_push($culture, $mainVariable);
                     array_push($culture, $valuesCulture->efficiency);
                     array_push($culture, $valuesCulture->efficiency * $mainVariable);
-                    array_push($culture, $income/$mainVariable);
-                    array_push($culture, ($income/$mainVariable) * $mainVariable);
+                    array_push($culture, $mainVariable != 0 ? $income/$mainVariable : 0);
+                    array_push($culture, $mainVariable != 0 ? (($income/$mainVariable) * $mainVariable) : 0);
                     array_push($culture, $expenses);
 
                     array_push($cultures, $culture);
@@ -223,6 +256,34 @@ class ResultController extends Controller
         $credit["paymentsPerYear"] = $paymentsPerYear;
 
         return $credit;
+    }
+
+    private function savePlan($inputs, $result) {
+        $in = array();
+        $categoryIds = array();
+
+        $plan = new Plan();
+        $plan->user_id = Auth::user()->id;
+        $plan->applicant = $inputs[0]->getApplicantName();
+
+        for ($i = 0; $i < sizeof($inputs); $i++) { 
+            $in[$i] = $inputs[$i]->convertToJson();
+            array_push($categoryIds, $inputs[$i]->getFarmCategory()->id);
+        }
+
+        $plan->inputs = json_encode($in);
+        $plan->results = json_encode($result->convertToJson());
+        $plan->save();
+        $plan->categories()->attach($categoryIds);
+
+        return $plan->id;
+    }
+
+    public function export(Request $request) {
+        $date = new DateTime();
+        $plan = Plan::find($request->plan);
+
+        return Excel::download(new PlanExport($plan), 'Përfitueshmëria-' . $plan->applicant . '-' . $date->format('d-m-Y-H-i-s') . '.xlsx');
     }
 }
 

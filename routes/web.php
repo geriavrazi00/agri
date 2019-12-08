@@ -29,5 +29,15 @@ Route::get('/login', function() {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::post('/result', 'ResultController@index')->middleware('auth');
+Route::post('/export', 'ResultController@export')->middleware('auth');
 
-Route::post('/result', 'ResultController@index');
+Route::group(['middleware' => 'role'], function() {
+	/* Users */
+    Route::resource('users', 'UsersController')->middleware('auth');
+    Route::get('/users/{id}/password', 'UsersController@changePassword')->middleware('auth');
+    Route::put('/users/{id}/password/save', 'UsersController@savePassword')->middleware('auth');
+
+    /* Categories */
+    //Route::resource('categories', 'CategoriesController')->middleware('auth');
+});

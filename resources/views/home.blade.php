@@ -56,14 +56,11 @@
                 <div class="dividermask"></div>
             </div>
 
-            <form method="POST" action="/result" style="width: 100%;" class="needs-validation" novalidate id="home-form">
+            <form method="POST" action="/result" style="width: 100%;">
                 @csrf
                 <div class="form-row" id="applicant-name-div" style="display: none; width: 100%;">
-                    <label for="applicant-name" id="applicantname">{{trans('messages.applicant_name')}}</label>
-                    <input class="form-control" id="applicantnameinput" type="text" name="applicant-name" required />
-                    <span class="invalid-feedback" role="alert">
-                        <strongname>{{trans('validation.applicant_name_required')}}</strongname>
-                    </span>
+                    <label for="applicant-name" id="applicantname" style="font-weight: 700;">{{trans('messages.applicant_name')}}</label>
+                    <input class="form-control" id="applicantnameinput" type="text" name="applicant-name" required oninvalid="createInvalidMsg(this, '{{trans('validation.applicant_name_required')}}', '');" oninput="createInvalidMsg(this, '', '');"/>
                 </div>
 
                 <br />

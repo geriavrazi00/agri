@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'AFA') }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -39,7 +39,7 @@
         <header class="header">
             <nav class="navbar navbar-expand-lg fixed-top">
                 <div class="container">
-                    <a class="navbar-brand" href="./"><img alt="" class="img-fluid" src="img/logo/logoafa.png" style="width:30px;height:40px;">
+                    <a class="navbar-brand" href="/"><img alt="" class="img-fluid" src="/img/logo/logoafa.png" style="width:30px; height:40px;">
                     </a>
                     <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler navbar-toggler-right" data-target="#navbarSupportedContent" data-toggle="collapse" type="button">Menu<i class="fa fa-bars ml-2"></i>
                     </button>
@@ -47,19 +47,33 @@
                         <ul class="navbar-nav ml-auto">
                             <!-- Link -->
                             <li class="nav-item">
-                                <a class="nav-link" href="./">Home</a>
+                                <a class="nav-link" href="/">Kryefaqja</a>
                             </li>
+
+                            @auth
+                            @if (Auth::user()->role->name == App\Constants::ROLE_ADMIN)
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Administrim
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="/users">Përdoruesit</a>
+                                    <!-- <a class="dropdown-item" href="/categories">Kategoritë</a> -->
+                                </div>
+                            </li>
+                            @endif
+                            @endauth
                         </ul>
 
                         @guest
-                        <a class="btn btn-primary navbar-btn ml-0 ml-lg-3" href="/login">Afa</a>
+                        <a class="btn btn-primary navbar-btn ml-0 ml-lg-3" href="/login">Kyçu</a>
                         @endguest
 
                         @auth
                         <form method="POST" action="/logout">
                             @csrf
                             <button type="submit" class="btn btn-primary navbar-btn ml-0 ml-lg-3">
-                                Logout
+                                Dil
                             </button>
                         </form>
                         @endauth
@@ -82,6 +96,8 @@
 
     <script src="{{ asset('js/main.js') }}" defer></script>
     <script src="{{ asset('js/order-2.js') }}" defer></script>
+    @include('sweetalert::alert')
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </body>
 
 </html>

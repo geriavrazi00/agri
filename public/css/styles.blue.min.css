@@ -3349,7 +3349,6 @@ pre code {
         -ms-flex: 0 0 66.666667%;
         flex: 0 0 66.666667%;
         max-width: 66.666667%;
-        padding-top: 200px;
     }
     .col-md-9 {
         -ms-flex: 0 0 75%;
@@ -13508,6 +13507,7 @@ footer.main-footer {
     background: url(../img/bg/hero-bg-blue-yellow.svg) no-repeat;
     background-size: cover;
     background-position: bottom left;
+    /*background-attachment: fixed;*/
 }
 .subscription-form .form-group {
     position: relative;

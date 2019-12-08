@@ -93,7 +93,7 @@
           <p class="lead text-muted mt-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.
             Eiusmod tempor incididunt ut labore.</p>
         </div>
-      </div><a href="/login" class="btn btn-primary mt-4 animated-element">Get Started <i class="icon icon-arrow-right"></i></a>
+      </div><a href="/login" class="btn btn-primary mt-4 animated-element">Kyçu <i class="icon icon-arrow-right"></i></a>
     </div>
   </div>
   <div>

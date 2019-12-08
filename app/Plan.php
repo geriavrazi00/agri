@@ -6,6 +6,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Plan extends Model
 {
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'user_id', 'applicant', 'inputs', 'results'
+    ];
+
 	/**
      * Get the category associated with the user.
      */
@@ -16,7 +25,7 @@ class Plan extends Model
     /**
      * Get the category associated with the plan.
      */
-    public function category() {
-        return $this->hasOne('App\Category');
+    public function categories() {
+        return $this->belongsToMany('App\Category', 'plan_category', 'plan_id', 'category_id');
     }
 }

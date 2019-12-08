@@ -84,7 +84,7 @@ return [
     ],
     'string'               => 'Fusha duhet të jetë një tekst.',
     'timezone'             => 'Fusha duhet të jetë një zonë e vlefshme.',
-    'unique'               => 'Fusha është zënë tashmë.',
+    'unique'               => 'Vlera e dhënë ekziston në sistem.',
     'uploaded'             => 'Fusha nuk u ngarkua me sukses.',
     'url'                  => 'Formati i fushës nuk është i vlefshëm.',
 
@@ -127,14 +127,20 @@ return [
     
     //Loan data validation
     'interest_rate_required' => 'Ju lutem plotësoni normën aktuale të interesit.', 
-    'repayment_period_required' => 'Ju lutem plotësoni periudhën e shlyerjes në vite.', 
+    'repayment_period_required' => 'Ju lutem plotësoni periudhën e shlyerjes për vit.', 
     'yearly_payments_required' => 'Ju lutem plotësoni pagesat për vit.', 
     'first_payment_date_required' => 'Ju lutem plotësoni datën e pagesës së parë.', 
-
+    'interest_min_value' => 'Norma aktuale e interesit vjetor duhet të jetë më e madhe se :value.', 
+    'interest_max_value' => 'Norma aktuale e interesit vjetor nuk mund të jetë më e madhe se :value.', 
+    
     //Business data validation
     'technology_required' => 'Ju lutem zgjidhni një teknologji.', 
     'field_required' => 'Ju lutem plotësoni fushën.', 
+    'one_subculture_required' => 'Ju lutem zgjidhni të paktën një nënprodukt.', 
 
     //Investment plan validation
     'non_negative_field' => 'Vlera e fushës nuk mund të jetë negative.', 
+
+    //Admin users validation
+    'wrong_format' => 'Ju lutem jepni të dhënat e fushës në një format të vlefshëm.',
 ];

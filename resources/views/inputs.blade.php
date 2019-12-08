@@ -10,15 +10,12 @@
                     <th>{{trans('messages.investment_plan')}}</th>
                     <th>{{trans('messages.value')}}</th>
                 </tr>
-                @for($j = 0; $j < sizeof($category['investments']); $j++) <tr>
-                    <td>{{trans('investment_plan.' . $category['investments'][$j]->value)}}</td>
-                    <td>
-                        <input type="number" id="investment-{{$j}}-{{$i}}-{{$key}}" name="investment-{{$j}}-{{$i}}-{{$key}}" class="form-control" oninput="calculateTotal('{{$category->option_number}}', '{{sizeof($category['investments'])}}', '{{$category->id}}', '{{$categories}}')" value="0" min="0" onfocus="clearField(this);" onblur="fillField(this);">
-
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{trans('validation.non_negative_field')}}</strong>
-                        </span>
-                    </td>
+                @for($j = 0; $j < sizeof($category['investments']); $j++) 
+                    <tr>
+                        <td>{{trans('investment_plan.' . $category['investments'][$j]->value)}}</td>
+                        <td>
+                            <input type="number" id="investment-{{$j}}-{{$i}}-{{$key}}" name="investment-{{$j}}-{{$i}}-{{$key}}" class="form-control" oninput="calculateTotal('{{$category->option_number}}', '{{sizeof($category['investments'])}}', '{{$category->id}}', '{{$categories}}')" value="0" min="0" onfocus="clearField(this, '0');" onblur="fillField(this, '0');" onkeydown="return blockSpecialCharactersInInputNumber(event);">
+                        </td>
                     </tr>
                     @endfor
                     <tr>
@@ -40,25 +37,18 @@
                 <tr>
                     <td>{{trans('business_data.' . $category['business'][0]->value)}}</td>
                     <td>
-                        <input type="number" name="business-0-{{$i}}-{{$key}}" class="form-control" min="0">
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{trans('validation.field_required')}}</strong>
-                        </span>
+                        <input type="number" id="business-0-{{$i}}-{{$key}}" name="business-0-{{$i}}-{{$key}}" class="form-control" min="0" {{$i == 0 ? 'required' : ''}} value="1" min="1" oninvalid="createInvalidMsg(this, '{{trans('validation.field_required')}}', '{{trans('validation.non_negative_field')}}');" oninput="createInvalidMsg(this, '', '');" onfocus="clearField(this, '1');" onblur="fillField(this, '1');" onkeydown="return blockSpecialCharactersInInputNumber(event);" disabled>
                     </td>
                 </tr>
                 <tr>
                     <td>{{trans('business_data.' . $category['business'][1]->value)}}</td>
                     <td>
-                        <select class="form-control" id="business-1-{{$i}}-{{$key}}" name="business-1-{{$i}}-{{$key}}" style="border-radius: 5px;">
-
+                        <select class="form-control" id="business-1-{{$i}}-{{$key}}" name="business-1-{{$i}}-{{$key}}" style="border-radius: 5px;" 
+                        {{$i == 0 ? 'required' : ''}} oninvalid="this.setCustomValidity('{{trans('validation.technology_required')}}')" onchange="this.setCustomValidity('');" disabled>
                             <option value="">{{trans('messages.none')}}</option>
                             @for($j = 0; $j < sizeof($technologies); $j++) <option value="{{$technologies[$j]->id}}">{{$technologies[$j]->name}}</option>
                                 @endfor
                         </select>
-
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{trans('validation.technology_required')}}</strong>
-                        </span>
                     </td>
                 </tr>
 
@@ -66,8 +56,8 @@
                     <tr>
                         <td>{{trans('business_data.' . $category['business'][$j+2]->value)}}</td>
                         <td>
-                            <select class="form-control" id="business-{{$j+2}}-{{$i}}-{{$key}}" name="business-{{$j+2}}-{{$i}}-{{$key}}" style=" border-radius: 5px;">
-                                <option value="null">{{trans('messages.none')}}</option>
+                            <select class="form-control" id="business-{{$j+2}}-{{$i}}-{{$key}}" name="business-{{$j+2}}-{{$i}}-{{$key}}" style="border-radius: 5px;" {{($i == 0 && $j == 0) ? 'required' : ''}} oninvalid="this.setCustomValidity('{{trans('validation.one_subculture_required')}}')" onchange="businessDataValidation(this, '{{$category->culture_number}}', '{{$i}}', '{{$key}}')" disabled>
+                                <option value="">{{trans('messages.none')}}</option>
                                 @for($k = 0; $k < sizeof($category->cultures); $k++)
                                     <option value="{{$category->cultures[$k]->id}}">
                                         {{$category->cultures[$k]->name}}
