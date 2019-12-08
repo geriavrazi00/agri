@@ -58,6 +58,7 @@
                                         </a>
                                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                             <a class="dropdown-item" href="/users">Përdoruesit</a>
+                                            <!-- <a class="dropdown-item" href="/categories">Kategoritë</a> -->
                                         </div>
                                     </li>
                                 @endif

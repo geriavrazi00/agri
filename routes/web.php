@@ -30,19 +30,14 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::post('/result', 'ResultController@index')->middleware('auth');
+Route::post('/export', 'ResultController@export')->middleware('auth');
 
-Route::group(['middleware' => 'role'], function() {            
-    Route::get('/users', 'UsersController@index')->middleware('auth');
-    Route::get('/users/{id}/view', 'UsersController@show')->middleware('auth');
-    
-    Route::get('/users/create', 'UsersController@create')->middleware('auth');
-    Route::post('/users/store', 'UsersController@store')->middleware('auth');
-
-    Route::get('/users/{id}/edit', 'UsersController@edit')->middleware('auth');
-    Route::put('/users/{id}/update', 'UsersController@update')->middleware('auth');
-
+Route::group(['middleware' => 'role'], function() {
+	/* Users */
+    Route::resource('users', 'UsersController')->middleware('auth');
     Route::get('/users/{id}/password', 'UsersController@changePassword')->middleware('auth');
     Route::put('/users/{id}/password/save', 'UsersController@savePassword')->middleware('auth');
 
-    Route::delete('/users/{id}/delete', 'UsersController@destroy')->middleware('auth');
+    /* Categories */
+    //Route::resource('categories', 'CategoriesController')->middleware('auth');
 });

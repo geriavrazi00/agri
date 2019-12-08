@@ -13,7 +13,7 @@ return [
 	'business_data' => 'Të dhënat e biznesit', 
 	'loan_repayment' => 'Ripagimi i huasë', 
 	'loan_data' => 'Të dhëna për huanë', 
-	'total' => 'Total', 
+	'total' => 'Totali', 
 
 	//Result labels
 	'result' => 'Rezultati', 

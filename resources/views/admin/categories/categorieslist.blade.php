@@ -8,9 +8,9 @@
 			<div style="padding-top:100px;">
 				<center>
 					<div style="display: inline-flex; text-align: center;">
-						<h3 class="resulttablehead">Menaxhimi i përdoruesve</h3>
+						<h3 class="resulttablehead">Menaxhimi i kategorive</h3>
 
-						<a href="/users/create" class="btn btn-primary navbar-btn ml-0 ml-lg-3">
+						<a href="/categories/create" class="btn btn-primary navbar-btn ml-0 ml-lg-3">
 							Krijo
 						</a>
 					</div>
@@ -21,25 +21,19 @@
 				<table class="resulttable">
 					<tr class="resulttablerow">
 						<th class="resulttablehead">Emri</th>
-						<th class="resulttablehead">E-mail</th>
 						<th class="resulttablehead" style="text-align: center;">Veprime</th>
 					</tr>
-					@foreach($users as $user)
+					@foreach($categories as $category)
 						<tr class="resulttablerow">
-							<td class="resulttabledata">{{$user->name}}</td>
-							<td class="resulttabledata">{{$user->email}}</td>
+							<td class="resulttabledata">{{$category->name}}</td>
 							<td class="resulttabledata" style="text-align: center;">
-								<a href="/users/{{$user->id}}" class="btn btn-primary btn-circle btn-sm action-buttons" data-toggle="tooltip" title="Shiko detajet">
+								<a href="/categories/{{$category->id}}" class="btn btn-primary btn-circle btn-sm action-buttons" data-toggle="tooltip" title="Shiko detajet">
 									<i class="fa fa-eye"></i>
 								</a>
-								<a href="/users/{{$user->id}}/edit" class="btn btn-success btn-circle btn-sm edit-buttons" data-toggle="tooltip" title="Modifiko">
+								<a href="/categories/{{$category->id}}/edit" class="btn btn-success btn-circle btn-sm edit-buttons" data-toggle="tooltip" title="Modifiko">
 									<i class="fa fa-edit"></i>
 								</a>
-								<a href="/users/{{$user->id}}/password" class="btn btn-info btn-circle btn-sm action-buttons" data-toggle="tooltip" title="Ndrysho fjalëkalimin">
-									<i class="fa fa-unlock-alt"></i>
-								</a>
-
-								<form method="POST" action="/users/{{$user->id}}" style="display:inline; margin:0px; padding:0px;">
+								<form method="POST" action="/categories/{{$category->id}}" style="display:inline; margin:0px; padding:0px;">
 									@method('DELETE')
 									@csrf
 
@@ -53,7 +47,7 @@
 				</table>
 
 				<div>
-					{{ $users->links() }}
+					{{ $categories->links() }}
 				</div>
 
 			</div>

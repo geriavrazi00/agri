@@ -14,7 +14,7 @@
 			</div>
 
 			<div class="table card-body" style="background-color: white;">
-                <form method="POST" action="/users/{{$user->id}}/update">
+                <form method="POST" action="/users/{{$user->id}}">
                     @method('PUT')
                     @csrf
 

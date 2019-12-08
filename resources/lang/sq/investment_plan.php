@@ -37,5 +37,7 @@ return [
 
 	//Apple category
 	'anti_hail' => 'Mekanikë bujqësore/rrjeta antibreshër', 
-	
+
+	//Total
+	'total' => 'Totali', 
 ];

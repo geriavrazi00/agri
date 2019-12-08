@@ -75,6 +75,15 @@
 							<td class="resulttabledata" style="color:#2372c7dc; text-align: right;">{{$result->getDscr()}}</td>
 						</tr>
 					</table>
+
+					<form method="POST" action="/export">
+						@csrf
+						<input type="hidden" id="plan" name="plan" value="{{$planId}}" />
+
+						<div style="text-align: center;">
+							<button type="submit" class="btn btn-primary">Eksporto</button>
+						</div>
+					</form>
 				</div>
 			</div>
 		</div>

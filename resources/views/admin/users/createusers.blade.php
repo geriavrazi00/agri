@@ -14,7 +14,7 @@
 			</div>
 
 			<div class="table card-body" style="background-color: white;">
-                <form method="POST" action="/users/store">
+                <form method="POST" action="/users">
                     @csrf
 
                     <div class="form-group row">

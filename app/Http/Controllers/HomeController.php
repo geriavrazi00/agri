@@ -54,7 +54,7 @@ class HomeController extends Controller
                     array_push($labels["loans"], $category->labels[$i]);
                 }
             }
-
+            
             $result[$category->id] = $category;
             $result[$category->id]["investments"] = $labels["investments"];
             $result[$category->id]["business"] = $labels["business"];

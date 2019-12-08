@@ -37,7 +37,7 @@
                         <a href="/users/{{$user->id}}/password" class="btn btn-info">
                             Ndrysho fjalëkalimin
                         </a>
-                        <form method="POST" action="/users/{{$user->id}}/delete" style="display:inline; margin:0px; padding:0px;">
+                        <form method="POST" action="/users/{{$user->id}}" style="display:inline; margin:0px; padding:0px;">
                             @method('DELETE')
                             @csrf
                             <button type="submit" class="btn btn-danger" onclick="areYouSure(event, this);">

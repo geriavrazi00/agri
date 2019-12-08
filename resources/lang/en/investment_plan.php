@@ -38,4 +38,7 @@ return [
 
 	//Apple category
 	'anti_hail' => 'Agricultural mechanic/antihail net', 
+
+	//Total
+	'total' => 'Total', 
 ];
