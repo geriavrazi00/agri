@@ -52,16 +52,16 @@
                         </ul>
 
                         @guest
-                            <a class="btn btn-primary navbar-btn ml-0 ml-lg-3" href="/login">Afa</a>
+                        <a class="btn btn-primary navbar-btn ml-0 ml-lg-3" href="/login">Afa</a>
                         @endguest
 
                         @auth
-                            <form method="POST" action="/logout">
-                                @csrf
-                                <button type="submit" class="btn btn-primary navbar-btn ml-0 ml-lg-3">
-                                    Logout
-                                </button>
-                            </form>
+                        <form method="POST" action="/logout">
+                            @csrf
+                            <button type="submit" class="btn btn-primary navbar-btn ml-0 ml-lg-3">
+                                Logout
+                            </button>
+                        </form>
                         @endauth
                     </div>
                 </div>
