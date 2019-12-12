@@ -12,4 +12,11 @@ class Culture extends Model
     public function category() {
         return $this->belongsTo('App\Category');
     }
+
+    /**
+     * Get the values for the culture.
+     */
+    public function values() {
+        return $this->hasMany('App\Value');
+    }
 }

@@ -22,7 +22,7 @@ Route::get('/welcome', function() {
 Route::get('/login', function() {
 	if(Auth::check())
 		return redirect('/home');
-    else 
+    else
     	return view('/auth/login');
 });
 
@@ -38,6 +38,9 @@ Route::group(['middleware' => 'role'], function() {
     Route::get('/users/{id}/password', 'UsersController@changePassword')->middleware('auth');
     Route::put('/users/{id}/password/save', 'UsersController@savePassword')->middleware('auth');
 
-    /* Categories */
-    //Route::resource('categories', 'CategoriesController')->middleware('auth');
+    /* Values */
+    Route::get('/values', 'ValuesController@index')->middleware('auth');
+    Route::get('/values/{id}', 'ValuesController@show')->middleware('auth');
+    Route::get('/values/{id}/edit', 'ValuesController@edit')->middleware('auth');
+    Route::put('/values/{id}', 'ValuesController@update')->middleware('auth');
 });

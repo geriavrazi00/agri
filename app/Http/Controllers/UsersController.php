@@ -72,8 +72,8 @@ class UsersController extends Controller {
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function show($id) {
-        return view('/admin/users/viewusers', ['user' => User::findOrFail($id)]);
+    public function show(User $user) {
+        return view('/admin/users/viewusers', ['user' => $user]);
     }
 
     /**
@@ -82,9 +82,9 @@ class UsersController extends Controller {
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function edit($id) {
+    public function edit(User $user) {
         return view('/admin/users/editusers', [
-            'user' => User::findOrFail($id), 
+            'user' => $user,
             'roles' => Role::orderBy('id', 'desc')->get(),
         ]);
     }
