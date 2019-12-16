@@ -113,7 +113,7 @@ class ResultController extends Controller
 
             array_push($inputs, $input);
         }
-    	
+
     	return $inputs;
     }
 
@@ -139,8 +139,8 @@ class ResultController extends Controller
             for($i = 0; $i < sizeof($input->getInvestmentPlans()); $i++) {
 
                 for($j = 0; $j < sizeof($amortizationConstants); $j++) {
-                    $totalAmortization += $amortizationConstants[$j]->amortization != 0 
-                        ? $input->getInvestmentPlans()[$i][$j]/$amortizationConstants[$j]->amortization 
+                    $totalAmortization += $amortizationConstants[$j]->amortization != 0
+                        ? $input->getInvestmentPlans()[$i][$j]/$amortizationConstants[$j]->amortization
                         : 0;
 
                     $totalBruteIncome += $input->getInvestmentPlans()[$i][$j];
@@ -160,7 +160,7 @@ class ResultController extends Controller
                 for($j = 0; $j < $input->getFarmCategory()->culture_number; $j++) {
                     $culture = array();
 
-                    if($input->getBusinessData()[$i][$j+2] == 'null') continue; 
+                    if($input->getBusinessData()[$i][$j+2] == 'null') continue;
 
                     $selectedCulture = Culture::find($input->getBusinessData()[$i][$j+2]);
 
@@ -195,7 +195,7 @@ class ResultController extends Controller
         $fullInterest = array_sum($credit["paymentsPerYear"]);
         $yearlyInterest = $fullInterest / $inputs[0]->getLoanData()[1];
 
-    	$tax = Constants::LOW; 
+    	$tax = Constants::LOW;
         if($totalIncome >= Constants::THRESHOLD) $tax = Constants::HIGH;
 
         $incomeTax = ($totalIncome - $totalExpense - $totalAmortization - $yearlyInterest) * $tax;
@@ -266,7 +266,7 @@ class ResultController extends Controller
         $plan->user_id = Auth::user()->id;
         $plan->applicant = $inputs[0]->getApplicantName();
 
-        for ($i = 0; $i < sizeof($inputs); $i++) { 
+        for ($i = 0; $i < sizeof($inputs); $i++) {
             $in[$i] = $inputs[$i]->convertToJson();
             array_push($categoryIds, $inputs[$i]->getFarmCategory()->id);
         }
@@ -294,13 +294,13 @@ class ResultController extends Controller
         $greenHouse = 1000000;
         $plastic = 500000;
         $water = 100000;
-        $farming = 0; 
+        $farming = 0;
         $other = 0;
 
         //Second table
         $surface = 3;
         $technology = 2;
-        $culture1 = 4; 
+        $culture1 = 4;
         $culture2 = 1;
 
         //Third table
@@ -341,7 +341,7 @@ class ResultController extends Controller
 
         //Credit
         $credit = $this->calculateCredit($interest, $years, $yearlyPayments, $totalBrute);
-        
+
         /*Log::info($income1);
         Log::info($income2);*/
 
@@ -358,15 +358,15 @@ class ResultController extends Controller
         Log::info("Shpenzime prodhimi 2 -> " . $expenses2);
 
         //Log::info("space");
-        
+
         $totalIncome = $income1 + $income2;
         $totalExpense = $expenses1 + $expenses2;
         $totalAmortization = $greenHouseAmortization + $plasticAmortization + $waterAmortization;
-        
+
         $fullInterest = array_sum($credit["paymentsPerYear"]);
         $yearlyInterest = $fullInterest / $years;
 
-        $tax = $low; 
+        $tax = $low;
         if($totalIncome >= $threshold) $tax = $high;
 
         Log::info("TAX: " . $tax);

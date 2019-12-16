@@ -81,7 +81,7 @@
 						<input type="hidden" id="plan" name="plan" value="{{$planId}}" />
 
 						<div style="text-align: center;">
-							<button type="submit" class="btn btn-primary">Eksporto</button>
+							<button type="submit" class="btn btn-success">Eksporto</button>
 						</div>
 					</form>
 				</div>

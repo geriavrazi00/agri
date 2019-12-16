@@ -24,7 +24,7 @@
 	                	<b>{{ trans('messages.value') }}</b>
 	                </th>
 	            </tr>
-	            @for($j = 0; $j < sizeof($category->investmentPlans[$i]); $j++) 
+	            @for($j = 0; $j < sizeof($category->investmentPlans[$i]); $j++)
 	                <tr>
 	                    <td style="border: 2px solid #000000;">
 	                    	{{ trans('investment_plan.' . $category->investmentLabels[$j]) }}

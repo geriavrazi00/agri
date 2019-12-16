@@ -32,6 +32,12 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::post('/result', 'ResultController@index')->middleware('auth');
 Route::post('/export', 'ResultController@export')->middleware('auth');
 
+/* Plans */
+Route::resource('plans', 'PlansController')->only([
+    'index', 'show', 'destroy'
+])->middleware('auth');
+Route::post('/plans/{id}/export', 'PlansController@export')->middleware('auth');
+
 Route::group(['middleware' => 'role'], function() {
 	/* Users */
     Route::resource('users', 'UsersController')->middleware('auth');

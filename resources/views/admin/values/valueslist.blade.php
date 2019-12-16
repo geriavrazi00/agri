@@ -31,7 +31,13 @@
 								</a>
 							</td>
 						</tr>
-					@endforeach
+                    @endforeach
+
+                    @if(sizeof($categories) == 0)
+                        <tr class="resulttablerow">
+                            <td colspan="3" class="resulttabledata" style="text-align: center;">Nuk ka asnjë të dhënë</td>
+                        </tr>
+                    @endif
 				</table>
 
 				<div>

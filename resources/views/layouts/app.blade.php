@@ -51,16 +51,30 @@
                             </li>
 
                             @auth
-                            @if (Auth::user()->role->name == App\Constants::ROLE_ADMIN)
-                            <li class="nav-item dropdown">
+                            <li class="nav-item dropdown" style="padding-right: 10px;">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Administrim
+                                    Plane investimi
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="/users">Përdoruesit</a>
-                                    <a class="dropdown-item" href="/values">Koefiçentët</a>
+                                    <a class="dropdown-item" href="/home">Krijo një plan</a>
+                                    <a class="dropdown-item" href="/plans">Historiku im</a>
                                 </div>
                             </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="/">Profili</a>
+                            </li>
+
+                            @if (Auth::user()->role->name == App\Constants::ROLE_ADMIN)
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Administrim
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="/users">Përdoruesit</a>
+                                        <a class="dropdown-item" href="/values">Koefiçentët</a>
+                                    </div>
+                                </li>
                             @endif
                             @endauth
                         </ul>

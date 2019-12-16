@@ -2,12 +2,9 @@
 
 namespace App\Exports;
 
-use App\Plan;
 use Illuminate\Contracts\View\View;
 use Maatwebsite\Excel\Concerns\FromView;
 use Maatwebsite\Excel\Concerns\ShouldAutoSize;
-use Maatwebsite\Excel\Concerns\WithEvents;
-use Maatwebsite\Excel\Events\AfterSheet;
 use Maatwebsite\Excel\Concerns\WithDrawings;
 use PhpOffice\PhpSpreadsheet\Worksheet\Drawing;
 
@@ -21,7 +18,7 @@ class PlanExport implements FromView, ShouldAutoSize, WithDrawings
 
     public function view(): View {
         return view('exports/planexport', [
-        	'input' => json_decode($this->plan->inputs), 
+        	'input' => json_decode($this->plan->inputs),
             'result' => json_decode($this->plan->results),
             'applicant' => $this->plan->applicant,
         ]);
