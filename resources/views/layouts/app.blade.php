@@ -60,9 +60,14 @@
                                     <a class="dropdown-item" href="/plans">Historiku im</a>
                                 </div>
                             </li>
-
-                            <li class="nav-item">
-                                <a class="nav-link" href="/">Profili</a>
+                            <li class="nav-item dropdown" style="padding-right: 10px;">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Profili im
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="/myprofile">Ndrysho të dhënat</a>
+                                    <a class="dropdown-item" href="/myprofile/password">Ndrysho fjalëkalimin</a>
+                                </div>
                             </li>
 
                             @if (Auth::user()->role->name == App\Constants::ROLE_ADMIN)

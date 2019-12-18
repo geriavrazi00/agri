@@ -38,6 +38,12 @@ Route::resource('plans', 'PlansController')->only([
 ])->middleware('auth');
 Route::post('/plans/{id}/export', 'PlansController@export')->middleware('auth');
 
+/* My profile */
+Route::get('/myprofile', 'MyProfileController@index')->middleware('auth');
+Route::put('/myprofile/{id}', 'MyProfileController@update')->middleware('auth');
+Route::get('/myprofile/password', 'MyProfileController@changePassword')->middleware('auth');
+Route::put('/myprofile/password/save', 'MyProfileController@savePassword')->middleware('auth');
+
 Route::group(['middleware' => 'role'], function() {
 	/* Users */
     Route::resource('users', 'UsersController')->middleware('auth');
