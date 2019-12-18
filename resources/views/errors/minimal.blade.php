@@ -1,62 +1,63 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
+        <!-- CSRF Token -->
+        <meta name="csrf-token" content="{{ csrf_token() }}">
+
         <title>@yield('title')</title>
 
+        <!-- Scripts -->
+        <script src="{{ asset('js/app.js') }}" defer></script>
+        <script src="{{ asset('js/agri.js') }}" defer></script>
+        <script src="{{ asset('js/scripts.min.js') }}" defer></script>
+        <script src="{{ asset('js/scripts.order-2.min.js') }}" defer></script>
+        <script src="{{ asset('js/min/main.min.js') }}" defer></script>
+        <script src="{{ asset('js/min/order-2.min.js') }}" defer></script>
+
         <!-- Fonts -->
-        <link rel="dns-prefetch" href="//fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,600,700">
 
         <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Nunito', sans-serif;
-                font-weight: 100;
-                height: 100vh;
-                margin: 0;
-            }
+        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/main.blue.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/order-2.blue.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/styles.blue.min.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
 
-            .full-height {
-                height: 100vh;
-            }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .code {
-                border-right: 2px solid;
-                font-size: 26px;
-                padding: 0 15px 0 15px;
-                text-align: center;
-            }
-
-            .message {
-                font-size: 18px;
-                text-align: center;
-            }
-        </style>
     </head>
     <body>
-        <div class="flex-center position-ref full-height">
-            <div class="code">
-                @yield('code')
-            </div>
+        <div id="app" style="padding-top: 0px;">
+            <!-- Preloader -->
+            <div class="preloader"></div>
 
-            <div class="message" style="padding: 10px;">
-                @yield('message')
-            </div>
+            <section class="hero">
+                <div class="row justify-content-center">
+                    <div class="col-md-12">
+                        <div style="padding-top:100px;">
+                            <div class="flex-center position-ref full-height">
+                                <center>
+                                    <div style="display: inline-flex; text-align: center;">
+                                        <h2 style="color: #1e69b8;">@yield('code')&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@yield('message')</h2>
+                                    </div>
+
+                                    <br/>
+
+                                    <div style="display: inline-flex; text-align: center;">
+                                        <a href="/" class="btn btn-primary">
+                                            Kthehu ne kryefaqe
+                                        </a>
+                                    </div>
+                                </center>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </div>
     </body>
 </html>
+
