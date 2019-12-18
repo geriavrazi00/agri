@@ -41,14 +41,16 @@
                             <div class="flex-center position-ref full-height">
                                 <center>
                                     <div style="display: inline-flex; text-align: center;">
-                                        <h2 style="color: #1e69b8;">@yield('code')&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@yield('message')</h2>
+                                        <h2 style="color: #1e69b8;">
+                                            <i class="fa fa-exclamation-triangle"></i> @yield('code')&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@yield('message')
+                                        </h2>
                                     </div>
 
                                     <br/>
 
                                     <div style="display: inline-flex; text-align: center;">
                                         <a href="/" class="btn btn-primary">
-                                            Kthehu ne kryefaqe
+                                            Kthehu në kryefaqe
                                         </a>
                                     </div>
                                 </center>
