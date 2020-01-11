@@ -1,16 +1,16 @@
 /*
-Template Name: Costy 
+Template Name: Costy
 Template URL: https://ultimatewebsolutions.net/costy/
 Author: Ultimate Websolutions
 Author URL: https://themeforest.net/user/ultimatewebsolutions/
 
-[Table of contents] 
+[Table of contents]
 
 1. ORDER WIZARD, ORDER WIZARD CONTACT SECTION
 
 2. FORM STYLE
 - 2.1 Fields, Textareas
-- 2.2 Checkbox Toggles 
+- 2.2 Checkbox Toggles
 - 2.3 Placeholders
 - 2.4 Form Buttons
 - 2.5 Form Validation
@@ -401,11 +401,11 @@ input.form-control.total-sum {
     text-align: center;
     padding: 20px;
 }
-@media all and (max-width:30em){
+/* @media all and (max-width:30em){
      .item-cell-type{
       display:block;
       margin:0.4em auto;
-     }
+     } */
 .price-cell {
     width: 10%;
 }

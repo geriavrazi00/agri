@@ -38,59 +38,64 @@
 
                 </div>
 
-                @for($i = 0; $i < sizeof($categories); $i++) <div class="button">
-                    <div id="category-{{$categories[$i]->id}}-div" class="rtable-cell item-cell-type">
-                        <a onclick="selectCategories('{{$categories[$i]}}', '{{$categories}}');" style="cursor: pointer;">
-                            <img src="img/product-images/{{$categories[$i]->image}}" style="width:100px; height:100px;" />
-                        </a>
-                        <input class="form-control in-odd-row item-name" hidden name="item-name-1" type="text" value="Product or Service Name 1" />
+                <div class="container" style="display: contents;">
+                @for($i = 0; $i < sizeof($categories); $i++)
+                    <div class="button">
+                        <div id="category-{{$categories[$i]->id}}-div" class="rtable-cell item-cell-type">
+                            <a onclick="selectCategories('{{$categories[$i]}}', '{{$categories}}');" style="cursor: pointer;">
+                                <img src="img/product-images/{{$categories[$i]->image}}" style="width:100px; height:100px;" />
+                            </a>
+                            <input class="form-control in-odd-row item-name" hidden name="item-name-1" type="text" value="Product or Service Name 1" />
+                        </div>
+                        <div>
+                            <p id="servicename">{{$categories[$i]->name}}</p>
+                        </div>
                     </div>
-                    <div>
-                        <p id="servicename">{{$categories[$i]->name}}</p>
-                    </div>
-            </div>
-            @endfor
-
-            <br />
-            <div class="divider">
-                <div class="dividermask"></div>
-            </div>
-
-            <form method="POST" action="/result" style="width: 100%;">
-                @csrf
-                <div class="form-row" id="applicant-name-div" style="display: none; width: 100%;">
-                    <label for="applicant-name" id="applicantname" style="font-weight: 700;">{{trans('messages.applicant_name')}}</label>
-                    <input class="form-control" id="applicantnameinput" type="text" name="applicant-name" required oninvalid="createInvalidMsg(this, '{{trans('validation.applicant_name_required')}}', '');" oninput="createInvalidMsg(this, '', '');"/>
+                @endfor
                 </div>
 
                 <br />
-
-                @foreach($categoriesData as $key => $category)
-                @if($category['investments'] != null)
-                <div id="category-{{$key}}" style="display: none; width: 100%; padding-top: 20px;">
-                    @include('inputs')
+                <div class="divider">
+                    <div class="dividermask"></div>
                 </div>
-                @endif
-                @endforeach
 
-                <div id="loan" style="display: none; width: 100%;">
-                    @include('loan')
+                <form method="POST" action="/result" style="width: 100%;">
+                    @csrf
+                    <div class="form-row" id="applicant-name-div" style="display: none; width: 100%;">
+                        <label for="applicant-name" id="applicantname" style="font-weight: 700;">{{trans('messages.applicant_name')}}</label>
+                        <input class="form-control" id="applicantnameinput" type="text" name="applicant-name" required oninvalid="createInvalidMsg(this, '{{trans('validation.applicant_name_required')}}', '');" oninput="createInvalidMsg(this, '', '');"/>
+                    </div>
 
-                    <input type="hidden" id="selected-categories[]" name="selected-categories[]" />
                     <br />
 
-                    <center>
-                        <button class="btn btn-primary" type="submit">
-                            {{trans('messages.generate')}}
-                        </button>
-                    </center>
-                </div>
-            </form>
+                    @foreach($categoriesData as $key => $category)
+                        @if($category['investments'] != null)
+                            <div id="category-{{$key}}" style="display: none; width: 100%; padding-top: 20px;">
+                                @include('inputs')
+                            </div>
+                        @endif
+                    @endforeach
+
+                    <div id="loan" style="display: none; width: 100%;">
+                        @include('loan')
+
+                        <input type="hidden" id="selected-categories[]" name="selected-categories[]" />
+                        <br />
+
+                        <center>
+                            <button class="btn btn-primary" type="submit">
+                                {{trans('messages.generate')}}
+                            </button>
+                        </center>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
-    </div>
+</section>
+@endsection
 
-    <div class="rtable rtable--collapse" style="display: none;">
+    {{-- <div class="rtable rtable--collapse" style="display: none;">
         <!-- Table Heading Start -->
         <div class="rtable-row rtable-row--head">
             <div class="rtable-cell item-cell column-heading" style="text-align:center">{{trans('messages.enter_data')}}</div>
@@ -125,4 +130,4 @@
     </div>
     </div>
 </section>
-@endsection
+@endsection --}}
