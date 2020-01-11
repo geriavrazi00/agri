@@ -55,60 +55,44 @@
                             <p id="servicename">{{$categories[$i]->name}}</p>
                         </div>
                 </div>
-                <div>
-                    <p id="servicename">{{$categories[$i]->name}}</p>
-                </div>
+                @endfor
             </div>
-            @endfor
-
+            -->
             <br />
             <div class="divider">
                 <div class="dividermask"></div>
             </div>
 
             <form method="POST" action="/result" style="width: 100%;">
-                <!--  @csrf
+                @csrf
                 <div class="form-row" id="applicant-name-div" style="display: none; width: 100%;">
                     <label for="applicant-name" id="applicantname" style="font-weight: 700;">{{trans('messages.applicant_name')}}</label>
                     <input class="form-control" id="applicantnameinput" type="text" name="applicant-name" required oninvalid="createInvalidMsg(this, '{{trans('validation.applicant_name_required')}}', '');" oninput="createInvalidMsg(this, '', '');" />
-                @endfor
                 </div>
--->
+
                 <br />
-                <div class="divider">
-                    <div class="dividermask"></div>
+
+                @foreach($categoriesData as $key => $category)
+                @if($category['investments'] != null)
+                <div id="category-{{$key}}" style="display: none; width: 100%; padding-top: 20px;">
+                    @include('inputs')
                 </div>
+                @endif
+                @endforeach
 
-                <form method="POST" action="/result" style="width: 100%;">
-                    @csrf
-                    <div class="form-row" id="applicant-name-div" style="display: none; width: 100%;">
-                        <label for="applicant-name" id="applicantname" style="font-weight: 700;">{{trans('messages.applicant_name')}}</label>
-                        <input class="form-control" id="applicantnameinput" type="text" name="applicant-name" required oninvalid="createInvalidMsg(this, '{{trans('validation.applicant_name_required')}}', '');" oninput="createInvalidMsg(this, '', '');" />
-                    </div>
+                <div id="loan" style="display: none; width: 100%;">
+                    @include('loan')
 
+                    <input type="hidden" id="selected-categories[]" name="selected-categories[]" />
                     <br />
 
-                    @foreach($categoriesData as $key => $category)
-                    @if($category['investments'] != null)
-                    <div id="category-{{$key}}" style="display: none; width: 100%; padding-top: 20px;">
-                        @include('inputs')
-                    </div>
-                    @endif
-                    @endforeach
-
-                    <div id="loan" style="display: none; width: 100%;">
-                        @include('loan')
-
-                        <input type="hidden" id="selected-categories[]" name="selected-categories[]" />
-                        <br />
-
-                        <center>
-                            <button class="btn btn-primary" type="submit">
-                                {{trans('messages.generate')}}
-                            </button>
-                        </center>
-                    </div>
-                </form>
+                    <center>
+                        <button class="btn btn-primary" type="submit">
+                            {{trans('messages.generate')}}
+                        </button>
+                    </center>
+                </div>
+            </form>
         </div>
     </div>
     </div>
