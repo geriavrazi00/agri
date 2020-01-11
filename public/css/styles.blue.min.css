@@ -2544,7 +2544,7 @@ caption {
 }
 th {
     text-align: inherit;
-    color: rgb(30, 105, 184);
+    color: #508104;
 }
 label {
     display: inline-block;
@@ -9584,6 +9584,7 @@ button.bg-dark:hover {
 .mb-0,
 .my-0 {
     margin-bottom: 0 !important;
+    color: whitesmoke;
 }
 .ml-0,
 .mx-0 {
@@ -13504,7 +13505,7 @@ footer.main-footer {
 }
 .hero {
     padding: 12.5rem 0;
-    background: url(../img/bg/hero-bg-blue-yellow.svg) no-repeat;
+    background: url(../img/bg/background.jpg) no-repeat;
     background-size: cover;
     background-position: bottom left;
     /*background-attachment: fixed;*/
@@ -13862,13 +13863,13 @@ footer.main-footer {
 }
 .btn-primary {
     color: #fff;
-    background-color: #1e69b8;
-    border-color: #1e69b8;
+    background-color: #508104;
+    border-color: #508104;
 }
 .btn-primary:hover {
     color: #fff;
-    background-color: #17508c;
-    border-color: #17508c;
+    background-color: #508104;
+    border-color: #508104;
 }
 .btn-primary.focus,
 .btn-primary:focus {
@@ -14425,14 +14426,14 @@ body {
     background-color: #fff;
 }
 a {
-    color: #1e69b8;
+    color: #508104;
     text-decoration: none;
     -webkit-transition: all 0.2s ease-in-out;
     transition: all 0.2s ease-in-out;
 }
 a:focus,
 a:hover {
-    color: #17508c;
+    color: #508104;
     text-decoration: none;
 }
 .h1,
@@ -14461,11 +14462,12 @@ h1 {
 .h2,
 h2 {
     font-size: 2rem;
+    color: whitesmoke;
 }
 .h3,
 h3 {
     font-size: 1.65rem;
-    color: #1e68b89f;
+    color: #508104;
 }
 .h4,
 h4 {
@@ -14481,6 +14483,7 @@ h6 {
 }
 .lead {
     font-size: 1.2rem;
+    color: whitesmoke;
     font-weight: 400;
 }
 .display-1 {

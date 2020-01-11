@@ -5,11 +5,16 @@
 <!-- Hero Section -->
 <section class="hero">
     <div class="container text-center">
-        <h1 class="hero-heading">Afa</h1>
         <div class="row">
-            <div class="col-lg-7 mx-auto">
-                <p class="lead text-muted">Ky sistem ju ndihmon te perllogarisni perfitueshmerine e aktivitetit tuaj bujqesor lidhur me planin e investimit dhe sigurimin e burimeve te financimit. Ne menyre elektronike do siguroni nje analize financiare per investimin e planifikuar. Analiza e rasteve te studimit te disa aktiviteteve potenciale te pershkruara kerkon se pari te identifikoje nese nje kornize normative eshte e sakte, strategjikisht e lidhur me teknologjine etj incididunt.</p>
-            </div>
+            <form method="POST" action="/result" style="width: 100%;">
+                @csrf
+                <div class="form-row" id="applicant-name-div" style=" width: 100%;">
+                    <label for="applicant-name" id="applicantname" style="font-weight: 700;">{{trans('messages.applicant_name')}}</label>
+                    <input class="form-control" id="applicantnameinput" type="text" name="applicant-name" required oninvalid="createInvalidMsg(this, '{{trans('validation.applicant_name_required')}}', '');" oninput="createInvalidMsg(this, '', '');" />
+                    <p id="applicant-label-desc">*Vendosni emrin e aplikantit ose subjektit</p>
+                </div>
+                </br>
+            </form>
         </div>
     </div>
 </section>
@@ -57,12 +62,12 @@
             </div>
 
             <form method="POST" action="/result" style="width: 100%;">
-                @csrf
+                <!--  @csrf
                 <div class="form-row" id="applicant-name-div" style="display: none; width: 100%;">
                     <label for="applicant-name" id="applicantname" style="font-weight: 700;">{{trans('messages.applicant_name')}}</label>
-                    <input class="form-control" id="applicantnameinput" type="text" name="applicant-name" required oninvalid="createInvalidMsg(this, '{{trans('validation.applicant_name_required')}}', '');" oninput="createInvalidMsg(this, '', '');"/>
+                    <input class="form-control" id="applicantnameinput" type="text" name="applicant-name" required oninvalid="createInvalidMsg(this, '{{trans('validation.applicant_name_required')}}', '');" oninput="createInvalidMsg(this, '', '');" />
                 </div>
-
+-->
                 <br />
 
                 @foreach($categoriesData as $key => $category)

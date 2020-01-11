@@ -17,12 +17,8 @@
               Ky sistem ju ndihmon te perllogarisni perfitueshmerine e aktiviteti bujqesor lidhur me planin e investimit dhe sigurimin e burimeve te financimit
             </p>
           </div>
-          <div style="padding-left:350px;">
-            <img src="img/logo/aasf.png" style="width:135px; height:45px;">
-          </div>
         </div>
       </div>
-      <div class="col-lg-6"><img src="img/illustration-hero-blue.svg" alt="..." class="hero-image img-fluid d-none d-lg-block"></div>
     </div>
   </div>
 </section>

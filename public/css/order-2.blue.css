@@ -382,8 +382,11 @@ input.form-control.total-sum {
 
 .item-cell {
     border-radius: 25px;
-    border: 2px solid #1c61a9;
+    border: 2px solid #508104;
     padding: 20px;
+    background: #508104;
+    font-size: 20px;
+    color: white;
 }
 
 .button {
@@ -392,12 +395,12 @@ input.form-control.total-sum {
     width: 260px;
 }
 .item-cell-type:hover {
-    background-color: #1e69b8;
+    background-color: #508104;;
 }
 
 .item-cell-type {
     border-radius: 25px;
-    border: 2px solid #1e68b867;
+    border: 2px solid #508104;;
     text-align: center;
     padding: 20px;
 }

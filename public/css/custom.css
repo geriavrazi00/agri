@@ -2,7 +2,7 @@
 #seretable {
     width: 1000px;
     height: 415px;
-    border: 1px solid #17508c;
+    border: 1px solid #508104;
     display: none;
 }
 tr {
@@ -42,7 +42,7 @@ tr {
     width: 25px; /* Set a specific slider handle width */
     height: 25px; /* Slider handle height */
     border-radius: 10px;
-    background: #1e69b8; /* Green background */
+    background: #508104; /* Green background */
     cursor: pointer; /* Cursor on hover */
 }
 
@@ -50,7 +50,7 @@ tr {
     width: 25px; /* Set a specific slider handle width */
     height: 25px; /* Slider handle height */
 
-    background: #1e69b8; /* Green background */
+    background: #508104; /* Green background */
     cursor: pointer; /* Cursor on hover */
 }
 
@@ -79,7 +79,7 @@ tr {
     width: 100%;
     height: 25px;
     border-radius: 125px / 12px;
-    box-shadow: 0 0 8px #1e69b8;
+    box-shadow: 0 0 8px #508104;
 }
 #tabledesc {
     text-align: center;
@@ -105,7 +105,7 @@ tr {
     margin-right: 50px;
     margin-left: 20px;
     color: #212529;
-    border: 2px solid #2372c780;
+    border: 2px solid #508104;
     border-radius: 15px;
 }
 .resulttable {
@@ -114,20 +114,20 @@ tr {
     margin-right: 50px;
     margin-left: 20px;
     color: #212529;
-    border: 2px solid #2372c780;
+    border: 2px solid #508104;
     border-radius: 15px;
     background-color: white;
 }
 
 .resulttablehead {
-    color: rgb(30, 105, 184);
+    color: #508104;
     font-size: 20px;
     padding: 10px;
 }
 .resulttabledata {
     padding: 10px;
     font-size: 18px;
-    border-top: 1px solid #2372c780;
+    border-top: 1px solid #508104;
 }
 
 /* Number fields */
@@ -141,28 +141,28 @@ input[type="number"]::-webkit-outer-spin-button {
 
 /* Applicant name */
 #applicantname {
-    font-size: 1.65rem;
-    color: #1e68b89f;
-    text-align: center;
+    font-size: 1.5rem;
+    color: #508104;
+    text-align: left;
     font-weight: 500;
-    padding-left: 455px;
+    padding-left: 150px;
 }
 
 #applicantnameinput {
     background: transparent;
-    border: 1px solid #2372c780;
-    border-bottom: 2px solid #2372c780;
+    border: 1px solid #508104;
+    border-bottom: 2px solid #508104;
     border-radius: 10px;
     -webkit-box-shadow: none;
     box-shadow: none;
     -webkit-transition: none;
     height: 35px;
-    width: 600px;
+    width: 400px;
     font-size: 16px;
     font-weight: 400;
     padding-left: 20px;
     resize: none;
-    margin-left: 250px;
+    margin-left: 30px;
 }
 
 .edit-buttons {
@@ -177,3 +177,10 @@ input[type="number"]::-webkit-outer-spin-button {
     padding-right: 10px;
 }
 
+#applicant-label-desc {
+    color: gray;
+    font-size: 12px;
+    margin-left: 380px;
+    margin-top: -8px;
+}
+}
