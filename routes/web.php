@@ -29,8 +29,10 @@ Route::get('/login', function() {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::post('/result', 'ResultController@index')->middleware('auth');
-Route::post('/export', 'ResultController@export')->middleware('auth');
+Route::get('/result', 'ResultController@index')->middleware('auth');
+Route::post('/export/excel', 'ResultController@exportExcel')->middleware('auth');
+Route::post('/export/pdf', 'ResultController@exportPdf')->middleware('auth');
+Route::post('/plans/save', 'ResultController@savePlan')->middleware('auth');
 
 /* Plans */
 Route::resource('plans', 'PlansController')->only([

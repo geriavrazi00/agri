@@ -19,6 +19,8 @@ use Maatwebsite\Excel\Facades\Excel;
 use Auth;
 use DateTime;
 use Log;
+use PDF;
+use Redirect;
 
 class ResultController extends Controller
 {
@@ -38,10 +40,14 @@ class ResultController extends Controller
      */
     public function index(Request $request) {
     	$inputs = $this->buildInputs($request);
-    	$result = $this->calculateResult($inputs);
-        $planId = $this->savePlan($inputs, $result);
+        $result = $this->calculateResult($inputs);
 
-    	return view('result', compact('inputs', 'result', 'planId'));
+        $applicant = $inputs[0]->getApplicantName();
+        $date = $request->date;
+
+        $inputs = $this->inputsToJson($inputs);
+
+    	return view('result', compact('inputs', 'result', 'date', 'applicant'));
     }
 
     private function buildInputs($request) {
@@ -258,35 +264,76 @@ class ResultController extends Controller
         return $credit;
     }
 
-    private function savePlan($inputs, $result) {
-        $in = array();
+    public function savePlan(Request $request) {
+        $inputs = json_decode($request->inputs);
         $categoryIds = array();
 
         $plan = new Plan();
         $plan->user_id = Auth::user()->id;
-        $plan->applicant = $inputs[0]->getApplicantName();
+        $plan->applicant = $inputs[0]->applicantName;
 
         for ($i = 0; $i < sizeof($inputs); $i++) {
-            $in[$i] = $inputs[$i]->convertToJson();
-            array_push($categoryIds, $inputs[$i]->getFarmCategory()->id);
+            array_push($categoryIds, $inputs[$i]->farmCategory->id);
         }
 
-        $plan->inputs = json_encode($in);
-        $plan->results = json_encode($result->convertToJson());
+        $plan->inputs = json_encode($inputs);
+        $plan->created_at = strtotime($request->date);
+        $plan->results = $request->result;
         $plan->save();
         $plan->categories()->attach($categoryIds);
 
-        return $plan->id;
+        return Redirect::back()->withSuccessMessage('Aplikimi u ruajt me sukses!');
     }
 
-    public function export(Request $request) {
+    public function exportExcel(Request $request) {
         $date = new DateTime();
-        $plan = Plan::find($request->plan);
+        $plan = $this->createPlan($request->inputs, $request->result, $request->date);
 
         return Excel::download(new PlanExport($plan), 'Përfitueshmëria-' . $plan->applicant . '-' . $date->format('d-m-Y-H-i-s') . '.xlsx');
     }
-}
 
+    public function exportPdf(Request $request) {
+        $date = new DateTime();
+        $plan = $this->createPlan($request->inputs, $request->result, $request->date);
+
+        $pdf = PDF::loadView('exports/pdf/planexport', [
+        	'input' => json_decode($plan->inputs),
+            'result' => json_decode($plan->results),
+            'applicant' => $plan->applicant,
+            'date' => $plan->created_at,
+        ]);
+
+        return $pdf->download('Përfitueshmëria-' . $plan->applicant . '-' . $date->format('d-m-Y-H-i-s') . '.pdf');
+    }
+
+    private function createPlan($inputs, $result, $date) {
+        $inputs = json_decode($inputs);
+        $categoryIds = array();
+
+        $plan = new Plan();
+        $plan->user_id = Auth::user()->id;
+        $plan->applicant = $inputs[0]->applicantName;
+
+        for ($i = 0; $i < sizeof($inputs); $i++) {
+            array_push($categoryIds, $inputs[$i]->farmCategory->id);
+        }
+
+        $plan->inputs = json_encode($inputs);
+        $plan->created_at = strtotime($date);
+        $plan->results = $result;
+        return $plan;
+    }
+
+    private function inputsToJson($inputs) {
+        $in = array();
+
+        for ($i = 0; $i < sizeof($inputs); $i++) {
+            $in[$i] = $inputs[$i]->convertToJson();
+        }
+
+        return json_encode($in);
+    }
+}
 
 /*
 

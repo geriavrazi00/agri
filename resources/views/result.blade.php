@@ -5,7 +5,12 @@
 	<div class="row justify-content-center">
 		<div class="col-md-12">
 			<div>
-				<div style="padding-top:100px;">
+                <div style="padding-top:100px;">
+                    <div>
+                        <h5>Emri i aplikantit: {{$applicant}}</h5>
+                        <h5>Data e aplikimit: {{$date}}</h5>
+                    </div>
+
 					<table class="resulttable">
 						<tr class="resulttablerow">
 							<th class="resulttablehead">Nënprodukti</th>
@@ -14,7 +19,7 @@
 							<th class="resulttablehead">Rendimenti</th>
 							<th class="resulttablehead">Prodhimi</th>
 							<th class="resulttablehead">Të ardhura bruto për njësi</th>
-							<th class="resulttablehead">Të ardhura bruto totale</th>
+							<th class="resulttablehead">Të ardhura bruto totale, viti 1</th>
 							<th class="resulttablehead">Shpenzime prodhimi</th>
 						</tr>
 
@@ -74,16 +79,42 @@
 							<td class="resulttabledata">DSCR</td>
 							<td class="resulttabledata" style="color:#2372c7dc; text-align: right;">{{$result->getDscr()}}</td>
 						</tr>
-					</table>
+                    </table>
 
-					<form method="POST" action="/export">
-						@csrf
-						<input type="hidden" id="plan" name="plan" value="{{$planId}}" />
+                    <div class="col-md-12" style="display: flex;">
+                        <form method="POST" action="/plans/save">
+                            @csrf
+                            <input type="hidden" id="inputs" name="inputs" value="{{ $inputs }}" />
+                            <input type="hidden" id="result" name="result" value="{{ json_encode($result->convertToJson()) }}" />
+                            <input type="hidden" id="date" name="date" value="{{ $date }}" />
 
-						<div style="text-align: center;">
-							<button type="submit" class="btn btn-success">Eksporto</button>
-						</div>
-					</form>
+                            <div class="col-md-4" style="text-align: center;">
+                                <button type="submit" class="btn btn-success">Ruaj aplikimin</button>
+                            </div>
+                        </form>
+
+                        <form method="POST" action="/export/excel">
+                            @csrf
+                            <input type="hidden" id="inputs" name="inputs" value="{{ $inputs }}" />
+                            <input type="hidden" id="result" name="result" value="{{ json_encode($result->convertToJson()) }}" />
+                            <input type="hidden" id="date" name="date" value="{{ $date }}" />
+
+                            <div class="col-md-4" style="text-align: center;">
+                                <button type="submit" class="btn btn-success">Eksport Excel</button>
+                            </div>
+                        </form>
+
+                        <form method="POST" action="/export/pdf">
+                            @csrf
+                            <input type="hidden" id="inputs" name="inputs" value="{{ $inputs }}" />
+                            <input type="hidden" id="result" name="result" value="{{ json_encode($result->convertToJson()) }}" />
+                            <input type="hidden" id="date" name="date" value="{{ $date }}" />
+
+                            <div class="col-md-4" style="text-align: center;">
+                                <button type="submit" class="btn btn-success">Eksport Pdf</button>
+                            </div>
+                        </form>
+                    </div>
 				</div>
 			</div>
 		</div>

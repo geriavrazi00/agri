@@ -68,7 +68,7 @@ class Inputs {
 	}
 
 	public function convertToJson() {
-		$data = array(); 
+		$data = array();
 
 		$data["applicantName"] = $this->getApplicantName();
         $data["farmCategory"] = $this->getFarmCategory();

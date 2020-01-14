@@ -17,10 +17,11 @@ class PlanExport implements FromView, ShouldAutoSize, WithDrawings
     }
 
     public function view(): View {
-        return view('exports/planexport', [
+        return view('exports/excel/planexport', [
         	'input' => json_decode($this->plan->inputs),
             'result' => json_decode($this->plan->results),
             'applicant' => $this->plan->applicant,
+            'date' => $this->plan->created_at,
         ]);
     }
 
