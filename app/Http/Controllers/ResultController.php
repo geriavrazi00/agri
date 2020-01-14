@@ -18,6 +18,7 @@ use Maatwebsite\Excel\Facades\Excel;
 
 use Auth;
 use DateTime;
+use Exception;
 use Log;
 use PDF;
 use Redirect;
@@ -39,15 +40,21 @@ class ResultController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index(Request $request) {
-    	$inputs = $this->buildInputs($request);
-        $result = $this->calculateResult($inputs);
 
-        $applicant = $inputs[0]->getApplicantName();
-        $date = $request->date;
+        try {
+            $inputs = $this->buildInputs($request);
+            $result = $this->calculateResult($inputs);
 
-        $inputs = $this->inputsToJson($inputs);
+            $applicant = $inputs[0]->getApplicantName();
+            $date = $request->date;
 
-    	return view('result', compact('inputs', 'result', 'date', 'applicant'));
+            $inputs = $this->inputsToJson($inputs);
+
+            return view('result', compact('inputs', 'result', 'date', 'applicant'));
+        } catch(Exception $e) {
+            Log::error($e);
+            return view('errors/404');
+        }
     }
 
     private function buildInputs($request) {
@@ -282,7 +289,8 @@ class ResultController extends Controller
         $plan->save();
         $plan->categories()->attach($categoryIds);
 
-        return Redirect::back()->withSuccessMessage('Aplikimi u ruajt me sukses!');
+        toast('Aplikimi u ruajt me sukses!','success','top-right');
+        return back();
     }
 
     public function exportExcel(Request $request) {

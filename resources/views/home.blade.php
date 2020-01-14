@@ -64,8 +64,6 @@
             </div>
 
             <form method="GET" action="/result" style="width: 100%;">
-                @csrf
-
                 <input type="hidden" id="date" name="date" value="{{date('d-m-Y H:i:s')}}" />
 
                 <div class="form-row" id="applicant-name-div" style="width: 100%;">

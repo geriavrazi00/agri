@@ -1,4 +1,4 @@
-@extends('errors::minimal')
+@extends('errors.minimal')
 
 @section('title', __('Faqja nuk u gjet'))
 @section('code', '404')
