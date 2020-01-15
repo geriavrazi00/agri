@@ -9,12 +9,10 @@
   <div class="container mb-5">
     <div class="row align-items-center">
       <div class="col-lg-6">
-        <h1 class="hero-heading mb-0">AGRI FINANCIAL <br>ANALYSIS </h1>
-        <h2 color: orange>APP</h2>
         <div class="row">
           <div class="col-lg-10">
             <p class="lead mt-4 mb-4">
-              Ky sistem ju ndihmon te perllogarisni perfitueshmerine e aktiviteti bujqesor lidhur me planin e investimit dhe sigurimin e burimeve te financimit
+              Aplikacioni Agro-financa ju ndihmon të përllogarisni përfitueshmërinë e planeve të investimit nga aktiviteti bujqësor.
             </p>
           </div>
         </div>

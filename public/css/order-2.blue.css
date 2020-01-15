@@ -276,9 +276,9 @@ input[type="checkbox"]:checked + span.cost-calculator-toggle-slider::after {
 
 #generateOrder,
 #submitOrder {
-    background: #1e69b8; /* main color*/
+    background: #508104; /* main color*/
     border: 0;
-    border-bottom: 3px solid #19589b; /* 2 shade darker */
+    border-bottom: 3px solid #508104; /* 2 shade darker */
     border-radius: 4px;
     display: inline-block;
     font-weight: 700;
@@ -293,14 +293,14 @@ input[type="checkbox"]:checked + span.cost-calculator-toggle-slider::after {
 
 #generateOrder:hover,
 #submitOrder:hover {
-    background: #1c61a9;
+    background: #508104;
 }
 
 #resetOrder {
     background: #fff;
-    border: 3px solid #1c61a9;
+    border: 3px solid #508104;
     border-radius: 4px;
-    color: #1c61a9;
+    color: #508104;
     cursor: pointer;
     display: inline-block;
     font-weight: 700;
@@ -353,7 +353,7 @@ input.form-control.total-sum {
     margin: 0;
     font-size: 18px;
     font-weight: 700;
-    color: #17508c;
+    color: #508104;
     text-align: right;
 }
 
@@ -395,12 +395,12 @@ input.form-control.total-sum {
     width: 260px;
 }
 .item-cell-type:hover {
-    background-color: #508104;;
+    background-color: #508104;
 }
 
 .item-cell-type {
     border-radius: 25px;
-    border: 2px solid #508104;;
+    border: 2px solid #508104;
     text-align: center;
     padding: 20px;
 }

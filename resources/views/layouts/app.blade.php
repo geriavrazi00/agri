@@ -71,15 +71,15 @@
                             </li>
 
                             @if (Auth::user()->role->name == App\Constants::ROLE_ADMIN)
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        Administrim
-                                    </a>
-                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="/users">Përdoruesit</a>
-                                        <a class="dropdown-item" href="/values">Koefiçentët</a>
-                                    </div>
-                                </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Administrim
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="/users">Përdoruesit</a>
+                                    <a class="dropdown-item" href="/values">Koefiçentët</a>
+                                </div>
+                            </li>
                             @endif
                             @endauth
                         </ul>
