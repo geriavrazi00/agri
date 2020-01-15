@@ -39,8 +39,6 @@
         <header class="header">
             <nav class="navbar navbar-expand-lg fixed-top">
                 <div class="container">
-                    <a class="navbar-brand" href="/"><img alt="" class="img-fluid" src="/img/logo/logoafa.png" style="width:30px; height:40px;">
-                    </a>
                     <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler navbar-toggler-right" data-target="#navbarSupportedContent" data-toggle="collapse" type="button">Menu<i class="fa fa-bars ml-2"></i>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -105,6 +103,9 @@
             @yield('content')
         </main>
     </div>
+
+    <!-- Back To Top Button -->
+    <a href="" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
 
     <script src="{{ asset('js/jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('js/bootstrap/js/bootstrap.bundle.min.js') }}"></script>

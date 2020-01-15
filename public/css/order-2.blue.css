@@ -455,7 +455,7 @@ table {
 }
 
 .rtable .rtable-row .rtable-cell.column-heading {
-    background-color: #17508c;
+    background-color: #508104;
     font-weight: 700;
     color: #fff;
     padding-top: 1.5em;
@@ -467,11 +467,11 @@ table {
 }
 
 .rtable .rtable-row .rtable-cell .rtable-cell--content a {
-    color: #17508c;
+    color: #508104;
 }
 
 .rtable .rtable-row .rtable-cell .rtable-cell--content a:hover {
-    color: #17508c; /* 3 shade darker */
+    color: #508104; /* 3 shade darker */
 }
 
 .title-content {

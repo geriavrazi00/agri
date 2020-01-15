@@ -80,7 +80,7 @@ function selectCategories(category, categories) {
     if (categoryElement.style.display === "none") {
         categoryElement.style.display = "block";
         categoryElement.style.opacity = 1;
-        categoryDivElement.style.backgroundColor = "#1e69b8";
+        categoryDivElement.style.backgroundColor = "#508104";
         selectedCategories.push(category.id);
         manageSelectedCategories(category, true);
     } else {

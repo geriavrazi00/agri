@@ -13443,6 +13443,9 @@ button {
 nav.navbar {
     -webkit-transition: background 0.4s;
     transition: background 0.4s;
+    background-color: white;
+    -webkit-box-shadow: 0 2px 3px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.08);
 }
 nav.navbar.active {
     background: #fff;
