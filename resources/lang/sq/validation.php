@@ -119,27 +119,28 @@ return [
     'attributes' => [],
 
     //Login
-    'email_required' => 'Ju lutem plotësoni e-mailin.', 
-    'password_required' => 'Ju lutem plotësoni fjalëkalimin.', 
+    'email_required' => 'Ju lutem plotësoni e-mailin.',
+    'password_required' => 'Ju lutem plotësoni fjalëkalimin.',
 
     //Custom field validation messages
-    'applicant_name_required' => 'Ju lutem plotësoni emrin e aplikantit.', 
-    
+    'applicant_name_required' => 'Ju lutem plotësoni emrin e aplikantit.',
+    'business_code_required' => 'Ju lutem plotësoni fushën me NIPT-in ose kodin e fermerit.',
+
     //Loan data validation
-    'interest_rate_required' => 'Ju lutem plotësoni normën aktuale të interesit.', 
-    'repayment_period_required' => 'Ju lutem plotësoni periudhën e shlyerjes për vit.', 
-    'yearly_payments_required' => 'Ju lutem plotësoni pagesat për vit.', 
-    'first_payment_date_required' => 'Ju lutem plotësoni datën e pagesës së parë.', 
-    'interest_min_value' => 'Norma aktuale e interesit vjetor duhet të jetë më e madhe se :value.', 
-    'interest_max_value' => 'Norma aktuale e interesit vjetor nuk mund të jetë më e madhe se :value.', 
-    
+    'interest_rate_required' => 'Ju lutem plotësoni normën aktuale të interesit.',
+    'repayment_period_required' => 'Ju lutem plotësoni periudhën e shlyerjes për vit.',
+    'yearly_payments_required' => 'Ju lutem plotësoni pagesat për vit.',
+    'first_payment_date_required' => 'Ju lutem plotësoni datën e pagesës së parë.',
+    'interest_min_value' => 'Norma aktuale e interesit vjetor duhet të jetë më e madhe se :value.',
+    'interest_max_value' => 'Norma aktuale e interesit vjetor nuk mund të jetë më e madhe se :value.',
+
     //Business data validation
-    'technology_required' => 'Ju lutem zgjidhni një teknologji.', 
-    'field_required' => 'Ju lutem plotësoni fushën.', 
-    'one_subculture_required' => 'Ju lutem zgjidhni të paktën një nënprodukt.', 
+    'technology_required' => 'Ju lutem zgjidhni një teknologji.',
+    'field_required' => 'Ju lutem plotësoni fushën.',
+    'one_subculture_required' => 'Ju lutem zgjidhni të paktën një nënprodukt.',
 
     //Investment plan validation
-    'non_negative_field' => 'Vlera e fushës nuk mund të jetë negative.', 
+    'non_negative_field' => 'Vlera e fushës nuk mund të jetë negative.',
 
     //Admin users validation
     'wrong_format' => 'Ju lutem jepni të dhënat e fushës në një format të vlefshëm.',

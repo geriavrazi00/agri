@@ -15,8 +15,13 @@
 
 			<div class="table card-body" style="background-color: white;">
                 <div class="form-group row">
-                    <label for="name" class="col-md-6 col-form-label text-md-right">Aplikanti:</label>
+                    <label for="name" class="col-md-6 col-form-label text-md-right">Emri i aplikantit:</label>
                     <label id="name" class="col-md-6 col-form-label">{{$plan->applicant}}</label>
+                </div>
+
+                <div class="form-group row">
+                    <label for="name" class="col-md-6 col-form-label text-md-right">NIPT/Kodi i fermerit:</label>
+                    <label id="name" class="col-md-6 col-form-label">{{$plan->business_code}}</label>
                 </div>
 
                 <div class="form-group row">

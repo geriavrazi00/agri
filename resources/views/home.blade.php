@@ -66,10 +66,21 @@
             <form method="GET" action="/result" style="width: 100%;">
                 <input type="hidden" id="date" name="date" value="{{date('d-m-Y H:i:s')}}" />
 
-                <div class="form-row" id="applicant-name-div" style="width: 100%;">
-                    <label for="applicant-name" id="applicantname" style="font-weight: 700;">{{trans('messages.applicant_name')}}</label>
-                    <input class="form-control" id="applicantnameinput" type="text" name="applicant-name" required oninvalid="createInvalidMsg(this, '{{trans('validation.applicant_name_required')}}', '');" oninput="createInvalidMsg(this, '', '');" />
-                </div>
+                <table>
+                    <tr>
+                        <td><label for="applicant-name" id="applicantname" style="font-weight: 700;">{{trans('messages.applicant_name')}}</label></td>
+                        <td><input class="form-control" id="applicantnameinput" type="text" name="applicant-name" required oninvalid="createInvalidMsg(this, '{{trans('validation.applicant_name_required')}}', '');" oninput="createInvalidMsg(this, '', '');" /></td>
+                    </tr>
+                    <tr>
+                        <td><label for="business-code" id="applicantname" style="font-weight: 700;">NIPT/Kodi i fermerit</label></td>
+                        <td><input class="form-control" id="applicantnameinput" type="text" name="business-code" required oninvalid="createInvalidMsg(this, '{{trans('validation.business_code_required')}}', '');" oninput="createInvalidMsg(this, '', '');" /></td>
+                    </tr>
+                </table>
+
+                {{-- <div class="form-row" id="applicant-name-div" style="width: 100%;">
+                </div> --}}
+                {{-- <div class="form-row" id="applicant-name-div" style="width: 100%;">
+                </div> --}}
 
                 <br />
 

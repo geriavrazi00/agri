@@ -7,8 +7,9 @@
 			<div>
                 <div style="padding-top:100px;">
                     <div>
-                        <h5>Emri i aplikantit: {{$applicant}}</h5>
-                        <h5>Data e aplikimit: {{$date}}</h5>
+                        <h5>Emri i aplikantit: {{ $applicant }}</h5>
+                        <h5>NIPT/Kodi i fermerit: {{ $businessCode }}</h5>
+                        <h5>Data e aplikimit: {{ $date }}</h5>
                     </div>
 
 					<table class="resulttable">

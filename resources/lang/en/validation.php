@@ -149,27 +149,28 @@ return [
 
 
     //Login
-    'email_required' => 'Please enter your e-mail.', 
-    'password_required' => 'Please enter your password.', 
+    'email_required' => 'Please enter your e-mail.',
+    'password_required' => 'Please enter your password.',
 
     //Custom field validation messages
-    'applicant_name_required' => 'Please enter an applicant name.', 
+    'applicant_name_required' => 'Please enter an applicant name.',
+    'business_code_required' => 'Please enter the NIPT of the farmer code.',
 
     //Loan data validation
-    'interest_rate_required' => 'Please enter the yearly interest norm.', 
-    'repayment_period_required' => 'Please enter the repayment period in years.', 
-    'yearly_payments_required' => 'Please enter the number of payments per year.', 
-    'first_payment_date_required' => 'Please enter the date of the first payment.', 
-    'interest_min_value' => 'The actual norm of yearly interest must be greater than :value.', 
-    'interest_max_value' => 'The actual norm of yearly interest must have a maximum value of :value.', 
+    'interest_rate_required' => 'Please enter the yearly interest norm.',
+    'repayment_period_required' => 'Please enter the repayment period in years.',
+    'yearly_payments_required' => 'Please enter the number of payments per year.',
+    'first_payment_date_required' => 'Please enter the date of the first payment.',
+    'interest_min_value' => 'The actual norm of yearly interest must be greater than :value.',
+    'interest_max_value' => 'The actual norm of yearly interest must have a maximum value of :value.',
 
     //Business data validation
     'technology_required' => 'Please select a technology.' ,
-    'field_required' => 'Please fill out the field.', 
+    'field_required' => 'Please fill out the field.',
     'one_subculture_required' => 'Please choose at least one subproduct.',
 
     //Investment plan validation
-    'non_negative_field' => 'The value of the field cannot be negative.', 
+    'non_negative_field' => 'The value of the field cannot be negative.',
 
     //Admin users validation
     'wrong_format' => 'Please enter the data of the field in the right format.',

@@ -3,6 +3,7 @@
 </div>
 
 <p><span style="font-weight: bold">Emri i aplikantit:</span> {{ $applicant }}</p>
+<p><span style="font-weight: bold">NIPT/Kodi i fermerit:</span> {{ $businessCode }}</p>
 <p><span style="font-weight: bold">Data e aplikimit:</span> {{ date("d-m-Y H:i:s", strtotime($date)) }}</p>
 
 <br/>

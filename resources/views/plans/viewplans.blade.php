@@ -15,8 +15,13 @@
 
 			<div class="table card-body" style="background-color: white;">
                 <div class="form-group row">
-                    <label for="name" class="col-md-6 col-form-label text-md-right">Aplikanti:</label>
+                    <label for="name" class="col-md-6 col-form-label text-md-right">Emri i aplikantit:</label>
                     <label id="name" class="col-md-6 col-form-label">{{$plan->applicant}}</label>
+                </div>
+
+                <div class="form-group row">
+                    <label for="name" class="col-md-6 col-form-label text-md-right">NIPT/Kodi i fermerit:</label>
+                    <label id="name" class="col-md-6 col-form-label">{{$plan->business_code}}</label>
                 </div>
 
                 <div class="form-group row">
@@ -184,7 +189,10 @@
                 </table>
 
                 <div class="form-group row mb-0">
-                    <div class="col-md-6 offset-md-4">
+                    <div class="col-md-7 offset-md-3">
+                        <a href="/plans/{{$plan->id}}/edit" class="btn btn-info">
+                            Modifiko
+                        </a>
                         <form method="POST" action="/plans/{{$plan->id}}/export/excel" style="display:inline; margin:0px; padding:0px;">
                             @csrf
                             <button type="submit" class="btn btn-success">

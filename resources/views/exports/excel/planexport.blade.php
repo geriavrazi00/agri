@@ -4,6 +4,10 @@
 		<td style="border: 2px solid #000000;">{{ $applicant }}</td>
     </tr>
     <tr>
+		<td style="text-align: right; border: 2px solid #000000;"><b>NIPT/Kodi i fermerit:</b></td>
+		<td style="border: 2px solid #000000;">{{ $businessCode }}</td>
+    </tr>
+    <tr>
 		<td style="text-align: right; border: 2px solid #000000;"><b>Data e aplikimit:</b></td>
 		<td style="border: 2px solid #000000;">{{ date("d-m-Y H:i:s", strtotime($date)) }}</td>
 	</tr>

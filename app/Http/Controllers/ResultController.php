@@ -46,11 +46,12 @@ class ResultController extends Controller
             $result = $this->calculateResult($inputs);
 
             $applicant = $inputs[0]->getApplicantName();
+            $businessCode = $inputs[0]->getBusinessCode();
             $date = $request->date;
 
             $inputs = $this->inputsToJson($inputs);
 
-            return view('result', compact('inputs', 'result', 'date', 'applicant'));
+            return view('result', compact('inputs', 'result', 'date', 'applicant', 'businessCode'));
         } catch(Exception $e) {
             Log::error($e);
             return view('errors/404');
@@ -85,6 +86,7 @@ class ResultController extends Controller
 
             $input = new Inputs();
             $input->setApplicantName($request->get('applicant-name'));
+            $input->setBusinessCode($request->get('business-code'));
             $input->setFarmCategory($selectedCategory);
             $input->setInvestmentLabels($investmentLabels);
             $input->setBusinessLabels($businessLabels);
@@ -278,6 +280,7 @@ class ResultController extends Controller
         $plan = new Plan();
         $plan->user_id = Auth::user()->id;
         $plan->applicant = $inputs[0]->applicantName;
+        $plan->business_code = $inputs[0]->businessCode;
 
         for ($i = 0; $i < sizeof($inputs); $i++) {
             array_push($categoryIds, $inputs[$i]->farmCategory->id);
@@ -308,6 +311,7 @@ class ResultController extends Controller
         	'input' => json_decode($plan->inputs),
             'result' => json_decode($plan->results),
             'applicant' => $plan->applicant,
+            'businessCode' => $plan->business_code,
             'date' => $plan->created_at,
         ]);
 
@@ -321,6 +325,7 @@ class ResultController extends Controller
         $plan = new Plan();
         $plan->user_id = Auth::user()->id;
         $plan->applicant = $inputs[0]->applicantName;
+        $plan->business_code = $inputs[0]->businessCode;
 
         for ($i = 0; $i < sizeof($inputs); $i++) {
             array_push($categoryIds, $inputs[$i]->farmCategory->id);

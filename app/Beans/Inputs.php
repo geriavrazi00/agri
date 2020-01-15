@@ -3,7 +3,8 @@
 namespace App\Beans;
 
 class Inputs {
-	private $applicantName;
+    private $applicantName;
+    private $businessCode;
 	private $farmCategory;
 	private $investmentPlans;
 	private $investmentLabels;
@@ -17,6 +18,14 @@ class Inputs {
 
 	public function getApplicantName() {
 		return $this->applicantName;
+    }
+
+    public function setBusinessCode($businessCode) {
+		$this->businessCode = $businessCode;
+	}
+
+	public function getBusinessCode() {
+		return $this->businessCode;
 	}
 
 	public function setFarmCategory($farmCategory) {
@@ -70,7 +79,8 @@ class Inputs {
 	public function convertToJson() {
 		$data = array();
 
-		$data["applicantName"] = $this->getApplicantName();
+        $data["applicantName"] = $this->getApplicantName();
+        $data["businessCode"] = $this->getBusinessCode();
         $data["farmCategory"] = $this->getFarmCategory();
         $data["investmentPlans"] = $this->getInvestmentPlans();
         $data["investmentLabels"] = $this->getInvestmentLabels();

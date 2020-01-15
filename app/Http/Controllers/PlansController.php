@@ -67,6 +67,7 @@ class PlansController extends Controller
         	'input' => json_decode($plan->inputs),
             'result' => json_decode($plan->results),
             'applicant' => $plan->applicant,
+            'businessCode' => $plan->business_code,
             'date' => $plan->created_at,
         ]);
 

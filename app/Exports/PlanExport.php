@@ -21,6 +21,7 @@ class PlanExport implements FromView, ShouldAutoSize, WithDrawings
         	'input' => json_decode($this->plan->inputs),
             'result' => json_decode($this->plan->results),
             'applicant' => $this->plan->applicant,
+            'businessCode' => $this->plan->business_code,
             'date' => $this->plan->created_at,
         ]);
     }
