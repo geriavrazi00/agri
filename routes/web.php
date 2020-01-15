@@ -36,9 +36,10 @@ Route::post('/plans/save', 'ResultController@savePlan')->middleware('auth');
 
 /* Plans */
 Route::resource('plans', 'PlansController')->only([
-    'index', 'show', 'destroy'
+    'index', 'show', 'edit', 'destroy'
 ])->middleware('auth');
-Route::post('/plans/{id}/export', 'PlansController@export')->middleware('auth');
+Route::post('/plans/{id}/export/excel', 'PlansController@exportExcel')->middleware('auth');
+Route::post('/plans/{id}/export/pdf', 'PlansController@exportPdf')->middleware('auth');
 
 /* My profile */
 Route::get('/myprofile', 'MyProfileController@index')->middleware('auth');

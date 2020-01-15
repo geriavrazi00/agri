@@ -28,10 +28,19 @@
 								<a href="/plans/{{$plan->id}}" class="btn btn-primary btn-circle btn-sm action-buttons" data-toggle="tooltip" title="Shiko detajet">
 									<i class="fa fa-eye"></i>
                                 </a>
-                                <form method="POST" action="/plans/{{$plan->id}}/export" style="display:inline; margin:0px; padding:0px;">
+                                <a href="/plans/{{$plan->id}}/edit" class="btn btn-info btn-circle btn-sm edit-buttons" data-toggle="tooltip" title="Modifiko">
+                                    <i class="fa fa-edit"></i>
+                                </a>
+                                <form method="POST" action="/plans/{{$plan->id}}/export/excel" style="display:inline; margin:0px; padding:0px;">
                                     @csrf
-                                    <button type="submit" class="btn btn-success btn-circle btn-sm action-buttons" data-toggle="tooltip" title="Eksporto">
-                                        <i class="fa fa-download"></i>
+                                    <button type="submit" class="btn btn-secondary btn-circle btn-sm action-buttons" data-toggle="tooltip" title="Eksport në Excel">
+                                        <i class="fa fa-file-excel-o"></i>
+                                    </button>
+                                </form>
+                                <form method="POST" action="/plans/{{$plan->id}}/export/pdf" style="display:inline; margin:0px; padding:0px;">
+                                    @csrf
+                                    <button type="submit" class="btn btn-dark btn-circle btn-sm action-buttons" data-toggle="tooltip" title="Eksport në PDF">
+                                        <i class="fa fa-file-pdf-o"></i>
                                     </button>
                                 </form>
 								<form method="POST" action="/plans/{{$plan->id}}" style="display:inline; margin:0px; padding:0px;">

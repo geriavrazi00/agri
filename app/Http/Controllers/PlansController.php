@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Auth;
 use DateTime;
 use Log;
+use PDF;
 use Redirect;
 use App\Plan;
 use Illuminate\Http\Request;
@@ -33,6 +34,15 @@ class PlansController extends Controller
     public function show(Plan $plan) {
         return view('/plans/viewplans', [
             'plan' => $plan,
+            'inputs' => json_decode($plan->inputs),
+            'result' => json_decode($plan->results)
+        ]);
+    }
+
+    public function edit(Plan $plan) {
+        return view('/plans/viewplans', [
+            'plan' => $plan,
+            'inputs' => json_decode($plan->inputs),
             'result' => json_decode($plan->results)
         ]);
     }
@@ -43,10 +53,24 @@ class PlansController extends Controller
      * @param  \App\Plan  $plan
      * @return \Illuminate\Http\Response
      */
-    public function export($id) {
+    public function exportExcel($id) {
         $plan = Plan::find($id);
         $date = new DateTime();
         return Excel::download(new PlanExport($plan), 'Përfitueshmëria-' . $plan->applicant . '-' . $date->format('d-m-Y-H-i-s') . '.xlsx');
+    }
+
+    public function exportPdf($id) {
+        $plan = Plan::find($id);
+        $date = new DateTime();
+
+        $pdf = PDF::loadView('exports/pdf/planexport', [
+        	'input' => json_decode($plan->inputs),
+            'result' => json_decode($plan->results),
+            'applicant' => $plan->applicant,
+            'date' => $plan->created_at,
+        ]);
+
+        return $pdf->download('Përfitueshmëria-' . $plan->applicant . '-' . $date->format('d-m-Y-H-i-s') . '.pdf');
     }
 
     /**

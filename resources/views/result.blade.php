@@ -111,7 +111,7 @@
                             <input type="hidden" id="date" name="date" value="{{ $date }}" />
 
                             <div class="col-md-4" style="text-align: center;">
-                                <button type="submit" class="btn btn-success">Eksport Pdf</button>
+                                <button type="submit" class="btn btn-success">Eksport PDF</button>
                             </div>
                         </form>
                     </div>
