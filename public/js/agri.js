@@ -2,6 +2,8 @@ $(document).ready(function() {
     $('[data-toggle="tooltip"]').tooltip();
 });
 
+$('.dropdown-toggle').dropdown();
+
 var selectedCategories = new Array();
 
 function calculateTotal(totalTables, totalFields, categoryId, categories) {

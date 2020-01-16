@@ -43,20 +43,13 @@
                     </button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav ml-auto">
-                            <!-- Link -->
-                            <li class="nav-item">
-                                <a class="nav-link" href="/">Kryefaqja</a>
-                            </li>
-
                             @auth
-                            <li class="nav-item dropdown" style="padding-right: 10px;">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Plane investimi
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="/home">Krijo një plan</a>
-                                    <a class="dropdown-item" href="/plans">Historiku im</a>
-                                </div>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="/home">Kreu</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/plans">Projekte të procesuara</a>
                             </li>
                             <li class="nav-item dropdown" style="padding-right: 10px;">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -82,9 +75,9 @@
                             @endauth
                         </ul>
 
-                        @guest
-                        <a class="btn btn-primary navbar-btn ml-0 ml-lg-3" href="/login">Kyçu</a>
-                        @endguest
+                        {{-- @guest
+                            <a class="btn btn-primary navbar-btn ml-0 ml-lg-3" href="/login">Kyçu</a>
+                        @endguest --}}
 
                         @auth
                         <form method="POST" action="/logout">
@@ -105,7 +98,7 @@
     </div>
 
     <!-- Back To Top Button -->
-    <a href="" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+    <a href="" class="back-to-top btn-primary"><i class="fa fa-chevron-up"></i></a>
 
     <script src="{{ asset('js/jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('js/bootstrap/js/bootstrap.bundle.min.js') }}"></script>

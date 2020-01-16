@@ -6,7 +6,7 @@
 <p><span style="font-weight: bold">NIPT/Kodi i fermerit:</span> {{ $businessCode }}</p>
 <p><span style="font-weight: bold">Data e aplikimit:</span> {{ date("d-m-Y H:i:s", strtotime($date)) }}</p>
 
-<br/>
+<h4 style="text-align: center">Inputet</h4>
 
 @foreach($input as $category)
     <p><span style="font-weight: bold">Kategoria:</span> {{ $category->farmCategory->name }}</p>
@@ -58,10 +58,14 @@
                     <td>
                         {{ trans('investment_plan.' . $category->investmentLabels[$j]) }}
                     </td>
-                    <td>ALL <span style="float: right;">{{ fmod($category->investmentPlans[$i][$j], 1) ? number_format($category->investmentPlans[$i][$j], 2) : number_format($category->investmentPlans[$i][$j]) }}</span></td>
+                    <td style="text-align: right;"><span style="float: left;">ALL </span>{{ fmod($category->investmentPlans[$i][$j], 1) ? number_format($category->investmentPlans[$i][$j], 2) : number_format($category->investmentPlans[$i][$j]) }}</td>
                 </tr>
             @endfor
         </table>
+
+        @if($category->farmCategory->option_number > 1)
+            <br/>
+        @endif
     @endfor
 
 @endforeach
@@ -91,7 +95,7 @@
     </tr>
 </table>
 
-<br/>
+<h4 style="text-align: center">Rezultatet</h4>
 
 <table border="1" cellspacing="0" cellpadding="0">
 	<thead>

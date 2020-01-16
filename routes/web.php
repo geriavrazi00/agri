@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,21 +14,34 @@
 */
 
 Route::get('/', function () {
+    if(Auth::check()) return redirect('/home');
     return view('/welcome');
-});
+})->name('login');
 
 Route::get('/welcome', function() {
+    if(Auth::check()) return redirect('/home');
 	return view('/welcome');
-});
+})->name('login');
 
-Route::get('/login', function() {
-	if(Auth::check())
-		return redirect('/home');
-    else
-    	return view('/auth/login');
-});
+Route::get('login', function() {
+	if(Auth::check()) return redirect('/home');
+    return view('/welcome');
+})->name('login');
+Route::post('login', 'Auth\LoginController@login');
+Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 
-Auth::routes();
+// Auth::routes();
+
+/** Default auth routes */
+// Registration Routes...
+// $this->get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
+// $this->post('register', 'Auth\RegisterController@register');
+
+// Password Reset Routes...
+// $this->get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
+// $this->post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
+// $this->get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
+// $this->post('password/reset', 'Auth\ResetPasswordController@reset');
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/result', 'ResultController@index')->middleware('auth');

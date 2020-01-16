@@ -13,6 +13,8 @@
 	</tr>
 </table>
 
+<h4 style="text-align: center">Inputet</h4>
+
 @foreach($input as $category)
 	<table>
 		<tr>
@@ -100,7 +102,7 @@
     </tr>
 </table>
 
-<br/><br/>
+<h4 style="text-align: center">Rezultatet</h4>
 
 <table>
 	<thead>
