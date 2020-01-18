@@ -27,6 +27,9 @@
     <link href="{{ asset('css/order-2.blue.css') }}" rel="stylesheet">
     <link href="{{ asset('css/styles.blue.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/datatables/jquery.dataTables.min.css') }}" rel="stylesheet" media="screen">
+    <link href="{{ asset('css/datatables/responsive.dataTables.min.css') }}" rel="stylesheet" media="screen">
+    <link href="{{ asset('css/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet" media="screen">
 
 </head>
 
@@ -101,6 +104,7 @@
     <a href="" class="back-to-top btn-primary"><i class="fa fa-chevron-up"></i></a>
 
     <script src="{{ asset('js/jquery/jquery.min.js') }}"></script>
+
     <script src="{{ asset('js/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('js/lightbox2/js/lightbox.min.js') }}"></script>
     <script src="{{ asset('js/easing/easing.min.js') }}"></script>
@@ -111,6 +115,12 @@
     <script src="{{ asset('js/order-2.js') }}" defer></script>
     @include('sweetalert::alert')
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    <!-- Datatable -->
+    <script src="{{ asset('js/datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('js/datatables/dataTables.responsive.min.js') }}"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
+    <script src="{{ asset('js/datatables/table-js.js') }}"></script>
 </body>
 
 </html>

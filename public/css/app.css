@@ -7765,3 +7765,282 @@ a.text-dark:hover {
     /*right: 20px;*/
     transform: translateY(-50%);
 }
+
+/****************************** Datatable styles ****************************/
+.dash-search-form label {
+	display: block;
+	color: #81878C;
+	font-size: 12px;
+	font-weight: 600;
+	margin-bottom: 8px;
+}
+.dash-search-form input,
+.dash-search-form select {
+	width: 100%;
+	border: 1px solid #eee;
+	padding: 10px 15px;
+}
+.dash-search-form .submit-btn {
+	border: 1px solid transparent;
+	background: #27AE60;
+	color: #fff;
+	display: inline-block;
+	padding: 10px;
+	font-weight: 600;
+	margin-top: 26px;
+	width: 100%;
+}
+.dash-search-form .submit-btn:hover {
+	background: transparent;
+	color: #27AE60;
+	border: 1px solid #27AE60
+}
+.dash-search-form .submit-btn i {
+	margin-right: 10px;
+}
+.dataTables_wrapper label {
+	color: black;
+	font-weight: normal;
+}
+.dataTables_wrapper .dataTables_filter {
+	margin-bottom: 25px;
+}
+.dataTables_filter input,
+.dataTables_length select{
+	border: 1px solid #eee;
+	/* padding: 8px 10px; */
+}
+table.dataTable thead th {
+	border-bottom: 1px solid #eee;
+	/* font-size: 12px; */
+	font-weight: 700;
+	color: black;
+	padding: 15px;
+}
+table.dataTable thead th i {
+	margin-right: 5px;
+}
+table.dataTable tbody td {
+	padding: 15px;
+	/* font-size: 13px; */
+    color: black;
+    vertical-align: middle;
+}
+table.dataTable.display tbody td {
+	border-top: none;
+}
+table.dataTable tbody td a {
+    color: white;
+    /* padding: 0px; */
+}
+/* table.dataTable tbody td a i {
+	margin-right: 5px;
+} */
+table.dataTable tbody td span{
+	display: block;
+}
+table.dataTable.no-footer {
+	border: 1px solid #eee;
+	margin-bottom: 25px;
+}
+table.dataTable tbody .text-success {
+	color: #27AE60;
+}
+table.dataTable tbody .text-danger {
+	color: #FF7676;
+}
+.dataTables_wrapper .dataTables_info {
+	color: black;
+}
+.dataTables_wrapper .dataTables_paginate .paginate_button.current, .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover{
+	color: #30363d;
+	border: 1px solid #eee;
+}
+.dataTables_wrapper .dataTables_paginate .paginate_button.disabled,
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+	color: black;
+}
+table.dataTable thead th {
+    position: relative;
+    background-image: none !important;
+}
+
+table.dataTable thead th.sorting:after,
+table.dataTable thead th.sorting_asc:after,
+table.dataTable thead th.sorting_desc:after {
+    position: absolute;
+    top: 12px;
+    right: 8px;
+    display: block;
+    font-family: FontAwesome;
+}
+table.dataTable thead th.sorting:after {
+    content: "\f0dc";
+    color: #ddd;
+    font-size: 0.8em;
+    padding-top: 0.12em;
+}
+table.dataTable thead th.sorting_asc:after {
+    content: "\f0de";
+}
+table.dataTable thead th.sorting_desc:after {
+    content: "\f0dd";
+}
+table.dataTable > tbody > tr.child span.dtr-title {
+	font-size: 12px;
+	font-weight: 700;
+}
+table.dataTable > tbody > tr.child span.dtr-title i {
+	margin-right: 5px;
+}
+.datatable-select,
+.datatable-input {
+	border: 1px solid #eee;
+	padding: 8px 10px;
+}
+.table-action-box a {
+	display: inline-block;
+	margin-top: 15px;
+	margin-right: 20px;
+	padding: 10px 30px;
+	font-weight: 700;
+	font-size: 12px;
+	text-decoration: none;
+}
+.table-action-box a i {
+	margin-right: 5px;
+}
+.table-action-box .save{
+	color: #fff;
+	background: #27AE60;
+}
+.table-action-box .cancel {
+	color: #27AE60;
+	border: 1px solid #27AE60;
+}
+.top-margin{
+	margin-top: 25px;
+}
+.action-link a {
+	color: #fff !important;
+	display: inline-block;
+	height: 20px;
+	width: 20px;
+	border-radius: 50%;
+	text-align: center;
+	padding: 3px 6px;
+	margin-right: 5px;
+	font-size: 10px;
+}
+.action-link .edit {
+	background: #27AE60;
+}
+.action-link .delete {
+	background: #FF7676;
+}
+@media (max-width: 991px) {
+	.dash-search-form label{
+		margin-top: 15px;
+	}
+	.dash-search-form .submit-btn {
+		margin-top: 42px;
+	}
+}
+
+.bootstrap-data-table-panel .dataTables_filter {
+    text-align: right
+}
+
+.bootstrap-data-table-panel .dataTables_filter .form-control:focus,
+.bootstrap-data-table-panel .dataTables_filter .form-control:hover {
+    background: 0 0
+}
+
+.dataTables_length {
+    display: inline-block;
+    float: left;
+    margin-right: 30px
+}
+
+.dt-buttons {
+    margin-bottom: 15px
+}
+
+.dt-buttons .dt-button {
+    background: #fff;
+    color: #252525;
+    border-color: #e7e7e7;
+    margin-right: 10px;
+    padding: 7px 20px;
+    border-radius: 0
+}
+
+.dt-buttons .dt-button.active,
+.dt-buttons .dt-button:focus,
+.dt-buttons .dt-button:hover:not(.disabled) {
+    background: #03a9f5;
+    color: #fff
+}
+
+a.dt-button:hover:not(.disabled),
+button.dt-button:hover:not(.disabled),
+div.dt-button:hover:not(.disabled) {
+    background-color: #03a9f5;
+    background-image: none;
+    border: 1px solid #03a9f5;
+    box-shadow: none;
+    color: #fff
+}
+
+a.dt-button:focus:not(.disabled),
+button.dt-button:focus:not(.disabled),
+div.dt-button:focus:not(.disabled) {
+    background-color: #03a9f5;
+    background-image: none;
+    border: 1px solid #03a9f5;
+    box-shadow: none;
+    color: #fff
+}
+
+a.dt-button.active:hover:not(.disabled):not(.disabled),
+a.dt-button:active:hover:not(.disabled):not(.disabled),
+button.dt-button.active:hover:not(.disabled):not(.disabled),
+button.dt-button:active:hover:not(.disabled):not(.disabled),
+div.dt-button.active:hover:not(.disabled):not(.disabled),
+div.dt-button:active:hover:not(.disabled):not(.disabled) {
+    background-color: #03a9f5;
+    background-image: none;
+    border: 1px solid #03a9f5;
+    box-shadow: none;
+    color: #fff
+}
+
+a.dt-button.active:not(.disabled),
+a.dt-button:active:not(.disabled),
+button.dt-button.active:not(.disabled),
+button.dt-button:active:not(.disabled),
+div.dt-button.active:not(.disabled),
+div.dt-button:active:not(.disabled) {
+    background-color: #03a9f5;
+    background-image: none;
+    border: 1px solid #03a9f5;
+    box-shadow: none;
+    color: #fff
+}
+
+@media (max-width:767px) {
+    .dataTables_length {
+        margin-left: 10px
+    }
+    select.input-sm {
+        width: 167px
+    }
+    .bootstrap-data-table-panel .dataTables_filter {
+        margin-left: 12px;
+        text-align: left;
+        padding-right: 10px
+    }
+    .bootstrap-data-table-panel .dataTables_filter .form-control {
+        margin-left: 0
+    }
+}

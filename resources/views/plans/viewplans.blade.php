@@ -95,7 +95,7 @@
                     </div>
                 @endforeach
 
-                <table class="resulttable">
+                <table id="viewplanstable" class="resulttable display responsive nowrap" style="width: 100%;">
                     <tr class="resulttablerow">
                         <th class="resulttablehead" style="text-align: center;"><b>{{ trans('messages.loan_repayment') }}</b></th>
                         <th class="resulttablehead" style="text-align: center;"><b>{{ trans('messages.loan_data') }}</b></th>

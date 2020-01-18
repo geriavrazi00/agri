@@ -21,7 +21,7 @@ class PlansController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index() {
-        $plans = Plan::where('user_id', '=', Auth::user()->id)->orderBy('created_at', 'desc')->simplePaginate(10);
+        $plans = Plan::where('user_id', '=', Auth::user()->id)->orderBy('created_at', 'desc')->get();
         return view('/plans/planslist', compact('plans'));
     }
 

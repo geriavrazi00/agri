@@ -15,7 +15,7 @@ class ValuesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index() {
-        $categories = Category::orderBy('name')->simplePaginate(10);
+        $categories = Category::orderBy('name')->get();
         return view('/admin/values/valueslist', compact('categories'));
     }
 

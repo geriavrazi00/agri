@@ -19,7 +19,7 @@ class UsersController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function index() {
-        $users = User::where('id', '!=', Auth::user()->id)->orderBy('name')->simplePaginate(10);
+        $users = User::where('id', '!=', Auth::user()->id)->orderBy('name')->get();
         return view('/admin/users/userslist', compact('users'));
     }
 
