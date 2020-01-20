@@ -3,17 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
-use App\Category;
-use App\Constants;
-use App\Culture;
 use App\Plan;
-use App\Value;
-
-use App\Beans\Inputs;
-use App\Beans\Result;
-
-use App\Exports\PlanExport;
+use App\Exports\PlanExcelExport;
+use App\Exports\PlanPdfExport;
 use App\Managers\FormulaManager;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -21,7 +13,6 @@ use Auth;
 use DateTime;
 use Exception;
 use Log;
-use PDF;
 use Redirect;
 
 class ResultController extends Controller
@@ -42,7 +33,7 @@ class ResultController extends Controller
      */
     public function index(Request $request) {
 
-        try {
+        // try {
             $formulaManager = new FormulaManager();
 
             $inputs = $formulaManager->buildInputs($request);
@@ -55,10 +46,10 @@ class ResultController extends Controller
             $inputs = $this->inputsToJson($inputs);
 
             return view('result', compact('inputs', 'result', 'date', 'applicant', 'businessCode'));
-        } catch(Exception $e) {
-            Log::error($e);
-            return view('errors/404');
-        }
+        // } catch(Exception $e) {
+        //     Log::error($e);
+        //     return view('errors/404');
+        // }
     }
 
     public function savePlan(Request $request) {
@@ -74,22 +65,17 @@ class ResultController extends Controller
         $date = new DateTime();
         $plan = $this->createPlan($request->inputs, $request->result, $request->date);
 
-        return Excel::download(new PlanExport($plan), 'Përfitueshmëria-' . $plan->business_code . '-' . $date->format('d-m-Y-H-i-s') . '.xlsx');
+        return Excel::download(new PlanExcelExport($plan), 'Përfitueshmëria-' . $plan->business_code . '-' . $date->format('d-m-Y-H-i-s') . '.xlsx');
     }
 
     public function exportPdf(Request $request) {
         $date = new DateTime();
         $plan = $this->createPlan($request->inputs, $request->result, $request->date);
 
-        $pdf = PDF::loadView('exports/pdf/planexport', [
-        	'input' => json_decode($plan->inputs),
-            'result' => json_decode($plan->results),
-            'applicant' => $plan->applicant,
-            'businessCode' => $plan->business_code,
-            'date' => $plan->created_at,
-        ]);
+        $pdf = new PlanPdfExport($plan);
+        $doc = $pdf->export();
 
-        return $pdf->download('Përfitueshmëria-' . $plan->business_code . '-' . $date->format('d-m-Y-H-i-s') . '.pdf');
+        return $doc->download('Përfitueshmëria-' . $plan->business_code . '-' . $date->format('d-m-Y-H-i-s') . '.pdf');
     }
 
     private function createPlan($inputs, $result, $date) {

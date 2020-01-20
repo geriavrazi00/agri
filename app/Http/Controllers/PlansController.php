@@ -5,12 +5,11 @@ namespace App\Http\Controllers;
 use Auth;
 use DateTime;
 use Log;
-use PDF;
 use Redirect;
 use App\Plan;
-use Illuminate\Http\Request;
 
-use App\Exports\PlanExport;
+use App\Exports\PlanExcelExport;
+use App\Exports\PlanPdfExport;
 use Maatwebsite\Excel\Facades\Excel;
 
 class PlansController extends Controller
@@ -56,22 +55,17 @@ class PlansController extends Controller
     public function exportExcel($id) {
         $plan = Plan::find($id);
         $date = new DateTime();
-        return Excel::download(new PlanExport($plan), 'Përfitueshmëria-' . $plan->business_code . '-' . $date->format('d-m-Y-H-i-s') . '.xlsx');
+        return Excel::download(new PlanExcelExport($plan), 'Përfitueshmëria-' . $plan->business_code . '-' . $date->format('d-m-Y-H-i-s') . '.xlsx');
     }
 
     public function exportPdf($id) {
         $plan = Plan::find($id);
         $date = new DateTime();
 
-        $pdf = PDF::loadView('exports/pdf/planexport', [
-        	'input' => json_decode($plan->inputs),
-            'result' => json_decode($plan->results),
-            'applicant' => $plan->applicant,
-            'businessCode' => $plan->business_code,
-            'date' => $plan->created_at,
-        ]);
+        $pdf = new PlanPdfExport($plan);
+        $doc = $pdf->export();
 
-        return $pdf->download('Përfitueshmëria-' . $plan->business_code . '-' . $date->format('d-m-Y-H-i-s') . '.pdf');
+        return $doc->download('Përfitueshmëria-' . $plan->business_code . '-' . $date->format('d-m-Y-H-i-s') . '.pdf');
     }
 
     /**

@@ -77,13 +77,19 @@
                                         <b>{{ trans('messages.investment_plan') }}</b>
                                     </th>
                                     <th class="resulttablehead" style="text-align: center;">
-                                        <b>{{ trans('messages.value') }}</b>
+                                        <b>{{ trans('messages.total_value') }}</b>
+                                    </th>
+                                    <th class="resulttablehead" style="text-align: center;">
+                                        <b>{{ trans('messages.financing_bank') }}</b>
                                     </th>
                                 </tr>
                                 @for($j = 0; $j < sizeof($category->investmentPlans[$i]); $j++)
                                     <tr class="resulttablerow">
                                         <td class="resulttabledata">
                                             {{ trans('investment_plan.' . $category->investmentLabels[$j]) }}
+                                        </td>
+                                        <td class="resulttabledata" style="text-align: right;">
+                                            <span style="text-align: left;">ALL </span>{{ fmod($category->totalValuePlans[$i][$j], 1) ? number_format($category->totalValuePlans[$i][$j], 2) : number_format($category->totalValuePlans[$i][$j]) }}
                                         </td>
                                         <td class="resulttabledata" style="text-align: right;">
                                             <span style="text-align: left;">ALL </span>{{ fmod($category->investmentPlans[$i][$j], 1) ? number_format($category->investmentPlans[$i][$j], 2) : number_format($category->investmentPlans[$i][$j]) }}

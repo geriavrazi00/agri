@@ -44,13 +44,16 @@
 
         <br/>
 
-        <table border="1" cellspacing="0" cellpadding="0" style="width: 60%;">
+        <table border="1" cellspacing="0" cellpadding="0" style="width: 80%;">
             <tr>
                 <th style="text-align: center;">
                     <b>{{ trans('messages.investment_plan') }}</b>
                 </th>
                 <th style="text-align: center;">
-                    <b>{{ trans('messages.value') }}</b>
+                    <b>{{ trans('messages.total_value') }}</b>
+                </th>
+                <th style="text-align: center;">
+                    <b>{{ trans('messages.financing_bank') }}</b>
                 </th>
             </tr>
             @for($j = 0; $j < sizeof($category->investmentPlans[$i]); $j++)
@@ -58,6 +61,7 @@
                     <td>
                         {{ trans('investment_plan.' . $category->investmentLabels[$j]) }}
                     </td>
+                    <td style="text-align: right;"><span style="float: left;">ALL </span>{{ fmod($category->totalValuePlans[$i][$j], 1) ? number_format($category->totalValuePlans[$i][$j], 2) : number_format($category->totalValuePlans[$i][$j]) }}</td>
                     <td style="text-align: right;"><span style="float: left;">ALL </span>{{ fmod($category->investmentPlans[$i][$j], 1) ? number_format($category->investmentPlans[$i][$j], 2) : number_format($category->investmentPlans[$i][$j]) }}</td>
                 </tr>
             @endfor

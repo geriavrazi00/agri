@@ -7,7 +7,8 @@ class Inputs {
     private $businessCode;
 	private $farmCategory;
 	private $investmentPlans;
-	private $investmentLabels;
+    private $investmentLabels;
+    private $totalValuePlans;
 	private $businessData;
 	private $businessLabels;
 	private $loanData;
@@ -50,7 +51,15 @@ class Inputs {
 
 	public function getInvestmentLabels() {
 		return $this->investmentLabels;
-	}
+    }
+
+    public function setTotalValuePlans($totalValuePlans) {
+        $this->totalValuePlans = $totalValuePlans;
+    }
+
+    public function getTotalValuePlans() {
+        return $this->totalValuePlans;
+    }
 
 	public function setBusinessData($businessData) {
 		$this->businessData = $businessData;
@@ -84,6 +93,7 @@ class Inputs {
         $data["farmCategory"] = $this->getFarmCategory();
         $data["investmentPlans"] = $this->getInvestmentPlans();
         $data["investmentLabels"] = $this->getInvestmentLabels();
+        $data["totalValuePlans"] = $this->getTotalValuePlans();
         $data["businessData"] = $this->getBusinessData();
         $data["businessLabels"] = $this->getBusinessLabels();
         $data["loanData"] = $this->getLoanData();

@@ -21,7 +21,6 @@
 							<th class="resulttablehead">Prodhimi</th>
 							<th class="resulttablehead">Të ardhura bruto për njësi</th>
 							<th class="resulttablehead">Të ardhura bruto totale, viti 1</th>
-							<th class="resulttablehead">Shpenzime prodhimi</th>
 						</tr>
 
 						@for($i = 0; $i < sizeof($result->getCultures()); $i++)
@@ -33,7 +32,6 @@
 								<td class="resulttabledata">{{$result->getCultures()[$i][4]}}</td>
 								<td class="resulttabledata">{{$result->getCultures()[$i][5]}}</td>
 								<td class="resulttabledata">{{$result->getCultures()[$i][6]}}</td>
-								<td class="resulttabledata">{{$result->getCultures()[$i][7]}}</td>
 							</tr>
 							@endfor
 					</table>
@@ -42,7 +40,7 @@
 
 					<table class="resulttable">
 						<tr>
-							<th class="resulttablehead" colspan="2" style="text-align:center;">Perfitueshmeria e investimit</th>
+							<th class="resulttablehead" colspan="2" style="text-align:center;">Përfitueshmeria e investimit</th>
 						</tr>
 						<tr>
 							<td class="resulttabledata">Totali i të ardhurave, viti 1</td>

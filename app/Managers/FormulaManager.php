@@ -8,6 +8,7 @@ use App\Culture;
 use App\Value;
 use App\Beans\Inputs;
 use App\Beans\Result;
+use Log;
 
 class FormulaManager {
 
@@ -44,21 +45,30 @@ class FormulaManager {
             $input->setInvestmentLabels($investmentLabels);
             $input->setBusinessLabels($businessLabels);
 
+            $totalValuePlans = array();
             $investmentPlans = array();
             $allBusinessData = array();
             $allLoanData = array();
 
             for($i = 0; $i < $selectedCategory->option_number; $i++) {
+                $totalValuePlan = array();
                 $investmentPlan = array();
                 $businessData = array();
                 $totalInvestment = 0;
+                $totalOfTotalValue = 0;
 
                 for($j = 0; $j < $investmentVariableNr; $j++) {
-                    $value = $request->get('investment-' . $j . '-' . $i . '-' . $selectedCategory->id) == null ? 0 : (float)$request->get('investment-' . $j . '-' . $i . '-' . $selectedCategory->id);
+                    $totalValue = $request->get('investment-0-' . $j . '-' . $i . '-' . $selectedCategory->id) == null ? 0 : (float)$request->get('investment-0-' . $j . '-' . $i . '-' . $selectedCategory->id);
+                    $value = $request->get('investment-1-' . $j . '-' . $i . '-' . $selectedCategory->id) == null ? 0 : (float)$request->get('investment-1-' . $j . '-' . $i . '-' . $selectedCategory->id);
+
                     $totalInvestment += $value;
+                    $totalOfTotalValue += $totalValue;
+
+                    array_push($totalValuePlan, $totalValue);
                     array_push($investmentPlan, $value);
                 }
 
+                array_push($totalValuePlan, $totalOfTotalValue);
                 array_push($investmentPlan, $totalInvestment);
 
                 for($j = 0; $j < $businessVariableNr; $j++) {
@@ -66,6 +76,7 @@ class FormulaManager {
                     array_push($businessData, $value);
                 }
 
+                array_push($totalValuePlans, $totalValuePlan);
                 array_push($investmentPlans, $investmentPlan);
                 array_push($allBusinessData, $businessData);
             }
@@ -75,6 +86,7 @@ class FormulaManager {
                 array_push($allLoanData, $value);
             }
 
+            $input->setTotalValuePlans($totalValuePlans);
             $input->setInvestmentPlans($investmentPlans);
             $input->setBusinessData($allBusinessData);
             $input->setLoanData($allLoanData);
