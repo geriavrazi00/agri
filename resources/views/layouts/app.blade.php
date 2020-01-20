@@ -30,6 +30,10 @@
     <link href="{{ asset('css/datatables/jquery.dataTables.min.css') }}" rel="stylesheet" media="screen">
     <link href="{{ asset('css/datatables/responsive.dataTables.min.css') }}" rel="stylesheet" media="screen">
     <link href="{{ asset('css/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet" media="screen">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+
 
 </head>
 
@@ -39,14 +43,14 @@
         <div class="preloader"></div>
 
         <!-- Navbar -->
-        <header class="header">
+        <header class="header"> @auth
             <nav class="navbar navbar-expand-lg fixed-top">
                 <div class="container">
                     <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler navbar-toggler-right" data-target="#navbarSupportedContent" data-toggle="collapse" type="button">Menu<i class="fa fa-bars ml-2"></i>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav ml-auto">
-                            @auth
+
 
                             <li class="nav-item">
                                 <a class="nav-link" href="/home">Kreu</a>
@@ -75,7 +79,7 @@
                                 </div>
                             </li>
                             @endif
-                            @endauth
+
                         </ul>
 
                         {{-- @guest
@@ -85,7 +89,7 @@
                         @auth
                         <form method="POST" action="/logout">
                             @csrf
-                            <button type="submit" class="btn btn-primary navbar-btn ml-0 ml-lg-3">
+                            <button type="submit" class="btn btn-primary navbar-btn ml-0 ml-lg-3" style="background-color: #508104">
                                 Dil
                             </button>
                         </form>
@@ -93,9 +97,9 @@
                     </div>
                 </div>
             </nav>
-        </header>
+        </header> @endauth
 
-        <main class="py-4">
+        <main class="py-4" style="padding-top: 0px !important; ">
             @yield('content')
         </main>
     </div>
