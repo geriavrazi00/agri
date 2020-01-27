@@ -50,16 +50,14 @@
                     </button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav ml-auto">
-
-
                             <li class="nav-item">
-                                <a class="nav-link" href="/home">Kreu</a>
+                                <a class="nav-link {{ Request::is('home') ? 'active-nav' : '' }}" href="/home">Kreu</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/plans">Projekte të procesuara</a>
+                                <a class="nav-link {{ Request::is('plans') ? 'active-nav' : '' }}" href="/plans">Projekte të procesuara</a>
                             </li>
                             <li class="nav-item dropdown" style="padding-right: 10px;">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <a class="nav-link dropdown-toggle {{ (Request::is('myprofile') || Request::is('myprofile/*') ) ? 'active-nav' : ''}}" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     Profili im
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -70,7 +68,7 @@
 
                             @if (Auth::user()->role->name == App\Constants::ROLE_ADMIN)
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <a class="nav-link dropdown-toggle {{ (Request::is('users') || Request::is('users/*') || Request::is('values') || Request::is('values/*')) ? 'active-nav' : ''}}" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     Administrim
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -89,7 +87,7 @@
                         @auth
                         <form method="POST" action="/logout">
                             @csrf
-                            <button type="submit" class="btn btn-primary navbar-btn ml-0 ml-lg-3" style="background-color: #508104">
+                            <button type="submit" class="btn btn-primary navbar-btn ml-0 ml-lg-3">
                                 Dil
                             </button>
                         </form>

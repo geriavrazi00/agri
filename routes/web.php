@@ -51,7 +51,7 @@ Route::post('/plans/save', 'ResultController@savePlan')->middleware('auth');
 
 /* Plans */
 Route::resource('plans', 'PlansController')->only([
-    'index', 'show', 'edit', 'destroy'
+    'index', 'show', /*'edit',*/ 'destroy'
 ])->middleware('auth');
 Route::post('/plans/{id}/export/excel', 'PlansController@exportExcel')->middleware('auth');
 Route::post('/plans/{id}/export/pdf', 'PlansController@exportPdf')->middleware('auth');

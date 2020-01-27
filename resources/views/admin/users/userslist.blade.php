@@ -10,7 +10,7 @@
 					<div style="display: inline-flex; text-align: center;">
 						<h3 class="resulttablehead">Menaxhimi i përdoruesve</h3>
 
-						<a href="/users/create" class="btn btn-primary navbar-btn ml-0 ml-lg-3">
+						<a href="/users/create" class="btn btn-primary navbar-btn ml-0 ml-lg-3" style="height: fit-content;">
 							Krijo
 						</a>
 					</div>
