@@ -32,7 +32,7 @@
     <link href="{{ asset('css/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet" media="screen">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-
+    <link href="{{ asset('css/datepicker/datepicker.css') }}" rel="stylesheet">
 
 
 </head>
@@ -120,11 +120,17 @@
     @include('sweetalert::alert')
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
-    <!-- Datatable -->
+    <!-- DataTable -->
     <script src="{{ asset('js/datatables/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('js/datatables/dataTables.responsive.min.js') }}"></script>
     <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
     <script src="{{ asset('js/datatables/table-js.js') }}"></script>
+
+    <!-- DatePicker -->
+    <script src="{{ asset('js/datepicker/datepicker.js') }}"></script>
+    <script src="{{ asset('js/datepicker/datepicker.js') }}"></script>
+    <script src="{{ asset('js/datepicker/i18n/datepicker.sq.js') }}"></script>
+
 </body>
 
 </html>

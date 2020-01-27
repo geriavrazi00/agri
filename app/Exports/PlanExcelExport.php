@@ -8,7 +8,7 @@ use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 use Maatwebsite\Excel\Concerns\WithDrawings;
 use PhpOffice\PhpSpreadsheet\Worksheet\Drawing;
 
-class PlanExport implements FromView, ShouldAutoSize, WithDrawings
+class PlanExcelExport implements FromView, ShouldAutoSize, WithDrawings
 {
 	private $plan;
 
