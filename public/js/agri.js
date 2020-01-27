@@ -2,51 +2,24 @@ $(document).ready(function() {
     $('[data-toggle="tooltip"]').tooltip();
 });
 
-$(".dropdown-toggle").dropdown();
+$('.dropdown-toggle').dropdown();
 
 var selectedCategories = new Array();
 
-function calculateTotal(
-    inputIndex,
-    totalTables,
-    totalFields,
-    categoryId,
-    categories
-) {
+function calculateTotal(inputIndex, totalTables, totalFields, categoryId, categories) {
     for (var i = 0; i < totalTables; i++) {
         var investments = 0;
         for (var j = 0; j < totalFields; j++) {
             investments +=
                 document.getElementById(
-                    "investment-" +
-                        inputIndex +
-                        "-" +
-                        j +
-                        "-" +
-                        i +
-                        "-" +
-                        categoryId
+                    "investment-" + inputIndex + "-" + j + "-" + i + "-" + categoryId
                 ) != null &&
                 document.getElementById(
-                    "investment-" +
-                        inputIndex +
-                        "-" +
-                        j +
-                        "-" +
-                        i +
-                        "-" +
-                        categoryId
+                    "investment-" + inputIndex + "-" +  j + "-" + i + "-" + categoryId
                 ).value != ""
                     ? eval(
                           document.getElementById(
-                              "investment-" +
-                                  inputIndex +
-                                  "-" +
-                                  j +
-                                  "-" +
-                                  i +
-                                  "-" +
-                                  categoryId
+                              "investment-" + inputIndex + "-" + j + "-" + i + "-" + categoryId
                           ).value
                       )
                     : 0;
@@ -67,49 +40,17 @@ function calculateTotalLoan(categories) {
     for (var i = 0; i < categories.length; i++) {
         for (var j = 0; j < categories[i].option_number; j++) {
             for (var k = 0; k < categories[i].labels.length; k++) {
-                totalLoan +=
-                    document.getElementById(
-                        "investment-0-" + k + "-" + j + "-" + categories[i].id
-                    ) != null &&
-                    document.getElementById(
-                        "investment-0-" + k + "-" + j + "-" + categories[i].id
-                    ).value != "" &&
-                    document.getElementById(
-                        "investment-0-" + k + "-" + j + "-" + categories[i].id
-                    ).value != null
-                        ? eval(
-                              document.getElementById(
-                                  "investment-0-" +
-                                      k +
-                                      "-" +
-                                      j +
-                                      "-" +
-                                      categories[i].id
-                              ).value
-                          )
-                        : 0;
+                totalLoan += document.getElementById("investment-0-" + k + "-" + j + "-" + categories[i].id) != null
+                && document.getElementById("investment-0-" + k + "-" + j + "-" + categories[i].id).value != ""
+                && document.getElementById("investment-0-" + k + "-" + j + "-" + categories[i].id).value != null
+                ? eval(document.getElementById("investment-0-" + k + "-" + j + "-" + categories[i].id).value)
+                : 0;
 
-                totalLoan +=
-                    document.getElementById(
-                        "investment-1-" + k + "-" + j + "-" + categories[i].id
-                    ) != null &&
-                    document.getElementById(
-                        "investment-1-" + k + "-" + j + "-" + categories[i].id
-                    ).value != "" &&
-                    document.getElementById(
-                        "investment-1-" + k + "-" + j + "-" + categories[i].id
-                    ).value != null
-                        ? eval(
-                              document.getElementById(
-                                  "investment-1-" +
-                                      k +
-                                      "-" +
-                                      j +
-                                      "-" +
-                                      categories[i].id
-                              ).value
-                          )
-                        : 0;
+                totalLoan += document.getElementById("investment-1-" + k + "-" + j + "-" + categories[i].id) != null
+                && document.getElementById("investment-1-" + k + "-" + j + "-" + categories[i].id).value != ""
+                && document.getElementById("investment-1-" + k + "-" + j + "-" + categories[i].id).value != null
+                ? eval(document.getElementById("investment-1-" + k + "-" + j + "-" + categories[i].id).value)
+                : 0;
             }
         }
     }
@@ -357,6 +298,4 @@ function areYouSure(e, element) {
     });
 }
 
-$("#loan-3").keypress(function(event) {
-    event.preventDefault();
-});
+$("#loan-3").keypress(function(event) {event.preventDefault();});

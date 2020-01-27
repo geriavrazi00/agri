@@ -18,7 +18,6 @@
     <img src="img/logo/ministriafinancave.png" width="150" height="150">
   </div>
 </div>
-
 <!-- Hero Section -->
 <section class="hero">
   <div class="container mb-5">
@@ -30,7 +29,7 @@
               Aplikacioni Agro-financa ju ndihmon të përllogarisni përfitueshmërinë e planeve të investimit nga aktiviteti bujqësor.
             </p>
           </div>
-          <!--LOGIN-->
+          <!--NEWLOGIN-->
           <div class="col-lg-6">
             <div class="d-flex justify-content-center h-100">
               <div class="card">

@@ -7,17 +7,13 @@
     <div class="container text-center">
         <div class="row">
             <form method="POST" action="/result" style="width: 100%;">
-                <table id="informativetable">
-                    <tr>
-                        <td><label for="applicant-name" id="applicantname" style="font-weight: 700;">{{trans('messages.applicant_name')}}</label></td>
-                        <td><input class="form-control" id="applicantnameinput" type="text" name="applicant-name" required oninvalid="createInvalidMsg(this, '{{trans('validation.applicant_name_required')}}', '');" oninput="createInvalidMsg(this, '', '');" /></td>
-                    </tr>
-                    <tr>
-                        <td><label for="business-code" id="applicantname" style="font-weight: 700;">NIPT/Kodi i fermerit</label></td>
-                        <td><input class="form-control" id="applicantnameinput" type="text" name="business-code" required oninvalid="createInvalidMsg(this, '{{trans('validation.business_code_required')}}', '');" oninput="createInvalidMsg(this, '', '');" /></td>
-                    </tr>
-                </table>
-
+                @csrf
+                <div class="form-row" id="applicant-name-div" style=" width: 100%;">
+                    <label for="applicant-name" id="applicantname" style="font-weight: 700;">{{trans('messages.applicant_name')}}</label>
+                    <input class="form-control" id="applicantnameinput" type="text" name="applicant-name" required oninvalid="createInvalidMsg(this, '{{trans('validation.applicant_name_required')}}', '');" oninput="createInvalidMsg(this, '', '');" />
+                    <p id="applicant-label-desc">*Vendosni emrin e aplikantit ose subjektit</p>
+                </div>
+                </br>
             </form>
         </div>
     </div>

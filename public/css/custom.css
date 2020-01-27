@@ -85,7 +85,6 @@ tr {
     text-align: center;
     font-size: 18px;
     padding-top: 20px;
-    background: url(../img/bg/greenbackground.jpeg) no-repeat;
     width: 100%;
 }
 
@@ -298,12 +297,4 @@ input:focus {
 
 .links a {
     margin-left: 4px;
-}
-
-/*Informative Table*/
-#informativetable {
-    background: white;
-    opacity: 0.8;
-    width: inherit;
-    text-align: center;
 }
