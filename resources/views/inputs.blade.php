@@ -29,7 +29,7 @@
 
                 @for($j = 0; $j < $category->culture_number; $j++)
                     <tr>
-                        <td>{{trans('business_data.' . $category['business'][$j+2]->value)}}</td>
+                        <td> {{trans('business_data.' . $category['business'][$j+2]->value)}}</td>
                         <td>
                             <select class="form-control" id="business-{{$j+2}}-{{$i}}-{{$key}}" name="business-{{$j+2}}-{{$i}}-{{$key}}" style="border-radius: 5px;" {{($i == 0 && $j == 0) ? 'required' : ''}} oninvalid="this.setCustomValidity('{{trans('validation.one_subculture_required')}}')" onchange="businessDataValidation(this, '{{$category->culture_number}}', '{{$i}}', '{{$key}}')" disabled>
                                 <option value="">{{trans('messages.choose')}}</option>
@@ -53,15 +53,14 @@
                     <th>{{trans('messages.total_value')}}</th>
                     <th>{{trans('messages.financing_bank')}}</th>
                 </tr>
-                @for($j = 0; $j < sizeof($category['investments']); $j++)
-                    <tr>
-                        <td>{{trans('investment_plan.' . $category['investments'][$j]->value)}}</td>
-                        <td>
-                            <input type="number" id="investment-0-{{$j}}-{{$i}}-{{$key}}" name="investment-0-{{$j}}-{{$i}}-{{$key}}" class="form-control" oninput="calculateTotal(0, '{{$category->option_number}}', '{{sizeof($category['investments'])}}', '{{$category->id}}', '{{$categories}}')" value="0" min="0" onfocus="clearField(this, '0');" onblur="fillField(this, '0');" onkeydown="return blockSpecialCharactersInInputNumber(event);" placeholder="* Vendosni vlerën në monedhën Lekë">
-                        </td>
-                        <td>
-                            <input type="number" id="investment-1-{{$j}}-{{$i}}-{{$key}}" name="investment-1-{{$j}}-{{$i}}-{{$key}}" class="form-control" oninput="calculateTotal(1, '{{$category->option_number}}', '{{sizeof($category['investments'])}}', '{{$category->id}}', '{{$categories}}')" value="0" min="0" onfocus="clearField(this, '0');" onblur="fillField(this, '0');" onkeydown="return blockSpecialCharactersInInputNumber(event);" placeholder="* Vendosni vlerën në monedhën Lekë">
-                        </td>
+                @for($j = 0; $j < sizeof($category['investments']); $j++) <tr>
+                    <td>{{trans('investment_plan.' . $category['investments'][$j]->value)}}</td>
+                    <td>
+                        <input type="number" id="investment-0-{{$j}}-{{$i}}-{{$key}}" name="investment-0-{{$j}}-{{$i}}-{{$key}}" class="form-control" oninput="calculateTotal(0, '{{$category->option_number}}', '{{sizeof($category['investments'])}}', '{{$category->id}}', '{{$categories}}')" value="0" min="0" onfocus="clearField(this, '0');" onblur="fillField(this, '0');" onkeydown="return blockSpecialCharactersInInputNumber(event);" placeholder="* Vendosni vlerën në monedhën Lekë">
+                    </td>
+                    <td>
+                        <input type="number" id="investment-1-{{$j}}-{{$i}}-{{$key}}" name="investment-1-{{$j}}-{{$i}}-{{$key}}" class="form-control" oninput="calculateTotal(1, '{{$category->option_number}}', '{{sizeof($category['investments'])}}', '{{$category->id}}', '{{$categories}}')" value="0" min="0" onfocus="clearField(this, '0');" onblur="fillField(this, '0');" onkeydown="return blockSpecialCharactersInInputNumber(event);" placeholder="* Vendosni vlerën në monedhën Lekë">
+                    </td>
                     </tr>
                     @endfor
                     <tr>
@@ -74,7 +73,7 @@
                         </td>
                     </tr>
             </table>
-        @endfor
+            @endfor
     </div>
 
 </div>
