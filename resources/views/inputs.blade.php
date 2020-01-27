@@ -29,7 +29,7 @@
 
                 @for($j = 0; $j < $category->culture_number; $j++)
                     <tr>
-                        <td>{{trans('business_data.' . $category['business'][$j+2]->value)}}</td>
+                        <td> {{trans('business_data.' . $category['business'][$j+2]->value)}}</td>
                         <td>
                             <select class="form-control" id="business-{{$j+2}}-{{$i}}-{{$key}}" name="business-{{$j+2}}-{{$i}}-{{$key}}" style="border-radius: 5px;" {{($i == 0 && $j == 0) ? 'required' : ''}} oninvalid="this.setCustomValidity('{{trans('validation.one_subculture_required')}}')" onchange="businessDataValidation(this, '{{$category->culture_number}}', '{{$i}}', '{{$key}}')" disabled>
                                 <option value="">{{trans('messages.none')}}</option>
@@ -62,6 +62,7 @@
                     <tr>
                         <td>Totali</td>
                         <td>
+
                             <center><label id="total-investment-{{$i}}-{{$key}}">0</label></center>
                         </td>
                     </tr>
