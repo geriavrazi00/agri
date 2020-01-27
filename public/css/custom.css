@@ -105,7 +105,7 @@ tr {
     margin-right: 50px;
     margin-left: 20px; */
     color: #212529;
-    border: 2px solid #508104;
+    border: 1px solid #8EA604;
     border-radius: 15px;
 }
 .resulttable {
@@ -114,20 +114,24 @@ tr {
     margin-right: 50px;
     margin-left: 20px; */
     color: #212529;
-    border: 2px solid #508104;
+    border: 2px solid #8EA604;
     /* border-radius: 15px; */
     background-color: white;
 }
 
 .resulttablehead {
-    color: #508104;
+    color: #8EA604;
     font-size: 20px;
     padding: 10px;
+    word-wrap: break-word;
+    white-space: inherit!important;
 }
 .resulttabledata {
     padding: 10px;
     font-size: 18px;
-    border-top: 1px solid #508104;
+    border-top: 1px solid #8EA604;
+    word-wrap: break-word;
+    white-space: inherit!important;
 }
 
 /* Number fields */

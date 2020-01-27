@@ -6594,6 +6594,8 @@ input[type="submit"].btn-block {
     -ms-flex: 1 1 auto;
     flex: 1 1 auto;
     padding: 1.25rem;
+    -webkit-box-shadow: 8px 8px 5px rgba(0, 0, 0, 0.08);
+    box-shadow: 8px 8px 5px rgba(0, 0, 0, 0.08);
 }
 .card-title {
     margin-bottom: 0.75rem;
@@ -13453,7 +13455,7 @@ nav.navbar.active {
     box-shadow: 0 2px 3px rgba(0, 0, 0, 0.08);
 }
 nav.navbar .dropdown-menu {
-    margin-top: 1.4rem;
+    margin-top: 0px;
 }
 @media (max-width: 991.98px) {
     nav.navbar {
@@ -13508,9 +13510,18 @@ footer.main-footer {
 }
 .hero {
     padding: 12.5rem 0;
-    background: url(../img/bg/background.jpg) no-repeat;
-    background-size: cover;
-    background-position: bottom left;
+    background: url(../img/bg/soybean-background.png) no-repeat;
+    /* background-repeat: no-repeat; */
+    /* height: 100%; */
+    background-size: 100%;
+    background-repeat: repeat-y;
+    background-attachment: fixed;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow-x: scroll;
     /*background-attachment: fixed;*/
 }
 .subscription-form .form-group {
@@ -15336,7 +15347,7 @@ code {
 .dropdown-item.active,
 .dropdown-item:active {
     color: #fff;
-    background-color: #1e69b8;
+    background-color: #8EA604!important;
 }
 .dropdown-item.disabled,
 .dropdown-item:disabled {

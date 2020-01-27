@@ -25,6 +25,11 @@ function calculateTotal(inputIndex, totalTables, totalFields, categoryId, catego
                     : 0;
         }
 
+        // console.log(inputIndex);
+        // console.log(i);
+        console.log(categoryId);
+        //console.log(document.getElementById("total-investment-" + inputIndex + "-" + i + "-" + categoryId).innerHTML);
+
         document.getElementById(
             "total-investment-" + inputIndex + "-" + i + "-" + categoryId
         ).innerHTML = investments.toLocaleString();
@@ -75,6 +80,7 @@ function selectCategories(category, categories) {
         categoryDivElement.style.backgroundColor = "#508104";
         selectedCategories.push(category.id);
         manageSelectedCategories(category, true);
+        document.getElementById('category-' + category.id + '-anchor').scrollIntoView({ top: 150,  behavior: 'smooth' });
     } else {
         categoryElement.style.display = "none";
         categoryElement.style.opacity = 0;
@@ -85,15 +91,13 @@ function selectCategories(category, categories) {
 
         for (var i = 0; i < category.option_number; i++) {
             for (var j = 0; j < category.labels.length; j++) {
-                document.getElementById(
-                    "investment-" + j + "-" + i + "-" + category.id
-                ) != null
-                    ? (document.getElementById(
-                          "investment-" + j + "-" + i + "-" + category.id
-                      ).value = 0)
-                    : document.getElementById(
-                          "investment-" + j + "-" + i + "-" + category.id
-                      );
+                document.getElementById("investment-0-" + j + "-" + i + "-" + category.id) != null
+                    ? (document.getElementById("investment-0-" + j + "-" + i + "-" + category.id).value = 0)
+                    : document.getElementById("investment-0-" + j + "-" + i + "-" + category.id);
+
+                document.getElementById("investment-1-" + j + "-" + i + "-" + category.id) != null
+                    ? (document.getElementById("investment-1-" + j + "-" + i + "-" + category.id).value = 0)
+                    : document.getElementById("investment-1-" + j + "-" + i + "-" + category.id);
             }
 
             document.getElementById("business-0-" + i + "-" + category.id) !=
@@ -129,7 +133,14 @@ function selectCategories(category, categories) {
             }
         }
 
-        calculateTotal(
+        calculateTotal('0',
+            category.option_number,
+            category.labels.length,
+            category.id,
+            categories
+        );
+
+        calculateTotal('1',
             category.option_number,
             category.labels.length,
             category.id,
