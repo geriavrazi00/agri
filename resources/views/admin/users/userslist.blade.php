@@ -4,20 +4,20 @@
 
 <div class="hero" style="padding: 20px; height: 100%;">
 	<div class="row justify-content-center">
-		<div class="col-md-7" style="padding-top:100px;">
+        <div class="col-md-7" style="padding-top: 56px;">
+            <center>
+                <div style="display: inline-flex; text-align: center;">
+                    <h3 class="resulttablehead">Menaxhimi i përdoruesve</h3>
+
+                    <a href="/users/create" class="btn btn-primary navbar-btn ml-0 ml-lg-3" style="height: fit-content;">
+                        Krijo
+                    </a>
+                </div>
+            </center>
+
+            <br/>
+
 			<div class="table card-body" style="background-color: white;">
-				<center>
-					<div style="display: inline-flex; text-align: center;">
-						<h3 class="resulttablehead">Menaxhimi i përdoruesve</h3>
-
-						<a href="/users/create" class="btn btn-primary navbar-btn ml-0 ml-lg-3" style="height: fit-content;">
-							Krijo
-						</a>
-					</div>
-				</center>
-
-				<br/>
-
                 <table id="userstable" class="resulttable display responsive nowrap" style="width: 100%;">
                     <thead>
                         <tr class="resulttablerow">

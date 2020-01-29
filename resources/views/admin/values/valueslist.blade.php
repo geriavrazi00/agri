@@ -4,16 +4,16 @@
 
 <div class="hero" style="padding: 20px; height: 100%;">
 	<div class="row justify-content-center">
-		<div class="col-md-7" style="padding-top:100px;">
-			<div class="table card-body" style="background-color: white;">
-				<center>
-					<div style="display: inline-flex; text-align: center;">
-						<h3 class="resulttablehead">Menaxhimi i koefiçentëve të kategorive</h3>
-					</div>
-				</center>
+		<div class="col-md-7" style="padding-top: 56px;">
+            <center>
+                <div style="display: inline-flex; text-align: center;">
+                    <h3 class="resulttablehead">Menaxhimi i koefiçentëve të kategorive</h3>
+                </div>
+            </center>
 
-				<br/>
+            <br/>
 
+            <div class="table card-body" style="background-color: white;">
                 <table id="valuestable" class="resulttable display responsive nowrap" style="width: 100%;">
                     <thead>
                         <tr class="resulttablerow">

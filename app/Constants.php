@@ -16,6 +16,6 @@ final class Constants {
 	const LOAN_FIELDS = 4;
 
 	//Roles of the system
-	const ROLE_ADMIN = "admin";
-	const ROLE_WEB = "web";
+	const ROLE_ADMIN = "Administrator";
+	const ROLE_WEB = "Përdorues i thjeshtë";
 }
