@@ -43,7 +43,8 @@
         <div class="preloader"></div>
 
         <!-- Navbar -->
-        <header class="header"> @auth
+        <header class="header">
+            @auth
             <nav class="navbar navbar-expand-lg fixed-top">
                 <div class="container">
                     <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler navbar-toggler-right" data-target="#navbarSupportedContent" data-toggle="collapse" type="button">Menu<i class="fa fa-bars ml-2"></i>
@@ -94,8 +95,9 @@
                         @endauth
                     </div>
                 </div>
-            </nav>
-        </header> @endauth
+            </nav> @endauth
+        </header>
+
 
         <main class="py-4" style="padding-top: 0px !important; ">
             @yield('content')

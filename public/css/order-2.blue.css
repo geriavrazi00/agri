@@ -381,7 +381,7 @@ input.form-control.total-sum {
 /* Table Column Sizing */
 
 .item-cell {
-    border-radius: 25px;
+    border-radius: 5px;
     border: 2px solid #508104;
     padding: 20px;
     background: #508104;

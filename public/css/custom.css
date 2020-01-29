@@ -93,6 +93,8 @@ tr {
     padding-left: 20px;
     text-align: center;
     padding-top: 3px;
+    text-transform: uppercase;
+    font-weight: 500;
 }
 /*
 * =====================================================
@@ -100,13 +102,14 @@ tr {
 * =====================================================
 */
 .table {
-    /* width: 95%; */
-    /* margin-bottom: 1rem;
-    margin-right: 50px;
-    margin-left: 20px; */
+    width: 80% !important;
     color: #212529;
     border: 1px solid #8ea604;
     border-radius: 15px;
+    margin-bottom: 100px !important;
+    margin: auto;
+    background-color: white !important;
+    font-weight: 600;
 }
 .resulttable {
     /* width: 95%; */
@@ -149,19 +152,18 @@ input[type="number"]::-webkit-outer-spin-button {
     color: #508104;
     text-align: left;
     font-weight: 500;
-    padding-left: 150px;
+    padding-left: 10vw;
 }
 
 #applicantnameinput {
     background: transparent;
     border: 1px solid #508104;
     border-bottom: 2px solid #508104;
-    border-radius: 10px;
+    border-radius: 3px;
     -webkit-box-shadow: none;
     box-shadow: none;
-    -webkit-transition: none;
     height: 35px;
-    width: 400px;
+    width: 25vw;
     font-size: 16px;
     font-weight: 400;
     padding-left: 20px;
@@ -170,17 +172,17 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 .edit-buttons {
-    border-radius: 20px!important;
-    font-size: 16px!important;
-    padding-left: 8px!important;
-    padding-right: 5px!important;
+    border-radius: 20px !important;
+    font-size: 16px !important;
+    padding-left: 8px !important;
+    padding-right: 5px !important;
 }
 
 .action-buttons {
-    border-radius: 20px!important;
-    font-size: 16px!important;
-    padding-left: 8px!important;
-    padding-right: 8px!important;
+    border-radius: 20px !important;
+    font-size: 16px !important;
+    padding-left: 8px !important;
+    padding-right: 8px !important;
 }
 
 #applicant-label-desc {
@@ -191,8 +193,11 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 #logo {
-    width: 100%;
-    height: auto;
+    max-width: 100%;
+    width: 100vw;
+    padding-left: 6vw;
+    padding-right: 6vw;
+    height: 10vw;
 }
 .logos {
     padding: 0 6px;
@@ -201,8 +206,7 @@ input[type="number"]::-webkit-outer-spin-button {
     display: flex;
     background: white;
     padding-bottom: 10px;
-    opacity: 0.8;
-    border-radius: 0 0 10px 10px;
+    margin-top: 0px !important;
 }
 @media only screen and (max-width: 700px) {
     .logos {
@@ -265,7 +269,7 @@ body {
 
 .input-group-prepend span {
     width: 50px;
-    background-color: #508104;
+    background-color: #8ea604;
     color: white;
     border: 0 !important;
 }
@@ -289,7 +293,14 @@ input:focus {
 .login_btn {
     color: white;
     background-color: #8ea604;
-    width: 100px;
+    width: 170px !important;
+    height: 70px !important;
+    font-size: x-large !important;
+    font-weight: 600 !important;
+    position: absolute;
+    margin-left: 10vw;
+    margin-top: 1vw;
+    border-radius: 1px !important;
 }
 
 .login_btn:hover {
@@ -313,13 +324,42 @@ input:focus {
     background-size: 100%;
     /*background-attachment: fixed;*/
 }
+@media (max-width: 991.98px) {
+    .superhero {
+        padding: 5rem 0 7rem;
+        padding-top: 8rem;
+    }
+}
 .modal-content {
     background: url(../img/bg/popup.jpg) no-repeat;
     background-size: cover;
     color: white;
 }
 #welcometext {
-    font-size: 30px;
+    font-size: 2vw;
     font-weight: 600;
     text-align: justify;
+}
+
+#namenipt {
+    margin-top: 100px;
+    width: 80vw;
+}
+#category-10-button {
+    margin-left: 128px;
+}
+
+#footercontainer {
+    color: #182702;
+    font-family: "Barlow", sans-serif;
+    font-size: 20px;
+    padding-left: 610px;
+}
+
+#submitbutton {
+    max-width: 150px;
+    width: 40%;
+    font-size: large;
+    height: auto;
+    font-weight: bold;
 }

@@ -6,13 +6,25 @@
 <section class="hero">
     <div class="container text-center">
         <div class="row">
-            <form method="POST" action="/result" style="width: 100%;">
+            <form method="GET" action="/result" style="width: 100%;">
+                <input type="hidden" id="date" name="date" value="{{date('d-m-Y H:i:s')}}" />
                 @csrf
-                <div class="form-row" id="applicant-name-div" style=" width: 100%;">
-                    <label for="applicant-name" id="applicantname" style="font-weight: 700;">{{trans('messages.applicant_name')}}</label>
-                    <input class="form-control" id="applicantnameinput" type="text" name="applicant-name" required oninvalid="createInvalidMsg(this, '{{trans('validation.applicant_name_required')}}', '');" oninput="createInvalidMsg(this, '', '');" />
-                    <p id="applicant-label-desc">*Vendosni emrin e aplikantit ose subjektit</p>
-                </div>
+                <table id="namenipt">
+                    <tr>
+                        <td><label for="applicant-name" id="applicantname" style="font-weight: 700;">{{trans('messages.applicant_name')}}</label></td>
+                        <td><input class="form-control" id="applicantnameinput" type="text" name="applicant-name" required oninvalid="createInvalidMsg(this, '{{trans('validation.applicant_name_required')}}', '');" oninput="createInvalidMsg(this, '', '');" /></td>
+                    </tr>
+                    <tr>
+                        <td><label for="business-code" id="applicantname" style="font-weight: 700;">NIPT/Kodi i fermerit</label></td>
+                        <td><input class="form-control" id="applicantnameinput" type="text" name="business-code" required oninvalid="createInvalidMsg(this, '{{trans('validation.business_code_required')}}', '');" oninput="createInvalidMsg(this, '', '');" /></td>
+                    </tr>
+                </table>
+
+                {{-- <div class="form-row" id="applicant-name-div" style="width: 100%;">
+                    </div> --}}
+                {{-- <div class="form-row" id="applicant-name-div" style="width: 100%;">
+                    </div> --}}
+
                 </br>
             </form>
         </div>
@@ -43,7 +55,7 @@
                     </div>
 
                     <div class="container" style="display: contents;">
-                        @for($i = 0; $i < sizeof($categories); $i++) <div class="button">
+                        @for($i = 0; $i < sizeof($categories); $i++) <div class="button" id="category-{{$categories[$i]->id}}-button">
                             <div id="category-{{$categories[$i]->id}}-div" class="rtable-cell item-cell-type">
                                 <a onclick="selectCategories('{{$categories[$i]}}', '{{$categories}}');" style="cursor: pointer;">
                                     <img src="img/product-images/{{$categories[$i]->image}}" style="width:100px; height:100px;" />
@@ -62,56 +74,35 @@
                     <div class="dividermask"></div>
                 </div>
 
-                <form method="GET" action="/result" style="width: 100%;">
-                    <input type="hidden" id="date" name="date" value="{{date('d-m-Y H:i:s')}}" />
 
-                    <table>
-                        <tr>
-                            <td><label for="applicant-name" id="applicantname" style="font-weight: 700;">{{trans('messages.applicant_name')}}</label></td>
-                            <td><input class="form-control" id="applicantnameinput" type="text" name="applicant-name" required oninvalid="createInvalidMsg(this, '{{trans('validation.applicant_name_required')}}', '');" oninput="createInvalidMsg(this, '', '');" /></td>
-                        </tr>
-                        <tr>
-                            <td><label for="business-code" id="applicantname" style="font-weight: 700;">NIPT/Kodi i fermerit</label></td>
-                            <td><input class="form-control" id="applicantnameinput" type="text" name="business-code" required oninvalid="createInvalidMsg(this, '{{trans('validation.business_code_required')}}', '');" oninput="createInvalidMsg(this, '', '');" /></td>
-                        </tr>
-                    </table>
 
-                    {{-- <div class="form-row" id="applicant-name-div" style="width: 100%;">
-                    </div> --}}
-                    {{-- <div class="form-row" id="applicant-name-div" style="width: 100%;">
-                    </div> --}}
+                @foreach($categoriesData as $key => $category)
+                @if($category['investments'] != null)
+                <div id="category-{{$key}}" style="display: none; width: 100%; padding-top: 20px;">
+                    <div id="category-{{$key}}-anchor" style="width: 100%; padding-top: 56px;"></div>
+                    @include('inputs')
+                </div>
+                @endif
+                @endforeach
 
+                <div id="loan" style="display: none; width: 100%;">
+                    @include('loan')
+
+                    <input type="hidden" id="selected-categories[]" name="selected-categories[]" />
                     <br />
-
-                    @foreach($categoriesData as $key => $category)
-                    @if($category['investments'] != null)
-                    <div id="category-{{$key}}" style="display: none; width: 100%; padding-top: 20px;">
-                        <div id="category-{{$key}}-anchor" style="width: 100%; padding-top: 56px;"></div>
-                        @include('inputs')
-                    </div>
-                    @endif
-                    @endforeach
-
-                    <div id="loan" style="display: none; width: 100%;">
-                        @include('loan')
-
-                        <input type="hidden" id="selected-categories[]" name="selected-categories[]" />
-                        <br />
-
-                        <center>
-                            <button class="btn btn-primary" type="submit">
-                                {{trans('messages.generate')}}
-                            </button>
-                        </center>
-                    </div>
+                    <center>
+                        <button id="submitbutton" class="btn btn-primary" type="submit">
+                            {{trans('messages.generate')}}
+                        </button>
+                    </center>
+                </div>
                 </form>
             </div>
         </div>
         </div>
     </section>
 </section>
-<!-- Back To Top Button -->
-<a href="" class="back-to-top btn-primary"><i class="fa fa-chevron-up"></i></a>
+
 @endsection
 
 {{-- <div class="rtable rtable--collapse" style="display: none;">
@@ -148,5 +139,7 @@
 </div>
 </div>
 </div>
+<!-- Back To Top Button -->
+<a href="" class="back-to-top btn-primary"><i class="fa fa-chevron-up"></i></a>
 </section>
 @endsection --}}

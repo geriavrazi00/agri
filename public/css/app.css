@@ -1995,23 +1995,23 @@ fieldset:disabled a.btn {
     pointer-events: none;
 }
 .btn-primary {
-    color: #fff!important;
-    background-color: #8EA604!important;
-    border-color: #8EA604!important;
+    color: #fff !important;
+    background-color: #8ea604 !important;
+    border-color: #8ea604 !important;
 }
-.page-link{
-    color: #518400!important;
+.page-link {
+    color: #518400 !important;
 }
 .btn-primary:hover {
-    color: #fff!important;
-    background-color: #518400!important;
-    border-color: #518400!important;
+    color: #fff !important;
+    background-color: #518400 !important;
+    border-color: #518400 !important;
 }
 .page-item.active .page-link {
     z-index: 1;
-    color: #fff!important;
-    background-color: #8EA604!important;
-    border-color: #8EA604!important;
+    color: #fff !important;
+    background-color: #8ea604 !important;
+    border-color: #8ea604 !important;
 }
 .btn-primary.focus,
 .btn-primary:focus {
@@ -3385,7 +3385,7 @@ input[type="submit"].btn-block {
 .nav-link:focus,
 .nav-link:hover {
     text-decoration: none;
-    color: #518400!important;
+    color: #518400 !important;
 }
 .nav-link.disabled {
     color: #6c757d;
@@ -3412,13 +3412,13 @@ input[type="submit"].btn-block {
 }
 .nav-tabs .nav-item.show .nav-link,
 .nav-tabs .nav-link {
-    color: #8EA604!important;
+    color: #8ea604 !important;
     background-color: #f8fafc;
     border-color: #dee2e6 #dee2e6 #f8fafc;
 }
 
 .active-nav {
-    color: #8EA604!important;
+    color: #8ea604 !important;
 }
 .nav-tabs .dropdown-menu {
     margin-top: -1px;
@@ -7782,66 +7782,66 @@ a.text-dark:hover {
 
 /****************************** Datatable styles ****************************/
 .dash-search-form label {
-	display: block;
-	color: #81878C;
-	font-size: 12px;
-	font-weight: 600;
-	margin-bottom: 8px;
+    display: block;
+    color: #81878c;
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 8px;
 }
 .dash-search-form input,
 .dash-search-form select {
-	width: 100%;
-	border: 1px solid #eee;
-	padding: 10px 15px;
+    width: 100%;
+    border: 1px solid #eee;
+    padding: 10px 15px;
 }
 .dash-search-form .submit-btn {
-	border: 1px solid transparent;
-	background: #27AE60;
-	color: #fff;
-	display: inline-block;
-	padding: 10px;
-	font-weight: 600;
-	margin-top: 26px;
-	width: 100%;
+    border: 1px solid transparent;
+    background: #27ae60;
+    color: #fff;
+    display: inline-block;
+    padding: 10px;
+    font-weight: 600;
+    margin-top: 26px;
+    width: 100%;
 }
 .dash-search-form .submit-btn:hover {
-	background: transparent;
-	color: #27AE60;
-	border: 1px solid #27AE60
+    background: transparent;
+    color: #27ae60;
+    border: 1px solid #27ae60;
 }
 .dash-search-form .submit-btn i {
-	margin-right: 10px;
+    margin-right: 10px;
 }
 .dataTables_wrapper label {
-	color: black;
-	font-weight: normal;
+    color: black;
+    font-weight: normal;
 }
 .dataTables_wrapper .dataTables_filter {
-	margin-bottom: 25px;
+    margin-bottom: 25px;
 }
 .dataTables_filter input,
-.dataTables_length select{
-	border: 1px solid #eee;
-	/* padding: 8px 10px; */
+.dataTables_length select {
+    border: 1px solid #eee;
+    /* padding: 8px 10px; */
 }
 table.dataTable thead th {
-	border-bottom: 1px solid #eee;
-	/* font-size: 12px; */
-	font-weight: 700;
-	color: black;
-	padding: 15px;
+    border-bottom: 1px solid #eee;
+    /* font-size: 12px; */
+    font-weight: 700;
+    color: black;
+    padding: 15px;
 }
 table.dataTable thead th i {
-	margin-right: 5px;
+    margin-right: 5px;
 }
 table.dataTable tbody td {
-	padding: 15px;
-	/* font-size: 13px; */
+    padding: 15px;
+    /* font-size: 13px; */
     color: black;
     vertical-align: middle;
 }
 table.dataTable.display tbody td {
-	border-top: none;
+    border-top: none;
 }
 table.dataTable tbody td a {
     color: white;
@@ -7854,25 +7854,26 @@ table.dataTable tbody td a {
 	display: block;
 } */
 table.dataTable.no-footer {
-	border: 1px solid #eee;
-	margin-bottom: 25px;
+    border: 1px solid #eee;
+    margin-bottom: 25px;
 }
 table.dataTable tbody .text-success {
-	color: #27AE60;
+    color: #27ae60;
 }
 table.dataTable tbody .text-danger {
-	color: #FF7676;
+    color: #ff7676;
 }
 .dataTables_wrapper .dataTables_info {
-	color: black;
+    color: black;
 }
-.dataTables_wrapper .dataTables_paginate .paginate_button.current, .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover{
-	color: #30363d;
-	border: 1px solid #eee;
+.dataTables_wrapper .dataTables_paginate .paginate_button.current,
+.dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
+    color: #30363d;
+    border: 1px solid #eee;
 }
 .dataTables_wrapper .dataTables_paginate .paginate_button.disabled,
 .dataTables_wrapper .dataTables_paginate .paginate_button {
-	color: black;
+    color: black;
 }
 table.dataTable thead th {
     position: relative;
@@ -7901,83 +7902,83 @@ table.dataTable thead th.sorting_desc:after {
     content: "\f0dd";
 }
 table.dataTable > tbody > tr.child span.dtr-title {
-	font-size: 12px;
-	font-weight: 700;
+    font-size: 12px;
+    font-weight: 700;
 }
 table.dataTable > tbody > tr.child span.dtr-title i {
-	margin-right: 5px;
+    margin-right: 5px;
 }
 .datatable-select,
 .datatable-input {
-	border: 1px solid #eee;
-	padding: 8px 10px;
+    border: 1px solid #eee;
+    padding: 8px 10px;
 }
 .table-action-box a {
-	display: inline-block;
-	margin-top: 15px;
-	margin-right: 20px;
-	padding: 10px 30px;
-	font-weight: 700;
-	font-size: 12px;
-	text-decoration: none;
+    display: inline-block;
+    margin-top: 15px;
+    margin-right: 20px;
+    padding: 10px 30px;
+    font-weight: 700;
+    font-size: 12px;
+    text-decoration: none;
 }
 .table-action-box a i {
-	margin-right: 5px;
+    margin-right: 5px;
 }
-.table-action-box .save{
-	color: #fff;
-	background: #27AE60;
+.table-action-box .save {
+    color: #fff;
+    background: #27ae60;
 }
 .table-action-box .cancel {
-	color: #27AE60;
-	border: 1px solid #27AE60;
+    color: #27ae60;
+    border: 1px solid #27ae60;
 }
-.top-margin{
-	margin-top: 25px;
+.top-margin {
+    margin-top: 25px;
 }
 .action-link a {
-	color: #fff !important;
-	display: inline-block;
-	height: 20px;
-	width: 20px;
-	border-radius: 50%;
-	text-align: center;
-	padding: 3px 6px;
-	margin-right: 5px;
-	font-size: 10px;
+    color: #fff !important;
+    display: inline-block;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    text-align: center;
+    padding: 3px 6px;
+    margin-right: 5px;
+    font-size: 10px;
 }
 .action-link .edit {
-	background: #27AE60;
+    background: #27ae60;
 }
 .action-link .delete {
-	background: #FF7676;
+    background: #ff7676;
 }
 @media (max-width: 991px) {
-	.dash-search-form label{
-		margin-top: 15px;
-	}
-	.dash-search-form .submit-btn {
-		margin-top: 42px;
-	}
+    .dash-search-form label {
+        margin-top: 15px;
+    }
+    .dash-search-form .submit-btn {
+        margin-top: 42px;
+    }
 }
 
 .bootstrap-data-table-panel .dataTables_filter {
-    text-align: right
+    text-align: right;
 }
 
 .bootstrap-data-table-panel .dataTables_filter .form-control:focus,
 .bootstrap-data-table-panel .dataTables_filter .form-control:hover {
-    background: 0 0
+    background: 0 0;
 }
 
 .dataTables_length {
     display: inline-block;
     float: left;
-    margin-right: 30px
+    margin-right: 30px;
 }
 
 .dt-buttons {
-    margin-bottom: 15px
+    margin-bottom: 15px;
 }
 
 .dt-buttons .dt-button {
@@ -7986,14 +7987,14 @@ table.dataTable > tbody > tr.child span.dtr-title i {
     border-color: #e7e7e7;
     margin-right: 10px;
     padding: 7px 20px;
-    border-radius: 0
+    border-radius: 0;
 }
 
 .dt-buttons .dt-button.active,
 .dt-buttons .dt-button:focus,
 .dt-buttons .dt-button:hover:not(.disabled) {
     background: #03a9f5;
-    color: #fff
+    color: #fff;
 }
 
 a.dt-button:hover:not(.disabled),
@@ -8003,7 +8004,7 @@ div.dt-button:hover:not(.disabled) {
     background-image: none;
     border: 1px solid #03a9f5;
     box-shadow: none;
-    color: #fff
+    color: #fff;
 }
 
 a.dt-button:focus:not(.disabled),
@@ -8013,7 +8014,7 @@ div.dt-button:focus:not(.disabled) {
     background-image: none;
     border: 1px solid #03a9f5;
     box-shadow: none;
-    color: #fff
+    color: #fff;
 }
 
 a.dt-button.active:hover:not(.disabled):not(.disabled),
@@ -8026,7 +8027,7 @@ div.dt-button:active:hover:not(.disabled):not(.disabled) {
     background-image: none;
     border: 1px solid #03a9f5;
     box-shadow: none;
-    color: #fff
+    color: #fff;
 }
 
 a.dt-button.active:not(.disabled),
@@ -8039,22 +8040,22 @@ div.dt-button:active:not(.disabled) {
     background-image: none;
     border: 1px solid #03a9f5;
     box-shadow: none;
-    color: #fff
+    color: #fff;
 }
 
-@media (max-width:767px) {
+@media (max-width: 767px) {
     .dataTables_length {
-        margin-left: 10px
+        margin-left: 10px;
     }
     select.input-sm {
-        width: 167px
+        width: 167px;
     }
     .bootstrap-data-table-panel .dataTables_filter {
         margin-left: 12px;
         text-align: left;
-        padding-right: 10px
+        padding-right: 10px;
     }
     .bootstrap-data-table-panel .dataTables_filter .form-control {
-        margin-left: 0
+        margin-left: 0;
     }
 }
