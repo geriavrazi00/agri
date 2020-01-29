@@ -54,7 +54,7 @@
                                 <a class="nav-link {{ Request::is('home') ? 'active-nav' : '' }}" href="/home">Kreu</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link {{ Request::is('plans') ? 'active-nav' : '' }}" href="/plans">Projekte të procesuara</a>
+                                <a class="nav-link {{ (Request::is('plans') || Request::is('plans/*')) ? 'active-nav' : '' }}" href="/plans">Projekte të procesuara</a>
                             </li>
                             <li class="nav-item dropdown" style="padding-right: 10px;">
                                 <a class="nav-link dropdown-toggle {{ (Request::is('myprofile') || Request::is('myprofile/*') ) ? 'active-nav' : ''}}" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

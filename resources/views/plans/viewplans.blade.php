@@ -14,17 +14,17 @@
 			</div>
 
             <div class="table card-body col-md-8" style="background-color: white; margin: auto;">
-                <div style="display: flex; text-align: center;">
-                    <div class="col-md-4" >
-                        Emri i aplikantit: {{$plan->applicant}}
+                <div style="text-align: center;">
+                    <div class="col-md-12">
+                        <b>Emri i aplikantit:</b> {{$plan->applicant}}
                     </div>
 
-                    <div class="col-md-4">
-                        NIPT/Kodi i fermerit: {{$plan->business_code}}
+                    <div class="col-md-12">
+                        <b>NIPT/Kodi i fermerit:</b> {{$plan->business_code}}
                     </div>
 
-                    <div class="col-md-4">
-                        Data e krijimit: {{$plan->created_at}}
+                    <div class="col-md-12">
+                        <b>Data e krijimit:</b> {{$plan->created_at}}
                     </div>
                 </div>
 
@@ -33,15 +33,14 @@
                 <h4 style="text-align: center">Inputet</h4>
 
                 @foreach($inputs as $category)
-                    <div class="form-group row">
-                        <label for="name" class="col-md-6 col-form-label text-md-right">Kategoria:</label>
-                        <label id="name" class="col-md-6 col-form-label">{{ $category->farmCategory->name }}</label>
+                    <div class="col-md-12" style="text-align: center;">
+                        <b>Kategoria:</b> {{ $category->farmCategory->name }}
                     </div>
 
                     @for($i = 0; $i < $category->farmCategory->option_number; $i++)
                         <div class="col-md-12" style="margin: auto;">
                             <table id="plansdetailbusiness" class="resulttable display responsive nowrap" style="width: 100%;">
-                                <thead colspan="2">
+                                <thead>
                                     <tr class="resulttablerow">
                                         <th class="resulttablehead">
                                             <b>{{trans('messages.business_data')}}</b>
@@ -86,10 +85,10 @@
                                         <th class="resulttablehead">
                                             <b>{{ trans('messages.investment_plan') }}</b>
                                         </th>
-                                        <th class="resulttablehead">
+                                        <th class="resulttablehead" style="text-align: right;">
                                             <b>{{ trans('messages.total_value') }}</b>
                                         </th>
-                                        <th class="resulttablehead">
+                                        <th class="resulttablehead" style="text-align: right;">
                                             <b>{{ trans('messages.financing_bank') }}</b>
                                         </th>
                                     </tr>
@@ -119,7 +118,7 @@
                         <thead>
                             <tr class="resulttablerow">
                                 <th class="resulttablehead"><b>{{ trans('messages.loan_repayment') }}</b></th>
-                                <th class="resulttablehead"><b>{{ trans('messages.loan_data') }}</b></th>
+                                <th class="resulttablehead" style="text-align: right;"><b>{{ trans('messages.loan_data') }}</b></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -152,11 +151,11 @@
                             <tr class="resulttablerow">
                                 <th class="resulttablehead">Nënprodukti</th>
                                 <th class="resulttablehead">Kategoria</th>
-                                <th class="resulttablehead">Njësi</th>
-                                <th class="resulttablehead">Rendimenti</th>
-                                <th class="resulttablehead">Prodhimi</th>
-                                <th class="resulttablehead">Të ardhura bruto për njësi</th>
-                                <th class="resulttablehead">Të ardhura bruto totale</th>
+                                <th class="resulttablehead" style="text-align: right;">Njësi</th>
+                                <th class="resulttablehead" style="text-align: right;">Rendimenti</th>
+                                <th class="resulttablehead" style="text-align: right;">Prodhimi</th>
+                                <th class="resulttablehead" style="text-align: right;">Të ardhura bruto për njësi</th>
+                                <th class="resulttablehead" style="text-align: right;">Të ardhura bruto totale</th>
                             </tr>
                         </thead>
 
@@ -165,11 +164,11 @@
                                 <tr class="resulttablerow">
                                     <td class="resulttabledata">{{$result->cultures[$i][0]}}</td>
                                     <td class="resulttabledata">{{$result->cultures[$i][1]}}</td>
-                                    <td class="resulttabledata">{{$result->cultures[$i][2]}}</td>
-                                    <td class="resulttabledata">{{$result->cultures[$i][3] + 0}}</td>
-                                    <td class="resulttabledata">{{$result->cultures[$i][4]}}</td>
-                                    <td class="resulttabledata">{{$result->cultures[$i][5]}}</td>
-                                    <td class="resulttabledata">{{$result->cultures[$i][6]}}</td>
+                                    <td class="resulttabledata" style="text-align: right;">{{ fmod($result->cultures[$i][2], 1) ? number_format($result->cultures[$i][2], 2) : number_format($result->cultures[$i][2]) }}</td>
+                                    <td class="resulttabledata" style="text-align: right;">{{ fmod($result->cultures[$i][3], 1) ? number_format($result->cultures[$i][3], 2) : number_format($result->cultures[$i][3]) }}</td>
+                                    <td class="resulttabledata" style="text-align: right;">{{ fmod($result->cultures[$i][4], 1) ? number_format($result->cultures[$i][4], 2) : number_format($result->cultures[$i][4]) }}</td>
+                                    <td class="resulttabledata" style="text-align: right;"><span style="text-align: left;">ALL </span>{{ fmod($result->cultures[$i][5], 1) ? number_format($result->cultures[$i][5], 2) : number_format($result->cultures[$i][5]) }}</td>
+                                    <td class="resulttabledata" style="text-align: right;"><span style="text-align: left;">ALL </span>{{ fmod($result->cultures[$i][6], 1) ? number_format($result->cultures[$i][6], 2) : number_format($result->cultures[$i][6]) }}</td>
                                 </tr>
                             @endfor
                         </tbody>
@@ -183,77 +182,82 @@
                         <thead>
                             <tr class="resulttablerow">
                                 <th class="resulttablehead"><b>Përfitueshmeria e investimit</b></th>
-                                <th class="resulttablehead"><b>Rezultati i përfitueshmërisë</b></th>
+                                <th class="resulttablehead" style="text-align: right;"><b>Rezultati i përfitueshmërisë</b></th>
                             </tr>
                         </thead>
 
                         <tbody>
                             <tr class="resulttablerow">
                                 <td class="resulttabledata">Totali i të ardhurave, viti 1</td>
-                                <td class="resulttabledata">{{$result->totalIncome}}</td>
+                                <td class="resulttabledata" style="text-align: right;"><span style="text-align: left;">ALL </span>{{ fmod($result->totalIncome, 1) ? number_format($result->totalIncome, 2) : number_format($result->totalIncome) }}</td>
                             </tr>
                             <tr class="resulttablerow">
                                 <td class="resulttabledata">Shpenzime prodhimi totale</td>
-                                <td class="resulttabledata">{{$result->totalExpense}}</td>
+                                <td class="resulttabledata" style="text-align: right;"><span style="text-align: left;">ALL </span>{{ fmod($result->totalExpense, 1) ? number_format($result->totalExpense, 2) : number_format($result->totalExpense) }}</td>
                             </tr>
                             <tr class="resulttablerow">
                                 <td class="resulttabledata">Amortizimi</td>
-                                <td class="resulttabledata">{{$result->totalAmortization}}</td>
+                                <td class="resulttabledata" style="text-align: right;"><span style="text-align: left;">ALL </span>{{ fmod($result->totalAmortization, 1) ? number_format($result->totalAmortization, 2) : number_format($result->totalAmortization) }}</td>
                             </tr>
                             <tr class="resulttablerow">
                                 <td class="resulttabledata">Interesi vjetor</td>
-                                <td class="resulttabledata">{{$result->yearlyInterest}}</td>
+                                <td class="resulttabledata" style="text-align: right;"><span style="text-align: left;">ALL </span>{{ fmod($result->yearlyInterest, 1) ? number_format($result->yearlyInterest, 2) : number_format($result->yearlyInterest) }}</td>
                             </tr>
                             <tr class="resulttablerow">
                                 <td class="resulttabledata">Tatimi mbi fitimin</td>
-                                <td class="resulttabledata">{{$result->incomeTax}}</td>
+                                <td class="resulttabledata" style="text-align: right;"><span style="text-align: left;">ALL </span>{{ fmod($result->incomeTax, 1) ? number_format($result->incomeTax, 2) : number_format($result->incomeTax) }}</td>
                             </tr>
                             <tr class="resulttablerow">
                                 <td class="resulttabledata">Fitimi neto total</td>
-                                <td class="resulttabledata">{{$result->totalNetIncome}}</td>
+                                <td class="resulttabledata" style="text-align: right;"><span style="text-align: left;">ALL </span>{{ fmod($result->totalNetIncome, 1) ? number_format($result->totalNetIncome, 2) : number_format($result->totalNetIncome) }}</td>
                             </tr>
                             <tr class="resulttablerow">
                                 <td class="resulttabledata">Fluksi i parase i vlefshëm për pagesa kredie</td>
-                                <td class="resulttabledata">{{$result->moneyFlux}}</td>
+                                <td class="resulttabledata" style="text-align: right;"><span style="text-align: left;">ALL </span>{{ fmod($result->moneyFlux, 1) ? number_format($result->moneyFlux, 2) : number_format($result->moneyFlux) }}</td>
                             </tr>
                             <tr class="resulttablerow">
                                 <td class="resulttabledata">Këste kredie për 1 vit</td>
-                                <td class="resulttabledata">{{$result->firstYearCredit}}</td>
+                                <td class="resulttabledata" style="text-align: right;"><span style="text-align: left;">ALL </span>{{ fmod($result->firstYearCredit, 1) ? number_format($result->firstYearCredit, 2) : number_format($result->firstYearCredit) }}</td>
                             </tr>
                             <tr class="resulttablerow">
                                 <td class="resulttabledata">DSCR</td>
-                                <td class="resulttabledata">{{$result->dscr}}</td>
+                                <td class="resulttabledata" style="text-align: right;">{{ fmod($result->dscr, 1) ? number_format($result->dscr, 2) : number_format($result->dscr) }}</td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
 
-                <div class="form-group row mb-0" >
-                    <div style="margin: auto;">
-                        <form method="POST" action="/plans/{{$plan->id}}/export/excel" style="display:inline; margin:0px; padding:0px;">
-                            @csrf
-                            <button type="submit" class="btn btn-success">
-                                Eksport Excel
-                            </button>
-                        </form>
-                        <form method="POST" action="/plans/{{$plan->id}}/export/pdf" style="display:inline; margin:0px; padding:0px;">
-                            @csrf
-                            <button type="submit" class="btn btn-success">
-                                Eksport PDF
-                            </button>
-                        </form>
-                        <form method="POST" action="/plans/{{$plan->id}}" style="display:inline; margin:0px; padding:0px;">
-                            @method('DELETE')
-                            @csrf
+                <br/>
 
-                            <button type="submit" class="btn btn-danger" onclick="areYouSure(event, this);">
-                                Fshi
-                            </button>
-                        </form>
+                <div class="col-md-12" style="text-align: right;">
+                    <form method="POST" action="/plans/{{$plan->id}}/export/excel" style="display: inline; margin: 0px;">
+                        @csrf
+                        <button type="submit" class="btn btn-success">
+                            Eksport Excel
+                        </button>
+                    </form>
+
+                    <form method="POST" action="/plans/{{$plan->id}}/export/pdf" style="display: inline; margin: 0px;">
+                        @csrf
+                        <button type="submit" class="btn btn-info">
+                            Eksport PDF
+                        </button>
+                    </form>
+
+                    <form method="POST" action="/plans/{{$plan->id}}" style="display: inline; margin: 0px;">
+                        @method('DELETE')
+                        @csrf
+
+                        <button type="submit" class="btn btn-danger" onclick="areYouSure(event, this);">
+                            Fshi
+                        </button>
+                    </form>
+
+                    <form style="display: inline; margin: 0px;">
                         <a href="/plans" class="btn btn-primary">
                             Kthehu
                         </a>
-                    </div>
+                    </form>
                 </div>
             </div>
 		</div>

@@ -40,13 +40,13 @@
                                     </a> --}}
                                     <form method="POST" action="/plans/{{$plan->id}}/export/excel" style="display:inline; margin:0px; padding:0px;">
                                         @csrf
-                                        <button type="submit" class="btn btn-secondary btn-circle btn-sm action-buttons" data-toggle="tooltip" title="Eksport në Excel">
+                                        <button type="submit" class="btn btn-success btn-circle btn-sm action-buttons" data-toggle="tooltip" title="Eksport në Excel">
                                             <i class="fa fa-file-excel-o"></i>
                                         </button>
                                     </form>
                                     <form method="POST" action="/plans/{{$plan->id}}/export/pdf" style="display:inline; margin:0px; padding:0px;">
                                         @csrf
-                                        <button type="submit" class="btn btn-dark btn-circle btn-sm action-buttons" data-toggle="tooltip" title="Eksport në PDF">
+                                        <button type="submit" class="btn btn-info btn-circle btn-sm action-buttons" data-toggle="tooltip" title="Eksport në PDF">
                                             <i class="fa fa-file-pdf-o"></i>
                                         </button>
                                     </form>

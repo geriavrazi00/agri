@@ -13403,9 +13403,9 @@ button {
     color: #999;
 }
 .form-group label {
-    color: #555;
+    color: black;
     font-weight: 400;
-    font-size: 1.05rem;
+    font-size: 1rem;
 }
 .form-group label span.icon {
     width: 2rem;
@@ -13510,10 +13510,10 @@ footer.main-footer {
 }
 .hero {
     padding: 12.5rem 0;
-    background: url(../img/bg/soybean-background.png) no-repeat;
+    background: url(../img/bg/soybean-background.png);
     /* background-repeat: no-repeat; */
     /* height: 100%; */
-    background-size: 100%;
+     background-size: 100%;
     background-repeat: repeat-y;
     background-attachment: fixed;
     position: absolute;

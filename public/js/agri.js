@@ -52,11 +52,6 @@ function calculateTotal(
                     : 0;
         }
 
-        // console.log(inputIndex);
-        // console.log(i);
-        console.log(categoryId);
-        //console.log(document.getElementById("total-investment-" + inputIndex + "-" + i + "-" + categoryId).innerHTML);
-
         document.getElementById(
             "total-investment-" + inputIndex + "-" + i + "-" + categoryId
         ).innerHTML = investments.toLocaleString();

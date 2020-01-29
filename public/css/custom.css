@@ -170,15 +170,17 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 .edit-buttons {
-    font-size: 16px;
-    padding-left: 8px;
-    padding-right: 5px;
+    border-radius: 20px!important;
+    font-size: 16px!important;
+    padding-left: 8px!important;
+    padding-right: 5px!important;
 }
 
 .action-buttons {
-    font-size: 16px;
-    padding-left: 8px;
-    padding-right: 8px;
+    border-radius: 20px!important;
+    font-size: 16px!important;
+    padding-left: 8px!important;
+    padding-right: 8px!important;
 }
 
 #applicant-label-desc {
