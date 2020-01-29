@@ -18,14 +18,41 @@
     <img src="img/logo/ministriafinancave.png" width="150" height="150">
   </div>
 </div>
+<!-- Popup -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-body">
+        <p>
+          <p style="font-size: 20px;"> Programi i Mbështetjes së Agrobiznesit Shqiptar (AASF) </p>
+          AASF është një projekt i financuar
+          dhe zhvilluar nga Banka Evropiane për Rindërtim dhe Zhvillim (BERZH) në bashkëpunim dhe
+          me mbështjetje nga Qeveria Shqiptare, i cili ka nisur aktivitetin e tij në 2016.
+          </br>
+          Qëllimi i këtij Programi është të motivojë institucionet financiare shqiptare për të
+          mbështetur një sektor vital të ekonomisë shqiptare me potenciale gjerësisht të pashfrytëzuara
+          – bujqësia dhe agrobizneset.
+          </br>
+          Programi mundëson financim dhe rritje të kapaciteteve teknike
+          të Institucioneve Financiare.
+          </br>
+          AASF ofron zgjidhje inovatore për financimin e bujqësisë dhe agrobiznesit shqiptar.
+        </p>
+      </div>
+      <button type="button" class="btn btn-primary" data-dismiss="modal">Mbyll</button>
+    </div>
+
+  </div>
+</div>
 <!-- Hero Section -->
-<section class="hero">
+<section class="superhero">
   <div class="container mb-5">
     <div class="row align-items-center">
       <div class="col-lg-12">
         <div class="row" id="herorow">
           <div class="col-lg-6">
-            <p class="lead mt-4 mb-4">
+            <p class="lead mt-4 mb-4" id="welcometext">
               Aplikacioni Agro-financa ju ndihmon të përllogarisni përfitueshmërinë e planeve të investimit nga aktiviteti bujqësor.
             </p>
           </div>
@@ -33,9 +60,6 @@
           <div class="col-lg-6">
             <div class="d-flex justify-content-center h-100">
               <div class="card">
-                <div class="card-header">
-                  <h3>Sign In</h3>
-                </div>
                 <div class="card-body">
                   <form method="POST" action="{{ route('login') }}">
                     @csrf
@@ -69,11 +93,11 @@
                     </div>
                   </form>
                 </div>
-                <div class="card-footer">
+                <!-- <div class="card-footer">
                   <div class="d-flex justify-content-center">
                     <a href="#">Forgot your password?</a>
-                  </div>
-                </div>
+                  </div> 
+                </div> -->
               </div>
             </div>
           </div>

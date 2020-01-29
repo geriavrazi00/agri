@@ -110,7 +110,8 @@
         </div>
     </section>
 </section>
-
+<!-- Back To Top Button -->
+<a href="" class="back-to-top btn-primary"><i class="fa fa-chevron-up"></i></a>
 @endsection
 
 {{-- <div class="rtable rtable--collapse" style="display: none;">

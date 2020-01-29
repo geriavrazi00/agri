@@ -2,24 +2,51 @@ $(document).ready(function() {
     $('[data-toggle="tooltip"]').tooltip();
 });
 
-$('.dropdown-toggle').dropdown();
+$(".dropdown-toggle").dropdown();
 
 var selectedCategories = new Array();
 
-function calculateTotal(inputIndex, totalTables, totalFields, categoryId, categories) {
+function calculateTotal(
+    inputIndex,
+    totalTables,
+    totalFields,
+    categoryId,
+    categories
+) {
     for (var i = 0; i < totalTables; i++) {
         var investments = 0;
         for (var j = 0; j < totalFields; j++) {
             investments +=
                 document.getElementById(
-                    "investment-" + inputIndex + "-" + j + "-" + i + "-" + categoryId
+                    "investment-" +
+                        inputIndex +
+                        "-" +
+                        j +
+                        "-" +
+                        i +
+                        "-" +
+                        categoryId
                 ) != null &&
                 document.getElementById(
-                    "investment-" + inputIndex + "-" +  j + "-" + i + "-" + categoryId
+                    "investment-" +
+                        inputIndex +
+                        "-" +
+                        j +
+                        "-" +
+                        i +
+                        "-" +
+                        categoryId
                 ).value != ""
                     ? eval(
                           document.getElementById(
-                              "investment-" + inputIndex + "-" + j + "-" + i + "-" + categoryId
+                              "investment-" +
+                                  inputIndex +
+                                  "-" +
+                                  j +
+                                  "-" +
+                                  i +
+                                  "-" +
+                                  categoryId
                           ).value
                       )
                     : 0;
@@ -45,17 +72,49 @@ function calculateTotalLoan(categories) {
     for (var i = 0; i < categories.length; i++) {
         for (var j = 0; j < categories[i].option_number; j++) {
             for (var k = 0; k < categories[i].labels.length; k++) {
-                totalLoan += document.getElementById("investment-0-" + k + "-" + j + "-" + categories[i].id) != null
-                && document.getElementById("investment-0-" + k + "-" + j + "-" + categories[i].id).value != ""
-                && document.getElementById("investment-0-" + k + "-" + j + "-" + categories[i].id).value != null
-                ? eval(document.getElementById("investment-0-" + k + "-" + j + "-" + categories[i].id).value)
-                : 0;
+                totalLoan +=
+                    document.getElementById(
+                        "investment-0-" + k + "-" + j + "-" + categories[i].id
+                    ) != null &&
+                    document.getElementById(
+                        "investment-0-" + k + "-" + j + "-" + categories[i].id
+                    ).value != "" &&
+                    document.getElementById(
+                        "investment-0-" + k + "-" + j + "-" + categories[i].id
+                    ).value != null
+                        ? eval(
+                              document.getElementById(
+                                  "investment-0-" +
+                                      k +
+                                      "-" +
+                                      j +
+                                      "-" +
+                                      categories[i].id
+                              ).value
+                          )
+                        : 0;
 
-                totalLoan += document.getElementById("investment-1-" + k + "-" + j + "-" + categories[i].id) != null
-                && document.getElementById("investment-1-" + k + "-" + j + "-" + categories[i].id).value != ""
-                && document.getElementById("investment-1-" + k + "-" + j + "-" + categories[i].id).value != null
-                ? eval(document.getElementById("investment-1-" + k + "-" + j + "-" + categories[i].id).value)
-                : 0;
+                totalLoan +=
+                    document.getElementById(
+                        "investment-1-" + k + "-" + j + "-" + categories[i].id
+                    ) != null &&
+                    document.getElementById(
+                        "investment-1-" + k + "-" + j + "-" + categories[i].id
+                    ).value != "" &&
+                    document.getElementById(
+                        "investment-1-" + k + "-" + j + "-" + categories[i].id
+                    ).value != null
+                        ? eval(
+                              document.getElementById(
+                                  "investment-1-" +
+                                      k +
+                                      "-" +
+                                      j +
+                                      "-" +
+                                      categories[i].id
+                              ).value
+                          )
+                        : 0;
             }
         }
     }
@@ -80,7 +139,9 @@ function selectCategories(category, categories) {
         categoryDivElement.style.backgroundColor = "#508104";
         selectedCategories.push(category.id);
         manageSelectedCategories(category, true);
-        document.getElementById('category-' + category.id + '-anchor').scrollIntoView({ top: 150,  behavior: 'smooth' });
+        document
+            .getElementById("category-" + category.id + "-anchor")
+            .scrollIntoView({ top: 150, behavior: "smooth" });
     } else {
         categoryElement.style.display = "none";
         categoryElement.style.opacity = 0;
@@ -91,13 +152,25 @@ function selectCategories(category, categories) {
 
         for (var i = 0; i < category.option_number; i++) {
             for (var j = 0; j < category.labels.length; j++) {
-                document.getElementById("investment-0-" + j + "-" + i + "-" + category.id) != null
-                    ? (document.getElementById("investment-0-" + j + "-" + i + "-" + category.id).value = 0)
-                    : document.getElementById("investment-0-" + j + "-" + i + "-" + category.id);
+                document.getElementById(
+                    "investment-0-" + j + "-" + i + "-" + category.id
+                ) != null
+                    ? (document.getElementById(
+                          "investment-0-" + j + "-" + i + "-" + category.id
+                      ).value = 0)
+                    : document.getElementById(
+                          "investment-0-" + j + "-" + i + "-" + category.id
+                      );
 
-                document.getElementById("investment-1-" + j + "-" + i + "-" + category.id) != null
-                    ? (document.getElementById("investment-1-" + j + "-" + i + "-" + category.id).value = 0)
-                    : document.getElementById("investment-1-" + j + "-" + i + "-" + category.id);
+                document.getElementById(
+                    "investment-1-" + j + "-" + i + "-" + category.id
+                ) != null
+                    ? (document.getElementById(
+                          "investment-1-" + j + "-" + i + "-" + category.id
+                      ).value = 0)
+                    : document.getElementById(
+                          "investment-1-" + j + "-" + i + "-" + category.id
+                      );
             }
 
             document.getElementById("business-0-" + i + "-" + category.id) !=
@@ -133,14 +206,16 @@ function selectCategories(category, categories) {
             }
         }
 
-        calculateTotal('0',
+        calculateTotal(
+            "0",
             category.option_number,
             category.labels.length,
             category.id,
             categories
         );
 
-        calculateTotal('1',
+        calculateTotal(
+            "1",
             category.option_number,
             category.labels.length,
             category.id,
@@ -309,4 +384,10 @@ function areYouSure(e, element) {
     });
 }
 
-$("#loan-3").keypress(function(event) {event.preventDefault();});
+$("#loan-3").keypress(function(event) {
+    event.preventDefault();
+});
+
+$(window).on("load", function() {
+    $("#myModal").modal("show");
+});

@@ -105,7 +105,7 @@ tr {
     margin-right: 50px;
     margin-left: 20px; */
     color: #212529;
-    border: 1px solid #8EA604;
+    border: 1px solid #8ea604;
     border-radius: 15px;
 }
 .resulttable {
@@ -114,24 +114,24 @@ tr {
     margin-right: 50px;
     margin-left: 20px; */
     color: #212529;
-    border: 2px solid #8EA604;
+    border: 2px solid #8ea604;
     /* border-radius: 15px; */
     background-color: white;
 }
 
 .resulttablehead {
-    color: #8EA604;
+    color: #8ea604;
     font-size: 20px;
     padding: 10px;
     word-wrap: break-word;
-    white-space: inherit!important;
+    white-space: inherit !important;
 }
 .resulttabledata {
     padding: 10px;
     font-size: 18px;
-    border-top: 1px solid #8EA604;
+    border-top: 1px solid #8ea604;
     word-wrap: break-word;
-    white-space: inherit!important;
+    white-space: inherit !important;
 }
 
 /* Number fields */
@@ -233,11 +233,11 @@ body {
 }
 
 .card {
-    height: 370px;
+    padding-top: 50px;
     margin-top: auto;
     margin-bottom: auto;
-    width: 400px;
-    background-color: rgba(0, 0, 0, 0.5) !important;
+    width: 70%;
+    background-color: white !important;
 }
 
 .social_icon span {
@@ -264,7 +264,7 @@ body {
 .input-group-prepend span {
     width: 50px;
     background-color: #508104;
-    color: black;
+    color: white;
     border: 0 !important;
 }
 
@@ -285,14 +285,14 @@ input:focus {
 }
 
 .login_btn {
-    color: black;
-    background-color: #508104;
+    color: white;
+    background-color: #8ea604;
     width: 100px;
 }
 
 .login_btn:hover {
-    color: black;
-    background-color: white;
+    color: white;
+    background-color: #518400;
 }
 
 .links {
@@ -301,4 +301,23 @@ input:focus {
 
 .links a {
     margin-left: 4px;
+}
+
+.superhero {
+    padding: 12.5rem 0;
+    background: url(../img/bg/background.jpg) no-repeat;
+    /* background-repeat: no-repeat; */
+    /* height: 100%; */
+    background-size: 100%;
+    /*background-attachment: fixed;*/
+}
+.modal-content {
+    background: url(../img/bg/popup.jpg) no-repeat;
+    background-size: cover;
+    color: white;
+}
+#welcometext {
+    font-size: 30px;
+    font-weight: 600;
+    text-align: justify;
 }

@@ -15249,7 +15249,7 @@ code {
     border-bottom-left-radius: 0;
 }
 .card-body {
-    padding: 1.25rem;
+    padding: 2.25rem !important;
 }
 .card-title {
     margin-bottom: 0.75rem;
@@ -15347,7 +15347,7 @@ code {
 .dropdown-item.active,
 .dropdown-item:active {
     color: #fff;
-    background-color: #8EA604!important;
+    background-color: #8ea604 !important;
 }
 .dropdown-item.disabled,
 .dropdown-item:disabled {
