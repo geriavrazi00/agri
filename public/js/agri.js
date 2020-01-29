@@ -126,7 +126,7 @@ function selectCategories(category, categories) {
         "category-" + category.id + "-div"
     );
     loanElement = document.getElementById("loan");
-    applicantNameElement = document.getElementById("applicant-name-div");
+    //applicantNameElement = document.getElementById("applicant-name-div");
 
     if (categoryElement.style.display === "none") {
         categoryElement.style.display = "block";
@@ -221,10 +221,10 @@ function selectCategories(category, categories) {
 
     if (selectedCategories.length > 0) {
         loanElement.style.display = "block";
-        applicantNameElement.style.display = "flex";
+        //applicantNameElement.style.display = "flex";
     } else {
         loanElement.style.display = "none";
-        applicantNameElement.style.display = "none";
+        //applicantNameElement.style.display = "none";
         document.getElementById("applicantnameinput").value = "";
     }
 

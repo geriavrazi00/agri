@@ -1,6 +1,9 @@
 jQuery(document).ready(function($) {
     "use strict";
 
+    var allCategories = [1,2,3,4,5,6,7,8,9,10,11];
+    var optionNumber = [2,1,1,1,1,1,1,1,1,1,1];
+
 	$('#planstable').DataTable({
 		language: {
 			processing:     "Duke përpunuar të dhënat...",
@@ -15,8 +18,8 @@ jQuery(document).ready(function($) {
 			emptyTable:     "Nuk ka asnjë të dhënë në tabele",
 			paginate: {
 				first:      "E para",
-				previous:   "E kaluara",
-				next:       "Tjetra",
+				previous:   "Pas",
+				next:       "Para",
 				last:       "E fundit"
 			},
 			aria: {
@@ -40,8 +43,8 @@ jQuery(document).ready(function($) {
 			emptyTable:     "Nuk ka asnjë të dhënë në tabele",
 			paginate: {
 				first:      "E para",
-				previous:   "E kaluara",
-				next:       "Tjetra",
+				previous:   "Pas",
+				next:       "Para",
 				last:       "E fundit"
 			},
 			aria: {
@@ -65,8 +68,8 @@ jQuery(document).ready(function($) {
 			emptyTable:     "Nuk ka asnjë të dhënë në tabele",
 			paginate: {
 				first:      "E para",
-				previous:   "E kaluara",
-				next:       "Tjetra",
+				previous:   "Pas",
+				next:       "Para",
 				last:       "E fundit"
 			},
 			aria: {
@@ -93,8 +96,8 @@ jQuery(document).ready(function($) {
 			emptyTable:     "Nuk ka asnjë të dhënë në tabele",
 			paginate: {
 				first:      "E para",
-				previous:   "E kaluara",
-				next:       "Tjetra",
+				previous:   "Pas",
+				next:       "Para",
 				last:       "E fundit"
 			},
 			aria: {
@@ -121,8 +124,8 @@ jQuery(document).ready(function($) {
 			emptyTable:     "Nuk ka asnjë të dhënë në tabele",
 			paginate: {
 				first:      "E para",
-				previous:   "E kaluara",
-				next:       "Tjetra",
+				previous:   "Pas",
+				next:       "Para",
 				last:       "E fundit"
 			},
 			aria: {
@@ -149,8 +152,8 @@ jQuery(document).ready(function($) {
 			emptyTable:     "Nuk ka asnjë të dhënë në tabele",
 			paginate: {
 				first:      "E para",
-				previous:   "E kaluara",
-				next:       "Tjetra",
+				previous:   "Pas",
+				next:       "Para",
 				last:       "E fundit"
 			},
 			aria: {
@@ -177,8 +180,8 @@ jQuery(document).ready(function($) {
 			emptyTable:     "Nuk ka asnjë të dhënë në tabele",
 			paginate: {
 				first:      "E para",
-				previous:   "E kaluara",
-				next:       "Tjetra",
+				previous:   "Pas",
+				next:       "Para",
 				last:       "E fundit"
 			},
 			aria: {
@@ -205,8 +208,8 @@ jQuery(document).ready(function($) {
 			emptyTable:     "Nuk ka asnjë të dhënë në tabele",
 			paginate: {
 				first:      "E para",
-				previous:   "E kaluara",
-				next:       "Tjetra",
+				previous:   "Pas",
+				next:       "Para",
 				last:       "E fundit"
 			},
 			aria: {
@@ -233,8 +236,8 @@ jQuery(document).ready(function($) {
 			emptyTable:     "Nuk ka asnjë të dhënë në tabele",
 			paginate: {
 				first:      "E para",
-				previous:   "E kaluara",
-				next:       "Tjetra",
+				previous:   "Pas",
+				next:       "Para",
 				last:       "E fundit"
 			},
 			aria: {
@@ -261,8 +264,8 @@ jQuery(document).ready(function($) {
 			emptyTable:     "Nuk ka asnjë të dhënë në tabele",
 			paginate: {
 				first:      "E para",
-				previous:   "E kaluara",
-				next:       "Tjetra",
+				previous:   "Pas",
+				next:       "Para",
 				last:       "E fundit"
 			},
 			aria: {
@@ -289,8 +292,8 @@ jQuery(document).ready(function($) {
 			emptyTable:     "Nuk ka asnjë të dhënë në tabele",
 			paginate: {
 				first:      "E para",
-				previous:   "E kaluara",
-				next:       "Tjetra",
+				previous:   "Pas",
+				next:       "Para",
 				last:       "E fundit"
 			},
 			aria: {
@@ -317,8 +320,8 @@ jQuery(document).ready(function($) {
 			emptyTable:     "Nuk ka asnjë të dhënë në tabele",
 			paginate: {
 				first:      "E para",
-				previous:   "E kaluara",
-				next:       "Tjetra",
+				previous:   "Pas",
+				next:       "Para",
 				last:       "E fundit"
 			},
 			aria: {
@@ -326,5 +329,152 @@ jQuery(document).ready(function($) {
 				sortDescending: ": aktivizo për të rreshtuar kolonat në rend zbritës"
 			}
 		}
+    });
+
+    for(var i = 0; i < allCategories.length; i++) {
+
+        if(optionNumber[i] > 1) {
+            for(var j = 0; j < optionNumber[i]; j++) {
+                $('#businessinputtable' + allCategories[i] + j).DataTable({
+                    searching:      false,
+                    paging:         false,
+                    ordering:       false,
+                    info:           false,
+                    language: {
+                        processing:     "Duke përpunuar të dhënat...",
+                        lengthMenu:     "Shiko _MENU_ rreshta",
+                        info:           "Duke shfaqur _START_ deri në _END_ nga _TOTAL_ rresht(a)",
+                        infoEmpty:      "Duke shfaqur 0 deri 0 nga 0 reshta",
+                        infoFiltered:   "(të filtruara nga gjithsej _MAX_ rresht(a))",
+                        infoPostFix:    "",
+                        loadingRecords: "Duke punuar...",
+                        zeroRecords:    "Asnjë e dhënë nuk u gjet",
+                        emptyTable:     "Nuk ka asnjë të dhënë në tabele",
+                        paginate: {
+                            first:      "E para",
+                            previous:   "Pas",
+                            next:       "Para",
+                            last:       "E fundit"
+                        },
+                        aria: {
+                            sortAscending:  ": aktivizo për të rreshtuar kolonat në rend rritës",
+                            sortDescending: ": aktivizo për të rreshtuar kolonat në rend zbritës"
+                        }
+                    }
+                });
+
+                $('#planinputtable' + allCategories[i] + j).DataTable({
+                    searching:      false,
+                    paging:         false,
+                    ordering:       false,
+                    info:           false,
+                    language: {
+                        processing:     "Duke përpunuar të dhënat...",
+                        lengthMenu:     "Shiko _MENU_ rreshta",
+                        info:           "Duke shfaqur _START_ deri në _END_ nga _TOTAL_ rresht(a)",
+                        infoEmpty:      "Duke shfaqur 0 deri 0 nga 0 reshta",
+                        infoFiltered:   "(të filtruara nga gjithsej _MAX_ rresht(a))",
+                        infoPostFix:    "",
+                        loadingRecords: "Duke punuar...",
+                        zeroRecords:    "Asnjë e dhënë nuk u gjet",
+                        emptyTable:     "Nuk ka asnjë të dhënë në tabele",
+                        paginate: {
+                            first:      "E para",
+                            previous:   "Pas",
+                            next:       "Para",
+                            last:       "E fundit"
+                        },
+                        aria: {
+                            sortAscending:  ": aktivizo për të rreshtuar kolonat në rend rritës",
+                            sortDescending: ": aktivizo për të rreshtuar kolonat në rend zbritës"
+                        }
+                    }
+                });
+            }
+        } else {
+            $('#businessinputtable' + allCategories[i] + '0').DataTable({
+                searching:      false,
+                paging:         false,
+                ordering:       false,
+                info:           false,
+                language: {
+                    processing:     "Duke përpunuar të dhënat...",
+                    lengthMenu:     "Shiko _MENU_ rreshta",
+                    info:           "Duke shfaqur _START_ deri në _END_ nga _TOTAL_ rresht(a)",
+                    infoEmpty:      "Duke shfaqur 0 deri 0 nga 0 reshta",
+                    infoFiltered:   "(të filtruara nga gjithsej _MAX_ rresht(a))",
+                    infoPostFix:    "",
+                    loadingRecords: "Duke punuar...",
+                    zeroRecords:    "Asnjë e dhënë nuk u gjet",
+                    emptyTable:     "Nuk ka asnjë të dhënë në tabele",
+                    paginate: {
+                        first:      "E para",
+                        previous:   "Pas",
+                        next:       "Para",
+                        last:       "E fundit"
+                    },
+                    aria: {
+                        sortAscending:  ": aktivizo për të rreshtuar kolonat në rend rritës",
+                        sortDescending: ": aktivizo për të rreshtuar kolonat në rend zbritës"
+                    }
+                }
+            });
+
+            $('#planinputtable' + allCategories[i] + '0').DataTable({
+                searching:      false,
+                paging:         false,
+                ordering:       false,
+                info:           false,
+                language: {
+                    processing:     "Duke përpunuar të dhënat...",
+                    lengthMenu:     "Shiko _MENU_ rreshta",
+                    info:           "Duke shfaqur _START_ deri në _END_ nga _TOTAL_ rresht(a)",
+                    infoEmpty:      "Duke shfaqur 0 deri 0 nga 0 reshta",
+                    infoFiltered:   "(të filtruara nga gjithsej _MAX_ rresht(a))",
+                    infoPostFix:    "",
+                    loadingRecords: "Duke punuar...",
+                    zeroRecords:    "Asnjë e dhënë nuk u gjet",
+                    emptyTable:     "Nuk ka asnjë të dhënë në tabele",
+                    paginate: {
+                        first:      "E para",
+                        previous:   "Pas",
+                        next:       "Para",
+                        last:       "E fundit"
+                    },
+                    aria: {
+                        sortAscending:  ": aktivizo për të rreshtuar kolonat në rend rritës",
+                        sortDescending: ": aktivizo për të rreshtuar kolonat në rend zbritës"
+                    }
+                }
+            });
+        }
+    }
+
+    $('#loaninput').DataTable({
+        searching:      false,
+        paging:         false,
+        ordering:       false,
+        info:           false,
+        language: {
+            processing:     "Duke përpunuar të dhënat...",
+            lengthMenu:     "Shiko _MENU_ rreshta",
+            info:           "Duke shfaqur _START_ deri në _END_ nga _TOTAL_ rresht(a)",
+            infoEmpty:      "Duke shfaqur 0 deri 0 nga 0 reshta",
+            infoFiltered:   "(të filtruara nga gjithsej _MAX_ rresht(a))",
+            infoPostFix:    "",
+            loadingRecords: "Duke punuar...",
+            zeroRecords:    "Asnjë e dhënë nuk u gjet",
+            emptyTable:     "Nuk ka asnjë të dhënë në tabele",
+            paginate: {
+                first:      "E para",
+                previous:   "Pas",
+                next:       "Para",
+                last:       "E fundit"
+            },
+            aria: {
+                sortAscending:  ": aktivizo për të rreshtuar kolonat në rend rritës",
+                sortDescending: ": aktivizo për të rreshtuar kolonat në rend zbritës"
+            }
+        }
     });
 });

@@ -18,8 +18,6 @@
     //      BACK TO TOP BUTTON
     // =====================================================
     $(window).scroll(function() {
-        console.log($(this).scrollTop());
-
         if ($(this).scrollTop() > 100) {
             $(".back-to-top").fadeIn("slow");
         } else {

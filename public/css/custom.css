@@ -61,7 +61,7 @@ tr {
 */
 
 .divider {
-    margin: 50px auto;
+    margin: 0px auto;
     width: 80%;
     max-width: 100%;
     position: relative;
@@ -106,7 +106,7 @@ tr {
     color: #212529;
     border: 1px solid #8ea604;
     border-radius: 15px;
-    margin-bottom: 100px !important;
+    /* margin-bottom: 100px !important; */
     margin: auto;
     background-color: white !important;
     font-weight: 600;
