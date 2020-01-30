@@ -109,37 +109,7 @@
   </div>
 </section>
 
-<!-- Services Section -->
-<section>
-  <div class="container">
-    <div class="text-center">
-      <div class="border-multiple">
-        <span class="first"></span>
-        <span class="second"></span>
-        <span class="third"></span>
-      </div>
-      <div class="row">
-      </div>
-    </div>
-  </div>
-</section>
 
-
-<!-- Footer -->
-
-<div class="copyrights" id="footercontainer">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-6 text-center text-lg-left">
-        <p class="copyrights-text mb-3 mb-lg-0">&copy; Pi Innovative Solutions </p>
-      </div>
-      <div class="col-lg-6 text-center text-lg-right">
-
-      </div>
-    </div>
-  </div>
-</div>
-</footer>
 
 
 @endsection
