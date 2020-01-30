@@ -68,39 +68,43 @@
                     <tbody>
                         <tr>
                             <td class="resulttabledata">Totali i të ardhurave, viti 1</td>
-                            <td class="resulttabledata" style="text-align: right;">ALL {{ fmod($result->getTotalIncome(), 1) ? number_format($result->getTotalIncome(), 2) : number_format($result->getTotalIncome()) }}</td>
+                            <td class="resulttabledata" style="text-align: right;">ALL {{ fmod($result->getTotalIncome(), 1) !== 0.00 ? number_format($result->getTotalIncome(), 2) : number_format($result->getTotalIncome()) }}</td>
                         </tr>
                         <tr>
                             <td class="resulttabledata">Shpenzime prodhimi totale</td>
-                            <td class="resulttabledata" style="text-align: right;">ALL {{ fmod($result->getTotalExpense(), 1) ? number_format($result->getTotalExpense(), 2) : number_format($result->getTotalExpense()) }}</td>
+                            <td class="resulttabledata" style="text-align: right;">ALL {{ fmod($result->getTotalExpense(), 1) !== 0.00 ? number_format($result->getTotalExpense(), 2) : number_format($result->getTotalExpense()) }}</td>
                         </tr>
                         <tr>
                             <td class="resulttabledata">Amortizimi</td>
-                            <td class="resulttabledata" style="text-align: right;">ALL {{ fmod($result->getTotalAmortization(), 1) ? number_format($result->getTotalAmortization(), 2) : number_format($result->getTotalAmortization()) }}</td>
+                            <td class="resulttabledata" style="text-align: right;">ALL {{ fmod($result->getTotalAmortization(), 1) !== 0.00 ? number_format($result->getTotalAmortization(), 2) : number_format($result->getTotalAmortization()) }}</td>
                         </tr>
                         <tr>
                             <td class="resulttabledata">Interesi vjetor</td>
-                            <td class="resulttabledata" style="text-align: right;">ALL {{ fmod($result->getYearlyInterest(), 1) ? number_format($result->getYearlyInterest(), 2) : number_format($result->getYearlyInterest()) }}</td>
+                            <td class="resulttabledata" style="text-align: right;">ALL {{ fmod($result->getYearlyInterest(), 1) !== 0.00 ? number_format($result->getYearlyInterest(), 2) : number_format($result->getYearlyInterest()) }}</td>
+                        </tr>
+                        <tr>
+                            <td class="resulttabledata">Fitimi para tatimit</td>
+                            <td class="resulttabledata" style="text-align: right;">ALL {{ fmod($result->getIncomeBeforeTax(), 1) !== 0.00 ? number_format($result->getIncomeBeforeTax(), 2) : number_format($result->getIncomeBeforeTax()) }}</td>
                         </tr>
                         <tr>
                             <td class="resulttabledata">Tatimi mbi fitimin</td>
-                            <td class="resulttabledata" style="text-align: right;">ALL {{ fmod($result->getIncomeTax(), 1) ? number_format($result->getIncomeTax(), 2) : number_format($result->getIncomeTax()) }}</td>
+                            <td class="resulttabledata" style="text-align: right;">ALL {{ fmod($result->getIncomeTax(), 1) !== 0.00 ? number_format($result->getIncomeTax(), 2) : number_format($result->getIncomeTax()) }}</td>
                         </tr>
                         <tr>
                             <td class="resulttabledata">Fitimi neto total</td>
-                            <td class="resulttabledata" style="text-align: right;">ALL {{ fmod($result->getTotalNetIncome(), 1) ? number_format($result->getTotalNetIncome(), 2) : number_format($result->getTotalNetIncome()) }}</td>
+                            <td class="resulttabledata" style="text-align: right;">ALL {{ fmod($result->getTotalNetIncome(), 1) !== 0.00 ? number_format($result->getTotalNetIncome(), 2) : number_format($result->getTotalNetIncome()) }}</td>
                         </tr>
                         <tr>
                             <td class="resulttabledata">Fluksi i parase i vlefshëm për pagesa kredie</td>
-                            <td class="resulttabledata" style="text-align: right;">ALL {{ fmod($result->getMoneyFlux(), 1) ? number_format($result->getMoneyFlux(), 2) : number_format($result->getMoneyFlux()) }}</td>
+                            <td class="resulttabledata" style="text-align: right;">ALL {{ fmod($result->getMoneyFlux(), 1) !== 0.00 ? number_format($result->getMoneyFlux(), 2) : number_format($result->getMoneyFlux()) }}</td>
                         </tr>
                         <tr>
                             <td class="resulttabledata">Këste kredie për 1 vit</td>
-                            <td class="resulttabledata" style="text-align: right;">ALL {{ fmod($result->getFirstYearCredit(), 1) ? number_format($result->getFirstYearCredit(), 2) : number_format($result->getFirstYearCredit()) }}</td>
+                            <td class="resulttabledata" style="text-align: right;">ALL {{ fmod($result->getFirstYearCredit(), 1) !== 0.00 ? number_format($result->getFirstYearCredit(), 2) : number_format($result->getFirstYearCredit()) }}</td>
                         </tr>
                         <tr>
                             <td class="resulttabledata">DSCR</td>
-                            <td class="resulttabledata" style="text-align: right;">{{ fmod($result->getDscr(), 1) ? number_format($result->getDscr(), 2) : number_format($result->getDscr()) }}</td>
+                            <td class="resulttabledata" style="text-align: right;">{{ fmod($result->getDscr(), 1) !== 0.00 ? number_format($result->getDscr(), 2) : number_format($result->getDscr()) }}</td>
                         </tr>
                     </tbody>
                 </table>

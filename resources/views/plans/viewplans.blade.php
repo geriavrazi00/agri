@@ -38,78 +38,80 @@
                     </div>
 
                     @for($i = 0; $i < $category->farmCategory->option_number; $i++)
-                        <div class="col-md-12" style="margin: auto;">
-                            <table id="plansdetailbusiness" class="resulttable display responsive nowrap" style="width: 100%;">
-                                <thead>
-                                    <tr class="resulttablerow">
-                                        <th class="resulttablehead">
-                                            <b>{{trans('messages.business_data')}}</b>
-                                        </th>
-                                        <th class="resulttablehead">
-                                        </th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr class="resulttablerow">
-                                        <td class="resulttabledata">
-                                            {{ trans('business_data.' . $category->businessLabels[0]) }}
-                                        </td>
-                                        <td class="resulttabledata" style="text-align: right;">{{ fmod($category->businessData[$i][0], 1) ? number_format($category->businessData[$i][0], 2) : number_format($category->businessData[$i][0]) }}</td>
-                                    </tr>
-                                    <tr class="resulttablerow">
-                                        <td class="resulttabledata">
-                                            {{ trans('business_data.' . $category->businessLabels[1]) }}
-                                        </td>
-                                        <td class="resulttabledata">{{ App\Technology::find($category->businessData[$i][1])->name }}</td>
-                                    </tr>
-                                    @for($j = 0; $j < $category->farmCategory->culture_number; $j++)
+                        @if($category->businessData[$i][1] != 0)
+                            <div class="col-md-12" style="margin: auto;">
+                                <table id="plansdetailbusiness{{$i}}" class="resulttable display responsive nowrap" style="width: 100%;">
+                                    <thead>
+                                        <tr class="resulttablerow">
+                                            <th class="resulttablehead">
+                                                <b>{{trans('messages.business_data')}}</b>
+                                            </th>
+                                            <th class="resulttablehead">
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
                                         <tr class="resulttablerow">
                                             <td class="resulttabledata">
-                                                {{ trans('business_data.' . $category->businessLabels[$j+2]) }}
+                                                {{ trans('business_data.' . $category->businessLabels[0]) }}
                                             </td>
-                                            <td class="resulttabledata">
-                                                {{ $category->businessData[$i][$j+2] == 0 ? trans('messages.none') : App\Culture::find($category->businessData[$i][$j+2])->name }}
-                                            </td>
+                                            <td class="resulttabledata" style="text-align: right;">{{ fmod($category->businessData[$i][0], 1) ? number_format($category->businessData[$i][0], 2) : number_format($category->businessData[$i][0]) }}</td>
                                         </tr>
-                                    @endfor
-                                </tbody>
-                            </table>
-                        </div>
-
-                        <br/>
-
-                        <div class="col-md-12" style="margin: auto;">
-                            <table id="plansdetailinvestment" class="resulttable display responsive nowrap" style="width: 100%;">
-                                <thead>
-                                    <tr class="resulttablerow">
-                                        <th class="resulttablehead">
-                                            <b>{{ trans('messages.investment_plan') }}</b>
-                                        </th>
-                                        <th class="resulttablehead" style="text-align: right;">
-                                            <b>{{ trans('messages.total_value') }}</b>
-                                        </th>
-                                        <th class="resulttablehead" style="text-align: right;">
-                                            <b>{{ trans('messages.financing_bank') }}</b>
-                                        </th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @for($j = 0; $j < sizeof($category->investmentPlans[$i]); $j++)
                                         <tr class="resulttablerow">
                                             <td class="resulttabledata">
-                                                {{ trans('investment_plan.' . $category->investmentLabels[$j]) }}
+                                                {{ trans('business_data.' . $category->businessLabels[1]) }}
                                             </td>
-                                            <td class="resulttabledata" style="text-align: right;">
-                                                <span style="text-align: left;">ALL </span>{{ fmod($category->totalValuePlans[$i][$j], 1) ? number_format($category->totalValuePlans[$i][$j], 2) : number_format($category->totalValuePlans[$i][$j]) }}
-                                            </td>
-                                            <td class="resulttabledata" style="text-align: right;">
-                                                <span style="text-align: left;">ALL </span>{{ fmod($category->investmentPlans[$i][$j], 1) ? number_format($category->investmentPlans[$i][$j], 2) : number_format($category->investmentPlans[$i][$j]) }}
-                                            </td>
+                                            <td class="resulttabledata">{{ App\Technology::find($category->businessData[$i][1])->name }}</td>
                                         </tr>
-                                    @endfor
-                                </tbody>
-                            </table>
-                        </div>
+                                        @for($j = 0; $j < $category->farmCategory->culture_number; $j++)
+                                            <tr class="resulttablerow">
+                                                <td class="resulttabledata">
+                                                    {{ trans('business_data.' . $category->businessLabels[$j+2]) }}
+                                                </td>
+                                                <td class="resulttabledata">
+                                                    {{ $category->businessData[$i][$j+2] == 0 ? trans('messages.none') : App\Culture::find($category->businessData[$i][$j+2])->name }}
+                                                </td>
+                                            </tr>
+                                        @endfor
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <br/>
+
+                            <div class="col-md-12" style="margin: auto;">
+                                <table id="plansdetailinvestment{{$i}}" class="resulttable display responsive nowrap" style="width: 100%;">
+                                    <thead>
+                                        <tr class="resulttablerow">
+                                            <th class="resulttablehead">
+                                                <b>{{ trans('messages.investment_plan') }}</b>
+                                            </th>
+                                            <th class="resulttablehead" style="text-align: right;">
+                                                <b>{{ trans('messages.total_value') }}</b>
+                                            </th>
+                                            <th class="resulttablehead" style="text-align: right;">
+                                                <b>{{ trans('messages.financing_bank') }}</b>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @for($j = 0; $j < sizeof($category->investmentPlans[$i]); $j++)
+                                            <tr class="resulttablerow">
+                                                <td class="resulttabledata">
+                                                    {{ trans('investment_plan.' . $category->investmentLabels[$j]) }}
+                                                </td>
+                                                <td class="resulttabledata" style="text-align: right;">
+                                                    <span style="text-align: left;">ALL </span>{{ fmod($category->totalValuePlans[$i][$j], 1) ? number_format($category->totalValuePlans[$i][$j], 2) : number_format($category->totalValuePlans[$i][$j]) }}
+                                                </td>
+                                                <td class="resulttabledata" style="text-align: right;">
+                                                    <span style="text-align: left;">ALL </span>{{ fmod($category->investmentPlans[$i][$j], 1) ? number_format($category->investmentPlans[$i][$j], 2) : number_format($category->investmentPlans[$i][$j]) }}
+                                                </td>
+                                            </tr>
+                                        @endfor
+                                    </tbody>
+                                </table>
+                            </div>
+                        @endif
                     @endfor
                 @endforeach
 
@@ -136,7 +138,7 @@
                             </tr>
                             <tr class="resulttablerow">
                                 <td class="resulttabledata">{{trans('loan_data.first_payment_date')}}</td>
-                                <td class="resulttabledata" style="text-align: right;">{{ date("d-m-Y", strtotime($inputs[0]->loanData[3])) }}</td>
+                                <td class="resulttabledata" style="text-align: right;">{{ $inputs[0]->loanData[3] }}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -202,6 +204,10 @@
                             <tr class="resulttablerow">
                                 <td class="resulttabledata">Interesi vjetor</td>
                                 <td class="resulttabledata" style="text-align: right;"><span style="text-align: left;">ALL </span>{{ fmod($result->yearlyInterest, 1) ? number_format($result->yearlyInterest, 2) : number_format($result->yearlyInterest) }}</td>
+                            </tr>
+                            <tr class="resulttablerow">
+                                <td class="resulttabledata">Fitimi para tatimit</td>
+                                <td class="resulttabledata" style="text-align: right;"><span style="text-align: left;">ALL </span> {{ fmod($result->incomeBeforeTax, 1) ? number_format($result->incomeBeforeTax, 2) : number_format($result->incomeBeforeTax) }}</td>
                             </tr>
                             <tr class="resulttablerow">
                                 <td class="resulttabledata">Tatimi mbi fitimin</td>

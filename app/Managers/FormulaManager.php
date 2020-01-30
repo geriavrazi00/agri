@@ -82,6 +82,7 @@ class FormulaManager {
             }
 
             for($i = 0; $i < $loanVariableNr; $i++) {
+                Log::info($request->get('loan-3'));
                 $value = $request->get('loan-' . $i) == null ? 0 : $request->get('loan-' . $i);
                 array_push($allLoanData, $value);
             }
@@ -178,7 +179,14 @@ class FormulaManager {
     	$tax = Constants::LOW;
         if($totalIncome >= Constants::THRESHOLD) $tax = Constants::HIGH;
 
-        $incomeTax = ($totalIncome - $totalExpense - $totalAmortization - $yearlyInterest) * $tax;
+        $incomeBeforeTax = $totalIncome - $totalExpense - $totalAmortization;
+
+        if($incomeBeforeTax < 0 ) {
+            $incomeTax = 0;
+        } else {
+            $incomeTax = ($totalIncome - $totalExpense - $totalAmortization - $yearlyInterest) * $tax;
+        }
+
         $totalNetIncome = $totalIncome - $totalExpense - $totalAmortization - $yearlyInterest - $incomeTax;
         $moneyFlux = $totalIncome - $totalExpense - $incomeTax;
         $firstYearCredit = $credit["firstYearCredit"];
@@ -188,7 +196,8 @@ class FormulaManager {
     	$result->setCultures($cultures);
     	$result->setTotalIncome($totalIncome);
     	$result->setTotalExpense($totalExpense);
-    	$result->setTotalAmortization($totalAmortization);
+        $result->setTotalAmortization($totalAmortization);
+        $result->setIncomeBeforeTax($incomeBeforeTax);
     	$result->setYearlyInterest($yearlyInterest);
     	$result->setIncomeTax($incomeTax);
     	$result->setTotalNetIncome($totalNetIncome);

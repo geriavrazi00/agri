@@ -80,9 +80,9 @@
                                 @endif
                             @endforeach
 
-                            <br/>
+                            <br/><br/>
 
-                            <div id="loan" style="display: none; width: 100%;">
+                            <div id="loan" style="display: none; width: 100%; padding-top: 20px;">
                                 @include('loan')
 
                                 <input type="hidden" id="selected-categories[]" name="selected-categories[]" />

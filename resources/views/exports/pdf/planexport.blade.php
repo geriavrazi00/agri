@@ -12,63 +12,65 @@
     <p><span style="font-weight: bold">Kategoria:</span> {{ $category->farmCategory->name }}</p>
 
     @for($i = 0; $i < $category->farmCategory->option_number; $i++)
-        <table border="1" cellspacing="0" cellpadding="0" style="width: 60%;">
-            <tr>
-                <th colspan="2" style="text-align: center;">
-                    <b>{{trans('messages.business_data')}}</b>
-                </th>
-            </tr>
-            <tr>
-                <td>
-                    {{ trans('business_data.' . $category->businessLabels[0]) }}
-                </td>
-                <td style="text-align: right;">{{ fmod($category->businessData[$i][0], 1) ? number_format($category->businessData[$i][0], 2) : number_format($category->businessData[$i][0]) }}</td>
-            </tr>
-            <tr>
-                <td>
-                    {{ trans('business_data.' . $category->businessLabels[1]) }}
-                </td>
-                <td>{{ App\Technology::find($category->businessData[$i][1])->name }}</td>
-            </tr>
-            @for($j = 0; $j < $category->farmCategory->culture_number; $j++)
+        @if($category->businessData[$i][1] != 0)
+            <table border="1" cellspacing="0" cellpadding="0" style="width: 60%;">
+                <tr>
+                    <th colspan="2" style="text-align: center;">
+                        <b>{{trans('messages.business_data')}}</b>
+                    </th>
+                </tr>
                 <tr>
                     <td>
-                        {{ trans('business_data.' . $category->businessLabels[$j+2]) }}
+                        {{ trans('business_data.' . $category->businessLabels[0]) }}
                     </td>
-                    <td>
-                        {{ $category->businessData[$i][$j+2] == 0 ? trans('messages.none') : App\Culture::find($category->businessData[$i][$j+2])->name }}
-                    </td>
+                    <td style="text-align: right;">{{ fmod($category->businessData[$i][0], 1) ? number_format($category->businessData[$i][0], 2) : number_format($category->businessData[$i][0]) }}</td>
                 </tr>
-            @endfor
-        </table>
-
-        <br/>
-
-        <table border="1" cellspacing="0" cellpadding="0" style="width: 80%;">
-            <tr>
-                <th style="text-align: center;">
-                    <b>{{ trans('messages.investment_plan') }}</b>
-                </th>
-                <th style="text-align: center;">
-                    <b>{{ trans('messages.total_value') }}</b>
-                </th>
-                <th style="text-align: center;">
-                    <b>{{ trans('messages.financing_bank') }}</b>
-                </th>
-            </tr>
-            @for($j = 0; $j < sizeof($category->investmentPlans[$i]); $j++)
                 <tr>
                     <td>
-                        {{ trans('investment_plan.' . $category->investmentLabels[$j]) }}
+                        {{ trans('business_data.' . $category->businessLabels[1]) }}
                     </td>
-                    <td style="text-align: right;"><span style="float: left;">ALL </span>{{ fmod($category->totalValuePlans[$i][$j], 1) ? number_format($category->totalValuePlans[$i][$j], 2) : number_format($category->totalValuePlans[$i][$j]) }}</td>
-                    <td style="text-align: right;"><span style="float: left;">ALL </span>{{ fmod($category->investmentPlans[$i][$j], 1) ? number_format($category->investmentPlans[$i][$j], 2) : number_format($category->investmentPlans[$i][$j]) }}</td>
+                    <td>{{ App\Technology::find($category->businessData[$i][1])->name }}</td>
                 </tr>
-            @endfor
-        </table>
+                @for($j = 0; $j < $category->farmCategory->culture_number; $j++)
+                    <tr>
+                        <td>
+                            {{ trans('business_data.' . $category->businessLabels[$j+2]) }}
+                        </td>
+                        <td>
+                            {{ $category->businessData[$i][$j+2] == 0 ? trans('messages.none') : App\Culture::find($category->businessData[$i][$j+2])->name }}
+                        </td>
+                    </tr>
+                @endfor
+            </table>
 
-        @if($category->farmCategory->option_number > 1)
             <br/>
+
+            <table border="1" cellspacing="0" cellpadding="0" style="width: 80%;">
+                <tr>
+                    <th style="text-align: center;">
+                        <b>{{ trans('messages.investment_plan') }}</b>
+                    </th>
+                    <th style="text-align: center;">
+                        <b>{{ trans('messages.total_value') }}</b>
+                    </th>
+                    <th style="text-align: center;">
+                        <b>{{ trans('messages.financing_bank') }}</b>
+                    </th>
+                </tr>
+                @for($j = 0; $j < sizeof($category->investmentPlans[$i]); $j++)
+                    <tr>
+                        <td>
+                            {{ trans('investment_plan.' . $category->investmentLabels[$j]) }}
+                        </td>
+                        <td style="text-align: right;"><span style="float: left;">ALL </span>{{ fmod($category->totalValuePlans[$i][$j], 1) ? number_format($category->totalValuePlans[$i][$j], 2) : number_format($category->totalValuePlans[$i][$j]) }}</td>
+                        <td style="text-align: right;"><span style="float: left;">ALL </span>{{ fmod($category->investmentPlans[$i][$j], 1) ? number_format($category->investmentPlans[$i][$j], 2) : number_format($category->investmentPlans[$i][$j]) }}</td>
+                    </tr>
+                @endfor
+            </table>
+
+            @if($category->farmCategory->option_number > 1)
+                <br/>
+            @endif
         @endif
     @endfor
 
@@ -95,7 +97,7 @@
     </tr>
     <tr>
         <td>{{trans('loan_data.first_payment_date')}}</td>
-        <td style="text-align: right;">{{ date("d-m-Y", strtotime($input[0]->loanData[3])) }}</td>
+        <td style="text-align: right;">{{ $input[0]->loanData[3] }}</td>
     </tr>
 </table>
 
@@ -151,7 +153,11 @@
 		<tr>
 			<td>Interesi vjetor</td>
 			<td style="text-align: right;"><span style="float: left;">ALL </span>{{ fmod($result->yearlyInterest, 1) !== 0.00 ? number_format($result->yearlyInterest, 2) : number_format($result->yearlyInterest) }}</td>
-		</tr>
+        </tr>
+        <tr>
+            <td>Fitimi para tatimit</td>
+            <td style="text-align: right;"><span style="float: left;">ALL </span> {{ fmod($result->incomeBeforeTax, 1) !== 0.00 ? number_format($result->incomeBeforeTax, 2) : number_format($result->incomeBeforeTax) }}</td>
+        </tr>
 		<tr>
 			<td>Tatimi mbi fitimin</td>
 			<td style="text-align: right;"><span style="float: left;">ALL </span>{{ fmod($result->incomeTax, 1) !== 0.00 ? number_format($result->incomeTax, 2) : number_format($result->incomeTax) }}</td>

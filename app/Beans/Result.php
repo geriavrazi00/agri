@@ -7,13 +7,14 @@ class Result {
 	private $totalIncome;
 	private $totalExpense;
 	private $totalAmortization;
-	private $yearlyInterest;
+    private $yearlyInterest;
+    private $incomeBeforeTax;
 	private $incomeTax;
 	private $totalNetIncome;
 	private $moneyFlux;
 	private $firstYearCredit;
 	private $dscr;
-	
+
 	public function setCultures($cultures) {
 		$this->cultures = $cultures;
 	}
@@ -52,6 +53,14 @@ class Result {
 
 	public function getYearlyInterest() {
 		return $this->yearlyInterest;
+    }
+
+    public function setIncomeBeforeTax($incomeBeforeTax) {
+		$this->incomeBeforeTax = $incomeBeforeTax;
+	}
+
+	public function getIncomeBeforeTax() {
+		return $this->incomeBeforeTax;
 	}
 
 	public function setIncomeTax($incomeTax) {
@@ -101,7 +110,8 @@ class Result {
 		$data["totalIncome"] = $this->getTotalIncome();
 		$data["totalExpense"] = $this->getTotalExpense();
 		$data["totalAmortization"] = $this->getTotalAmortization();
-		$data["yearlyInterest"] = $this->getYearlyInterest();
+        $data["yearlyInterest"] = $this->getYearlyInterest();
+        $data["incomeBeforeTax"] = $this->getIncomeBeforeTax();
 		$data["incomeTax"] = $this->getIncomeTax();
 		$data["totalNetIncome"] = $this->getTotalNetIncome();
 		$data["moneyFlux"] = $this->getMoneyFlux();

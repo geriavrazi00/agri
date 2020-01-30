@@ -15209,7 +15209,7 @@ code {
 .nav-link:hover {
     color: #1e69b8;
     text-decoration: none;
-   
+
 }
 .nav-tabs .nav-item {
     margin-bottom: -1px;
@@ -15255,9 +15255,9 @@ code {
     border-bottom-right-radius: 0;
     border-bottom-left-radius: 0;
 }
-.card-body {
+/* .card-body {
     padding: 2.25rem !important;
-}
+} */
 .card-title {
     margin-bottom: 0.75rem;
 }

@@ -1,28 +1,28 @@
-<div id="content">
-    <center>
-        <h3>{{$category->name}}</h3>
-    </center>
+<center>
+    <h3>{{$category->name}}</h3>
+</center>
 
-    <div class="table card-body col-md-12" style="background-color: white; margin: auto;">
-        @for($i = 0; $i < $category->option_number; $i++)
-            <table id="businessinputtable{{$key}}{{$i}}" class="resulttable display responsive nowrap" style="width: 100%;">
+<div class="table card-body col-md-12" style="background-color: white; margin: auto;">
+    @for($i = 0; $i < $category->option_number; $i++)
+        <div class="col-md-12" style="margin: auto;">
+            <table id="businessinputtable{{$key}}{{$i}}" class="resulttable display responsive" style="width: 100%;">
                 <thead>
-                    <tr>
-                        <th>{{trans('messages.business_data')}}</th>
-                        <th></th>
+                    <tr class="resulttablerow">
+                        <th class="resulttablehead">{{trans('messages.business_data')}}</th>
+                        <th class="resulttablehead">Vlerat</th>
                     </tr>
                 </thead>
 
                 <tbody>
-                    <tr>
-                        <td>{{trans('business_data.' . $category['business'][0]->value)}}</td>
-                        <td>
+                    <tr class="resulttablerow">
+                        <td class="resulttabledata">{{trans('business_data.' . $category['business'][0]->value)}}</td>
+                        <td class="resulttabledata">
                             <input type="number" id="business-0-{{$i}}-{{$key}}" name="business-0-{{$i}}-{{$key}}" class="form-control" min="0" {{$i == 0 ? 'required' : ''}} value="1" min="1" oninvalid="createInvalidMsg(this, '{{trans('validation.field_required')}}', '{{trans('validation.non_negative_field')}}');" oninput="createInvalidMsg(this, '', '');" onfocus="clearField(this, '1');" onblur="fillField(this, '1');" onkeydown="return blockSpecialCharactersInInputNumber(event);" disabled style="text-align: right">
                         </td>
                     </tr>
-                    <tr>
-                        <td>{{trans('business_data.' . $category['business'][1]->value)}}</td>
-                        <td>
+                    <tr class="resulttablerow">
+                        <td class="resulttabledata">{{trans('business_data.' . $category['business'][1]->value)}}</td>
+                        <td class="resulttabledata">
                             <select class="form-control" id="business-1-{{$i}}-{{$key}}" name="business-1-{{$i}}-{{$key}}" style="border-radius: 5px;" {{$i == 0 ? 'required' : ''}} oninvalid="this.setCustomValidity('{{trans('validation.technology_required')}}')" onchange="this.setCustomValidity('');" disabled>
                                 <option value="">{{trans('messages.choose')}}</option>
                                 @for($j = 0; $j < sizeof($technologies); $j++) <option value="{{$technologies[$j]->id}}">{{$technologies[$j]->name}}</option>
@@ -32,9 +32,9 @@
                     </tr>
 
                     @for($j = 0; $j < $category->culture_number; $j++)
-                        <tr>
-                            <td> {{trans('business_data.' . $category['business'][$j+2]->value)}}</td>
-                            <td>
+                        <tr class="resulttablerow">
+                            <td class="resulttabledata"> {{trans('business_data.' . $category['business'][$j+2]->value)}}</td>
+                            <td class="resulttabledata">
                                 <select class="form-control" id="business-{{$j+2}}-{{$i}}-{{$key}}" name="business-{{$j+2}}-{{$i}}-{{$key}}" style="border-radius: 5px;" {{($i == 0 && $j == 0) ? 'required' : ''}} oninvalid="this.setCustomValidity('{{trans('validation.one_subculture_required')}}')" onchange="businessDataValidation(this, '{{$category->culture_number}}', '{{$i}}', '{{$key}}')" disabled>
                                     <option value="">{{trans('messages.choose')}}</option>
                                     @for($k = 0; $k < sizeof($category->cultures); $k++)
@@ -48,12 +48,14 @@
                     @endfor
                 </tbody>
             </table>
-        @endfor
+        </div>
+    @endfor
 
-        <br/>
+    <br/>
 
-        @for($i = 0; $i < $category->option_number; $i++)
-            <table id="planinputtable{{$key}}{{$i}}" class="resulttable display responsive nowrap" style="width: 100%;">
+    @for($i = 0; $i < $category->option_number; $i++)
+        <div class="col-md-12" style="margin: auto;">
+            <table id="planinputtable{{$key}}{{$i}}" class="resulttable display responsive" style="width: 100%;">
                 <thead>
                     <tr>
                         <th>{{trans('messages.investment_plan')}}</th>
@@ -84,6 +86,7 @@
                     </tr>
                 </tbody>
             </table>
-        @endfor
-    </div>
+        </div>
+    @endfor
 </div>
+
