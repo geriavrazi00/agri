@@ -57,8 +57,7 @@ class ResultController extends Controller
         $plan->save();
         $this->attachCategoriesToPlan($plan, $request->inputs);
 
-        toast('Aplikimi u ruajt me sukses!', 'success', 'top-right');
-        return back();
+        return Redirect::to('/plans')->withSuccessMessage('Aplikimi u ruajt me sukses!');
     }
 
     public function exportExcel(Request $request) {
