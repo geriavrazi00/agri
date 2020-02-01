@@ -2,9 +2,9 @@
     <h3>{{$category->name}}</h3>
 </center>
 
-<div class="table card-body col-md-12" style="background-color: white; margin: auto;">
+<div class="table card-body col-md-8" style="background-color: white; margin: auto;">
     @for($i = 0; $i < $category->option_number; $i++)
-        <div class="col-md-12" style="margin: auto;">
+        <div style="margin: auto;">
             <table id="businessinputtable{{$key}}{{$i}}" class="resulttable display responsive" style="width: 100%;">
                 <thead>
                     <tr class="resulttablerow">
@@ -54,7 +54,7 @@
     <br/>
 
     @for($i = 0; $i < $category->option_number; $i++)
-        <div class="col-md-12" style="margin: auto;">
+        <div style="margin: auto;">
             <table id="planinputtable{{$key}}{{$i}}" class="resulttable display responsive" style="width: 100%;">
                 <thead>
                     <tr>

@@ -119,10 +119,10 @@
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
     <!-- DataTable -->
-    <script src="{{ asset('js/datatables/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ asset('js/datatables/dataTables.responsive.min.js') }}"></script>
-    <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
-    <script src="{{ asset('js/datatables/table-js.js') }}"></script>
+    <script src="{{ asset('js/datatables/jquery.dataTables.min.js') }}" defer></script>
+    <script src="{{ asset('js/datatables/dataTables.responsive.min.js') }}" defer></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" defer></script>
+    <script src="{{ asset('js/datatables/table-js.js') }}" defer></script>
 
     <!-- DatePicker -->
     <script src="{{ asset('js/datepicker/datepicker.js') }}"></script>

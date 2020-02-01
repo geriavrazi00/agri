@@ -1,5 +1,5 @@
-<div class="table card-body col-md-12" style="background-color: white; margin: auto;">
-    <table id="loaninput" class="resulttable display responsive nowrap" style="width: 100%;">
+<div class="table card-body col-md-8" style="background-color: white; margin: auto;">
+    <table id="loaninput" class="resulttable display responsive" style="width: 100%;">
         <thead>
             <tr>
                 <th>{{trans('messages.loan_repayment')}}</th>
