@@ -1,10 +1,10 @@
 /*
-Template Name: Costy 
+Template Name: Costy
 Template URL: https://ultimatewebsolutions.net/costy/
 Author: Ultimate Websolutions
 Author URL: https://themeforest.net/user/ultimatewebsolutions/
 
-[Table of contents] 
+[Table of contents]
 
 1. BACK TOP TOP
 2. GENERAL
@@ -584,7 +584,7 @@ footer.main-footer {
 /*
  * 1. NAVBAR
  */
-.navbar {
+/* .navbar {
     padding: 1.1rem 1rem;
 }
 
@@ -694,7 +694,7 @@ footer.main-footer {
 
 .navbar-dark .navbar-text {
     color: rgba(255, 255, 255, 0.5);
-}
+} */
 
 /*
  * 2. BUTTONS

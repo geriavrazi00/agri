@@ -4,6 +4,19 @@ $(document).ready(function() {
 
 $(".dropdown-toggle").dropdown();
 
+//Manage the opening and closing of the menu on mobile devices
+$('#navbar-button').on('click', function() {
+    var element = document.getElementById("navbarSupportedContent");
+
+    console.log(element.classList.contains("show"));
+
+    if(element.classList.contains("show")) {
+        element.classList.remove("show");
+    } else {
+        element.classList.add("show");
+    }
+});
+
 var selectedCategories = new Array();
 
 function calculateTotal(
@@ -281,6 +294,15 @@ function createInvalidMsg(input, requiredMessage, alternativeMessage) {
     } else {
         input.setCustomValidity("");
     }
+
+    //input.scrollIntoView({ top: 200, behavior: "smooth" });
+
+    // console.log(input.id);
+    // document.getElementById(input.id).scrollIntoView({ top: 0, behavior: "smooth" });
+    // var target = 0;
+    // var header = 56;
+
+    // $(window).scrollTop( target - header )
 
     return true;
 }

@@ -6,7 +6,7 @@
 <div class="hero" style="padding: 20px; height: 100%;">
     <div class="row justify-content-center">
         <div class="col-md-12" style="padding-left: 0px; padding-right: 0px;">
-            <form method="GET" action="/result" style="width: 100%;">
+            <form id="homeform" method="GET" action="/result" style="width: 100%;">
                 <input type="hidden" id="date" name="date" value="{{date('d-m-Y H:i:s')}}" />
                 @csrf
 

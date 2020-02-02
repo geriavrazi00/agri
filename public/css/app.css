@@ -7774,10 +7774,10 @@ a.text-dark:hover {
 
 .dropdown-toggle::after {
     display: block;
-    position: absolute;
+    /* position: absolute; */
     top: 50%;
     /*right: 20px;*/
-    transform: translateY(-50%);
+    /* transform: translateY(-50%); */
 }
 
 /****************************** Datatable styles ****************************/

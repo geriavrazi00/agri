@@ -11,6 +11,7 @@
     <title>{{ config('app.name', 'AFA') }}</title>
 
     <!-- Scripts -->
+    <script src="{{ asset('js/jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="{{ asset('js/agri.js') }}" defer></script>
     <script src="{{ asset('js/scripts.min.js') }}" defer></script>
@@ -41,11 +42,12 @@
         <div class="preloader"></div>
 
         <!-- Navbar -->
-        <header class="header">
-            @auth
-            <nav class="navbar navbar-expand-lg fixed-top">
+        @auth
+            <nav id="navbar" class="navbar navbar-expand-lg fixed-top mainbar" role="navigation">
                 <div class="container">
-                    <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler navbar-toggler-right" data-target="#navbarSupportedContent" data-toggle="collapse" type="button">Menu<i class="fa fa-bars ml-2"></i>
+
+                    <button id="navbar-button" class="navbar-toggler" type="button" style="padding-left: 0px;">
+                        Menu<i class="fa fa-bars ml-2"></i>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav ml-auto">
@@ -55,7 +57,7 @@
                             <li class="nav-item">
                                 <a class="nav-link {{ (Request::is('plans') || Request::is('plans/*')) ? 'active-nav' : '' }}" href="/plans">Projekte të procesuara</a>
                             </li>
-                            <li class="nav-item dropdown" style="padding-right: 10px;">
+                            <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle {{ (Request::is('myprofile') || Request::is('myprofile/*') ) ? 'active-nav' : ''}}" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     Profili im
                                 </a>
@@ -93,8 +95,8 @@
                         @endauth
                     </div>
                 </div>
-            </nav> @endauth
-        </header>
+            </nav>
+        @endauth
 
 
         <main class="py-4" style="padding-top: 0px !important; ">
@@ -104,8 +106,6 @@
 
     <!-- Back To Top Button -->
     <a href="" class="back-to-top btn-primary"><i class="fa fa-chevron-up"></i></a>
-
-    <script src="{{ asset('js/jquery/jquery.min.js') }}"></script>
 
     <script src="{{ asset('js/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('js/lightbox2/js/lightbox.min.js') }}"></script>

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Jenssegers\Agent\Agent;
 use App\Category;
 use App\Constants;
 use App\Culture;
@@ -33,6 +33,7 @@ class HomeController extends Controller
         $categories = Category::orderBy('name')->get();
         $technologies = Technology::all();
         $categoriesData = $this->loadAllCategoryData($categories);
+        //$agent = new Agent();
 
         return view('home', compact('categories', 'categoriesData', 'technologies'));
     }
