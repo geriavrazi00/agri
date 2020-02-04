@@ -17,5 +17,9 @@ final class Constants {
 
 	//Roles of the system
 	const ROLE_ADMIN = "Administrator";
-	const ROLE_WEB = "Përdorues i thjeshtë";
+    const ROLE_WEB = "Përdorues i thjeshtë";
+
+    //Languages
+    const ENGLISH_LANGUAGE = "en";
+    const ALBANIAN_LANGUAGE = "sq";
 }

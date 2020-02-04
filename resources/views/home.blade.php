@@ -23,14 +23,14 @@
                     </table> --}}
 
                     <div class="col-md-12">
-                        <label id="applicantname" style="font-weight: 700;">{{trans('messages.applicant_name')}}</label>
+                        <label id="applicantname" style="font-weight: 700;">{{ trans('messages.applicant_name') }}</label>
                         <input id="applicantnameinput" type="text" name="applicant-name" required oninvalid="createInvalidMsg(this, '{{trans('validation.applicant_name_required')}}', '');" oninput="createInvalidMsg(this, '', '');" />
                     </div>
 
                     <br/>
 
                     <div class="col-md-12">
-                        <label id="applicantname" style="font-weight: 700;">NIPT/Kodi i fermerit</label>
+                        <label id="applicantname" style="font-weight: 700;">{{ trans('messages.business_code') }}</label>
                         <input id="applicantnameinput" type="text" name="business-code" required oninvalid="createInvalidMsg(this, '{{trans('validation.business_code_required')}}', '');" oninput="createInvalidMsg(this, '', '');" />
                     </div>
                 </div>
@@ -45,17 +45,12 @@
                         <div class="rtable rtable--collapse">
                             <!-- Table Heading Start -->
                             <div class="rtable-row rtable-row--head col-md-10" style="margin: auto;">
-                                <div class="rtable-cell item-cell column-heading" style="text-align: center;">Zgjidhni kategorine e investimit</div>
+                                <div class="rtable-cell item-cell column-heading" style="text-align: center;">{{ trans('messages.choose_category') }}</div>
                             </div>
                             <!-- Table Heading End -->
                             <!--Short table information-->
                             <div id="tabledesc" class="col-md-10" style="margin: auto;">
-                                <p>
-                                    Aktivitetet bujqesore kane intensitete zhvillimi te ndryshme bazuar ne pozicionin gjeografik te fermes, sherbimeve
-                                    agroteknike qe perdor, menyren e kultivimit (intensive apo tradicionale), faktoreve klimaterik etj.
-                                    Kjo platforme te mundeson te perzgjedhesh nivelin operues te fermes
-                                </p>
-
+                                <p>{{ trans('messages.short_description') }}</p>
                             </div>
 
                             <div class="row col-md-10" style="margin: auto;">
@@ -69,7 +64,7 @@
                                                 <input class="form-control in-odd-row item-name" hidden name="item-name-1" type="text" value="Product or Service Name 1" />
                                             </div>
                                             <div>
-                                                <p id="servicename">{{$categories[$i]->name}}</p>
+                                                <p id="servicename">{{ trans($categories[$i]->name) }}</p>
                                             </div>
                                         </div>
                             </div>

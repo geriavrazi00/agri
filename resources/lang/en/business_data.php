@@ -12,7 +12,7 @@ return [
 	'culture_2' => 'Culture II',
 
 	//Sheep ASSAF category labels
-	'headcount' => 'Headcount',
+	'headcount' => 'Number of heads',
 	'subproduct_1' => 'Subproduct 1',
 	'subproduct_2' => 'Subproduct 2',
 	'subproduct_3' => 'Subproduct 3',

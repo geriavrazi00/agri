@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App;
 use Illuminate\Http\Request;
 use Jenssegers\Agent\Agent;
 use App\Category;
@@ -30,9 +31,11 @@ class HomeController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index() {
-        $categories = Category::orderBy('name')->get();
+        $categories = Category::orderBy('image')->get();
         $technologies = Technology::all();
         $categoriesData = $this->loadAllCategoryData($categories);
+
+        Log::info(App::getLocale());
         //$agent = new Agent();
 
         return view('home', compact('categories', 'categoriesData', 'technologies'));

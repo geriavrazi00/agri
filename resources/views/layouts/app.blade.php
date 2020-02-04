@@ -47,38 +47,51 @@
                 <div class="container">
 
                     <button id="navbar-button" class="navbar-toggler" type="button" style="padding-left: 0px;">
-                        Menu<i class="fa fa-bars ml-2"></i>
+                        {{ trans('messages.menu') }}<i class="fa fa-bars ml-2"></i>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav ml-auto">
                             <li class="nav-item">
-                                <a class="nav-link {{ Request::is('home') ? 'active-nav' : '' }}" href="/home">Kreu</a>
+                                <a class="nav-link {{ Request::is('home') ? 'active-nav' : '' }}" href="/home">{{ trans('messages.dashboard') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link {{ (Request::is('plans') || Request::is('plans/*')) ? 'active-nav' : '' }}" href="/plans">Projekte të procesuara</a>
+                                <a class="nav-link {{ (Request::is('plans') || Request::is('plans/*')) ? 'active-nav' : '' }}" href="/plans">{{ trans('messages.processed_projects') }}</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle {{ (Request::is('myprofile') || Request::is('myprofile/*') ) ? 'active-nav' : ''}}" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Profili im
+                                    {{ trans('messages.my_profile') }}
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="/myprofile">Ndrysho të dhënat</a>
-                                    <a class="dropdown-item" href="/myprofile/password">Ndrysho fjalëkalimin</a>
+                                    <a class="dropdown-item" href="/myprofile">{{ trans('messages.change_data') }}</a>
+                                    <a class="dropdown-item" href="/myprofile/password">{{ trans('messages.change_password') }}</a>
                                 </div>
                             </li>
 
                             @if (Auth::user()->role->name == App\Constants::ROLE_ADMIN)
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle {{ (Request::is('users') || Request::is('users/*') || Request::is('values') || Request::is('values/*')) ? 'active-nav' : ''}}" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Administrim
+                                    {{ trans('messages.administration') }}
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="/users">Përdoruesit</a>
-                                    <a class="dropdown-item" href="/values">Koefiçentët</a>
+                                    <a class="dropdown-item" href="/users">{{ trans('messages.users') }}</a>
+                                    <a class="dropdown-item" href="/values">{{ trans('messages.coefficients') }}</a>
                                 </div>
                             </li>
                             @endif
 
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    {{ trans('messages.language') }}
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ url('locale/' . App\Constants::ALBANIAN_LANGUAGE) }}" style="padding-left: 0px;">
+                                        <img src="img/flags/al.svg" style="width: 30px; height: 20px;"/> {{ trans('messages.albanian') }} {!! App::getLocale() == App\Constants::ALBANIAN_LANGUAGE ? '<i class="fas fa-check" style="color: #8ea604;"></i>' : '' !!}
+                                    </a>
+                                    <a class="dropdown-item" href="{{ url('locale/' . App\Constants::ENGLISH_LANGUAGE) }}" style="padding-left: 0px;">
+                                        <img src="img/flags/gb.svg" style="width: 30px; height: 20px;"/> {{ trans('messages.english') }} {!! App::getLocale() == App\Constants::ENGLISH_LANGUAGE ? '<i class="fas fa-check" style="color: #8ea604;"></i>' : '' !!}
+                                    </a>
+                                </div>
+                            </li>
                         </ul>
 
                         {{-- @guest

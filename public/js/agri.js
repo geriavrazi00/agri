@@ -8,8 +8,6 @@ $(".dropdown-toggle").dropdown();
 $('#navbar-button').on('click', function() {
     var element = document.getElementById("navbarSupportedContent");
 
-    console.log(element.classList.contains("show"));
-
     if(element.classList.contains("show")) {
         element.classList.remove("show");
     } else {
