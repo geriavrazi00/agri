@@ -13,11 +13,12 @@ final class Constants {
 	const THRESHOLD = 12000000;
 
 	//Loan fields
-	const LOAN_FIELDS = 4;
+    const LOAN_FIELDS = 4;
+    const LOAN_COLUMNS = 2;
 
 	//Roles of the system
-	const ROLE_ADMIN = "Administrator";
-    const ROLE_WEB = "Përdorues i thjeshtë";
+	const ROLE_ADMIN = 1;
+    const ROLE_WEB = 2;
 
     //Languages
     const ENGLISH_LANGUAGE = "en";

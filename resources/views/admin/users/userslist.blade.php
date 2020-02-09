@@ -7,10 +7,10 @@
         <div class="col-md-7" style="padding-top: 56px;">
             <center>
                 <div style="display: inline-flex; text-align: center;">
-                    <h3 class="resulttablehead">Menaxhimi i përdoruesve</h3>
+                    <h3 class="resulttablehead">{{ trans('messages.users_management') }}</h3>
 
                     <a href="/users/create" class="btn btn-primary navbar-btn ml-0 ml-lg-3" style="height: fit-content;">
-                        Krijo
+                        {{ trans('messages.create') }}
                     </a>
                 </div>
             </center>
@@ -21,9 +21,9 @@
                 <table id="userstable" class="resulttable display responsive nowrap" style="width: 100%;">
                     <thead>
                         <tr class="resulttablerow">
-                            <th class="resulttablehead">Emri</th>
-                            <th class="resulttablehead">E-mail</th>
-                            <th class="resulttablehead" style="text-align: center;">Veprime</th>
+                            <th class="resulttablehead">{{ trans('messages.name') }}</th>
+                            <th class="resulttablehead">{{ trans('messages.email') }}</th>
+                            <th class="resulttablehead" style="text-align: center;">{{ trans('messages.actions') }}</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -32,13 +32,13 @@
                                 <td class="resulttabledata">{{$user->name}}</td>
                                 <td class="resulttabledata">{{$user->email}}</td>
                                 <td class="resulttabledata" style="text-align: center;">
-                                    <a href="/users/{{$user->id}}" class="btn btn-primary btn-circle btn-sm action-buttons" data-toggle="tooltip" title="Shiko detajet">
+                                    <a href="/users/{{$user->id}}" class="btn btn-primary btn-circle btn-sm action-buttons" data-toggle="tooltip" title="{{ trans('messages.details') }}">
                                         <i class="fa fa-eye"></i>
                                     </a>
-                                    <a href="/users/{{$user->id}}/edit" class="btn btn-success btn-circle btn-sm edit-buttons" data-toggle="tooltip" title="Modifiko">
+                                    <a href="/users/{{$user->id}}/edit" class="btn btn-success btn-circle btn-sm edit-buttons" data-toggle="tooltip" title="{{ trans('messages.edit') }}">
                                         <i class="fa fa-edit"></i>
                                     </a>
-                                    <a href="/users/{{$user->id}}/password" class="btn btn-info btn-circle btn-sm action-buttons" data-toggle="tooltip" title="Ndrysho fjalëkalimin">
+                                    <a href="/users/{{$user->id}}/password" class="btn btn-info btn-circle btn-sm action-buttons" data-toggle="tooltip" title="{{ trans('messages.change_password') }}">
                                         <i class="fa fa-unlock-alt"></i>
                                     </a>
 
@@ -46,7 +46,7 @@
                                         @method('DELETE')
                                         @csrf
 
-                                        <button type="submit" class="btn btn-danger btn-circle btn-sm action-buttons" data-toggle="tooltip" title="Fshi" onclick="areYouSure(event, this);">
+                                        <button type="submit" class="btn btn-danger btn-circle btn-sm action-buttons" data-toggle="tooltip" title="{{ trans('messages.delete') }}" onclick="areYouSure(event, this);">
                                             <i class="fa fa-trash"></i>
                                         </button>
                                     </form>

@@ -133,6 +133,7 @@ return [
     'first_payment_date_required' => 'Ju lutem plotësoni datën e pagesës së parë.',
     'interest_min_value' => 'Norma aktuale e interesit vjetor duhet të jetë më e madhe se :value.',
     'interest_max_value' => 'Norma aktuale e interesit vjetor nuk mund të jetë më e madhe se :value.',
+    'loan_amount_required' => 'Ju lutem plotësoni të paktën një shumë huaje.',
 
     //Business data validation
     'technology_required' => 'Ju lutem zgjidhni një teknologji.',

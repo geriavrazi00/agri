@@ -8,7 +8,7 @@
 			<div style="padding-top: 56px;">
 				<center>
 					<div style="display: inline-flex; text-align: center;">
-						<h3 class="resulttablehead">Shiko të dhënat në detaje</h3>
+						<h3 class="resulttablehead">{{ trans('messages.view_user') }}</h3>
 					</div>
 				</center>
 			</div>
@@ -16,25 +16,25 @@
             <div class="table card-body col-md-8" style="background-color: white; margin: auto;">
                 <div style="text-align: center;">
                     <div class="col-md-12">
-                        <b>Emri i aplikantit:</b> {{$plan->applicant}}
+                        <b>{{ trans('messages.applicant_name') }}:</b> {{$plan->applicant}}
                     </div>
 
                     <div class="col-md-12">
-                        <b>NIPT/Kodi i fermerit:</b> {{$plan->business_code}}
+                        <b>{{ trans('messages.business_code') }}:</b> {{$plan->business_code}}
                     </div>
 
                     <div class="col-md-12">
-                        <b>Data e krijimit:</b> {{$plan->created_at}}
+                        <b>{{ trans('messages.application_date') }}:</b> {{$plan->created_at}}
                     </div>
                 </div>
 
                 <br/>
 
-                <h4 style="text-align: center">Inputet</h4>
+                <h4 style="text-align: center">{{ trans('messages.inputs') }}</h4>
 
                 @foreach($inputs as $category)
                     <div class="col-md-12" style="text-align: center;">
-                        <b>Kategoria:</b> {{ $category->farmCategory->name }}
+                        <b>{{ trans('messages.category') }}:</b> {{ trans($category->farmCategory->name) }}
                     </div>
 
                     @for($i = 0; $i < $category->farmCategory->option_number; $i++)
@@ -47,27 +47,27 @@
                                                 <b>{{trans('messages.business_data')}}</b>
                                             </th>
                                             <th class="resulttablehead">
-                                                Vlerat
+                                                {{ trans('messages.values') }}
                                             </th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr class="resulttablerow">
                                             <td class="resulttabledata">
-                                                {{ trans('business_data.' . $category->businessLabels[0]) }}
+                                                {{ trans($category->businessLabels[0]) }}
                                             </td>
                                             <td class="resulttabledata" style="text-align: right;">{{ fmod($category->businessData[$i][0], 1) ? number_format($category->businessData[$i][0], 2) : number_format($category->businessData[$i][0]) }}</td>
                                         </tr>
                                         <tr class="resulttablerow">
                                             <td class="resulttabledata">
-                                                {{ trans('business_data.' . $category->businessLabels[1]) }}
+                                                {{ trans($category->businessLabels[1]) }}
                                             </td>
                                             <td class="resulttabledata">{{ App\Technology::find($category->businessData[$i][1])->name }}</td>
                                         </tr>
                                         @for($j = 0; $j < $category->farmCategory->culture_number; $j++)
                                             <tr class="resulttablerow">
                                                 <td class="resulttabledata">
-                                                    {{ trans('business_data.' . $category->businessLabels[$j+2]) }}
+                                                    {{ trans($category->businessLabels[$j+2]) }}
                                                 </td>
                                                 <td class="resulttabledata">
                                                     {{ $category->businessData[$i][$j+2] == 0 ? trans('messages.none') : App\Culture::find($category->businessData[$i][$j+2])->name }}

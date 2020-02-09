@@ -58,6 +58,6 @@ class ValuesController extends Controller
             }
         }
 
-        return Redirect::to('/values')->withSuccessMessage('Koefiçentët e kategorisë u përditësuan me sukses!');
+        return Redirect::to('/values')->withSuccessMessage(trans('messages.coefficients_updated'));
     }
 }

@@ -7,7 +7,7 @@
 		<div class="col-md-6" style="padding-top: 56px;">
             <center>
                 <div style="display: inline-flex; text-align: center;">
-                    <h3 class="resulttablehead">Ndrysho fjalëkalimin e {{$user->name}}</h3>
+                    <h3 class="resulttablehead">{{ trans('messages.change_password_of') }} {{$user->name}}</h3>
                 </div>
             </center>
 
@@ -19,7 +19,7 @@
                     @csrf
 
                     <div class="form-group row" style="padding-top: 10px;">
-                        <label for="password" class="col-md-4 col-form-label text-md-right">Fjalëkalimi i ri</label>
+                        <label for="password" class="col-md-4 col-form-label text-md-right">{{ trans('messages.new_password') }}</label>
 
                         <div class="col-md-6">
                             <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" oninvalid="createInvalidMsg(this, '{{trans('validation.field_required')}}', '');" oninput="this.setCustomValidity('')">
@@ -33,7 +33,7 @@
                     </div>
 
                     <div class="form-group row" style="padding-top: 10px;">
-                        <label for="password-confirm" class="col-md-4 col-form-label text-md-right">Konfirmim</label>
+                        <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ trans('messages.confirmation') }}</label>
 
                         <div class="col-md-6">
                             <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password" oninvalid="createInvalidMsg(this, '{{trans('validation.field_required')}}', '');" oninput="this.setCustomValidity('')">
@@ -42,11 +42,11 @@
 
                     <div class="col-md-12" style="text-align: right;">
                         <button type="submit" class="btn btn-success">
-                            Ruaj
+                            {{ trans('messages.save') }}
                         </button>
 
                         <a href="{{ url()->previous() }}" class="btn btn-primary">
-                            Kthehu
+                            {{ trans('messages.back') }}
                         </a>
                     </div>
                 </form>

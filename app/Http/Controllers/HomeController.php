@@ -2,17 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App;
-use Illuminate\Http\Request;
-use Jenssegers\Agent\Agent;
 use App\Category;
 use App\Constants;
-use App\Culture;
 use App\Technology;
-use App\Value;
 
 use Log;
-use View;
 
 class HomeController extends Controller
 {
@@ -34,9 +28,6 @@ class HomeController extends Controller
         $categories = Category::orderBy('image')->get();
         $technologies = Technology::all();
         $categoriesData = $this->loadAllCategoryData($categories);
-
-        Log::info(App::getLocale());
-        //$agent = new Agent();
 
         return view('home', compact('categories', 'categoriesData', 'technologies'));
     }

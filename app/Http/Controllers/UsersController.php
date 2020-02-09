@@ -63,7 +63,7 @@ class UsersController extends Controller {
             'role_id' => $request['role'],
         ]);
 
-        return Redirect::to('/users')->withSuccessMessage('Përdoruesi u krijua me sukses!');
+        return Redirect::to('/users')->withSuccessMessage(trans('messages.user_created'));
     }
 
     /**
@@ -112,7 +112,7 @@ class UsersController extends Controller {
             'role_id' => $request['role'],
         ]);
 
-        return Redirect::to('/users')->withSuccessMessage('Përdoruesi u përditësua me sukses!');
+        return Redirect::to('/users')->withSuccessMessage(trans('messages.user_updated'));
     }
 
     /**
@@ -146,7 +146,7 @@ class UsersController extends Controller {
             'password' => Hash::make($request['password']),
         ]);
 
-        return Redirect::to('/users')->withSuccessMessage('Fjalëkalimi i përdoruesit u përditësua me sukses!');
+        return Redirect::to('/users')->withSuccessMessage(trans('messages.user_password_updated'));
     }
 
     /**
@@ -157,6 +157,6 @@ class UsersController extends Controller {
      */
     public function destroy($id) {
         User::where('id', '=', $id)->delete();
-        return Redirect::to('/users')->withSuccessMessage('Përdoruesi u fshi me sukses!');
+        return Redirect::to('/users')->withSuccessMessage(trans('messages.user_deleted'));
     }
 }

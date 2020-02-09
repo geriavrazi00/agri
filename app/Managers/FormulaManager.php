@@ -15,6 +15,7 @@ class FormulaManager {
     public function buildInputs($request) {
         $selectedCategories = explode(',', $request->get('selected-categories')[0]);
         $loanVariableNr = Constants::LOAN_FIELDS;
+        $loanColumns = Constants::LOAN_COLUMNS;
         $inputs = array();
 
         foreach($selectedCategories as $categoryId) {
@@ -81,11 +82,18 @@ class FormulaManager {
                 array_push($allBusinessData, $businessData);
             }
 
-            for($i = 0; $i < $loanVariableNr; $i++) {
-                Log::info($request->get('loan-3'));
-                $value = $request->get('loan-' . $i) == null ? 0 : $request->get('loan-' . $i);
-                array_push($allLoanData, $value);
+            for($i = 0; $i < $loanColumns; $i++) {
+                $loanData = array();
+
+                for($j = 0; $j < $loanVariableNr; $j++) {
+                    $value = $request->get('loan-' . $j . '-' . $i) == null ? 0 : $request->get('loan-' . $j . '-' . $i);
+                    array_push($loanData, $value);
+                }
+
+                array_push($allLoanData, $loanData);
             }
+
+            Log::info($allLoanData);
 
             $input->setTotalValuePlans($totalValuePlans);
             $input->setInvestmentPlans($investmentPlans);
@@ -170,13 +178,21 @@ class FormulaManager {
             }
         }
 
-        //Credit
-        $credit = $this->calculateCredit($inputs[0]->getLoanData()[0]/100, $inputs[0]->getLoanData()[1], $inputs[0]->getLoanData()[2], $totalBruteIncome);
+        $firstYearCredit = 0;
+        $yearlyInterest = 0;
 
-        $fullInterest = array_sum($credit["paymentsPerYear"]);
-        $yearlyInterest = $fullInterest / $inputs[0]->getLoanData()[1];
+        /* To adapt to the new column of the loan table, in the loop below I included only the values that were directly touched
+        by the loan data and made the sum of those data. The other values are calculated as they were before. */
+        for($i = 0; $i < Constants::LOAN_COLUMNS; $i++) {
+            //Credit
+            $credit = $this->calculateCredit($inputs[0]->getLoanData()[$i][0]/100, $inputs[0]->getLoanData()[$i][1], $inputs[0]->getLoanData()[$i][2], $totalBruteIncome);
 
-    	$tax = Constants::LOW;
+            $fullInterest = array_sum($credit["paymentsPerYear"]);
+            $yearlyInterest += $fullInterest / $inputs[0]->getLoanData()[$i][1];
+            $firstYearCredit += $credit["firstYearCredit"];
+        }
+
+        $tax = Constants::LOW;
         if($totalIncome >= Constants::THRESHOLD) $tax = Constants::HIGH;
 
         $incomeBeforeTax = $totalIncome - $totalExpense - $totalAmortization;
@@ -189,7 +205,7 @@ class FormulaManager {
 
         $totalNetIncome = $totalIncome - $totalExpense - $totalAmortization - $yearlyInterest - $incomeTax;
         $moneyFlux = $totalIncome - $totalExpense - $incomeTax;
-        $firstYearCredit = $credit["firstYearCredit"];
+
         $dscr = $firstYearCredit != 0 ? $moneyFlux / $firstYearCredit : 0;
 
         //Setting final results

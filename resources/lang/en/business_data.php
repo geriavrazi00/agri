@@ -4,10 +4,10 @@ return [
 
 	//Commons
 	'technology' => 'Technology/Investment',
-	'other' => 'Tjetër',
+	'other' => 'Other',
 
 	//Greenhouse category labels
-	'surface' => 'Surface',
+	'surface' => 'Surface (dynym)',
 	'culture_1' => 'Culture I',
 	'culture_2' => 'Culture II',
 

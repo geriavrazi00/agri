@@ -360,7 +360,7 @@ input:focus {
 }
 
 #submitbutton {
-    max-width: 150px;
+    max-width: fit-content;
     width: 40%;
     font-size: large;
     height: auto;
