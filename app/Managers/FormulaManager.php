@@ -191,7 +191,7 @@ class FormulaManager {
                 $credit = $this->calculateCredit($inputs[0]->getLoanData()[$i][1]/100, $inputs[0]->getLoanData()[$i][2], $inputs[0]->getLoanData()[$i][3], $totalBruteIncome);
 
                 $fullInterest = array_sum($credit["paymentsPerYear"]);
-                $yearlyInterest += $fullInterest / $inputs[0]->getLoanData()[$i][2];
+                $yearlyInterest +=  $inputs[0]->getLoanData()[$i][2] != 0 ? $fullInterest / $inputs[0]->getLoanData()[$i][2] : 0;
                 $firstYearCredit += $credit["firstYearCredit"];
             }
         }
@@ -231,12 +231,12 @@ class FormulaManager {
     private function calculateCredit($interest, $years, $yearlyPayments, $loan) {
         $totalInterest = 0;
 
-        $rate = $interest / $yearlyPayments;
+        $rate = $yearlyPayments != 0 ? $interest / $yearlyPayments : 0;
         $nper = $years * $yearlyPayments;
         $pv = -$loan;
         $fv = 0;
         $type = 0;
-        $PMT = (-$fv - $pv * pow(1 + $rate, $nper)) / (1 + $rate * $type) / ((pow(1 + $rate, $nper) - 1) / $rate);
+        $PMT = $rate != 0 ? (-$fv - $pv * pow(1 + $rate, $nper)) / (1 + $rate * $type) / ((pow(1 + $rate, $nper) - 1) / $rate) : 0;
 
         $yearlyInterestSums = 0;
 
@@ -244,7 +244,7 @@ class FormulaManager {
         $paymentsPerYear = array();
 
         for($i = 0; $i < $nper; $i++) {
-            $calculatedInterest = ($loan * $interest) / $yearlyPayments;
+            $calculatedInterest = $yearlyPayments != 0 ? ($loan * $interest) / $yearlyPayments : 0;
             $principal = $PMT - $calculatedInterest;
             $loan = $loan - $principal;
             $totalInterest = $totalInterest + $calculatedInterest;
