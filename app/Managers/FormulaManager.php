@@ -37,7 +37,7 @@ class FormulaManager {
             $investmentVariableNr = sizeof($investmentLabels);
             $businessVariableNr = sizeof($businessLabels);
 
-            array_push($investmentLabels, 'total');
+            array_push($investmentLabels, trans('messages.total'));
 
             $input = new Inputs();
             $input->setApplicantName($request->get('applicant-name'));
@@ -84,6 +84,8 @@ class FormulaManager {
 
             for($i = 0; $i < $loanColumns; $i++) {
                 $loanData = array();
+
+                array_push($loanData, $request->get('total-loan-' . $i));
 
                 for($j = 0; $j < $loanVariableNr; $j++) {
                     $value = $request->get('loan-' . $j . '-' . $i) == null ? 0 : $request->get('loan-' . $j . '-' . $i);
@@ -184,12 +186,14 @@ class FormulaManager {
         /* To adapt to the new column of the loan table, in the loop below I included only the values that were directly touched
         by the loan data and made the sum of those data. The other values are calculated as they were before. */
         for($i = 0; $i < Constants::LOAN_COLUMNS; $i++) {
-            //Credit
-            $credit = $this->calculateCredit($inputs[0]->getLoanData()[$i][0]/100, $inputs[0]->getLoanData()[$i][1], $inputs[0]->getLoanData()[$i][2], $totalBruteIncome);
+            if($inputs[0]->getLoanData()[$i][0] != 0) {
+                //Credit
+                $credit = $this->calculateCredit($inputs[0]->getLoanData()[$i][1]/100, $inputs[0]->getLoanData()[$i][2], $inputs[0]->getLoanData()[$i][3], $totalBruteIncome);
 
-            $fullInterest = array_sum($credit["paymentsPerYear"]);
-            $yearlyInterest += $fullInterest / $inputs[0]->getLoanData()[$i][1];
-            $firstYearCredit += $credit["firstYearCredit"];
+                $fullInterest = array_sum($credit["paymentsPerYear"]);
+                $yearlyInterest += $fullInterest / $inputs[0]->getLoanData()[$i][2];
+                $firstYearCredit += $credit["firstYearCredit"];
+            }
         }
 
         $tax = Constants::LOW;
