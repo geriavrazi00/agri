@@ -143,7 +143,7 @@
     <script src="{{ asset('js/datepicker/datepicker.js') }}"></script>
     <script src="{{ asset('js/datepicker/datepicker.js') }}"></script>
     <script src="{{ asset('js/datepicker/i18n/datepicker.sq.js') }}"></script>
-
+    <script src="{{ asset('js/datepicker/i18n/datepicker.en.js') }}"></script>
 </body>
 
 </html>

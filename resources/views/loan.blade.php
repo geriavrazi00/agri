@@ -47,10 +47,10 @@
             <tr>
                 <td>{{trans('loan_data.first_payment_date')}}</td>
                 <td>
-                    <input type='text' id="loan-3-0" name="loan-3-0" class="datepicker-here form-control" data-position="right bottom" data-language="sq" required oninvalid="createInvalidMsg(this, '{{trans('validation.first_payment_date_required')}}', '');" oninput="createInvalidMsg(this, '', '');" placeholder="{{ trans('messages.date_of_first_payment') }}"/>
+                    <input type='text' id="loan-3-0" name="loan-3-0" class="datepicker-here form-control" data-position="right bottom" data-language="{{ App::getLocale() }}" required oninvalid="createInvalidMsg(this, '{{trans('validation.first_payment_date_required')}}', '');" oninput="createInvalidMsg(this, '', '');" placeholder="{{ trans('messages.date_of_first_payment') }}"/>
                 </td>
                 <td>
-                    <input type='text' id="loan-3-1" name="loan-3-1" class="datepicker-here form-control" data-position="right bottom" data-language="sq" oninvalid="createInvalidMsg(this, '{{trans('validation.first_payment_date_required')}}', '');" oninput="createInvalidMsg(this, '', '');" placeholder="{{ trans('messages.date_of_first_payment') }}"/>
+                    <input type='text' id="loan-3-1" name="loan-3-1" class="datepicker-here form-control" data-position="right bottom" data-language="{{ App::getLocale() }}" oninvalid="createInvalidMsg(this, '{{trans('validation.first_payment_date_required')}}', '');" oninput="createInvalidMsg(this, '', '');" placeholder="{{ trans('messages.date_of_first_payment') }}"/>
                 </td>
             </tr>
         </tbody>
