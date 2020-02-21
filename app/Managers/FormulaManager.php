@@ -95,8 +95,6 @@ class FormulaManager {
                 array_push($allLoanData, $loanData);
             }
 
-            Log::info($allLoanData);
-
             $input->setTotalValuePlans($totalValuePlans);
             $input->setInvestmentPlans($investmentPlans);
             $input->setBusinessData($allBusinessData);
@@ -163,13 +161,22 @@ class FormulaManager {
                     $income = $valuesCulture->efficiency * $valuesCulture->price * $mainVariable;
                     $expenses = $valuesCulture->efficiency * $valuesCulture->cost * $mainVariable;
 
+                    $multiplicationValue = 0;
+
+                    if($valuesCulture->multiply_by_production) {
+                        $multiplicationValue = $valuesCulture->efficiency * $mainVariable;
+                    } else {
+                        $multiplicationValue = $mainVariable;
+                    }
+
                     array_push($culture, $selectedCulture->name);
                     array_push($culture, $input->getFarmCategory()->name);
                     array_push($culture, $mainVariable);
                     array_push($culture, $valuesCulture->efficiency);
                     array_push($culture, $valuesCulture->efficiency * $mainVariable);
+                    array_push($culture, $valuesCulture->price);
                     array_push($culture, $mainVariable != 0 ? $income/$mainVariable : 0);
-                    array_push($culture, $mainVariable != 0 ? (($income/$mainVariable) * $mainVariable) : 0);
+                    array_push($culture, $mainVariable != 0 ? (($income/$mainVariable) * $multiplicationValue) : 0);
                     array_push($culture, $expenses);
 
                     array_push($cultures, $culture);

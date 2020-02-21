@@ -96,8 +96,8 @@
     </tr>
     <tr>
         <td style="border: 2px solid #000000;">{{ trans('loan_data.loan_sum') }}</td>
-        <td style="border: 2px solid #000000; text-align: right;">{{ fmod($input[0]->loanData[0][0], 1) ? number_format($input[0]->loanData[0][0], 2) : number_format($input[0]->loanData[0][0]) }}</td>
-        <td style="border: 2px solid #000000; text-align: right;">{{ fmod($input[0]->loanData[1][0], 1) ? number_format($input[0]->loanData[1][0], 2) : number_format($input[0]->loanData[1][0]) }}</td>
+        <td style="border: 2px solid #000000; text-align: right;"><span style="float: left;">ALL </span>{{ fmod($input[0]->loanData[0][0], 1) ? number_format($input[0]->loanData[0][0], 2) : number_format($input[0]->loanData[0][0]) }}</td>
+        <td style="border: 2px solid #000000; text-align: right;"><span style="float: left;">ALL </span>{{ fmod($input[0]->loanData[1][0], 1) ? number_format($input[0]->loanData[1][0], 2) : number_format($input[0]->loanData[1][0]) }}</td>
     </tr>
     <tr>
         <td style="border: 2px solid #000000;">{{ trans('loan_data.yearly_interest') }}</td>
@@ -130,7 +130,8 @@
 			<th style="text-align: center; border: 2px solid #000000;"><b>{{ trans('messages.category') }}</b></th>
 			<th style="text-align: center; border: 2px solid #000000;"><b>{{ trans('messages.unit') }}</b></th>
 			<th style="text-align: center; border: 2px solid #000000;"><b>{{ trans('messages.productivity') }}</b></th>
-			<th style="text-align: center; border: 2px solid #000000;"><b>{{ trans('messages.production') }}</b></th>
+            <th style="text-align: center; border: 2px solid #000000;"><b>{{ trans('messages.production') }}</b></th>
+            <th style="text-align: center; border: 2px solid #000000;"><b>{{ trans('messages.price') }}</b></th>
 			<th style="text-align: center; border: 2px solid #000000;"><b>{{ trans('messages.gross_income') }}</b></th>
 			<th style="text-align: center; border: 2px solid #000000;"><b>{{ trans('messages.total_gross_income') }}</b></th>
 		</tr>
@@ -144,8 +145,9 @@
 				<td style="border: 2px solid #000000; text-align: right;">{{ fmod($result->cultures[$i][2], 1) !== 0.00 ? number_format($result->cultures[$i][2], 2) : number_format($result->cultures[$i][2]) }}</td>
 				<td style="border: 2px solid #000000; text-align: right;">{{ fmod($result->cultures[$i][3], 1) !== 0.00 ? number_format($result->cultures[$i][3], 2) : number_format($result->cultures[$i][3]) }}</td>
 				<td style="border: 2px solid #000000; text-align: right;">{{ fmod($result->cultures[$i][4], 1) !== 0.00 ? number_format($result->cultures[$i][4], 2) : number_format($result->cultures[$i][4]) }}</td>
-				<td style="border: 2px solid #000000; text-align: right;"><span style="float: left;">ALL </span>{{ fmod($result->cultures[$i][5], 1) !== 0.00 ? number_format($result->cultures[$i][5], 2) : number_format($result->cultures[$i][5]) }}</td>
-				<td style="border: 2px solid #000000; text-align: right;"><span style="float: left;">ALL </span>{{ fmod($result->cultures[$i][6], 1) !== 0.00 ? number_format($result->cultures[$i][6], 2) : number_format($result->cultures[$i][6]) }}</td>
+                <td style="border: 2px solid #000000; text-align: right;"><span style="float: left;">ALL </span>{{ fmod($result->cultures[$i][5], 1) !== 0.00 ? number_format($result->cultures[$i][5], 2) : number_format($result->cultures[$i][5]) }}</td>
+                <td style="border: 2px solid #000000; text-align: right;"><span style="float: left;">ALL </span>{{ fmod($result->cultures[$i][6], 1) !== 0.00 ? number_format($result->cultures[$i][6], 2) : number_format($result->cultures[$i][6]) }}</td>
+				<td style="border: 2px solid #000000; text-align: right;"><span style="float: left;">ALL </span>{{ fmod($result->cultures[$i][7], 1) !== 0.00 ? number_format($result->cultures[$i][7], 2) : number_format($result->cultures[$i][7]) }}</td>
 			</tr>
 		@endfor
 	</tbody>

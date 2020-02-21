@@ -82,6 +82,7 @@ return [
     'unit' => 'Unit',
     'productivity' => 'Productivity',
     'production' => 'Production',
+    'price' => 'Price per unit',
     'gross_income' => 'Gross income per unit',
     'total_gross_income' => 'Total gross income',
 

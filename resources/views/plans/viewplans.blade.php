@@ -128,8 +128,8 @@
                         <tbody>
                             <tr class="resulttablerow">
                                 <td class="resulttabledata">{{ trans('loan_data.loan_sum') }}</td>
-                                <td class="resulttabledata" style="text-align: right;">{{ fmod($inputs[0]->loanData[0][0], 1) ? number_format($inputs[0]->loanData[0][0], 2) : number_format($inputs[0]->loanData[0][0]) }}</td>
-                                <td class="resulttabledata" style="text-align: right;">{{ fmod($inputs[0]->loanData[1][0], 1) ? number_format($inputs[0]->loanData[1][0], 2) : number_format($inputs[0]->loanData[1][0]) }}</td>
+                                <td class="resulttabledata" style="text-align: right;"><span style="text-align: left;">ALL </span>{{ fmod($inputs[0]->loanData[0][0], 1) ? number_format($inputs[0]->loanData[0][0], 2) : number_format($inputs[0]->loanData[0][0]) }}</td>
+                                <td class="resulttabledata" style="text-align: right;"><span style="text-align: left;">ALL </span>{{ fmod($inputs[0]->loanData[1][0], 1) ? number_format($inputs[0]->loanData[1][0], 2) : number_format($inputs[0]->loanData[1][0]) }}</td>
                             </tr>
                             <tr class="resulttablerow">
                                 <td class="resulttabledata">{{ trans('loan_data.yearly_interest') }}</td>
@@ -167,6 +167,7 @@
                                 <th class="resulttablehead" style="text-align: right;">{{ trans('messages.unit') }}</th>
                                 <th class="resulttablehead" style="text-align: right;">{{ trans('messages.productivity') }}</th>
                                 <th class="resulttablehead" style="text-align: right;">{{ trans('messages.production') }}</th>
+                                <th class="resulttablehead" style="text-align: right;">{{ trans('messages.price') }}</th>
                                 <th class="resulttablehead" style="text-align: right;">{{ trans('messages.gross_income') }}</th>
                                 <th class="resulttablehead" style="text-align: right;">{{ trans('messages.total_gross_income') }}</th>
                             </tr>
@@ -182,6 +183,7 @@
                                     <td class="resulttabledata" style="text-align: right;">{{ fmod($result->cultures[$i][4], 1) ? number_format($result->cultures[$i][4], 2) : number_format($result->cultures[$i][4]) }}</td>
                                     <td class="resulttabledata" style="text-align: right;"><span style="text-align: left;">ALL </span>{{ fmod($result->cultures[$i][5], 1) ? number_format($result->cultures[$i][5], 2) : number_format($result->cultures[$i][5]) }}</td>
                                     <td class="resulttabledata" style="text-align: right;"><span style="text-align: left;">ALL </span>{{ fmod($result->cultures[$i][6], 1) ? number_format($result->cultures[$i][6], 2) : number_format($result->cultures[$i][6]) }}</td>
+                                    <td class="resulttabledata" style="text-align: right;"><span style="text-align: left;">ALL </span>{{ fmod($result->cultures[$i][7], 1) ? number_format($result->cultures[$i][7], 2) : number_format($result->cultures[$i][7]) }}</td>
                                 </tr>
                             @endfor
                         </tbody>

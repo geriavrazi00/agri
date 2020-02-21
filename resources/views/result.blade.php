@@ -37,6 +37,7 @@
                             <th class="resulttablehead" style="text-align: right;">{{ trans('messages.unit') }}</th>
                             <th class="resulttablehead" style="text-align: right;">{{ trans('messages.productivity') }}</th>
                             <th class="resulttablehead" style="text-align: right;">{{ trans('messages.production') }}</th>
+                            <th class="resulttablehead" style="text-align: right;">{{ trans('messages.price') }}</th>
                             <th class="resulttablehead" style="text-align: right;">{{ trans('messages.gross_income') }}</th>
                             <th class="resulttablehead" style="text-align: right;">{{ trans('messages.total_gross_income') }}</th>
                         </tr>
@@ -52,6 +53,7 @@
                                 <td class="resulttabledata" style="text-align: right;">{{ fmod($result->getCultures()[$i][4], 1) ? number_format($result->getCultures()[$i][4], 2) : number_format($result->getCultures()[$i][4]) }}</td>
                                 <td class="resulttabledata" style="text-align: right;">ALL {{ fmod($result->getCultures()[$i][5], 1) ? number_format($result->getCultures()[$i][5], 2) : number_format($result->getCultures()[$i][5]) }}</td>
                                 <td class="resulttabledata" style="text-align: right;">ALL {{ fmod($result->getCultures()[$i][6], 1) ? number_format($result->getCultures()[$i][6], 2) : number_format($result->getCultures()[$i][6]) }}</td>
+                                <td class="resulttabledata" style="text-align: right;">ALL {{ fmod($result->getCultures()[$i][7], 1) ? number_format($result->getCultures()[$i][7], 2) : number_format($result->getCultures()[$i][7]) }}</td>
                             </tr>
                         @endfor
                     </tbody>

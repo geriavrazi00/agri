@@ -82,6 +82,7 @@ return [
     'unit' => 'Njësi',
     'productivity' => 'Rendimenti',
     'production' => 'Prodhimi',
+    'price' => 'Çmimi për njësi',
     'gross_income' => 'Të ardhura bruto për njësi',
     'total_gross_income' => 'Të ardhura bruto totale',
 
