@@ -35,15 +35,15 @@ return [
     'high' => 'E lartë',
 
 	//Tables
-	'investment_plan' => 'Plan investimi me kredi',
+	'investment_plan' => 'Plani i investimit',
     'value' => 'Vlera',
     'values' => 'Vlerat',
     'total_value' => 'Vlera në total',
     'financing_bank' => 'Financim nga banka',
 	'business_data' => 'Të dhënat e biznesit',
 	'loan_repayment' => 'Ripagimi i huasë',
-	'loan_data_1' => 'Të dhënat për huanë 1',
-    'loan_data_2' => 'Të dhënat për huanë 2',
+	'loan_data_1' => 'Të dhënat për huanë afatmesme dhe afatgjate',
+    'loan_data_2' => 'Të dhënat për huanë afatshkurtër ',
 	'total' => 'Totali',
 
 	//Result labels
@@ -98,7 +98,7 @@ return [
     'total_net_profit' => 'Fitimi neto total',
     'cash_flow' => 'Fluksi i parasë i vlefshëm për pagesa kredie',
     'loan_installments' => 'Këste kredie për 1 vit',
-    'dscr' => 'DSCR',
+    'dscr' => 'Raporti i kapacitetit të shërbimit të borxhit (DSCR)',
 
     //Result buttons
     'save_project' => 'Ruaj projektin',

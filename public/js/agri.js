@@ -395,4 +395,8 @@ $("#loan-3").keypress(function(event) {
 
 $(window).on("load", function() {
     $("#myModal").modal("show");
+
+    setTimeout(function(e) {
+        $('#myModal').modal('hide');
+    }, parseInt($('#myModal').attr('data-delay')) * 1000);
 });

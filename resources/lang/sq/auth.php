@@ -22,7 +22,7 @@ return [
         AASF ofron zgjidhje inovatore për financimin e bujqësisë dhe agrobiznesit shqiptar.',
     'intro_message' => 'Aplikacioni Agro-financa ju ndihmon të përllogarisni përfitueshmërinë e planeve të investimit nga
         aktiviteti bujqësor.',
-    'login' => 'Kyçu',
+    'login' => 'Hyr',
     'failed' => 'Të dhënat nuk janë të sakta.',
     'throttle' => 'Shumë përpjekje për kyçje! Ju lutem provoni përsëri pas :seconds sekondash.',
 

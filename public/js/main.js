@@ -18,16 +18,30 @@
     //      BACK TO TOP BUTTON
     // =====================================================
     $(window).scroll(function() {
-        if ($(this).scrollTop() > 100) {
-            $(".back-to-top").fadeIn("slow");
+        // if ($(this).scrollTop() > 100) {
+        //     $(".back-to-top").fadeIn("slow");
+        // } else {
+        //     $(".back-to-top").fadeOut("slow");
+        // }
+
+        var mybutton = document.getElementById("back-to-top");
+
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            mybutton.style.display = "block";
         } else {
-            $(".back-to-top").fadeOut("slow");
+            mybutton.style.display = "none";
         }
     });
-    $(".back-to-top").click(function() {
+
+    $(".back-to-top").click(function(e) {
+        e.preventDefault();
+
         $("html, body").animate({ scrollTop: 0 }, 500, "easeInOutExpo");
-        window.focus();
-        return false;
+        //window.focus();
+        //return false;
+
+        //document.body.scrollTop = 0;
+        //document.documentElement.scrollTop = 0;
     });
 
     // =====================================================

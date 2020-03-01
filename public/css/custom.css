@@ -339,9 +339,9 @@ input:focus {
     color: white;
 }
 #welcometext {
-    font-size: large;
+    font-size: 22px;
     font-weight: 600;
-    text-align: justify;
+    text-align: left;
 }
 
 #namenipt {
