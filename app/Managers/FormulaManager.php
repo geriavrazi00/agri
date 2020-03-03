@@ -119,30 +119,15 @@ class FormulaManager {
             //Amortization values
             $amortizationConstants = $input->getFarmCategory()->labels()->where('type', '=', Constants::INVESTMENT_LABELS)->get();
 
-            /*$amortizationConstant1 = $amortizationConstants[0]->amortization;
-            $amortizationConstant2 = $amortizationConstants[1]->amortization;
-            $amortizationConstant3 = $amortizationConstants[2]->amortization;
-            $amortizationConstant4 = $amortizationConstants[3]->amortization;
-            $amortizationConstant5 = $amortizationConstants[4]->amortization;*/
-
-            for($i = 0; $i < sizeof($input->getInvestmentPlans()); $i++) {
-
+            //The amortization is calculated using the first column of the investment plan table. The brute income uses the second
+            for($i = 0; $i < sizeof($input->getTotalValuePlans()); $i++) {
                 for($j = 0; $j < sizeof($amortizationConstants); $j++) {
                     $totalAmortization += $amortizationConstants[$j]->amortization != 0
-                        ? $input->getInvestmentPlans()[$i][$j]/$amortizationConstants[$j]->amortization
+                        ? $input->getTotalValuePlans()[$i][$j]/$amortizationConstants[$j]->amortization
                         : 0;
 
                     $totalBruteIncome += $input->getInvestmentPlans()[$i][$j];
                 }
-
-                //Amortization
-                /*$totalAmortization += $amortizationConstant1 != 0 ? $input->getInvestmentPlans()[$i][0]/$amortizationConstant1 : 0;
-                $totalAmortization += $amortizationConstant2 != 0 ? $input->getInvestmentPlans()[$i][1]/$amortizationConstant2 : 0;
-                $totalAmortization += $amortizationConstant3 != 0 ? $input->getInvestmentPlans()[$i][2]/$amortizationConstant3 : 0;
-                $totalAmortization += $amortizationConstant4 != 0 ? $input->getInvestmentPlans()[$i][3]/$amortizationConstant4 : 0;
-                $totalAmortization += $amortizationConstant5 != 0 ? $input->getInvestmentPlans()[$i][4]/$amortizationConstant5 : 0;*/
-
-                /*$totalBruteIncome += $input->getInvestmentPlans()[$i][0] + $input->getInvestmentPlans()[$i][1] + $input->getInvestmentPlans()[$i][2] + $input->getInvestmentPlans()[$i][3] + $input->getInvestmentPlans()[$i][4];*/
             }
 
             for($i = 0; $i < sizeof($input->getBusinessData()); $i++) {
@@ -206,7 +191,7 @@ class FormulaManager {
         $tax = Constants::LOW;
         if($totalIncome >= Constants::THRESHOLD) $tax = Constants::HIGH;
 
-        $incomeBeforeTax = $totalIncome - $totalExpense - $totalAmortization;
+        $incomeBeforeTax = $totalIncome - $totalExpense - $totalAmortization - $yearlyInterest;
 
         if($incomeBeforeTax < 0 ) {
             $incomeTax = 0;

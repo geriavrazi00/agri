@@ -42,8 +42,8 @@ return [
     'financing_bank' => 'Financim nga banka',
 	'business_data' => 'Të dhënat e biznesit',
 	'loan_repayment' => 'Ripagimi i huasë',
-	'loan_data_1' => 'Të dhënat për huanë afatmesme dhe afatgjate',
-    'loan_data_2' => 'Të dhënat për huanë afatshkurtër ',
+	'loan_data_1' => 'Të dhënat për huanë afatmesme dhe afatgjatë',
+    'loan_data_2' => 'Të dhënat për huanë afatshkurtër',
 	'total' => 'Totali',
 
 	//Result labels
@@ -84,7 +84,7 @@ return [
     'production' => 'Prodhimi',
     'price' => 'Çmimi për njësi',
     'gross_income' => 'Të ardhura bruto për njësi',
-    'total_gross_income' => 'Të ardhura bruto totale',
+    'total_gross_income' => 'Të ardhura bruto, viti 1',
 
     //Result table 2 headers
     'investment_profitability' => 'Përfitueshmeria e investimit',

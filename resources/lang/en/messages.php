@@ -42,8 +42,8 @@ return [
     'financing_bank' => 'Financed by the bank',
 	'business_data' => 'Business data',
 	'loan_repayment' => 'Loan repayment',
-    'loan_data_1' => 'Loan data 1',
-    'loan_data_2' => 'Loan data 2',
+    'loan_data_1' => 'Data for midterm and longterm loan',
+    'loan_data_2' => 'Data for the short term loan',
 	'total' => 'Total',
 
 	//Result labels
@@ -84,12 +84,12 @@ return [
     'production' => 'Production',
     'price' => 'Price per unit',
     'gross_income' => 'Gross income per unit',
-    'total_gross_income' => 'Total gross income',
+    'total_gross_income' => 'Total gross income, first year',
 
     //Result table 2 headers
     'investment_profitability' => 'The profitability of the investment',
     'result_of_profitability' => 'The result of profitability',
-    'total_revenue' => 'Total revenue, year 1',
+    'total_revenue' => 'Total revenue, first year',
     'total_production_costs' => 'Total production costs',
     'depreciation' => 'Depreciation',
     'annual_interest' => 'Annual interest',

@@ -134,7 +134,7 @@ return [
     'interest_min_value' => 'Norma aktuale e interesit vjetor duhet të jetë më e madhe se :value.',
     'interest_max_value' => 'Norma aktuale e interesit vjetor nuk mund të jetë më e madhe se :value.',
     'loan_amount_required' => 'Ju lutem plotësoni të paktën një shumë huaje.',
-    'sum_of_loan' => 'Shuma e shumave të huasë duhet të jetë e barabartë me totalin e vlerave te financuara nga banka.',
+    'sum_of_loan' => 'Totali i shumave të huasë duhet të jetë i barabartë me totalin e vlerave te financuara nga banka.',
 
     //Business data validation
     'technology_required' => 'Ju lutem zgjidhni një teknologji.',
