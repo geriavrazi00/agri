@@ -176,4 +176,27 @@ return [
     'cost_per_unit' => 'Cost/unit',
     'update_coefficients' => 'Update the coefficients of the category',
     'coefficients_updated' => 'The coefficients of the category were updated successfully!',
+
+    //Taxes
+    'taxes' => 'Taxes',
+    'tax_management' => 'Tax management',
+    'bottom_threshold' => 'Bottom threshold',
+    'top_threshold' => 'Top threshold',
+    'percentage' => 'Percentage',
+    'create_tax' => 'Create tax',
+    'view_tax' => 'View the data in detail',
+    'edit_tax' => 'Edit tax',
+    'tax_created' => 'The tax was created successfully!',
+    'tax_updated' => 'The tax was updated successfully!',
+    'tax_deleted' => 'The tax was deleted successfully!',
+
+    //Error pages
+    '401' => 'Unauthorized access!',
+    '403' => 'Forbidden!',
+    '404' => 'Page not found!',
+    '419' => 'Page expired!',
+    '429' => 'Too many requests to the server!',
+    '500' => 'Internal server problem!',
+    '503' => 'Service not available!',
+    'back_to_home' => 'Back to Home',
 ];

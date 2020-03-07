@@ -1,5 +1,5 @@
 @extends('errors::minimal')
 
-@section('title', __('Shumë kërkesa të dërguara'))
+@section('title', trans('messages.419'))
 @section('code', '429')
-@section('message', __('Shumë kërkesa të dërguara'))
+@section('message', trans('messages.419'))

@@ -175,4 +175,27 @@ return [
     'cost_per_unit' => 'Kosto/njësi',
     'update_coefficients' => 'Përditëso koefiçentët e kategorisë',
     'coefficients_updated' => 'Koefiçentët e kategorisë u përditësuan me sukses!',
+
+    //Taxes
+    'taxes' => 'Tatimet',
+    'tax_management' => 'Menaxhimi i tatimeve',
+    'bottom_threshold' => 'Vlera minimale',
+    'top_threshold' => 'Vlera maksimale',
+    'percentage' => 'Përqindja',
+    'create_tax' => 'Krijo tatimin',
+    'view_tax' => 'Shiko të dhënat në detaje',
+    'edit_tax' => 'Modifiko tatimin',
+    'tax_created' => 'Tatimi u krijua me sukses!',
+    'tax_updated' => 'Tatimi u përditësua me sukses!',
+    'tax_deleted' => 'Tatimi u fshi me sukses!',
+
+    //Error pages
+    '401' => 'Akses i paautorizuar!',
+    '403' => 'E ndaluar!',
+    '404' => 'Faqja nuk u gjet!',
+    '419' => 'Faqja skadoi!',
+    '429' => 'Shumë kërkesa të dërguara në server!',
+    '500' => 'Problem në server!',
+    '503' => 'Shërbimi i padisponueshëm!',
+    'back_to_home' => 'Kthehu tek Kreu',
 ];

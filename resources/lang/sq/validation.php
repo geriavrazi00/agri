@@ -146,4 +146,8 @@ return [
 
     //Admin users validation
     'wrong_format' => 'Ju lutem jepni të dhënat e fushës në një format të vlefshëm.',
+
+    //Taxes validation
+    'percentage_tax_min_value' => 'Përqindja e tatimit duhet të jetë më e madhe se :value.',
+    'percentage_tax_max_value' => 'Përqindja e tatimit duhet të jetë më e vogël se :value.',
 ];

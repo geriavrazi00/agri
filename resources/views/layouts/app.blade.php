@@ -70,12 +70,13 @@
 
                             @if (Auth::user()->role->id == App\Constants::ROLE_ADMIN)
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle {{ (Request::is('users') || Request::is('users/*') || Request::is('values') || Request::is('values/*')) ? 'active-nav' : ''}}" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <a class="nav-link dropdown-toggle {{ (Request::is('users') || Request::is('users/*') || Request::is('values') || Request::is('values/*') || Request::is('taxes') || Request::is('taxes/*')) ? 'active-nav' : ''}}" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     {{ trans('messages.administration') }}
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="/users">{{ trans('messages.users') }}</a>
                                     <a class="dropdown-item" href="/values">{{ trans('messages.coefficients') }}</a>
+                                    <a class="dropdown-item" href="/taxes">{{ trans('messages.taxes') }}</a>
                                 </div>
                             </li>
                             @endif

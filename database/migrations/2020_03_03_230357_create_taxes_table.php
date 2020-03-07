@@ -17,6 +17,9 @@ class CreateTaxesTable extends Migration
             $table->bigIncrements('id');
             $table->timestamps();
             $table->string('name');
+            $table->decimal('bottom_threshold', 16, 2);
+            $table->decimal('top_threshold', 16, 2)->nullable($value = true);
+            $table->decimal('percentage', 10, 4);
         });
     }
 

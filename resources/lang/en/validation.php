@@ -176,4 +176,8 @@ return [
 
     //Admin users validation
     'wrong_format' => 'Please enter the data of the field in the right format.',
+
+    //Taxes validation
+    'percentage_tax_min_value' => 'The percentage of the tax must be greater than :value.',
+    'percentage_tax_max_value' => 'The percentage of the tax must have a maximum value of :value.',
 ];

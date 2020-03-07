@@ -82,6 +82,32 @@ jQuery(document).ready(function($) {
 		}
     });
 
+    $('#taxestable').DataTable({
+        responsive: true,
+		language: {
+			processing:     Lang.get('messages.processing'),
+			search:         Lang.get('messages.search'),
+			lengthMenu:     Lang.get('messages.view_rows'),
+			info:           Lang.get('messages.showing_rows'),
+			infoEmpty:      Lang.get('messages.showing_0_rows'),
+			infoFiltered:   Lang.get('messages.filter_message'),
+			infoPostFix:    "",
+			loadingRecords: Lang.get('messages.working'),
+			zeroRecords:    Lang.get('messages.no_data_found'),
+			emptyTable:     Lang.get('messages.no_data_in_table'),
+			paginate: {
+				first:      Lang.get('messages.first'),
+				previous:   Lang.get('messages.previous'),
+				next:       Lang.get('messages.next'),
+				last:       Lang.get('messages.last')
+			},
+			aria: {
+				sortAscending:  Lang.get('messages.order_asc'),
+				sortDescending: Lang.get('messages.order_desc')
+			}
+		}
+    });
+
     $('#plansdetailbusiness0').DataTable({
         responsive:     true,
         searching:      false,
