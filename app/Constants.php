@@ -9,8 +9,9 @@ final class Constants {
 
 	//Tax percentages
 	const LOW = 0.075;
-	const HIGH = 0.15;
-	const THRESHOLD = 12000000;
+    const HIGH = 0.15;
+    const LOW_THRESHOLD = 5000000;
+	const HIGH_THRESHOLD = 14000000;
 
 	//Loan fields
     const LOAN_FIELDS = 4;
