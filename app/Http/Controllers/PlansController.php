@@ -55,7 +55,7 @@ class PlansController extends Controller
     public function exportExcel($id) {
         $plan = Plan::find($id);
         $date = new DateTime();
-        return Excel::download(new PlanExcelExport($plan), 'Përfitueshmëria-' . $plan->business_code . '-' . $date->format('d-m-Y-H-i-s') . '.xlsx');
+        return Excel::download(new PlanExcelExport($plan), trans('messages.profitability') . '-' . $plan->business_code . '-' . $date->format('d-m-Y-H-i-s') . '.xlsx');
     }
 
     public function exportPdf($id) {
@@ -65,7 +65,7 @@ class PlansController extends Controller
         $pdf = new PlanPdfExport($plan);
         $doc = $pdf->export();
 
-        return $doc->download('Përfitueshmëria-' . $plan->business_code . '-' . $date->format('d-m-Y-H-i-s') . '.pdf');
+        return $doc->download(trans('messages.profitability') . '-' . $plan->business_code . '-' . $date->format('d-m-Y-H-i-s') . '.pdf');
     }
 
     /**
@@ -76,6 +76,6 @@ class PlansController extends Controller
      */
     public function destroy(Plan $plan) {
         $plan->delete();
-        return Redirect::to('/plans')->withSuccessMessage('Projekti u fshi me sukses!');
+        return Redirect::to('/plans')->withSuccessMessage(trans('messages.project_deleted'));
     }
 }

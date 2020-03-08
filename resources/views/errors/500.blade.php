@@ -1,5 +1,5 @@
 @extends('errors::minimal')
 
-@section('title', __('Problem në server'))
+@section('title', trans('messages.500'))
 @section('code', '500')
-@section('message', __('Problem në server'))
+@section('message', trans('messages.500'))

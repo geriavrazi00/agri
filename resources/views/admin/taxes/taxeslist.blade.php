@@ -7,9 +7,9 @@
         <div class="col-md-7" style="padding-top: 56px;">
             <center>
                 <div style="display: inline-flex; text-align: center;">
-                    <h3 class="resulttablehead">{{ trans('messages.users_management') }}</h3>
+                    <h3 class="resulttablehead">{{ trans('messages.tax_management') }}</h3>
 
-                    <a href="/users/create" class="btn btn-primary navbar-btn ml-0 ml-lg-3" style="height: fit-content;">
+                    <a href="/taxes/create" class="btn btn-primary navbar-btn ml-0 ml-lg-3" style="height: fit-content;">
                         {{ trans('messages.create') }}
                     </a>
                 </div>
@@ -18,31 +18,28 @@
             <br/>
 
 			<div class="table card-body" style="background-color: white;">
-                <table id="userstable" class="resulttable display responsive nowrap" style="width: 100%;">
+                <table id="taxestable" class="resulttable display responsive nowrap" style="width: 100%;">
                     <thead>
                         <tr class="resulttablerow">
                             <th class="resulttablehead">{{ trans('messages.name') }}</th>
-                            <th class="resulttablehead">{{ trans('messages.email') }}</th>
+                            <th class="resulttablehead">{{ trans('messages.percentage') }}</th>
                             <th class="resulttablehead" style="text-align: center;">{{ trans('messages.actions') }}</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($users as $user)
+                        @foreach($taxes as $tax)
                             <tr class="resulttablerow">
-                                <td class="resulttabledata">{{$user->name}}</td>
-                                <td class="resulttabledata">{{$user->email}}</td>
+                                <td class="resulttabledata">{{ $tax->name }}</td>
+                                <td class="resulttabledata">{{ $tax->percentage + 0 }}%</td>
                                 <td class="resulttabledata" style="text-align: center;">
-                                    <a href="/users/{{$user->id}}" class="btn btn-primary btn-circle btn-sm action-buttons" data-toggle="tooltip" title="{{ trans('messages.details') }}">
+                                    <a href="/taxes/{{$tax->id}}" class="btn btn-primary btn-circle btn-sm action-buttons" data-toggle="tooltip" title="{{ trans('messages.details') }}">
                                         <i class="fa fa-eye"></i>
                                     </a>
-                                    <a href="/users/{{$user->id}}/edit" class="btn btn-success btn-circle btn-sm edit-buttons" data-toggle="tooltip" title="{{ trans('messages.edit') }}">
+                                    <a href="/taxes/{{$tax->id}}/edit" class="btn btn-success btn-circle btn-sm edit-buttons" data-toggle="tooltip" title="{{ trans('messages.edit') }}">
                                         <i class="fa fa-edit"></i>
                                     </a>
-                                    <a href="/users/{{$user->id}}/password" class="btn btn-info btn-circle btn-sm action-buttons" data-toggle="tooltip" title="{{ trans('messages.change_password') }}">
-                                        <i class="fa fa-unlock-alt"></i>
-                                    </a>
 
-                                    <form method="POST" action="/users/{{$user->id}}" style="display:inline; margin:0px; padding:0px;">
+                                    <form method="POST" action="/taxes/{{$tax->id}}" style="display:inline; margin:0px; padding:0px;">
                                         @method('DELETE')
                                         @csrf
 

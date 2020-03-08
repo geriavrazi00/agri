@@ -5,6 +5,7 @@ namespace App\Managers;
 use App\Constants;
 use App\Category;
 use App\Culture;
+use App\Tax;
 use App\Value;
 use App\Beans\Inputs;
 use App\Beans\Result;
@@ -15,6 +16,7 @@ class FormulaManager {
     public function buildInputs($request) {
         $selectedCategories = explode(',', $request->get('selected-categories')[0]);
         $loanVariableNr = Constants::LOAN_FIELDS;
+        $loanColumns = Constants::LOAN_COLUMNS;
         $inputs = array();
 
         foreach($selectedCategories as $categoryId) {
@@ -36,7 +38,7 @@ class FormulaManager {
             $investmentVariableNr = sizeof($investmentLabels);
             $businessVariableNr = sizeof($businessLabels);
 
-            array_push($investmentLabels, 'total');
+            array_push($investmentLabels, trans('messages.total'));
 
             $input = new Inputs();
             $input->setApplicantName($request->get('applicant-name'));
@@ -81,10 +83,17 @@ class FormulaManager {
                 array_push($allBusinessData, $businessData);
             }
 
-            for($i = 0; $i < $loanVariableNr; $i++) {
-                Log::info($request->get('loan-3'));
-                $value = $request->get('loan-' . $i) == null ? 0 : $request->get('loan-' . $i);
-                array_push($allLoanData, $value);
+            for($i = 0; $i < $loanColumns; $i++) {
+                $loanData = array();
+
+                array_push($loanData, $request->get('total-loan-' . $i));
+
+                for($j = 0; $j < $loanVariableNr; $j++) {
+                    $value = $request->get('loan-' . $j . '-' . $i) == null ? 0 : $request->get('loan-' . $j . '-' . $i);
+                    array_push($loanData, $value);
+                }
+
+                array_push($allLoanData, $loanData);
             }
 
             $input->setTotalValuePlans($totalValuePlans);
@@ -111,30 +120,15 @@ class FormulaManager {
             //Amortization values
             $amortizationConstants = $input->getFarmCategory()->labels()->where('type', '=', Constants::INVESTMENT_LABELS)->get();
 
-            /*$amortizationConstant1 = $amortizationConstants[0]->amortization;
-            $amortizationConstant2 = $amortizationConstants[1]->amortization;
-            $amortizationConstant3 = $amortizationConstants[2]->amortization;
-            $amortizationConstant4 = $amortizationConstants[3]->amortization;
-            $amortizationConstant5 = $amortizationConstants[4]->amortization;*/
-
-            for($i = 0; $i < sizeof($input->getInvestmentPlans()); $i++) {
-
+            //The amortization is calculated using the first column of the investment plan table. The brute income uses the second
+            for($i = 0; $i < sizeof($input->getTotalValuePlans()); $i++) {
                 for($j = 0; $j < sizeof($amortizationConstants); $j++) {
                     $totalAmortization += $amortizationConstants[$j]->amortization != 0
-                        ? $input->getInvestmentPlans()[$i][$j]/$amortizationConstants[$j]->amortization
+                        ? $input->getTotalValuePlans()[$i][$j]/$amortizationConstants[$j]->amortization
                         : 0;
 
                     $totalBruteIncome += $input->getInvestmentPlans()[$i][$j];
                 }
-
-                //Amortization
-                /*$totalAmortization += $amortizationConstant1 != 0 ? $input->getInvestmentPlans()[$i][0]/$amortizationConstant1 : 0;
-                $totalAmortization += $amortizationConstant2 != 0 ? $input->getInvestmentPlans()[$i][1]/$amortizationConstant2 : 0;
-                $totalAmortization += $amortizationConstant3 != 0 ? $input->getInvestmentPlans()[$i][2]/$amortizationConstant3 : 0;
-                $totalAmortization += $amortizationConstant4 != 0 ? $input->getInvestmentPlans()[$i][3]/$amortizationConstant4 : 0;
-                $totalAmortization += $amortizationConstant5 != 0 ? $input->getInvestmentPlans()[$i][4]/$amortizationConstant5 : 0;*/
-
-                /*$totalBruteIncome += $input->getInvestmentPlans()[$i][0] + $input->getInvestmentPlans()[$i][1] + $input->getInvestmentPlans()[$i][2] + $input->getInvestmentPlans()[$i][3] + $input->getInvestmentPlans()[$i][4];*/
             }
 
             for($i = 0; $i < sizeof($input->getBusinessData()); $i++) {
@@ -153,13 +147,22 @@ class FormulaManager {
                     $income = $valuesCulture->efficiency * $valuesCulture->price * $mainVariable;
                     $expenses = $valuesCulture->efficiency * $valuesCulture->cost * $mainVariable;
 
+                    $multiplicationValue = 0;
+
+                    if($valuesCulture->multiply_by_production) {
+                        $multiplicationValue = $valuesCulture->efficiency * $mainVariable;
+                    } else {
+                        $multiplicationValue = $mainVariable;
+                    }
+
                     array_push($culture, $selectedCulture->name);
                     array_push($culture, $input->getFarmCategory()->name);
                     array_push($culture, $mainVariable);
                     array_push($culture, $valuesCulture->efficiency);
                     array_push($culture, $valuesCulture->efficiency * $mainVariable);
+                    array_push($culture, $valuesCulture->price);
                     array_push($culture, $mainVariable != 0 ? $income/$mainVariable : 0);
-                    array_push($culture, $mainVariable != 0 ? (($income/$mainVariable) * $mainVariable) : 0);
+                    array_push($culture, $mainVariable != 0 ? (($income/$mainVariable) * $multiplicationValue) : 0);
                     array_push($culture, $expenses);
 
                     array_push($cultures, $culture);
@@ -170,26 +173,34 @@ class FormulaManager {
             }
         }
 
-        //Credit
-        $credit = $this->calculateCredit($inputs[0]->getLoanData()[0]/100, $inputs[0]->getLoanData()[1], $inputs[0]->getLoanData()[2], $totalBruteIncome);
+        $firstYearCredit = 0;
+        $yearlyInterest = 0;
 
-        $fullInterest = array_sum($credit["paymentsPerYear"]);
-        $yearlyInterest = $fullInterest / $inputs[0]->getLoanData()[1];
+        /* To adapt to the new column of the loan table, in the loop below I included only the values that were directly touched
+        by the loan data and made the sum of those data. The other values are calculated as they were before. */
+        for($i = 0; $i < Constants::LOAN_COLUMNS; $i++) {
+            if($inputs[0]->getLoanData()[$i][0] != 0) {
+                //Credit
+                $credit = $this->calculateCredit($inputs[0]->getLoanData()[$i][1]/100, $inputs[0]->getLoanData()[$i][2], $inputs[0]->getLoanData()[$i][3], $totalBruteIncome);
 
-    	$tax = Constants::LOW;
-        if($totalIncome >= Constants::THRESHOLD) $tax = Constants::HIGH;
+                $fullInterest = array_sum($credit["paymentsPerYear"]);
+                $yearlyInterest +=  $inputs[0]->getLoanData()[$i][2] != 0 ? $fullInterest / $inputs[0]->getLoanData()[$i][2] : 0;
+                $firstYearCredit += $credit["firstYearCredit"];
+            }
+        }
 
-        $incomeBeforeTax = $totalIncome - $totalExpense - $totalAmortization;
+        $incomeBeforeTax = $totalIncome - $totalExpense - $totalAmortization - $yearlyInterest;
 
         if($incomeBeforeTax < 0 ) {
             $incomeTax = 0;
         } else {
+            $tax = $this->calculateTax($totalIncome);
             $incomeTax = ($totalIncome - $totalExpense - $totalAmortization - $yearlyInterest) * $tax;
         }
 
         $totalNetIncome = $totalIncome - $totalExpense - $totalAmortization - $yearlyInterest - $incomeTax;
         $moneyFlux = $totalIncome - $totalExpense - $incomeTax;
-        $firstYearCredit = $credit["firstYearCredit"];
+
         $dscr = $firstYearCredit != 0 ? $moneyFlux / $firstYearCredit : 0;
 
         //Setting final results
@@ -211,12 +222,12 @@ class FormulaManager {
     private function calculateCredit($interest, $years, $yearlyPayments, $loan) {
         $totalInterest = 0;
 
-        $rate = $interest / $yearlyPayments;
+        $rate = $yearlyPayments != 0 ? $interest / $yearlyPayments : 0;
         $nper = $years * $yearlyPayments;
         $pv = -$loan;
         $fv = 0;
         $type = 0;
-        $PMT = (-$fv - $pv * pow(1 + $rate, $nper)) / (1 + $rate * $type) / ((pow(1 + $rate, $nper) - 1) / $rate);
+        $PMT = $rate != 0 ? (-$fv - $pv * pow(1 + $rate, $nper)) / (1 + $rate * $type) / ((pow(1 + $rate, $nper) - 1) / $rate) : 0;
 
         $yearlyInterestSums = 0;
 
@@ -224,7 +235,7 @@ class FormulaManager {
         $paymentsPerYear = array();
 
         for($i = 0; $i < $nper; $i++) {
-            $calculatedInterest = ($loan * $interest) / $yearlyPayments;
+            $calculatedInterest = $yearlyPayments != 0 ? ($loan * $interest) / $yearlyPayments : 0;
             $principal = $PMT - $calculatedInterest;
             $loan = $loan - $principal;
             $totalInterest = $totalInterest + $calculatedInterest;
@@ -246,105 +257,28 @@ class FormulaManager {
 
         return $credit;
     }
+
+    private function calculateTax($totalIncome) {
+        $allTaxes = Tax::count();
+
+        if($allTaxes > 0) {
+            $tax = Tax::where('bottom_threshold', '<=', $totalIncome)
+                ->where(function($query) use ($totalIncome) {
+                    $query->where('top_threshold', '>', $totalIncome);
+                    $query->orWhere('top_threshold', '=', null);
+                })->first();
+
+                return $tax->percentage/100;
+        } else {
+            if($totalIncome >= 0 && $totalIncome < Constants::LOW_THRESHOLD) {
+                return 0;
+            } else if($totalIncome >= Constants::LOW_THRESHOLD && $totalIncome < Constants::HIGH_THRESHOLD) {
+                return Constants::LOW;
+            } else if($totalIncome >= Constants::HIGH_THRESHOLD) {
+                return Constants::HIGH;
+            } else {
+                return 0;
+            }
+        }
+    }
 }
-
-/* OLD VERSION
-
-//First table
-        $greenHouse = 1000000;
-        $plastic = 500000;
-        $water = 100000;
-        $farming = 0;
-        $other = 0;
-
-        //Second table
-        $surface = 3;
-        $technology = 2;
-        $culture1 = 4;
-        $culture2 = 1;
-
-        //Third table
-        $years = 5;
-        $interest = 0.12;
-        $yearlyPayments = 12;
-
-        //Taxes
-        $low = 0.075;
-        $high = 0.15;
-        $threshold = 12000000;
-
-        $greenHouseAmortization = $greenHouse / $greenHouseYears;
-        $plasticAmortization = $plastic / $plasticYears;
-        $waterAmortization = $water / $waterYears;
-
-        $totalBrute = $greenHouse + $plastic + $water + $farming + $other;
-        $valuesCulture1 = Value::where('technology_id', '=', $technology)
-            ->where('culture_id', '=', $culture1)
-            ->first();
-        $valuesCulture2 = Value::where('technology_id', '=', $technology)
-            ->where('culture_id', '=', $culture2)
-            ->first();
-
-        $income1 = $valuesCulture1->efficiency * $valuesCulture1->price * $surface;
-        $income2 = $valuesCulture2->efficiency * $valuesCulture2->price * $surface;
-
-        $expenses1 = $valuesCulture1->efficiency * $valuesCulture1->cost * $surface;
-        $expenses2 = $valuesCulture2->efficiency * $valuesCulture2->cost * $surface;
-
-        $profit1 = $income1 - $expenses1;
-        $profit2 = $income2 - $expenses2;
-
-        //Amortization
-        $greenHouseAmortization = $greenHouse / $greenHouseYears;
-        $plasticAmortization = $plastic / $plasticYears;
-        $waterAmortization = $water / $waterYears;
-
-        //Credit
-        $credit = $this->calculateCredit($interest, $years, $yearlyPayments, $totalBrute);
-
-        /*Log::info($income1);
-        Log::info($income2);*/
-
-       /* Log::info("Siperfaqe -> " . $surface);
-        Log::info("Rendimenti 1 -> " . $valuesCulture1->efficiency);
-        Log::info("Rendimenti 2 -> " . $valuesCulture2->efficiency);
-        Log::info("Prodhimi 1 -> " . ($valuesCulture1->efficiency * $surface));
-        Log::info("Prodhimi 2 -> " . ($valuesCulture2->efficiency * $surface));
-        Log::info("Te ardhurat bruto per njesi 1 -> " . $income1/$surface);
-        Log::info("Te ardhurat bruto per njesi 2 -> " . $income2/$surface);
-        Log::info("Te ardhurat bruto totale 1 -> " . ($income1/$surface) * $surface);
-        Log::info("Te ardhurat bruto totale 2 -> " . ($income2/$surface) * $surface);
-        Log::info("Shpenzime prodhimi 1 -> " . $expenses1);
-        Log::info("Shpenzime prodhimi 2 -> " . $expenses2);
-
-        //Log::info("space");
-
-        $totalIncome = $income1 + $income2;
-        $totalExpense = $expenses1 + $expenses2;
-        $totalAmortization = $greenHouseAmortization + $plasticAmortization + $waterAmortization;
-
-        $fullInterest = array_sum($credit["paymentsPerYear"]);
-        $yearlyInterest = $fullInterest / $years;
-
-        $tax = $low;
-        if($totalIncome >= $threshold) $tax = $high;
-
-        Log::info("TAX: " . $tax);
-
-        $incomeTax = ($totalIncome - $totalExpense - $totalAmortization - $yearlyInterest) * $tax;
-        $totalNetIncome = $totalIncome - $totalExpense - $totalAmortization - $yearlyInterest - $incomeTax;
-        $moneyFlux = $totalIncome - $totalExpense - $incomeTax;
-        $firstYearCredit = $credit["firstYearCredit"];
-        $dscr = $moneyFlux / $firstYearCredit;
-
-       	Log::info("Totali i te ardhurave viti 1 -> " . $totalIncome);
-        Log::info("Shpenzime prodhimi totale ne ferme -> " . $totalExpense);
-        Log::info("Amortizimi stalles -> " . $totalAmortization);
-        Log::info("Interesi vjetor -> " . $yearlyInterest);
-        Log::info("Tatimi mbi fitimin (mesatarisht 7.5%) -> " . $incomeTax);
-        Log::info("Fitimi neto total (leke) -> " . $totalNetIncome);
-        Log::info("Fluksi i parase i vlefshem per pagesa kredie -> " . $moneyFlux);
-        Log::info("Keste kredie per 1 vit -> " . $firstYearCredit);
-        Log::info("DSCR (Debt Service Coverage Ratio) -> " . $dscr);
-
-*/

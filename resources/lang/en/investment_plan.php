@@ -16,20 +16,20 @@ return [
     'equipment_purchases' => 'Purchase of equipment',
 
 	//Sheep category labels
-	'buying_country_sheep' => 'Buying country sheep',
+	'buying_country_sheep' => 'Purchase of country sheep',
 
 	//Alpine goats category
-	'buying_alpine_goats' => 'Buying alpine goats',
+	'buying_alpine_goats' => 'Purchase of alpine goats',
 
 	//Country goats labels
-	'buying_country_goats' => 'Buying country goats',
+	'buying_country_goats' => 'Purchase of country goats',
 
 	//Cows category
-	'buying_cows' => 'Buying cows for breeding',
+	'buying_cows' => 'Purchase of cows for breeding',
 
 	//Corn and sonflowers category
-	'agricultural_mechanic' => 'Agricultural mechanic',
-	'well_opening' => 'Well opening',
+	'agricultural_mechanic' => 'Agricultural mechanics',
+	'well_opening' => 'Swape opening',
 	'visual_irrigation' => 'Visual irrigation',
 
 	//Hazelnut category

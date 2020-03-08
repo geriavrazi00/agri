@@ -7,14 +7,14 @@
 		<div class="col-md-6" style="padding-top: 56px; color: black;">
             <center>
                 <div style="display: inline-flex; text-align: center;">
-                    <h3 class="resulttablehead">{{ trans('messages.create_user') }}</h3>
+                    <h3 class="resulttablehead">{{ trans('messages.create_tax') }}</h3>
                 </div>
             </center>
 
             <br/>
 
 			<div class="table card-body" style="background-color: white;">
-                <form method="POST" action="/users">
+                <form method="POST" action="/taxes">
                     @csrf
 
                     <div class="form-group row">
@@ -32,12 +32,14 @@
                     </div>
 
                     <div class="form-group row">
-                        <label for="email" class="col-md-4 col-form-label text-md-right" style="color: black;">{{ trans('messages.email') }}</label>
+                        <label for="bottom-threshold" class="col-md-4 col-form-label text-md-right" style="color: black;">{{ trans('messages.bottom_threshold') }}</label>
 
                         <div class="col-md-6">
-                            <input id="email" type="email" style="color: black;" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" oninvalid="createInvalidMsg(this, '{{trans('validation.field_required')}}', '{{trans('validation.wrong_format')}}');" oninput="createInvalidMsg(this, '', '{{trans('validation.wrong_format')}}');">
+                            <input type="number" id="bottom-threshold" name="bottom-threshold" class="form-control @error('bottom-threshold') is-invalid @enderror" onkeydown="return blockSpecialCharactersInInputNumber(event);"
+                            value="{{ old('bottom-threshold') }}" step=".000001" oninvalid="createInvalidMsg(this, '{{trans('validation.field_required')}}', '{{trans('validation.non_negative_field')}}');"
+                            oninput="createInvalidMsg(this, '', '');" required min="0" style="text-align: right; color: black;"/>
 
-                            @error('email')
+                            @error('bottom-threshold')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -46,12 +48,14 @@
                     </div>
 
                     <div class="form-group row">
-                        <label for="password" class="col-md-4 col-form-label text-md-right" style="color: black;">{{ trans('messages.password') }}</label>
+                        <label for="top-threshold" class="col-md-4 col-form-label text-md-right" style="color: black;">{{ trans('messages.top_threshold') }}</label>
 
                         <div class="col-md-6">
-                            <input id="password" type="password" style="color: black;" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" oninvalid="createInvalidMsg(this, '{{trans('validation.field_required')}}', '');" oninput="this.setCustomValidity('')">
+                            <input type="number" id="top-threshold" name="top-threshold" class="form-control @error('top-threshold') is-invalid @enderror" onkeydown="return blockSpecialCharactersInInputNumber(event);"
+                            value="{{ old('top-threshold') }}" step=".000001" oninvalid="createInvalidMsg(this, '{{trans('validation.field_required')}}', '{{trans('validation.non_negative_field')}}');"
+                            oninput="createInvalidMsg(this, '', '');" min="0" style="text-align: right; color: black;"/>
 
-                            @error('password')
+                            @error('top-threshold')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -60,24 +64,18 @@
                     </div>
 
                     <div class="form-group row">
-                        <label for="password-confirm" class="col-md-4 col-form-label text-md-right" style="color: black;">{{ trans('messages.password_confirmation') }}</label>
+                        <label for="percentage" class="col-md-4 col-form-label text-md-right" style="color: black;">{{ trans('messages.percentage') }}</label>
 
                         <div class="col-md-6">
-                            <input id="password-confirm" type="password" style="color: black;" class="form-control" name="password_confirmation" required autocomplete="new-password" oninvalid="createInvalidMsg(this, '{{trans('validation.field_required')}}', '');" oninput="this.setCustomValidity('')">
-                        </div>
-                    </div>
+                            <input type="number" id="percentage" name="percentage" class="form-control @error('percentage') is-invalid @enderror" onkeydown="return blockSpecialCharactersInInputNumber(event);"
+                            value="{{ old('percentage') }}" step=".000001" oninvalid="loanInterestRateValidation(this, 0, 100, '{{trans('validation.field_required')}}', '{{trans('validation.percentage_tax_min_value', ['value' => '0'])}}', '{{trans('validation.percentage_tax_max_value', ['value' => '100'])}}');"
+                            oninput="createInvalidMsg(this, '', '');" required min="0" max="100" style="text-align: right; color: black;"/>
 
-                    <div class="form-group row">
-                        <label for="role" class="col-md-4 col-form-label text-md-right" style="color: black;">{{ trans('messages.role') }}</label>
-
-                        <div class="col-md-6">
-                        	<select id="role" class="form-control" name="role" required style="border-radius: 5px; color: black;">
-                        		@foreach($roles as $role)
-                        			<option value="{{$role->id}}" {{old('role') == $role->id ? 'selected' : ''}}>
-                        				{{ trans($role->name) }}
-                        			</option>
-                        		@endforeach
-                        	</select>
+                            @error('percentage')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                     </div>
 

@@ -133,6 +133,8 @@ return [
     'first_payment_date_required' => 'Ju lutem plotësoni datën e pagesës së parë.',
     'interest_min_value' => 'Norma aktuale e interesit vjetor duhet të jetë më e madhe se :value.',
     'interest_max_value' => 'Norma aktuale e interesit vjetor nuk mund të jetë më e madhe se :value.',
+    'loan_amount_required' => 'Ju lutem plotësoni të paktën një shumë huaje.',
+    'sum_of_loan' => 'Totali i shumave të huasë duhet të jetë i barabartë me totalin e vlerave te financuara nga banka.',
 
     //Business data validation
     'technology_required' => 'Ju lutem zgjidhni një teknologji.',
@@ -144,4 +146,8 @@ return [
 
     //Admin users validation
     'wrong_format' => 'Ju lutem jepni të dhënat e fushës në një format të vlefshëm.',
+
+    //Taxes validation
+    'percentage_tax_min_value' => 'Përqindja e tatimit duhet të jetë më e madhe se :value.',
+    'percentage_tax_max_value' => 'Përqindja e tatimit duhet të jetë më e vogël se :value.',
 ];

@@ -7,7 +7,7 @@
 		<div class="col-md-6" style="padding-top: 56px;">
             <center>
                 <div style="display: inline-flex; text-align: center;">
-                    <h3 class="resulttablehead">Përditëso përdoruesin</h3>
+                    <h3 class="resulttablehead">{{ trans('messages.edit_user') }}</h3>
                 </div>
             </center>
 
@@ -19,7 +19,7 @@
                     @csrf
 
                     <div class="form-group row">
-                        <label for="name" class="col-md-4 col-form-label text-md-right">Emri</label>
+                        <label for="name" class="col-md-4 col-form-label text-md-right">{{ trans('messages.name') }}</label>
 
                         <div class="col-md-6">
                             <input id="name" type="text" style="color: black;" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') == null ? $user->name : old('name') }}" required autocomplete="name" autofocus oninvalid="createInvalidMsg(this, '{{trans('validation.field_required')}}', '');" oninput="this.setCustomValidity('')">
@@ -33,7 +33,7 @@
                     </div>
 
                     <div class="form-group row">
-                        <label for="email" class="col-md-4 col-form-label text-md-right">Adresa e-mail</label>
+                        <label for="email" class="col-md-4 col-form-label text-md-right">{{ trans('messages.email') }}</label>
 
                         <div class="col-md-6">
                             <input id="email" type="email" style="color: black;" class="form-control @error('email') is-invalid @enderror" name="email" value="{{old('email') == null ? $user->email : old('email')}}" required autocomplete="email" oninvalid="createInvalidMsg(this, '{{trans('validation.field_required')}}', '{{trans('validation.wrong_format')}}');" oninput="createInvalidMsg(this, '', '{{trans('validation.wrong_format')}}');">
@@ -47,13 +47,13 @@
                     </div>
 
                     <div class="form-group row">
-                        <label for="role" class="col-md-4 col-form-label text-md-right">Roli</label>
+                        <label for="role" class="col-md-4 col-form-label text-md-right">{{ trans('messages.role') }}</label>
 
                         <div class="col-md-6">
                         	<select id="role" class="form-control" name="role" required style="border-radius:5px; color: black;">
                         		@foreach($roles as $role)
                         			<option value="{{$role->id}}" {{old('role') == $user->role->id ? 'selected' : ($role->id == $user->role->id ? 'selected' : '')}}>
-                        				{{$role->name}}
+                        				{{ trans($role->name) }}
                         			</option>
                         		@endforeach
                         	</select>
@@ -62,11 +62,11 @@
 
                     <div class="col-md-12" style="text-align: right;">
                         <button type="submit" class="btn btn-success">
-                            Përditëso
+                            {{ trans('messages.edit') }}
                         </button>
 
                         <a href="{{ url()->previous() }}" class="btn btn-primary">
-                            Kthehu
+                            {{ trans('messages.back') }}
                         </a>
                     </div>
                 </form>

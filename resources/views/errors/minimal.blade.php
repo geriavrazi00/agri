@@ -50,7 +50,7 @@
 
                                     <div style="display: inline-flex; text-align: center;">
                                         <a href="/" class="btn btn-primary">
-                                            Kthehu në kryefaqe
+                                            {{ trans('messages.back_to_home') }}
                                         </a>
                                     </div>
                                 </center>

@@ -179,6 +179,7 @@ return [
         Maatwebsite\Excel\ExcelServiceProvider::class,
         Barryvdh\DomPDF\ServiceProvider::class,
         Jenssegers\Agent\AgentServiceProvider::class,
+        JsLocalization\JsLocalizationServiceProvider::class,
     ],
 
     /*

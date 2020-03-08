@@ -7,7 +7,7 @@
 		<div class="col-md-7" style="padding-top: 56px;">
             <center>
                 <div style="display: inline-flex; text-align: center;">
-                    <h3 class="resulttablehead">Menaxhimi i koefiçentëve të kategorive</h3>
+                    <h3 class="resulttablehead">{{ trans('messages.coefficient_management') }}</h3>
                 </div>
             </center>
 
@@ -17,19 +17,19 @@
                 <table id="valuestable" class="resulttable display responsive nowrap" style="width: 100%;">
                     <thead>
                         <tr class="resulttablerow">
-                            <th class="resulttablehead">Kategoria</th>
-                            <th class="resulttablehead" style="text-align: center;">Veprime</th>
+                            <th class="resulttablehead">{{ trans('messages.category') }}</th>
+                            <th class="resulttablehead" style="text-align: center;">{{ trans('messages.actions') }}</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach($categories as $category)
                             <tr class="resulttablerow">
-                                <td class="resulttabledata">{{$category->name}}</td>
+                                <td class="resulttabledata">{{ trans($category->name) }}</td>
                                 <td class="resulttabledata" style="text-align: center;">
-                                    <a href="/values/{{$category->id}}" class="btn btn-primary btn-circle btn-sm action-buttons" data-toggle="tooltip" title="Shiko detajet">
+                                    <a href="/values/{{$category->id}}" class="btn btn-primary btn-circle btn-sm action-buttons" data-toggle="tooltip" title="{{ trans('messages.details') }}">
                                         <i class="fa fa-eye"></i>
                                     </a>
-                                    <a href="/values/{{$category->id}}/edit" class="btn btn-success btn-circle btn-sm edit-buttons" data-toggle="tooltip" title="Modifiko koefiçentët">
+                                    <a href="/values/{{$category->id}}/edit" class="btn btn-success btn-circle btn-sm edit-buttons" data-toggle="tooltip" title="{{ trans('messages.edit_coefficient') }}">
                                         <i class="fa fa-edit"></i>
                                     </a>
                                 </td>

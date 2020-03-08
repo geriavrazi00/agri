@@ -1,3 +1,4 @@
+@include('js-localization::head')
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
@@ -67,14 +68,15 @@
                                 </div>
                             </li>
 
-                            @if (Auth::user()->role->name == App\Constants::ROLE_ADMIN)
+                            @if (Auth::user()->role->id == App\Constants::ROLE_ADMIN)
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle {{ (Request::is('users') || Request::is('users/*') || Request::is('values') || Request::is('values/*')) ? 'active-nav' : ''}}" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <a class="nav-link dropdown-toggle {{ (Request::is('users') || Request::is('users/*') || Request::is('values') || Request::is('values/*') || Request::is('taxes') || Request::is('taxes/*')) ? 'active-nav' : ''}}" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     {{ trans('messages.administration') }}
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="/users">{{ trans('messages.users') }}</a>
                                     <a class="dropdown-item" href="/values">{{ trans('messages.coefficients') }}</a>
+                                    <a class="dropdown-item" href="/taxes">{{ trans('messages.taxes') }}</a>
                                 </div>
                             </li>
                             @endif
@@ -85,10 +87,10 @@
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ url('locale/' . App\Constants::ALBANIAN_LANGUAGE) }}" style="padding-left: 0px;">
-                                        <img src="img/flags/al.svg" style="width: 30px; height: 20px;"/> {{ trans('messages.albanian') }} {!! App::getLocale() == App\Constants::ALBANIAN_LANGUAGE ? '<i class="fas fa-check" style="color: #8ea604;"></i>' : '' !!}
+                                        <img src="{{ asset('img/flags/al.svg') }}" style="width: 30px; height: 20px;"/> {{ trans('messages.albanian') }} {!! App::getLocale() == App\Constants::ALBANIAN_LANGUAGE ? '<i class="fas fa-check" style="color: #8ea604;"></i>' : '' !!}
                                     </a>
                                     <a class="dropdown-item" href="{{ url('locale/' . App\Constants::ENGLISH_LANGUAGE) }}" style="padding-left: 0px;">
-                                        <img src="img/flags/gb.svg" style="width: 30px; height: 20px;"/> {{ trans('messages.english') }} {!! App::getLocale() == App\Constants::ENGLISH_LANGUAGE ? '<i class="fas fa-check" style="color: #8ea604;"></i>' : '' !!}
+                                        <img src="{{ asset('img/flags/gb.svg') }}" style="width: 30px; height: 20px;"/> {{ trans('messages.english') }} {!! App::getLocale() == App\Constants::ENGLISH_LANGUAGE ? '<i class="fas fa-check" style="color: #8ea604;"></i>' : '' !!}
                                     </a>
                                 </div>
                             </li>
@@ -102,7 +104,7 @@
                         <form method="POST" action="/logout">
                             @csrf
                             <button type="submit" class="btn btn-primary navbar-btn ml-0 ml-lg-3">
-                                Dil
+                                {{ trans('messages.logout') }}
                             </button>
                         </form>
                         @endauth
@@ -118,8 +120,9 @@
     </div>
 
     <!-- Back To Top Button -->
-    <a href="" class="back-to-top btn-primary"><i class="fa fa-chevron-up"></i></a>
+    <a href="" id="back-to-top" class="back-to-top btn-primary" onclick="this.blur();"><i class="fa fa-chevron-up"></i></a>
 
+    @yield('js-localization.head')
     <script src="{{ asset('js/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('js/lightbox2/js/lightbox.min.js') }}"></script>
     <script src="{{ asset('js/easing/easing.min.js') }}"></script>
@@ -141,7 +144,7 @@
     <script src="{{ asset('js/datepicker/datepicker.js') }}"></script>
     <script src="{{ asset('js/datepicker/datepicker.js') }}"></script>
     <script src="{{ asset('js/datepicker/i18n/datepicker.sq.js') }}"></script>
-
+    <script src="{{ asset('js/datepicker/i18n/datepicker.en.js') }}"></script>
 </body>
 
 </html>

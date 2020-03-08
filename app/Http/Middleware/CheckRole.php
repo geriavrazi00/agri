@@ -18,8 +18,8 @@ class CheckRole
      * @return mixed
      */
     public function handle($request, Closure $next) {
-            
-        if (Auth::user()->role->name !== Constants::ROLE_ADMIN) {
+
+        if (Auth::user()->role->id !== Constants::ROLE_ADMIN) {
             return Redirect::to('/errors/404');
         }
 

@@ -43,7 +43,7 @@ class MyProfileController extends Controller
             'email' => $request['email']
         ]);
 
-        return Redirect::to('/myprofile')->withSuccessMessage('Të dhënat u përditësuan me sukses!');
+        return Redirect::to('/myprofile')->withSuccessMessage(trans('messages.data_updated'));
     }
 
     /**
@@ -77,7 +77,7 @@ class MyProfileController extends Controller
             'password' => Hash::make($request['password']),
         ]);
 
-        return Redirect::to('/myprofile/password')->withSuccessMessage('Fjalëkalimi u përditësua me sukses!');
+        return Redirect::to('/myprofile/password')->withSuccessMessage(trans('messages.password_updated'));
     }
 
     /**

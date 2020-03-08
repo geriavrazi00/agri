@@ -7,25 +7,25 @@ jQuery(document).ready(function($) {
 	$('#planstable').DataTable({
         responsive: true,
 		language: {
-			processing:     "Duke përpunuar të dhënat...",
-			search:         "Kërkoni: ",
-			lengthMenu:     "Shiko _MENU_ rreshta",
-			info:           "Duke shfaqur _START_ deri në _END_ nga _TOTAL_ rresht(a)",
-			infoEmpty:      "Duke shfaqur 0 deri 0 nga 0 reshta",
-			infoFiltered:   "(të filtruara nga gjithsej _MAX_ rresht(a))",
+			processing:     Lang.get('messages.processing'),
+			search:         Lang.get('messages.search'),
+			lengthMenu:     Lang.get('messages.view_rows'),
+			info:           Lang.get('messages.showing_rows'),
+			infoEmpty:      Lang.get('messages.showing_0_rows'),
+			infoFiltered:   Lang.get('messages.filter_message'),
 			infoPostFix:    "",
-			loadingRecords: "Duke punuar...",
-			zeroRecords:    "Asnjë e dhënë nuk u gjet",
-			emptyTable:     "Nuk ka asnjë të dhënë në tabelë",
+			loadingRecords: Lang.get('messages.working'),
+			zeroRecords:    Lang.get('messages.no_data_found'),
+			emptyTable:     Lang.get('messages.no_data_in_table'),
 			paginate: {
-				first:      "E para",
-				previous:   "Pas",
-				next:       "Para",
-				last:       "E fundit"
+				first:      Lang.get('messages.first'),
+				previous:   Lang.get('messages.previous'),
+				next:       Lang.get('messages.next'),
+				last:       Lang.get('messages.last')
 			},
 			aria: {
-				sortAscending:  ": aktivizo për të rreshtuar kolonat në rend rritës",
-				sortDescending: ": aktivizo për të rreshtuar kolonat në rend zbritës"
+				sortAscending:  Lang.get('messages.order_asc'),
+				sortDescending: Lang.get('messages.order_desc')
 			}
 		}
     });
@@ -33,25 +33,25 @@ jQuery(document).ready(function($) {
     $('#userstable').DataTable({
         responsive: true,
 		language: {
-			processing:     "Duke përpunuar të dhënat...",
-			search:         "Kërkoni: ",
-			lengthMenu:     "Shiko _MENU_ rreshta",
-			info:           "Duke shfaqur _START_ deri në _END_ nga _TOTAL_ rresht(a)",
-			infoEmpty:      "Duke shfaqur 0 deri 0 nga 0 reshta",
-			infoFiltered:   "(të filtruara nga gjithsej _MAX_ rresht(a))",
+			processing:     Lang.get('messages.processing'),
+			search:         Lang.get('messages.search'),
+			lengthMenu:     Lang.get('messages.view_rows'),
+			info:           Lang.get('messages.showing_rows'),
+			infoEmpty:      Lang.get('messages.showing_0_rows'),
+			infoFiltered:   Lang.get('messages.filter_message'),
 			infoPostFix:    "",
-			loadingRecords: "Duke punuar...",
-			zeroRecords:    "Asnjë e dhënë nuk u gjet",
-			emptyTable:     "Nuk ka asnjë të dhënë në tabelë",
+			loadingRecords: Lang.get('messages.working'),
+			zeroRecords:    Lang.get('messages.no_data_found'),
+			emptyTable:     Lang.get('messages.no_data_in_table'),
 			paginate: {
-				first:      "E para",
-				previous:   "Pas",
-				next:       "Para",
-				last:       "E fundit"
+				first:      Lang.get('messages.first'),
+				previous:   Lang.get('messages.previous'),
+				next:       Lang.get('messages.next'),
+				last:       Lang.get('messages.last')
 			},
 			aria: {
-				sortAscending:  ": aktivizo për të rreshtuar kolonat në rend rritës",
-				sortDescending: ": aktivizo për të rreshtuar kolonat në rend zbritës"
+				sortAscending:  Lang.get('messages.order_asc'),
+				sortDescending: Lang.get('messages.order_desc')
 			}
 		}
     });
@@ -59,25 +59,51 @@ jQuery(document).ready(function($) {
     $('#valuestable').DataTable({
         responsive: true,
 		language: {
-			processing:     "Duke përpunuar të dhënat...",
-			search:         "Kërkoni: ",
-			lengthMenu:     "Shiko _MENU_ rreshta",
-			info:           "Duke shfaqur _START_ deri në _END_ nga _TOTAL_ rresht(a)",
-			infoEmpty:      "Duke shfaqur 0 deri 0 nga 0 reshta",
-			infoFiltered:   "(të filtruara nga gjithsej _MAX_ rresht(a))",
+			processing:     Lang.get('messages.processing'),
+			search:         Lang.get('messages.search'),
+			lengthMenu:     Lang.get('messages.view_rows'),
+			info:           Lang.get('messages.showing_rows'),
+			infoEmpty:      Lang.get('messages.showing_0_rows'),
+			infoFiltered:   Lang.get('messages.filter_message'),
 			infoPostFix:    "",
-			loadingRecords: "Duke punuar...",
-			zeroRecords:    "Asnjë e dhënë nuk u gjet",
-			emptyTable:     "Nuk ka asnjë të dhënë në tabelë",
+			loadingRecords: Lang.get('messages.working'),
+			zeroRecords:    Lang.get('messages.no_data_found'),
+			emptyTable:     Lang.get('messages.no_data_in_table'),
 			paginate: {
-				first:      "E para",
-				previous:   "Pas",
-				next:       "Para",
-				last:       "E fundit"
+				first:      Lang.get('messages.first'),
+				previous:   Lang.get('messages.previous'),
+				next:       Lang.get('messages.next'),
+				last:       Lang.get('messages.last')
 			},
 			aria: {
-				sortAscending:  ": aktivizo për të rreshtuar kolonat në rend rritës",
-				sortDescending: ": aktivizo për të rreshtuar kolonat në rend zbritës"
+				sortAscending:  Lang.get('messages.order_asc'),
+				sortDescending: Lang.get('messages.order_desc')
+			}
+		}
+    });
+
+    $('#taxestable').DataTable({
+        responsive: true,
+		language: {
+			processing:     Lang.get('messages.processing'),
+			search:         Lang.get('messages.search'),
+			lengthMenu:     Lang.get('messages.view_rows'),
+			info:           Lang.get('messages.showing_rows'),
+			infoEmpty:      Lang.get('messages.showing_0_rows'),
+			infoFiltered:   Lang.get('messages.filter_message'),
+			infoPostFix:    "",
+			loadingRecords: Lang.get('messages.working'),
+			zeroRecords:    Lang.get('messages.no_data_found'),
+			emptyTable:     Lang.get('messages.no_data_in_table'),
+			paginate: {
+				first:      Lang.get('messages.first'),
+				previous:   Lang.get('messages.previous'),
+				next:       Lang.get('messages.next'),
+				last:       Lang.get('messages.last')
+			},
+			aria: {
+				sortAscending:  Lang.get('messages.order_asc'),
+				sortDescending: Lang.get('messages.order_desc')
 			}
 		}
     });
@@ -89,24 +115,25 @@ jQuery(document).ready(function($) {
         ordering:       false,
         info:           false,
 		language: {
-			processing:     "Duke përpunuar të dhënat...",
-			lengthMenu:     "Shiko _MENU_ rreshta",
-			info:           "Duke shfaqur _START_ deri në _END_ nga _TOTAL_ rresht(a)",
-			infoEmpty:      "Duke shfaqur 0 deri 0 nga 0 reshta",
-			infoFiltered:   "(të filtruara nga gjithsej _MAX_ rresht(a))",
+			processing:     Lang.get('messages.processing'),
+			search:         Lang.get('messages.search'),
+			lengthMenu:     Lang.get('messages.view_rows'),
+			info:           Lang.get('messages.showing_rows'),
+			infoEmpty:      Lang.get('messages.showing_0_rows'),
+			infoFiltered:   Lang.get('messages.filter_message'),
 			infoPostFix:    "",
-			loadingRecords: "Duke punuar...",
-			zeroRecords:    "Asnjë e dhënë nuk u gjet",
-			emptyTable:     "Nuk ka asnjë të dhënë në tabelë",
+			loadingRecords: Lang.get('messages.working'),
+			zeroRecords:    Lang.get('messages.no_data_found'),
+			emptyTable:     Lang.get('messages.no_data_in_table'),
 			paginate: {
-				first:      "E para",
-				previous:   "Pas",
-				next:       "Para",
-				last:       "E fundit"
+				first:      Lang.get('messages.first'),
+				previous:   Lang.get('messages.previous'),
+				next:       Lang.get('messages.next'),
+				last:       Lang.get('messages.last')
 			},
 			aria: {
-				sortAscending:  ": aktivizo për të rreshtuar kolonat në rend rritës",
-				sortDescending: ": aktivizo për të rreshtuar kolonat në rend zbritës"
+				sortAscending:  Lang.get('messages.order_asc'),
+				sortDescending: Lang.get('messages.order_desc')
 			}
 		}
     });
@@ -118,24 +145,25 @@ jQuery(document).ready(function($) {
         ordering:       false,
         info:           false,
 		language: {
-			processing:     "Duke përpunuar të dhënat...",
-			lengthMenu:     "Shiko _MENU_ rreshta",
-			info:           "Duke shfaqur _START_ deri në _END_ nga _TOTAL_ rresht(a)",
-			infoEmpty:      "Duke shfaqur 0 deri 0 nga 0 reshta",
-			infoFiltered:   "(të filtruara nga gjithsej _MAX_ rresht(a))",
+			processing:     Lang.get('messages.processing'),
+			search:         Lang.get('messages.search'),
+			lengthMenu:     Lang.get('messages.view_rows'),
+			info:           Lang.get('messages.showing_rows'),
+			infoEmpty:      Lang.get('messages.showing_0_rows'),
+			infoFiltered:   Lang.get('messages.filter_message'),
 			infoPostFix:    "",
-			loadingRecords: "Duke punuar...",
-			zeroRecords:    "Asnjë e dhënë nuk u gjet",
-			emptyTable:     "Nuk ka asnjë të dhënë në tabelë",
+			loadingRecords: Lang.get('messages.working'),
+			zeroRecords:    Lang.get('messages.no_data_found'),
+			emptyTable:     Lang.get('messages.no_data_in_table'),
 			paginate: {
-				first:      "E para",
-				previous:   "Pas",
-				next:       "Para",
-				last:       "E fundit"
+				first:      Lang.get('messages.first'),
+				previous:   Lang.get('messages.previous'),
+				next:       Lang.get('messages.next'),
+				last:       Lang.get('messages.last')
 			},
 			aria: {
-				sortAscending:  ": aktivizo për të rreshtuar kolonat në rend rritës",
-				sortDescending: ": aktivizo për të rreshtuar kolonat në rend zbritës"
+				sortAscending:  Lang.get('messages.order_asc'),
+				sortDescending: Lang.get('messages.order_desc')
 			}
 		}
     });
@@ -147,24 +175,25 @@ jQuery(document).ready(function($) {
         ordering:       false,
         info:           false,
 		language: {
-			processing:     "Duke përpunuar të dhënat...",
-			lengthMenu:     "Shiko _MENU_ rreshta",
-			info:           "Duke shfaqur _START_ deri në _END_ nga _TOTAL_ rresht(a)",
-			infoEmpty:      "Duke shfaqur 0 deri 0 nga 0 reshta",
-			infoFiltered:   "(të filtruara nga gjithsej _MAX_ rresht(a))",
+			processing:     Lang.get('messages.processing'),
+			search:         Lang.get('messages.search'),
+			lengthMenu:     Lang.get('messages.view_rows'),
+			info:           Lang.get('messages.showing_rows'),
+			infoEmpty:      Lang.get('messages.showing_0_rows'),
+			infoFiltered:   Lang.get('messages.filter_message'),
 			infoPostFix:    "",
-			loadingRecords: "Duke punuar...",
-			zeroRecords:    "Asnjë e dhënë nuk u gjet",
-			emptyTable:     "Nuk ka asnjë të dhënë në tabelë",
+			loadingRecords: Lang.get('messages.working'),
+			zeroRecords:    Lang.get('messages.no_data_found'),
+			emptyTable:     Lang.get('messages.no_data_in_table'),
 			paginate: {
-				first:      "E para",
-				previous:   "Pas",
-				next:       "Para",
-				last:       "E fundit"
+				first:      Lang.get('messages.first'),
+				previous:   Lang.get('messages.previous'),
+				next:       Lang.get('messages.next'),
+				last:       Lang.get('messages.last')
 			},
 			aria: {
-				sortAscending:  ": aktivizo për të rreshtuar kolonat në rend rritës",
-				sortDescending: ": aktivizo për të rreshtuar kolonat në rend zbritës"
+				sortAscending:  Lang.get('messages.order_asc'),
+				sortDescending: Lang.get('messages.order_desc')
 			}
 		}
     });
@@ -176,24 +205,25 @@ jQuery(document).ready(function($) {
         ordering:       false,
         info:           false,
 		language: {
-			processing:     "Duke përpunuar të dhënat...",
-			lengthMenu:     "Shiko _MENU_ rreshta",
-			info:           "Duke shfaqur _START_ deri në _END_ nga _TOTAL_ rresht(a)",
-			infoEmpty:      "Duke shfaqur 0 deri 0 nga 0 reshta",
-			infoFiltered:   "(të filtruara nga gjithsej _MAX_ rresht(a))",
+			processing:     Lang.get('messages.processing'),
+			search:         Lang.get('messages.search'),
+			lengthMenu:     Lang.get('messages.view_rows'),
+			info:           Lang.get('messages.showing_rows'),
+			infoEmpty:      Lang.get('messages.showing_0_rows'),
+			infoFiltered:   Lang.get('messages.filter_message'),
 			infoPostFix:    "",
-			loadingRecords: "Duke punuar...",
-			zeroRecords:    "Asnjë e dhënë nuk u gjet",
-			emptyTable:     "Nuk ka asnjë të dhënë në tabelë",
+			loadingRecords: Lang.get('messages.working'),
+			zeroRecords:    Lang.get('messages.no_data_found'),
+			emptyTable:     Lang.get('messages.no_data_in_table'),
 			paginate: {
-				first:      "E para",
-				previous:   "Pas",
-				next:       "Para",
-				last:       "E fundit"
+				first:      Lang.get('messages.first'),
+				previous:   Lang.get('messages.previous'),
+				next:       Lang.get('messages.next'),
+				last:       Lang.get('messages.last')
 			},
 			aria: {
-				sortAscending:  ": aktivizo për të rreshtuar kolonat në rend rritës",
-				sortDescending: ": aktivizo për të rreshtuar kolonat në rend zbritës"
+				sortAscending:  Lang.get('messages.order_asc'),
+				sortDescending: Lang.get('messages.order_desc')
 			}
 		}
     });
@@ -205,24 +235,25 @@ jQuery(document).ready(function($) {
         ordering:       false,
         info:           false,
 		language: {
-			processing:     "Duke përpunuar të dhënat...",
-			lengthMenu:     "Shiko _MENU_ rreshta",
-			info:           "Duke shfaqur _START_ deri në _END_ nga _TOTAL_ rresht(a)",
-			infoEmpty:      "Duke shfaqur 0 deri 0 nga 0 reshta",
-			infoFiltered:   "(të filtruara nga gjithsej _MAX_ rresht(a))",
+			processing:     Lang.get('messages.processing'),
+			search:         Lang.get('messages.search'),
+			lengthMenu:     Lang.get('messages.view_rows'),
+			info:           Lang.get('messages.showing_rows'),
+			infoEmpty:      Lang.get('messages.showing_0_rows'),
+			infoFiltered:   Lang.get('messages.filter_message'),
 			infoPostFix:    "",
-			loadingRecords: "Duke punuar...",
-			zeroRecords:    "Asnjë e dhënë nuk u gjet",
-			emptyTable:     "Nuk ka asnjë të dhënë në tabelë",
+			loadingRecords: Lang.get('messages.working'),
+			zeroRecords:    Lang.get('messages.no_data_found'),
+			emptyTable:     Lang.get('messages.no_data_in_table'),
 			paginate: {
-				first:      "E para",
-				previous:   "Pas",
-				next:       "Para",
-				last:       "E fundit"
+				first:      Lang.get('messages.first'),
+				previous:   Lang.get('messages.previous'),
+				next:       Lang.get('messages.next'),
+				last:       Lang.get('messages.last')
 			},
 			aria: {
-				sortAscending:  ": aktivizo për të rreshtuar kolonat në rend rritës",
-				sortDescending: ": aktivizo për të rreshtuar kolonat në rend zbritës"
+				sortAscending:  Lang.get('messages.order_asc'),
+				sortDescending: Lang.get('messages.order_desc')
 			}
 		}
     });
@@ -234,24 +265,25 @@ jQuery(document).ready(function($) {
         ordering:       false,
         info:           false,
 		language: {
-			processing:     "Duke përpunuar të dhënat...",
-			lengthMenu:     "Shiko _MENU_ rreshta",
-			info:           "Duke shfaqur _START_ deri në _END_ nga _TOTAL_ rresht(a)",
-			infoEmpty:      "Duke shfaqur 0 deri 0 nga 0 reshta",
-			infoFiltered:   "(të filtruara nga gjithsej _MAX_ rresht(a))",
+			processing:     Lang.get('messages.processing'),
+			search:         Lang.get('messages.search'),
+			lengthMenu:     Lang.get('messages.view_rows'),
+			info:           Lang.get('messages.showing_rows'),
+			infoEmpty:      Lang.get('messages.showing_0_rows'),
+			infoFiltered:   Lang.get('messages.filter_message'),
 			infoPostFix:    "",
-			loadingRecords: "Duke punuar...",
-			zeroRecords:    "Asnjë e dhënë nuk u gjet",
-			emptyTable:     "Nuk ka asnjë të dhënë në tabelë",
+			loadingRecords: Lang.get('messages.working'),
+			zeroRecords:    Lang.get('messages.no_data_found'),
+			emptyTable:     Lang.get('messages.no_data_in_table'),
 			paginate: {
-				first:      "E para",
-				previous:   "Pas",
-				next:       "Para",
-				last:       "E fundit"
+				first:      Lang.get('messages.first'),
+				previous:   Lang.get('messages.previous'),
+				next:       Lang.get('messages.next'),
+				last:       Lang.get('messages.last')
 			},
 			aria: {
-				sortAscending:  ": aktivizo për të rreshtuar kolonat në rend rritës",
-				sortDescending: ": aktivizo për të rreshtuar kolonat në rend zbritës"
+				sortAscending:  Lang.get('messages.order_asc'),
+				sortDescending: Lang.get('messages.order_desc')
 			}
 		}
     });
@@ -263,24 +295,25 @@ jQuery(document).ready(function($) {
         ordering:       false,
         info:           false,
 		language: {
-			processing:     "Duke përpunuar të dhënat...",
-			lengthMenu:     "Shiko _MENU_ rreshta",
-			info:           "Duke shfaqur _START_ deri në _END_ nga _TOTAL_ rresht(a)",
-			infoEmpty:      "Duke shfaqur 0 deri 0 nga 0 reshta",
-			infoFiltered:   "(të filtruara nga gjithsej _MAX_ rresht(a))",
+			processing:     Lang.get('messages.processing'),
+			search:         Lang.get('messages.search'),
+			lengthMenu:     Lang.get('messages.view_rows'),
+			info:           Lang.get('messages.showing_rows'),
+			infoEmpty:      Lang.get('messages.showing_0_rows'),
+			infoFiltered:   Lang.get('messages.filter_message'),
 			infoPostFix:    "",
-			loadingRecords: "Duke punuar...",
-			zeroRecords:    "Asnjë e dhënë nuk u gjet",
-			emptyTable:     "Nuk ka asnjë të dhënë në tabelë",
+			loadingRecords: Lang.get('messages.working'),
+			zeroRecords:    Lang.get('messages.no_data_found'),
+			emptyTable:     Lang.get('messages.no_data_in_table'),
 			paginate: {
-				first:      "E para",
-				previous:   "Pas",
-				next:       "Para",
-				last:       "E fundit"
+				first:      Lang.get('messages.first'),
+				previous:   Lang.get('messages.previous'),
+				next:       Lang.get('messages.next'),
+				last:       Lang.get('messages.last')
 			},
 			aria: {
-				sortAscending:  ": aktivizo për të rreshtuar kolonat në rend rritës",
-				sortDescending: ": aktivizo për të rreshtuar kolonat në rend zbritës"
+				sortAscending:  Lang.get('messages.order_asc'),
+				sortDescending: Lang.get('messages.order_desc')
 			}
 		}
     });
@@ -292,24 +325,25 @@ jQuery(document).ready(function($) {
         ordering:       false,
         info:           false,
 		language: {
-			processing:     "Duke përpunuar të dhënat...",
-			lengthMenu:     "Shiko _MENU_ rreshta",
-			info:           "Duke shfaqur _START_ deri në _END_ nga _TOTAL_ rresht(a)",
-			infoEmpty:      "Duke shfaqur 0 deri 0 nga 0 reshta",
-			infoFiltered:   "(të filtruara nga gjithsej _MAX_ rresht(a))",
+			processing:     Lang.get('messages.processing'),
+			search:         Lang.get('messages.search'),
+			lengthMenu:     Lang.get('messages.view_rows'),
+			info:           Lang.get('messages.showing_rows'),
+			infoEmpty:      Lang.get('messages.showing_0_rows'),
+			infoFiltered:   Lang.get('messages.filter_message'),
 			infoPostFix:    "",
-			loadingRecords: "Duke punuar...",
-			zeroRecords:    "Asnjë e dhënë nuk u gjet",
-			emptyTable:     "Nuk ka asnjë të dhënë në tabelë",
+			loadingRecords: Lang.get('messages.working'),
+			zeroRecords:    Lang.get('messages.no_data_found'),
+			emptyTable:     Lang.get('messages.no_data_in_table'),
 			paginate: {
-				first:      "E para",
-				previous:   "Pas",
-				next:       "Para",
-				last:       "E fundit"
+				first:      Lang.get('messages.first'),
+				previous:   Lang.get('messages.previous'),
+				next:       Lang.get('messages.next'),
+				last:       Lang.get('messages.last')
 			},
 			aria: {
-				sortAscending:  ": aktivizo për të rreshtuar kolonat në rend rritës",
-				sortDescending: ": aktivizo për të rreshtuar kolonat në rend zbritës"
+				sortAscending:  Lang.get('messages.order_asc'),
+				sortDescending: Lang.get('messages.order_desc')
 			}
 		}
     });
@@ -321,24 +355,25 @@ jQuery(document).ready(function($) {
         ordering:       false,
         info:           false,
 		language: {
-			processing:     "Duke përpunuar të dhënat...",
-			lengthMenu:     "Shiko _MENU_ rreshta",
-			info:           "Duke shfaqur _START_ deri në _END_ nga _TOTAL_ rresht(a)",
-			infoEmpty:      "Duke shfaqur 0 deri 0 nga 0 reshta",
-			infoFiltered:   "(të filtruara nga gjithsej _MAX_ rresht(a))",
+			processing:     Lang.get('messages.processing'),
+			search:         Lang.get('messages.search'),
+			lengthMenu:     Lang.get('messages.view_rows'),
+			info:           Lang.get('messages.showing_rows'),
+			infoEmpty:      Lang.get('messages.showing_0_rows'),
+			infoFiltered:   Lang.get('messages.filter_message'),
 			infoPostFix:    "",
-			loadingRecords: "Duke punuar...",
-			zeroRecords:    "Asnjë e dhënë nuk u gjet",
-			emptyTable:     "Nuk ka asnjë të dhënë në tabelë",
+			loadingRecords: Lang.get('messages.working'),
+			zeroRecords:    Lang.get('messages.no_data_found'),
+			emptyTable:     Lang.get('messages.no_data_in_table'),
 			paginate: {
-				first:      "E para",
-				previous:   "Pas",
-				next:       "Para",
-				last:       "E fundit"
+				first:      Lang.get('messages.first'),
+				previous:   Lang.get('messages.previous'),
+				next:       Lang.get('messages.next'),
+				last:       Lang.get('messages.last')
 			},
 			aria: {
-				sortAscending:  ": aktivizo për të rreshtuar kolonat në rend rritës",
-				sortDescending: ": aktivizo për të rreshtuar kolonat në rend zbritës"
+				sortAscending:  Lang.get('messages.order_asc'),
+				sortDescending: Lang.get('messages.order_desc')
 			}
 		}
     });
@@ -350,24 +385,25 @@ jQuery(document).ready(function($) {
         ordering:       false,
         info:           false,
 		language: {
-			processing:     "Duke përpunuar të dhënat...",
-			lengthMenu:     "Shiko _MENU_ rreshta",
-			info:           "Duke shfaqur _START_ deri në _END_ nga _TOTAL_ rresht(a)",
-			infoEmpty:      "Duke shfaqur 0 deri 0 nga 0 reshta",
-			infoFiltered:   "(të filtruara nga gjithsej _MAX_ rresht(a))",
+			processing:     Lang.get('messages.processing'),
+			search:         Lang.get('messages.search'),
+			lengthMenu:     Lang.get('messages.view_rows'),
+			info:           Lang.get('messages.showing_rows'),
+			infoEmpty:      Lang.get('messages.showing_0_rows'),
+			infoFiltered:   Lang.get('messages.filter_message'),
 			infoPostFix:    "",
-			loadingRecords: "Duke punuar...",
-			zeroRecords:    "Asnjë e dhënë nuk u gjet",
-			emptyTable:     "Nuk ka asnjë të dhënë në tabelë",
+			loadingRecords: Lang.get('messages.working'),
+			zeroRecords:    Lang.get('messages.no_data_found'),
+			emptyTable:     Lang.get('messages.no_data_in_table'),
 			paginate: {
-				first:      "E para",
-				previous:   "Pas",
-				next:       "Para",
-				last:       "E fundit"
+				first:      Lang.get('messages.first'),
+				previous:   Lang.get('messages.previous'),
+				next:       Lang.get('messages.next'),
+				last:       Lang.get('messages.last')
 			},
 			aria: {
-				sortAscending:  ": aktivizo për të rreshtuar kolonat në rend rritës",
-				sortDescending: ": aktivizo për të rreshtuar kolonat në rend zbritës"
+				sortAscending:  Lang.get('messages.order_asc'),
+				sortDescending: Lang.get('messages.order_desc')
 			}
 		}
     });
@@ -379,24 +415,25 @@ jQuery(document).ready(function($) {
         ordering:       false,
         info:           false,
 		language: {
-			processing:     "Duke përpunuar të dhënat...",
-			lengthMenu:     "Shiko _MENU_ rreshta",
-			info:           "Duke shfaqur _START_ deri në _END_ nga _TOTAL_ rresht(a)",
-			infoEmpty:      "Duke shfaqur 0 deri 0 nga 0 reshta",
-			infoFiltered:   "(të filtruara nga gjithsej _MAX_ rresht(a))",
+			processing:     Lang.get('messages.processing'),
+			search:         Lang.get('messages.search'),
+			lengthMenu:     Lang.get('messages.view_rows'),
+			info:           Lang.get('messages.showing_rows'),
+			infoEmpty:      Lang.get('messages.showing_0_rows'),
+			infoFiltered:   Lang.get('messages.filter_message'),
 			infoPostFix:    "",
-			loadingRecords: "Duke punuar...",
-			zeroRecords:    "Asnjë e dhënë nuk u gjet",
-			emptyTable:     "Nuk ka asnjë të dhënë në tabelë",
+			loadingRecords: Lang.get('messages.working'),
+			zeroRecords:    Lang.get('messages.no_data_found'),
+			emptyTable:     Lang.get('messages.no_data_in_table'),
 			paginate: {
-				first:      "E para",
-				previous:   "Pas",
-				next:       "Para",
-				last:       "E fundit"
+				first:      Lang.get('messages.first'),
+				previous:   Lang.get('messages.previous'),
+				next:       Lang.get('messages.next'),
+				last:       Lang.get('messages.last')
 			},
 			aria: {
-				sortAscending:  ": aktivizo për të rreshtuar kolonat në rend rritës",
-				sortDescending: ": aktivizo për të rreshtuar kolonat në rend zbritës"
+				sortAscending:  Lang.get('messages.order_asc'),
+				sortDescending: Lang.get('messages.order_desc')
 			}
 		}
     });
@@ -412,24 +449,25 @@ jQuery(document).ready(function($) {
                     ordering:       false,
                     info:           false,
                     language: {
-                        processing:     "Duke përpunuar të dhënat...",
-                        lengthMenu:     "Shiko _MENU_ rreshta",
-                        info:           "Duke shfaqur _START_ deri në _END_ nga _TOTAL_ rresht(a)",
-                        infoEmpty:      "Duke shfaqur 0 deri 0 nga 0 reshta",
-                        infoFiltered:   "(të filtruara nga gjithsej _MAX_ rresht(a))",
+                        processing:     Lang.get('messages.processing'),
+                        search:         Lang.get('messages.search'),
+                        lengthMenu:     Lang.get('messages.view_rows'),
+                        info:           Lang.get('messages.showing_rows'),
+                        infoEmpty:      Lang.get('messages.showing_0_rows'),
+                        infoFiltered:   Lang.get('messages.filter_message'),
                         infoPostFix:    "",
-                        loadingRecords: "Duke punuar...",
-                        zeroRecords:    "Asnjë e dhënë nuk u gjet",
-                        emptyTable:     "Nuk ka asnjë të dhënë në tabelë",
+                        loadingRecords: Lang.get('messages.working'),
+                        zeroRecords:    Lang.get('messages.no_data_found'),
+                        emptyTable:     Lang.get('messages.no_data_in_table'),
                         paginate: {
-                            first:      "E para",
-                            previous:   "Pas",
-                            next:       "Para",
-                            last:       "E fundit"
+                            first:      Lang.get('messages.first'),
+                            previous:   Lang.get('messages.previous'),
+                            next:       Lang.get('messages.next'),
+                            last:       Lang.get('messages.last')
                         },
                         aria: {
-                            sortAscending:  ": aktivizo për të rreshtuar kolonat në rend rritës",
-                            sortDescending: ": aktivizo për të rreshtuar kolonat në rend zbritës"
+                            sortAscending:  Lang.get('messages.order_asc'),
+                            sortDescending: Lang.get('messages.order_desc')
                         }
                     }
                 });
@@ -441,24 +479,25 @@ jQuery(document).ready(function($) {
                     ordering:       false,
                     info:           false,
                     language: {
-                        processing:     "Duke përpunuar të dhënat...",
-                        lengthMenu:     "Shiko _MENU_ rreshta",
-                        info:           "Duke shfaqur _START_ deri në _END_ nga _TOTAL_ rresht(a)",
-                        infoEmpty:      "Duke shfaqur 0 deri 0 nga 0 reshta",
-                        infoFiltered:   "(të filtruara nga gjithsej _MAX_ rresht(a))",
+                        processing:     Lang.get('messages.processing'),
+                        search:         Lang.get('messages.search'),
+                        lengthMenu:     Lang.get('messages.view_rows'),
+                        info:           Lang.get('messages.showing_rows'),
+                        infoEmpty:      Lang.get('messages.showing_0_rows'),
+                        infoFiltered:   Lang.get('messages.filter_message'),
                         infoPostFix:    "",
-                        loadingRecords: "Duke punuar...",
-                        zeroRecords:    "Asnjë e dhënë nuk u gjet",
-                        emptyTable:     "Nuk ka asnjë të dhënë në tabelë",
+                        loadingRecords: Lang.get('messages.working'),
+                        zeroRecords:    Lang.get('messages.no_data_found'),
+                        emptyTable:     Lang.get('messages.no_data_in_table'),
                         paginate: {
-                            first:      "E para",
-                            previous:   "Pas",
-                            next:       "Para",
-                            last:       "E fundit"
+                            first:      Lang.get('messages.first'),
+                            previous:   Lang.get('messages.previous'),
+                            next:       Lang.get('messages.next'),
+                            last:       Lang.get('messages.last')
                         },
                         aria: {
-                            sortAscending:  ": aktivizo për të rreshtuar kolonat në rend rritës",
-                            sortDescending: ": aktivizo për të rreshtuar kolonat në rend zbritës"
+                            sortAscending:  Lang.get('messages.order_asc'),
+                            sortDescending: Lang.get('messages.order_desc')
                         }
                     }
                 });
@@ -471,24 +510,25 @@ jQuery(document).ready(function($) {
                 ordering:       false,
                 info:           false,
                 language: {
-                    processing:     "Duke përpunuar të dhënat...",
-                    lengthMenu:     "Shiko _MENU_ rreshta",
-                    info:           "Duke shfaqur _START_ deri në _END_ nga _TOTAL_ rresht(a)",
-                    infoEmpty:      "Duke shfaqur 0 deri 0 nga 0 reshta",
-                    infoFiltered:   "(të filtruara nga gjithsej _MAX_ rresht(a))",
+                    processing:     Lang.get('messages.processing'),
+                    search:         Lang.get('messages.search'),
+                    lengthMenu:     Lang.get('messages.view_rows'),
+                    info:           Lang.get('messages.showing_rows'),
+                    infoEmpty:      Lang.get('messages.showing_0_rows'),
+                    infoFiltered:   Lang.get('messages.filter_message'),
                     infoPostFix:    "",
-                    loadingRecords: "Duke punuar...",
-                    zeroRecords:    "Asnjë e dhënë nuk u gjet",
-                    emptyTable:     "Nuk ka asnjë të dhënë në tabelë",
+                    loadingRecords: Lang.get('messages.working'),
+                    zeroRecords:    Lang.get('messages.no_data_found'),
+                    emptyTable:     Lang.get('messages.no_data_in_table'),
                     paginate: {
-                        first:      "E para",
-                        previous:   "Pas",
-                        next:       "Para",
-                        last:       "E fundit"
+                        first:      Lang.get('messages.first'),
+                        previous:   Lang.get('messages.previous'),
+                        next:       Lang.get('messages.next'),
+                        last:       Lang.get('messages.last')
                     },
                     aria: {
-                        sortAscending:  ": aktivizo për të rreshtuar kolonat në rend rritës",
-                        sortDescending: ": aktivizo për të rreshtuar kolonat në rend zbritës"
+                        sortAscending:  Lang.get('messages.order_asc'),
+                        sortDescending: Lang.get('messages.order_desc')
                     }
                 }
             });
@@ -500,24 +540,25 @@ jQuery(document).ready(function($) {
                 ordering:       false,
                 info:           false,
                 language: {
-                    processing:     "Duke përpunuar të dhënat...",
-                    lengthMenu:     "Shiko _MENU_ rreshta",
-                    info:           "Duke shfaqur _START_ deri në _END_ nga _TOTAL_ rresht(a)",
-                    infoEmpty:      "Duke shfaqur 0 deri 0 nga 0 reshta",
-                    infoFiltered:   "(të filtruara nga gjithsej _MAX_ rresht(a))",
+                    processing:     Lang.get('messages.processing'),
+                    search:         Lang.get('messages.search'),
+                    lengthMenu:     Lang.get('messages.view_rows'),
+                    info:           Lang.get('messages.showing_rows'),
+                    infoEmpty:      Lang.get('messages.showing_0_rows'),
+                    infoFiltered:   Lang.get('messages.filter_message'),
                     infoPostFix:    "",
-                    loadingRecords: "Duke punuar...",
-                    zeroRecords:    "Asnjë e dhënë nuk u gjet",
-                    emptyTable:     "Nuk ka asnjë të dhënë në tabelë",
+                    loadingRecords: Lang.get('messages.working'),
+                    zeroRecords:    Lang.get('messages.no_data_found'),
+                    emptyTable:     Lang.get('messages.no_data_in_table'),
                     paginate: {
-                        first:      "E para",
-                        previous:   "Pas",
-                        next:       "Para",
-                        last:       "E fundit"
+                        first:      Lang.get('messages.first'),
+                        previous:   Lang.get('messages.previous'),
+                        next:       Lang.get('messages.next'),
+                        last:       Lang.get('messages.last')
                     },
                     aria: {
-                        sortAscending:  ": aktivizo për të rreshtuar kolonat në rend rritës",
-                        sortDescending: ": aktivizo për të rreshtuar kolonat në rend zbritës"
+                        sortAscending:  Lang.get('messages.order_asc'),
+                        sortDescending: Lang.get('messages.order_desc')
                     }
                 }
             });
@@ -531,25 +572,26 @@ jQuery(document).ready(function($) {
         ordering:       false,
         info:           false,
         language: {
-            processing:     "Duke përpunuar të dhënat...",
-            lengthMenu:     "Shiko _MENU_ rreshta",
-            info:           "Duke shfaqur _START_ deri në _END_ nga _TOTAL_ rresht(a)",
-            infoEmpty:      "Duke shfaqur 0 deri 0 nga 0 reshta",
-            infoFiltered:   "(të filtruara nga gjithsej _MAX_ rresht(a))",
-            infoPostFix:    "",
-            loadingRecords: "Duke punuar...",
-            zeroRecords:    "Asnjë e dhënë nuk u gjet",
-            emptyTable:     "Nuk ka asnjë të dhënë në tabelë",
-            paginate: {
-                first:      "E para",
-                previous:   "Pas",
-                next:       "Para",
-                last:       "E fundit"
-            },
-            aria: {
-                sortAscending:  ": aktivizo për të rreshtuar kolonat në rend rritës",
-                sortDescending: ": aktivizo për të rreshtuar kolonat në rend zbritës"
-            }
-        }
+			processing:     Lang.get('messages.processing'),
+			search:         Lang.get('messages.search'),
+			lengthMenu:     Lang.get('messages.view_rows'),
+			info:           Lang.get('messages.showing_rows'),
+			infoEmpty:      Lang.get('messages.showing_0_rows'),
+			infoFiltered:   Lang.get('messages.filter_message'),
+			infoPostFix:    "",
+			loadingRecords: Lang.get('messages.working'),
+			zeroRecords:    Lang.get('messages.no_data_found'),
+			emptyTable:     Lang.get('messages.no_data_in_table'),
+			paginate: {
+				first:      Lang.get('messages.first'),
+				previous:   Lang.get('messages.previous'),
+				next:       Lang.get('messages.next'),
+				last:       Lang.get('messages.last')
+			},
+			aria: {
+				sortAscending:  Lang.get('messages.order_asc'),
+				sortDescending: Lang.get('messages.order_desc')
+			}
+		}
     });
 });

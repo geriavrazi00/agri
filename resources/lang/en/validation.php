@@ -163,6 +163,8 @@ return [
     'first_payment_date_required' => 'Please enter the date of the first payment.',
     'interest_min_value' => 'The actual norm of yearly interest must be greater than :value.',
     'interest_max_value' => 'The actual norm of yearly interest must have a maximum value of :value.',
+    'loan_amount_required' => 'Please enter at least one loan amount.',
+    'sum_of_loan' => 'The total of the loan amounts should be equal to the total of the values financed by the bank.',
 
     //Business data validation
     'technology_required' => 'Please select a technology.' ,
@@ -174,4 +176,8 @@ return [
 
     //Admin users validation
     'wrong_format' => 'Please enter the data of the field in the right format.',
+
+    //Taxes validation
+    'percentage_tax_min_value' => 'The percentage of the tax must be greater than :value.',
+    'percentage_tax_max_value' => 'The percentage of the tax must have a maximum value of :value.',
 ];

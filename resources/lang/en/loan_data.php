@@ -6,5 +6,5 @@ return [
 	'yearly_interest' => 'Annual interest rate',
 	'years_to_pay' => 'Repayment period in years',
 	'yearly_payments' => 'Yearly payments',
-    'first_payment_date' => 'First instalment on',
+    'first_payment_date' => 'First installment on',
 ];

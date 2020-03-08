@@ -8,7 +8,7 @@
 
             <center>
                 <div style="display: inline-flex; text-align: center;">
-                    <h3 class="resulttablehead">Ndrysho fjalëkalimin tim</h3>
+                    <h3 class="resulttablehead">{{ trans('messages.change_my_password') }}</h3>
                 </div>
             </center>
 
@@ -20,7 +20,7 @@
                     @csrf
 
                     <div class="form-group row" style="padding-top: 10px;">
-                        <label for="password" class="col-md-4 col-form-label text-md-right" style="color: black; font-size: 16px;">Fjalëkalimi i ri</label>
+                        <label for="password" class="col-md-4 col-form-label text-md-right" style="color: black; font-size: 16px;">{{ trans('messages.new_password') }}</label>
 
                         <div class="col-md-6">
                             <input id="password" type="password" style="color: black; font-size: 16px;" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" oninvalid="createInvalidMsg(this, '{{trans('validation.field_required')}}', '');" oninput="this.setCustomValidity('')">
@@ -34,7 +34,7 @@
                     </div>
 
                     <div class="form-group row" style="padding-top: 10px;">
-                        <label for="password-confirm" class="col-md-4 col-form-label text-md-right" style="color: black; font-size: 16px;">Konfirmim</label>
+                        <label for="password-confirm" class="col-md-4 col-form-label text-md-right" style="color: black; font-size: 16px;">{{ trans('messages.confirmation') }}</label>
 
                         <div class="col-md-6">
                             <input id="password-confirm" type="password" style="color: black; font-size: 16px;" class="form-control" name="password_confirmation" required autocomplete="new-password" oninvalid="createInvalidMsg(this, '{{trans('validation.field_required')}}', '');" oninput="this.setCustomValidity('')">
@@ -43,11 +43,11 @@
 
                     <div class="col-md-12" style="text-align: right;">
                         <button type="submit" class="btn btn-success">
-                            Ruaj
+                            {{ trans('messages.save') }}
                         </button>
 
                         <a href="/myprofile" class="btn btn-info">
-                            Ndrysho të dhënat
+                            {{ trans('messages.change_data') }}
                         </a>
                     </div>
                 </form>

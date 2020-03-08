@@ -57,14 +57,14 @@ class ResultController extends Controller
         $plan->save();
         $this->attachCategoriesToPlan($plan, $request->inputs);
 
-        return Redirect::to('/plans')->withSuccessMessage('Aplikimi u ruajt me sukses!');
+        return Redirect::to('/plans')->withSuccessMessage(trans('messages.project_saved'));
     }
 
     public function exportExcel(Request $request) {
         $date = new DateTime();
         $plan = $this->createPlan($request->inputs, $request->result, $request->date);
 
-        return Excel::download(new PlanExcelExport($plan), 'Përfitueshmëria-' . $plan->business_code . '-' . $date->format('d-m-Y-H-i-s') . '.xlsx');
+        return Excel::download(new PlanExcelExport($plan), trans('messages.profitability') . '-' . $plan->business_code . '-' . $date->format('d-m-Y-H-i-s') . '.xlsx');
     }
 
     public function exportPdf(Request $request) {
@@ -74,7 +74,7 @@ class ResultController extends Controller
         $pdf = new PlanPdfExport($plan);
         $doc = $pdf->export();
 
-        return $doc->download('Përfitueshmëria-' . $plan->business_code . '-' . $date->format('d-m-Y-H-i-s') . '.pdf');
+        return $doc->download(trans('messages.profitability') . '-' . $plan->business_code . '-' . $date->format('d-m-Y-H-i-s') . '.pdf');
     }
 
     private function createPlan($inputs, $result, $date) {

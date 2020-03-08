@@ -9,15 +9,17 @@ final class Constants {
 
 	//Tax percentages
 	const LOW = 0.075;
-	const HIGH = 0.15;
-	const THRESHOLD = 12000000;
+    const HIGH = 0.15;
+    const LOW_THRESHOLD = 5000000;
+	const HIGH_THRESHOLD = 14000000;
 
 	//Loan fields
-	const LOAN_FIELDS = 4;
+    const LOAN_FIELDS = 4;
+    const LOAN_COLUMNS = 2;
 
 	//Roles of the system
-	const ROLE_ADMIN = "Administrator";
-    const ROLE_WEB = "Përdorues i thjeshtë";
+	const ROLE_ADMIN = 1;
+    const ROLE_WEB = 2;
 
     //Languages
     const ENGLISH_LANGUAGE = "en";

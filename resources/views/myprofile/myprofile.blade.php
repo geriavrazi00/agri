@@ -8,7 +8,7 @@
 
             <center>
                 <div style="display: inline-flex; text-align: center;">
-                    <h3 class="resulttablehead">Përditëso të dhënat e mia</h3>
+                    <h3 class="resulttablehead">{{ trans('messages.update_data') }}</h3>
                 </div>
             </center>
 
@@ -20,7 +20,7 @@
                     @csrf
 
                     <div class="row" style="padding-top: 10px;">
-                        <label for="name" class="col-md-4 text-md-right" style="color: black;">Emri</label>
+                        <label for="name" class="col-md-4 text-md-right" style="color: black;">{{ trans('messages.name') }}</label>
 
                         <div class="col-md-6">
                             <input id="name" type="text" style="color: black;" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') == null ? $user->name : old('name') }}" required autocomplete="name" autofocus oninvalid="createInvalidMsg(this, '{{trans('validation.field_required')}}', '');" oninput="this.setCustomValidity('')">
@@ -34,7 +34,7 @@
                     </div>
 
                     <div class="form-group row" style="padding-top: 10px;">
-                        <label for="email" class="col-md-4 text-md-right" style="color: black;">Adresa e-mail</label>
+                        <label for="email" class="col-md-4 text-md-right" style="color: black;">{{ trans('messages.email') }}</label>
 
                         <div class="col-md-6">
                             <input id="email" type="email" style="color: black;" class="form-control @error('email') is-invalid @enderror" name="email" value="{{old('email') == null ? $user->email : old('email')}}" required autocomplete="email" oninvalid="createInvalidMsg(this, '{{trans('validation.field_required')}}', '{{trans('validation.wrong_format')}}');" oninput="createInvalidMsg(this, '', '{{trans('validation.wrong_format')}}');">
@@ -49,11 +49,11 @@
 
                     <div class="col-md-12" style="text-align: right;">
                         <button type="submit" class="btn btn-success">
-                            Përditëso
+                            {{ trans('messages.update') }}
                         </button>
 
                         <a href="/myprofile/password" class="btn btn-info">
-                            Ndrysho fjalëkalimin
+                            {{ trans('messages.change_password') }}
                         </a>
                     </div>
                 </form>

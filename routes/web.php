@@ -79,5 +79,8 @@ Route::group(['middleware' => 'language'], function () {
         Route::get('/values/{id}', 'ValuesController@show')->middleware('auth');
         Route::get('/values/{id}/edit', 'ValuesController@edit')->middleware('auth');
         Route::put('/values/{id}', 'ValuesController@update')->middleware('auth');
+
+        /* Taxes */
+        Route::resource('taxes', 'TaxesController')->middleware('auth');
     });
 });

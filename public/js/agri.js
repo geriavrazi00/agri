@@ -17,50 +17,14 @@ $('#navbar-button').on('click', function() {
 
 var selectedCategories = new Array();
 
-function calculateTotal(
-    inputIndex,
-    totalTables,
-    totalFields,
-    categoryId,
-    categories
-) {
+function calculateTotal( inputIndex, totalTables, totalFields, categoryId, categories) {
     for (var i = 0; i < totalTables; i++) {
         var investments = 0;
         for (var j = 0; j < totalFields; j++) {
-            investments +=
-                document.getElementById(
-                    "investment-" +
-                        inputIndex +
-                        "-" +
-                        j +
-                        "-" +
-                        i +
-                        "-" +
-                        categoryId
-                ) != null &&
-                document.getElementById(
-                    "investment-" +
-                        inputIndex +
-                        "-" +
-                        j +
-                        "-" +
-                        i +
-                        "-" +
-                        categoryId
-                ).value != ""
-                    ? eval(
-                          document.getElementById(
-                              "investment-" +
-                                  inputIndex +
-                                  "-" +
-                                  j +
-                                  "-" +
-                                  i +
-                                  "-" +
-                                  categoryId
-                          ).value
-                      )
-                    : 0;
+            investments += document.getElementById("investment-" + inputIndex + "-" + j + "-" + i + "-" + categoryId) != null
+            && document.getElementById("investment-" + inputIndex + "-" + j + "-" + i + "-" + categoryId).value != ""
+            ? eval(document.getElementById("investment-" + inputIndex + "-" + j + "-" + i + "-" + categoryId).value)
+            : 0;
         }
 
         document.getElementById(
@@ -68,7 +32,7 @@ function calculateTotal(
         ).innerHTML = investments.toLocaleString();
     }
 
-    calculateTotalLoan(categories, inputIndex);
+    calculateTotalLoan(categories);
 }
 
 function calculateTotalLoan(categories) {
@@ -78,28 +42,6 @@ function calculateTotalLoan(categories) {
     for (var i = 0; i < categories.length; i++) {
         for (var j = 0; j < categories[i].option_number; j++) {
             for (var k = 0; k < categories[i].labels.length; k++) {
-                totalLoan +=
-                    document.getElementById(
-                        "investment-0-" + k + "-" + j + "-" + categories[i].id
-                    ) != null &&
-                    document.getElementById(
-                        "investment-0-" + k + "-" + j + "-" + categories[i].id
-                    ).value != "" &&
-                    document.getElementById(
-                        "investment-0-" + k + "-" + j + "-" + categories[i].id
-                    ).value != null
-                        ? eval(
-                              document.getElementById(
-                                  "investment-0-" +
-                                      k +
-                                      "-" +
-                                      j +
-                                      "-" +
-                                      categories[i].id
-                              ).value
-                          )
-                        : 0;
-
                 totalLoan +=
                     document.getElementById(
                         "investment-1-" + k + "-" + j + "-" + categories[i].id
@@ -125,9 +67,8 @@ function calculateTotalLoan(categories) {
         }
     }
 
-    document.getElementById(
-        "total-loan"
-    ).innerHTML = totalLoan.toLocaleString();
+    document.getElementById("total-loan-0").value = totalLoan;
+    document.getElementById("total-loan-0").setAttribute('max', totalLoan);
 }
 
 function selectCategories(category, categories) {
@@ -211,14 +152,6 @@ function selectCategories(category, categories) {
                       );
             }
         }
-
-        calculateTotal(
-            "0",
-            category.option_number,
-            category.labels.length,
-            category.id,
-            categories
-        );
 
         calculateTotal(
             "1",
@@ -326,6 +259,63 @@ function loanInterestRateValidation(
     return true;
 }
 
+function validateLoanTotals(input, message, categories) {
+    var totalLoan = 0;
+    categories = JSON.parse(categories);
+
+    for (var i = 0; i < categories.length; i++) {
+        for (var j = 0; j < categories[i].option_number; j++) {
+            for (var k = 0; k < categories[i].labels.length; k++) {
+                totalLoan +=
+                    document.getElementById(
+                        "investment-1-" + k + "-" + j + "-" + categories[i].id
+                    ) != null &&
+                    document.getElementById(
+                        "investment-1-" + k + "-" + j + "-" + categories[i].id
+                    ).value != "" &&
+                    document.getElementById(
+                        "investment-1-" + k + "-" + j + "-" + categories[i].id
+                    ).value != null
+                        ? eval(
+                              document.getElementById(
+                                  "investment-1-" +
+                                      k +
+                                      "-" +
+                                      j +
+                                      "-" +
+                                      categories[i].id
+                              ).value
+                          )
+                        : 0;
+            }
+        }
+    }
+
+    var sumOfTotals = eval(document.getElementById("total-loan-0").value) + eval(document.getElementById("total-loan-1").value);
+
+    if(sumOfTotals != totalLoan) {
+        document.getElementById("total-loan-0").setAttribute('max', -1);
+        input.setCustomValidity(message);
+    } else {
+        document.getElementById("total-loan-0").setAttribute('max', totalLoan);
+        input.setCustomValidity("");
+    }
+
+    if(eval(document.getElementById("total-loan-1").value) > 0) {
+        document.getElementById("loan-0-1").required = true;
+        document.getElementById("loan-1-1").required = true;
+        document.getElementById("loan-2-1").required = true;
+        document.getElementById("loan-3-1").required = true;
+    } else {
+        document.getElementById("loan-0-1").required = false;
+        document.getElementById("loan-1-1").required = false;
+        document.getElementById("loan-2-1").required = false;
+        document.getElementById("loan-3-1").required = false;
+    }
+
+    return true;
+}
+
 function businessDataValidation(
     element,
     cultureNumber,
@@ -387,10 +377,10 @@ function areYouSure(e, element) {
     var form = $(element).parents("form");
 
     swal({
-        title: "Jeni të sigurt?",
-        text: "Pas fshirjes nuk mund ti rimerrni të dhënat mbrapsht!",
+        title: Lang.get('messages.are_you_sure'),
+        text: Lang.get('messages.delete_message'),
         icon: "warning",
-        buttons: ["Anullo", "Ok!"],
+        buttons: [Lang.get('messages.cancel'), "Ok!"],
         dangerMode: true
     }).then(willDelete => {
         if (willDelete) {
@@ -405,4 +395,8 @@ $("#loan-3").keypress(function(event) {
 
 $(window).on("load", function() {
     $("#myModal").modal("show");
+
+    setTimeout(function(e) {
+        $('#myModal').modal('hide');
+    }, parseInt($('#myModal').attr('data-delay')) * 1000);
 });

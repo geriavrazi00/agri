@@ -1,5 +1,5 @@
 @extends('errors.minimal')
 
-@section('title', __('Faqja nuk u gjet'))
+@section('title', trans('messages.404'))
 @section('code', '404')
-@section('message', __('Faqja nuk u gjet'))
+@section('message',  trans('messages.404'))
