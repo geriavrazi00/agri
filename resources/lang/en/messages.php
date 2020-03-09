@@ -98,7 +98,7 @@ return [
     'total_net_profit' => 'Total net profit',
     'cash_flow' => 'Cash flow available for loan payments',
     'loan_installments' => 'Loan installments for 1 year',
-    'dscr' => 'DSCR',
+    'dscr' => 'Debt service coverage ratio (DSCR)',
 
     //Result buttons
     'save_project' => 'Save project',
@@ -199,4 +199,7 @@ return [
     '500' => 'Internal server problem!',
     '503' => 'Service not available!',
     'back_to_home' => 'Back to Home',
+
+    //Table titles
+    'the_greenhouse' => 'Greenhouse',
 ];

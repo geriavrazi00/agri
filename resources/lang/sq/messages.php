@@ -198,4 +198,7 @@ return [
     '500' => 'Problem në server!',
     '503' => 'Shërbimi i padisponueshëm!',
     'back_to_home' => 'Kthehu tek Kreu',
+
+    //Table titles
+    'the_greenhouse' => 'Serra',
 ];

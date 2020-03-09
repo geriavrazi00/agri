@@ -63,8 +63,8 @@
                                     {{ trans('messages.my_profile') }}
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="/myprofile">{{ trans('messages.change_data') }}</a>
-                                    <a class="dropdown-item" href="/myprofile/password">{{ trans('messages.change_password') }}</a>
+                                    <a class="dropdown-item {{ Request::is('myprofile') ? 'active-nav' : '' }}" href="/myprofile">{{ trans('messages.change_data') }}</a>
+                                    <a class="dropdown-item {{ Request::is('myprofile/password') ? 'active-nav' : '' }}" href="/myprofile/password">{{ trans('messages.change_password') }}</a>
                                 </div>
                             </li>
 
@@ -74,9 +74,9 @@
                                     {{ trans('messages.administration') }}
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="/users">{{ trans('messages.users') }}</a>
-                                    <a class="dropdown-item" href="/values">{{ trans('messages.coefficients') }}</a>
-                                    <a class="dropdown-item" href="/taxes">{{ trans('messages.taxes') }}</a>
+                                    <a class="dropdown-item {{ (Request::is('users') || Request::is('users/*')) ? 'active-nav' : '' }}" href="/users">{{ trans('messages.users') }}</a>
+                                    <a class="dropdown-item {{ (Request::is('values') || Request::is('values/*')) ? 'active-nav' : '' }}" href="/values">{{ trans('messages.coefficients') }}</a>
+                                    <a class="dropdown-item {{ (Request::is('taxes') || Request::is('taxes/*')) ? 'active-nav' : '' }}" href="/taxes">{{ trans('messages.taxes') }}</a>
                                 </div>
                             </li>
                             @endif

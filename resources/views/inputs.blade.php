@@ -8,7 +8,7 @@
             <table id="businessinputtable{{$key}}{{$i}}" class="resulttable display responsive" style="width: 100%;">
                 <thead>
                     <tr class="resulttablerow">
-                        <th class="resulttablehead">{{ trans('messages.business_data') }}</th>
+                        <th class="resulttablehead">{{ trans('messages.business_data') }}{{$category->option_number > 1 ? " - " . (trans('messages.the_greenhouse') . " " . ($i + 1)) : ''}}</th>
                         <th class="resulttablehead">{{ trans('messages.values') }}</th>
                     </tr>
                 </thead>
@@ -17,7 +17,7 @@
                     <tr class="resulttablerow">
                         <td class="resulttabledata">{{trans($category['business'][0]->value)}}</td>
                         <td class="resulttabledata">
-                            <input type="number" id="business-0-{{$i}}-{{$key}}" name="business-0-{{$i}}-{{$key}}" class="form-control" min="0" {{$i == 0 ? 'required' : ''}} value="1" min="1" oninvalid="createInvalidMsg(this, '{{trans('validation.field_required')}}', '{{trans('validation.non_negative_field')}}');" oninput="createInvalidMsg(this, '', '');" onfocus="clearField(this, '1');" onblur="fillField(this, '1');" onkeydown="return blockSpecialCharactersInInputNumber(event);" disabled style="text-align: right">
+                            <input type="text" id="business-0-{{$i}}-{{$key}}" name="business-0-{{$i}}-{{$key}}" class="form-control" min="0" {{$i == 0 ? 'required' : ''}} value="1" min="1" oninvalid="createInvalidMsg(this, '{{trans('validation.field_required')}}', '{{trans('validation.non_negative_field')}}');" oninput="createInvalidMsg(this, '', '');" onfocus="clearField(this, '1');" onblur="fillField(this, '1');" onkeydown="return blockSpecialCharactersInInputNumber(event);" disabled style="text-align: right" pattern="{{ App\Constants::REG_EX_CURRENCY }}" data-type="number">
                         </td>
                     </tr>
                     <tr class="resulttablerow">
@@ -59,7 +59,7 @@
             <table id="planinputtable{{$key}}{{$i}}" class="resulttable display responsive" style="width: 100%;">
                 <thead>
                     <tr>
-                        <th>{{trans('messages.investment_plan')}}</th>
+                        <th>{{trans('messages.investment_plan')}}{{$category->option_number > 1 ? " - " . (trans('messages.the_greenhouse') . " " . ($i + 1)) : ''}}</th>
                         <th>{{trans('messages.total_value')}}</th>
                         <th>{{trans('messages.financing_bank')}}</th>
                     </tr>
@@ -69,10 +69,10 @@
                         <tr>
                             <td>{{ trans( $category['investments'][$j]->value) }}</td>
                             <td>
-                                <input type="number" id="investment-0-{{$j}}-{{$i}}-{{$key}}" name="investment-0-{{$j}}-{{$i}}-{{$key}}" class="form-control" style="text-align: right" oninput="calculateTotal(0, '{{$category->option_number}}', '{{sizeof($category['investments'])}}', '{{$category->id}}', '{{$categories}}')" value="0" min="0" onfocus="clearField(this, '0');" onblur="fillField(this, '0');" onkeydown="return blockSpecialCharactersInInputNumber(event);" placeholder="{{ trans('messages.value_in_all') }}">
+                                <input type="text" id="investment-0-{{$j}}-{{$i}}-{{$key}}" name="investment-0-{{$j}}-{{$i}}-{{$key}}" class="form-control" style="text-align: right" oninput="calculateTotal(0, '{{$category->option_number}}', '{{sizeof($category['investments'])}}', '{{$category->id}}', '{{$categories}}')" value="0" min="0" onfocus="clearField(this, '0');" onblur="fillField(this, '0');" onkeydown="return blockSpecialCharactersInInputNumber(event);" placeholder="{{ trans('messages.value_in_all') }}" pattern="{{ App\Constants::REG_EX_CURRENCY }}" data-type="number">
                             </td>
                             <td>
-                                <input type="number" id="investment-1-{{$j}}-{{$i}}-{{$key}}" name="investment-1-{{$j}}-{{$i}}-{{$key}}" class="form-control" style="text-align: right" oninput="calculateTotal(1, '{{$category->option_number}}', '{{sizeof($category['investments'])}}', '{{$category->id}}', '{{$categories}}')" value="0" min="0" onfocus="clearField(this, '0');" onblur="fillField(this, '0');" onkeydown="return blockSpecialCharactersInInputNumber(event);" placeholder="{{ trans('messages.value_in_all') }}">
+                                <input type="text" id="investment-1-{{$j}}-{{$i}}-{{$key}}" name="investment-1-{{$j}}-{{$i}}-{{$key}}" class="form-control" style="text-align: right" oninput="calculateTotal(1, '{{$category->option_number}}', '{{sizeof($category['investments'])}}', '{{$category->id}}', '{{$categories}}')" value="0" min="0" onfocus="clearField(this, '0');" onblur="fillField(this, '0');" onkeydown="return blockSpecialCharactersInInputNumber(event);" placeholder="{{ trans('messages.value_in_all') }}" pattern="{{ App\Constants::REG_EX_CURRENCY }}" data-type="number">
                             </td>
                         </tr>
                     @endfor

@@ -39,28 +39,31 @@
                                         <td>{{ trans($culture->name) }}</td>
                                         <td>{{ trans($value->technology->name) }}</td>
                                         <td>
-                                            <input type="number" id="efficiency-{{$culture->id}}-{{$value->id}}"
+                                            <input type="text" id="efficiency-{{$culture->id}}-{{$value->id}}"
                                             name="efficiency-{{$culture->id}}-{{$value->id}}" class="form-control"
                                             onkeydown="return blockSpecialCharactersInInputNumber(event);"
-                                            value="{{$value->efficiency + 0}}" step=".000001"
+                                            value="{{ $formulaManager->addFormat($value->efficiency) }}" step=".000001"
                                             oninvalid="createInvalidMsg(this, '{{trans('validation.field_required')}}', '{{trans('validation.non_negative_field')}}');"
-                                            oninput="createInvalidMsg(this, '', '');" required min="0" style="text-align: right; color: black;"/>
+                                            oninput="createInvalidMsg(this, '', '');" required min="0" style="text-align: right; color: black;" pattern="{{ App\Constants::REG_EX_CURRENCY }}"
+                                            data-type="number"/>
                                         </td>
                                         <td>
-                                            <input type="number" id="price-{{$culture->id}}-{{$value->id}}"
+                                            <input type="text" id="price-{{$culture->id}}-{{$value->id}}"
                                             name="price-{{$culture->id}}-{{$value->id}}" class="form-control"
                                             onkeydown="return blockSpecialCharactersInInputNumber(event);"
-                                            value="{{$value->price + 0}}" step=".000001"
+                                            value="{{ $formulaManager->addFormat($value->price) }}" step=".000001"
                                             oninvalid="createInvalidMsg(this, '{{trans('validation.field_required')}}', '{{trans('validation.non_negative_field')}}');"
-                                            oninput="createInvalidMsg(this, '', '');" required min="0" style="text-align: right; color: black;"/>
+                                            oninput="createInvalidMsg(this, '', '');" required min="0" style="text-align: right; color: black;"
+                                            pattern="{{ App\Constants::REG_EX_CURRENCY }}" data-type="number"/>
                                         </td>
                                         <td>
-                                            <input type="number" id="cost-{{$culture->id}}-{{$value->id}}"
+                                            <input type="text" id="cost-{{$culture->id}}-{{$value->id}}"
                                             name="cost-{{$culture->id}}-{{$value->id}}" class="form-control"
                                             onkeydown="return blockSpecialCharactersInInputNumber(event);"
-                                            value="{{$value->cost + 0}}" step=".000001"
+                                            value="{{ $formulaManager->addFormat($value->cost) }}" step=".000001"
                                             oninvalid="createInvalidMsg(this, '{{trans('validation.field_required')}}', '{{trans('validation.non_negative_field')}}');"
-                                            oninput="createInvalidMsg(this, '', '');" required min="0" style="text-align: right; color: black;"/>
+                                            oninput="createInvalidMsg(this, '', '');" required min="0" style="text-align: right; color: black;"
+                                            pattern="{{ App\Constants::REG_EX_CURRENCY }}" data-type="number"/>
                                         </td>
                                     </tr>
                                 @endforeach
