@@ -3,7 +3,7 @@
 return [
 	//Greenhouse category labels
 	'new_greenhouse' => 'New greenhouse',
-	'plastic_change' => 'Plastic change',
+	'plastic_change' => 'Plastic sheets change',
 	'drip_irrigation' => 'Drip irrigation',
 	'agricultural_inputs' => 'Agricultural inputs',
 	'other' => 'Other',

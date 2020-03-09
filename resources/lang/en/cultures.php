@@ -3,16 +3,16 @@
 return [
     //ASSAF sheep
     'milk' => 'Milk',
-    'lamb_for_meat' => 'Lamb for meat',
+    'lamb_for_meat' => 'Lambs for meat',
     'female_lambs' => 'Female lambs for breeding',
     'organic_fertilizer' => 'Organic fertilizer/manure',
 
     //Alpine milk goats
-    'kid_for_meat' => 'Kid for meat',
+    'kid_for_meat' => 'Kids for meat',
     'female_kid' => 'Female kid for breeding',
 
     //Cows
-    'cattle_for_meat' => 'Cattle for meat',
+    'cattle_for_meat' => 'Calves for meat',
 
     //Hazelnut
     'hazelnut' => 'Hazelnut',

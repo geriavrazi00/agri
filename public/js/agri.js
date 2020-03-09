@@ -21,10 +21,8 @@ function calculateTotal( inputIndex, totalTables, totalFields, categoryId, categ
     for (var i = 0; i < totalTables; i++) {
         var investments = 0;
         for (var j = 0; j < totalFields; j++) {
-            investments += document.getElementById("investment-" + inputIndex + "-" + j + "-" + i + "-" + categoryId) != null
-            && document.getElementById("investment-" + inputIndex + "-" + j + "-" + i + "-" + categoryId).value != ""
-            ? eval(document.getElementById("investment-" + inputIndex + "-" + j + "-" + i + "-" + categoryId).value)
-            : 0;
+            var val = document.getElementById("investment-" + inputIndex + "-" + j + "-" + i + "-" + categoryId);
+            investments += (val != null && val.value != "") ? eval(val.value.replace(/,/g, '')) : 0;
         }
 
         document.getElementById(
@@ -42,33 +40,17 @@ function calculateTotalLoan(categories) {
     for (var i = 0; i < categories.length; i++) {
         for (var j = 0; j < categories[i].option_number; j++) {
             for (var k = 0; k < categories[i].labels.length; k++) {
-                totalLoan +=
-                    document.getElementById(
-                        "investment-1-" + k + "-" + j + "-" + categories[i].id
-                    ) != null &&
-                    document.getElementById(
-                        "investment-1-" + k + "-" + j + "-" + categories[i].id
-                    ).value != "" &&
-                    document.getElementById(
-                        "investment-1-" + k + "-" + j + "-" + categories[i].id
-                    ).value != null
-                        ? eval(
-                              document.getElementById(
-                                  "investment-1-" +
-                                      k +
-                                      "-" +
-                                      j +
-                                      "-" +
-                                      categories[i].id
-                              ).value
-                          )
-                        : 0;
+                var val = document.getElementById("investment-1-" + k + "-" + j + "-" + categories[i].id);
+                totalLoan += (val != null && val.value != "" && val.value != null) ? eval(val.value.replace(/,/g, '')) : 0;
             }
         }
     }
 
-    document.getElementById("total-loan-0").value = totalLoan;
+    var tempTotalLoan = totalLoan;
+    tempTotalLoan = formatNumber(tempTotalLoan.toString());
+    document.getElementById("total-loan-0").value = tempTotalLoan;
     document.getElementById("total-loan-0").setAttribute('max', totalLoan);
+
 }
 
 function selectCategories(category, categories) {
@@ -266,32 +248,14 @@ function validateLoanTotals(input, message, categories) {
     for (var i = 0; i < categories.length; i++) {
         for (var j = 0; j < categories[i].option_number; j++) {
             for (var k = 0; k < categories[i].labels.length; k++) {
-                totalLoan +=
-                    document.getElementById(
-                        "investment-1-" + k + "-" + j + "-" + categories[i].id
-                    ) != null &&
-                    document.getElementById(
-                        "investment-1-" + k + "-" + j + "-" + categories[i].id
-                    ).value != "" &&
-                    document.getElementById(
-                        "investment-1-" + k + "-" + j + "-" + categories[i].id
-                    ).value != null
-                        ? eval(
-                              document.getElementById(
-                                  "investment-1-" +
-                                      k +
-                                      "-" +
-                                      j +
-                                      "-" +
-                                      categories[i].id
-                              ).value
-                          )
-                        : 0;
+                var val = document.getElementById("investment-1-" + k + "-" + j + "-" + categories[i].id);
+                totalLoan += val != null && val.value != "" && val != null ? eval(val.value.replace(/,/g, '')): 0;
             }
         }
     }
 
-    var sumOfTotals = eval(document.getElementById("total-loan-0").value) + eval(document.getElementById("total-loan-1").value);
+    var sumOfTotals = eval(document.getElementById("total-loan-0").value.replace(/,/g, ''))
+        + eval(document.getElementById("total-loan-1").value.replace(/,/g, ''));
 
     if(sumOfTotals != totalLoan) {
         document.getElementById("total-loan-0").setAttribute('max', -1);
@@ -301,7 +265,7 @@ function validateLoanTotals(input, message, categories) {
         input.setCustomValidity("");
     }
 
-    if(eval(document.getElementById("total-loan-1").value) > 0) {
+    if(eval(document.getElementById("total-loan-1").value.replace(/,/g, '')) > 0) {
         document.getElementById("loan-0-1").required = true;
         document.getElementById("loan-1-1").required = true;
         document.getElementById("loan-2-1").required = true;
@@ -400,3 +364,163 @@ $(window).on("load", function() {
         $('#myModal').modal('hide');
     }, parseInt($('#myModal').attr('data-delay')) * 1000);
 });
+
+//Formating the number fields to currency
+$("input[data-type='number']").on({
+    keyup: function() {
+        formatNumberWithCommas($(this));
+    },
+    blur: function() {
+        formatNumberWithCommas($(this), "blur");
+    }
+});
+
+function formatNumber(n) {
+    // format number 1000000 to 1,234,567
+    return n.replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
+function formatNumberWithCommas(input, blur) {
+    // appends currency to value if we want, validates decimal side
+    // and puts cursor back in right position.
+
+    // get input value
+    var input_val = input.val();
+
+    // don't validate empty input
+    if (input_val === "") { return; }
+
+    // original length
+    var original_len = input_val.length;
+
+    // initial caret position
+    var caret_pos = input.prop("selectionStart");
+
+    // check for decimal
+    if (input_val.indexOf(".") >= 0) {
+
+        // get position of first decimal
+        // this prevents multiple decimals from
+        // being entered
+        var decimal_pos = input_val.indexOf(".");
+
+        // split number by decimal point
+        var left_side = input_val.substring(0, decimal_pos);
+        var right_side = input_val.substring(decimal_pos);
+
+        // add commas to left side of number
+        left_side = formatNumber(left_side);
+
+        // validate right side
+        right_side = formatNumber(right_side);
+
+        // On blur make sure 2 numbers after decimal
+        if (blur === "blur") {
+            right_side += "00";
+        }
+
+        // Limit decimal to only 2 digits
+        right_side = right_side.substring(0, 2);
+
+        // join number by .
+        input_val = left_side + "." + right_side;
+
+    } else {
+        // no decimal entered
+        // add commas to number
+        // remove all non-digits
+        input_val = formatNumber(input_val);
+        input_val = input_val;
+
+        // final formatting
+        if (blur === "blur") {
+            input_val += ".00";
+        }
+    }
+
+    // send updated string to input
+    input.val(input_val);
+
+    // put caret back in the right position
+    var updated_len = input_val.length;
+    caret_pos = updated_len - original_len + caret_pos;
+    input[0].setSelectionRange(caret_pos, caret_pos);
+}
+
+//Formating the percentage fields to currency
+$("input[data-type='percentage']").on({
+    keyup: function() {
+        formatPercentage($(this));
+    },
+    blur: function() {
+        formatPercentage($(this), "blur");
+    }
+});
+
+function formatPercentage(input, blur) {
+    // appends currency to value if we want, validates decimal side
+    // and puts cursor back in right position.
+
+    // get input value
+    var input_val = input.val();
+
+    // don't validate empty input
+    if (input_val === "") { return; }
+
+    // original length
+    var original_len = input_val.length;
+
+    // initial caret position
+    var caret_pos = input.prop("selectionStart");
+
+    // check for decimal
+    if (input_val.indexOf(".") >= 0) {
+
+        // get position of first decimal
+        // this prevents multiple decimals from
+        // being entered
+        var decimal_pos = input_val.indexOf(".");
+
+        // split number by decimal point
+        var left_side = input_val.substring(0, decimal_pos);
+        var right_side = input_val.substring(decimal_pos);
+
+        // add commas to left side of number
+        left_side = formatNumber(left_side);
+
+        // validate right side
+        right_side = formatNumber(right_side);
+
+        // On blur make sure 2 numbers after decimal
+        if (blur === "blur") {
+            right_side += "00";
+        }
+
+        // Limit decimal to only 2 digits
+        right_side = right_side.substring(0, 2);
+
+        // join number by .
+        input_val = left_side + "." + right_side + "%";
+
+    } else {
+        // no decimal entered
+        // add commas to number
+        // remove all non-digits
+        input_val = formatNumber(input_val);
+
+        // final formatting
+        if (blur === "blur") {
+            input_val += ".00";
+        }
+
+        input_val = input_val + "%";
+    }
+
+    // send updated string to input
+    input.val(input_val);
+
+    // put caret back in the right position
+    var updated_len = input_val.length;
+    caret_pos = updated_len - original_len + caret_pos;
+    input[0].setSelectionRange(caret_pos, caret_pos);
+}

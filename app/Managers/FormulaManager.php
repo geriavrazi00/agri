@@ -60,8 +60,8 @@ class FormulaManager {
                 $totalOfTotalValue = 0;
 
                 for($j = 0; $j < $investmentVariableNr; $j++) {
-                    $totalValue = $request->get('investment-0-' . $j . '-' . $i . '-' . $selectedCategory->id) == null ? 0 : (float)$request->get('investment-0-' . $j . '-' . $i . '-' . $selectedCategory->id);
-                    $value = $request->get('investment-1-' . $j . '-' . $i . '-' . $selectedCategory->id) == null ? 0 : (float)$request->get('investment-1-' . $j . '-' . $i . '-' . $selectedCategory->id);
+                    $totalValue = $request->get('investment-0-' . $j . '-' . $i . '-' . $selectedCategory->id) == null ? 0 : (float) $this->removeFormat($request->get('investment-0-' . $j . '-' . $i . '-' . $selectedCategory->id));
+                    $value = $request->get('investment-1-' . $j . '-' . $i . '-' . $selectedCategory->id) == null ? 0 : (float) $this->removeFormat($request->get('investment-1-' . $j . '-' . $i . '-' . $selectedCategory->id));
 
                     $totalInvestment += $value;
                     $totalOfTotalValue += $totalValue;
@@ -74,7 +74,12 @@ class FormulaManager {
                 array_push($investmentPlan, $totalInvestment);
 
                 for($j = 0; $j < $businessVariableNr; $j++) {
-                    $value = $request->get('business-' . $j . '-' . $i . '-' . $selectedCategory->id) == null ? 0 : (float)$request->get('business-' . $j . '-' . $i . '-' . $selectedCategory->id);
+                    if($j == 0) {
+                        $value = $request->get('business-' . $j . '-' . $i . '-' . $selectedCategory->id) == null ? 0 : (float) $this->removeFormat($request->get('business-' . $j . '-' . $i . '-' . $selectedCategory->id));
+                    } else {
+                        $value = $request->get('business-' . $j . '-' . $i . '-' . $selectedCategory->id) == null ? 0 : (float)$request->get('business-' . $j . '-' . $i . '-' . $selectedCategory->id);
+                    }
+
                     array_push($businessData, $value);
                 }
 
@@ -86,7 +91,7 @@ class FormulaManager {
             for($i = 0; $i < $loanColumns; $i++) {
                 $loanData = array();
 
-                array_push($loanData, $request->get('total-loan-' . $i));
+                array_push($loanData, $this->removeFormat($request->get('total-loan-' . $i)));
 
                 for($j = 0; $j < $loanVariableNr; $j++) {
                     $value = $request->get('loan-' . $j . '-' . $i) == null ? 0 : $request->get('loan-' . $j . '-' . $i);
@@ -195,10 +200,10 @@ class FormulaManager {
             $incomeTax = 0;
         } else {
             $tax = $this->calculateTax($totalIncome);
-            $incomeTax = ($totalIncome - $totalExpense - $totalAmortization - $yearlyInterest) * $tax;
+            $incomeTax = $incomeBeforeTax * $tax;
         }
 
-        $totalNetIncome = $totalIncome - $totalExpense - $totalAmortization - $yearlyInterest - $incomeTax;
+        $totalNetIncome = $incomeBeforeTax - $incomeTax;
         $moneyFlux = $totalIncome - $totalExpense - $incomeTax;
 
         $dscr = $firstYearCredit != 0 ? $moneyFlux / $firstYearCredit : 0;
@@ -268,7 +273,7 @@ class FormulaManager {
                     $query->orWhere('top_threshold', '=', null);
                 })->first();
 
-                return $tax->percentage/100;
+            return $tax->percentage/100;
         } else {
             if($totalIncome >= 0 && $totalIncome < Constants::LOW_THRESHOLD) {
                 return 0;
@@ -280,5 +285,13 @@ class FormulaManager {
                 return 0;
             }
         }
+    }
+
+    public function addFormat($number) {
+        return number_format($number, 2, ".", ",");
+    }
+
+    public function removeFormat($number) {
+        return str_replace(",", "", $number);
     }
 }

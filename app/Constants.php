@@ -24,4 +24,7 @@ final class Constants {
     //Languages
     const ENGLISH_LANGUAGE = "en";
     const ALBANIAN_LANGUAGE = "sq";
+
+    //Regular expressions
+    const REG_EX_CURRENCY = "^\d{1,3}(,\d{3})*(\.\d+)?$";
 }

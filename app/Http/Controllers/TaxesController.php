@@ -3,11 +3,21 @@
 namespace App\Http\Controllers;
 
 use App\Tax;
+use App\Managers\FormulaManager;
 use Illuminate\Http\Request;
 use Redirect;
+use Log;
 
 class TaxesController extends Controller
 {
+    protected $formulaManager;
+
+    public function __construct(FormulaManager $formulaManager) {
+        parent::__construct();
+        // Fetch the Formula Manager object
+        $this->formulaManager = $formulaManager;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -25,6 +35,9 @@ class TaxesController extends Controller
      * @return \Illuminate\Contracts\Validation\Validator
      */
     protected function validator(Request $request) {
+        $request['bottom-threshold'] = $this->formulaManager->removeFormat($request['bottom-threshold']) + 0;
+        $request['top-threshold'] = $request['top-threshold'] != '' ? $this->formulaManager->removeFormat($request['top-threshold']) + 0 : null;
+
         return $request->validate([
             'name' => ['required', 'string', 'max:191'],
             'bottom-threshold' => ['required', 'numeric', 'digits_between:1,16'],
@@ -39,7 +52,7 @@ class TaxesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create() {
-        return view('/admin/taxes/createtaxes');
+        return view('/admin/taxes/createtaxes', ['formulaManager' => $this->formulaManager]);
     }
 
     /**
@@ -52,10 +65,10 @@ class TaxesController extends Controller
         $this->validator($request);
 
         Tax::create([
-            'name' => $request['name'],
-            'bottom_threshold' => $request['bottom-threshold'],
-            'top_threshold' => $request['top-threshold'],
-            'percentage' => $request['percentage'],
+            'name' => $request->get('name'),
+            'bottom_threshold' => $request->get('bottom-threshold'),
+            'top_threshold' => $request->get('top-threshold'),
+            'percentage' => $request->get('percentage'),
         ]);
 
         return Redirect::to('/taxes')->withSuccessMessage(trans('messages.tax_created'));
@@ -81,7 +94,8 @@ class TaxesController extends Controller
      */
     public function edit(Tax $tax) {
         return view('/admin/taxes/edittaxes', [
-            'tax' => $tax
+            'tax' => $tax,
+            'formulaManager' => $this->formulaManager
         ]);
     }
 
