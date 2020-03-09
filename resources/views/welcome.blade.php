@@ -20,10 +20,16 @@
   <div class="modal-dialog">
     <!-- Modal content-->
     <div class="modal-content">
+      <div class="modal-header">
+        <img src="img/logo/aasf.png" style="width:130px; height:50px; margin-top:30px;">
+        <img src="img/logo/bankaeuropiane.png" style="width:110px; height:100px;">
+        <img src="img/logo/ministriabujqesise.png" style="width:100px; height:80px; margin-top:10px;">
+        <img src="img/logo/ministriafinancave.png" style="width:100px; height:80px; margin-top:10px; margin-right: 5px;">
+      </div>
       <div class="modal-body">
         <p>
-            <p style="font-size: 20px;">{{ trans('auth.popup_title') }}</p>
-            {!! trans('auth.popup_message') !!}
+          <p style="font-size: 20px;">{{ trans('auth.popup_title') }}</p>
+          {!! trans('auth.popup_message') !!}
         </p>
       </div>
       <button type="button" class="btn btn-primary" data-dismiss="modal">Mbyll</button>
@@ -39,7 +45,7 @@
         <div class="row" id="herorow">
           <div class="col-lg-6">
             <p class="lead mt-4 mb-4" id="welcometext">
-                {{ trans('auth.intro_message') }}
+              {{ trans('auth.intro_message') }}
             </p>
           </div>
           <!--NEWLOGIN-->
@@ -71,7 +77,7 @@
                       </span>
                       @enderror
                     </div>
-                    <br/>
+                    <br />
                     {{-- <div class="row align-items-center remember">
                       <input type="checkbox">Remember Me
                     </div> --}}

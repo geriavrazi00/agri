@@ -1,12 +1,12 @@
 <?php
 
 return [
-	//First labels
-	'enter_data' => 'Enter the data',
+    //First labels
+    'enter_data' => 'Enter the data',
     'applicant_name' => 'Applicant name',
     'business_code' => 'NIPT/Farmer code',
     'application_date' => 'Application date',
-	'farm_type' => 'Farm type',
+    'farm_type' => 'Farm type',
     'none' => 'None',
     'choose' => 'Choose an alternative',
     'choose_category' => 'Select the investment category',
@@ -34,23 +34,23 @@ return [
     'medium' => 'Medium',
     'high' => 'High',
 
-	//Tables
-	'investment_plan' => 'Financed with loan',
+    //Tables
+    'investment_plan' => 'Financed with loan',
     'value' => 'Value',
     'values' => 'Values',
     'total_value' => 'Total value',
     'financing_bank' => 'Financed by the bank',
-	'business_data' => 'Business data',
-	'loan_repayment' => 'Loan repayment',
+    'business_data' => 'Business data',
+    'loan_repayment' => 'Loan repayment',
     'loan_data_1' => 'Data for midterm and longterm loan',
     'loan_data_2' => 'Data for the short term loan',
-	'total' => 'Total',
+    'total' => 'Total',
 
-	//Result labels
+    //Result labels
     'result' => 'Result',
     'results' => 'Results',
 
-	//Button
+    //Button
     'generate' => 'Generate data',
 
     //Placeholders
@@ -139,7 +139,7 @@ return [
     //My profile
     'update_data' => 'Update my data',
     'name' => 'Name',
-    'email'=> 'E-mail address',
+    'email' => 'E-mail address',
     'update' => 'Update',
     'change_password' => 'Change password',
     'data_updated' => 'The data was updated successfully!',

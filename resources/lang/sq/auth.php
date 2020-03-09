@@ -20,7 +20,7 @@ return [
         të ekonomisë shqiptare me potenciale gjerësisht të pashfrytëzuara – bujqësia dhe agrobizneset.</br>
         Programi mundëson financim dhe rritje të kapaciteteve teknike të Institucioneve Financiare.</br>
         AASF ofron zgjidhje inovatore për financimin e bujqësisë dhe agrobiznesit shqiptar.',
-    'intro_message' => 'Aplikacioni Agro-financa ju ndihmon të përllogarisni përfitueshmërinë e planeve të investimit nga
+    'intro_message' => 'AASF Aplikacioni Agro-financa ju ndihmon të përllogarisni përfitueshmërinë e planeve të investimit nga
         aktiviteti bujqësor.',
     'login' => 'Hyr',
     'failed' => 'Të dhënat nuk janë të sakta.',

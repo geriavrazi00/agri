@@ -338,8 +338,12 @@ input:focus {
     background-size: cover;
     color: white;
 }
+.modal-header {
+    background-color: white;
+    padding: 0px !important;
+}
 #welcometext {
-    font-size: 22px;
+    font-size: 35px;
     font-weight: 600;
     text-align: left;
 }
