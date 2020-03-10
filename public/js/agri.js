@@ -165,6 +165,22 @@ function fillField(element, num) {
     if (element.value === "") element.value = num;
 }
 
+function fillLoanField(element, num) {
+    if (element.value === "") element.value = num;
+
+    if(eval(element.value.replace(/,/g, '')) > 0) {
+        document.getElementById("loan-0-1").setAttribute("required", "");
+        document.getElementById("loan-1-1").setAttribute("required", "");
+        document.getElementById("loan-2-1").setAttribute("required", "");
+        document.getElementById("loan-3-1").setAttribute("required", "");
+    } else {
+        document.getElementById("loan-0-1").removeAttribute("required");
+        document.getElementById("loan-1-1").removeAttribute("required");
+        document.getElementById("loan-2-1").removeAttribute("required");
+        document.getElementById("loan-3-1").removeAttribute("required");
+    }
+}
+
 function checkIfNum(element) {
     if (element.value === "" || isNaN(element.value)) {
         element.value = "";
@@ -265,16 +281,19 @@ function validateLoanTotals(input, message, categories) {
         input.setCustomValidity("");
     }
 
+    //console.log(eval(document.getElementById("total-loan-1").value.replace(/,/g, '')));
+
     if(eval(document.getElementById("total-loan-1").value.replace(/,/g, '')) > 0) {
-        document.getElementById("loan-0-1").required = true;
-        document.getElementById("loan-1-1").required = true;
-        document.getElementById("loan-2-1").required = true;
-        document.getElementById("loan-3-1").required = true;
+        document.getElementById("loan-0-1").setAttribute("required", "");
+        document.getElementById("loan-1-1").setAttribute("required", "");
+        document.getElementById("loan-2-1").setAttribute("required", "");
+        document.getElementById("loan-3-1").setAttribute("required", "");
     } else {
-        document.getElementById("loan-0-1").required = false;
-        document.getElementById("loan-1-1").required = false;
-        document.getElementById("loan-2-1").required = false;
-        document.getElementById("loan-3-1").required = false;
+        console.log("hey");
+        document.getElementById("loan-0-1").removeAttribute("required");
+        document.getElementById("loan-1-1").removeAttribute("required");
+        document.getElementById("loan-2-1").removeAttribute("required");
+        document.getElementById("loan-3-1").removeAttribute("required");
     }
 
     return true;

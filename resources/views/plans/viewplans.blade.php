@@ -40,7 +40,7 @@
                     @for($i = 0; $i < $category->farmCategory->option_number; $i++)
                         @if($category->businessData[$i][1] != 0)
                             <div class="col-md-12" style="margin: auto;">
-                                <table id="plansdetailbusiness{{$i}}" class="resulttable display responsive" style="width: 100%;">
+                                <table id="plansdetailbusiness{{$i}}{{$category->farmCategory->id}}" class="resulttable display responsive" style="width: 100%;">
                                     <thead>
                                         <tr class="resulttablerow">
                                             <th class="resulttablehead">
@@ -81,7 +81,7 @@
                             <br/>
 
                             <div class="col-md-12" style="margin: auto;">
-                                <table id="plansdetailinvestment{{$i}}" class="resulttable display responsive nowrap" style="width: 100%;">
+                                <table id="plansdetailinvestment{{$i}}{{$category->farmCategory->id}}" class="resulttable display responsive nowrap" style="width: 100%;">
                                     <thead>
                                         <tr class="resulttablerow">
                                             <th class="resulttablehead">

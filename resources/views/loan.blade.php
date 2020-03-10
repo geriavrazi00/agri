@@ -14,7 +14,7 @@
                     <input type="text" id="total-loan-0" name="total-loan-0" class="form-control" required oninvalid="validateLoanTotals(this, '{{trans('validation.sum_of_loan')}}', '{{$categories}}');" oninput="validateLoanTotals(this, '{{trans('validation.sum_of_loan')}}', '{{$categories}}');" value="0" min="0" onfocus="clearField(this, '0');" onblur="fillField(this, '0');" onkeydown="return blockSpecialCharactersInInputNumber(event);" pattern="{{ App\Constants::REG_EX_CURRENCY }}" data-type="number" style="text-align: right"/>
                 </td>
                 <td>
-                    <input type="text" id="total-loan-1" name="total-loan-1" class="form-control" required oninvalid="validateLoanTotals(this, '{{trans('validation.sum_of_loan')}}', '{{$categories}}');" oninput="validateLoanTotals(this, '{{trans('validation.sum_of_loan')}}', '{{$categories}}');" value="0" min="0" onfocus="clearField(this, '0');" onblur="fillField(this, '0');" onkeydown="return blockSpecialCharactersInInputNumber(event);" pattern="{{ App\Constants::REG_EX_CURRENCY }}" data-type="number" style="text-align: right"/>
+                    <input type="text" id="total-loan-1" name="total-loan-1" class="form-control" required oninvalid="validateLoanTotals(this, '{{trans('validation.sum_of_loan')}}', '{{$categories}}');" oninput="validateLoanTotals(this, '{{trans('validation.sum_of_loan')}}', '{{$categories}}');" value="0" min="0" onfocus="clearField(this, '0');" onblur="fillLoanField(this, '0');" onkeydown="return blockSpecialCharactersInInputNumber(event);" pattern="{{ App\Constants::REG_EX_CURRENCY }}" data-type="number" style="text-align: right"/>
                 </td>
             </tr>
             <tr>

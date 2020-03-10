@@ -3,7 +3,7 @@
 @section('content')
 <div class="logos">
   <div>
-    <img id="logo" src="img/logo/aasf.png" style="padding-top:3vw; padding-bottom:2vw;">
+    <img id="logo" src="img/logo/aasf.png" style="padding-top:3vw; padding-bottom:2vw; padding-right: 4vw; padding-left: 4vw;">
   </div>
   <div>
     <img id="logo" src="img/logo/bankaeuropiane.png" style="padding-left: 7vw; padding-right: 7vw;">
@@ -21,7 +21,7 @@
     <!-- Modal content-->
     <div class="modal-content">
       <div class="modal-header">
-        <img src="img/logo/aasf.png" style="width:130px; height:50px; margin-top:30px;">
+        <img src="img/logo/aasf.png" style="width:130px; height:50px; margin-top: 25px; padding-left: 5px; padding-top: 10px;">
         <img src="img/logo/bankaeuropiane.png" style="width:110px; height:100px;">
         <img src="img/logo/ministriabujqesise.png" style="width:100px; height:80px; margin-top:10px;">
         <img src="img/logo/ministriafinancave.png" style="width:100px; height:80px; margin-top:10px; margin-right: 5px;">

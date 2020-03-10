@@ -17,21 +17,21 @@
     // =====================================================
     //      BACK TO TOP BUTTON
     // =====================================================
-    $(window).scroll(function() {
+    // $(window).scroll(function() {
         // if ($(this).scrollTop() > 100) {
         //     $(".back-to-top").fadeIn("slow");
         // } else {
         //     $(".back-to-top").fadeOut("slow");
         // }
 
-        var mybutton = document.getElementById("back-to-top");
+        // var mybutton = document.getElementById("back-to-top");
 
-        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-            mybutton.style.display = "block";
-        } else {
-            mybutton.style.display = "none";
-        }
-    });
+        // if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        //     mybutton.style.display = "block";
+        // } else {
+        //     mybutton.style.display = "none";
+        // }
+    // });
 
     $(".back-to-top").click(function(e) {
         e.preventDefault();

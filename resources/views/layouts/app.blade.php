@@ -120,7 +120,7 @@
     </div>
 
     <!-- Back To Top Button -->
-    <a href="" id="back-to-top" class="back-to-top btn-primary" onclick="this.blur();"><i class="fa fa-chevron-up"></i></a>
+    {{-- <a href="" id="back-to-top" class="back-to-top btn-primary" onclick="this.blur();"><i class="fa fa-chevron-up"></i></a> --}}
 
     @yield('js-localization.head')
     <script src="{{ asset('js/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
