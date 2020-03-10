@@ -12,9 +12,12 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function register()
-    {
-        //
+    public function register() {
+        /** UNCOMMENT FOR TESTING ENVIRONMENT ONLY */
+
+        // $this->app->bind('path.public', function() {
+		// 	return base_path('public_html');
+		// });
     }
 
     /**

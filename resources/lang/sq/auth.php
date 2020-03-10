@@ -16,7 +16,7 @@ return [
     'popup_title' => 'Programi i Mbështetjes së Agrobiznesit Shqiptar (AASF)',
     'popup_message' => '<p>AASF është një projekt i financuar dhe zhvilluar nga Banka Evropiane për Rindërtim dhe Zhvillim (BERZH)
         në bashkëpunim dhe me mbështjetje nga Qeveria Shqiptare, i cili ka nisur aktivitetin e tij në 2016.</p>
-        <p>Qëllimi i këtij Programi është të motivojë institucionet financiare shqiptare për të mbështetur një sektor vital
+        <p>Qëllimi i këtij programi është të motivojë institucionet financiare shqiptare për të mbështetur një sektor vital
         të ekonomisë shqiptare me potenciale gjerësisht të pashfrytëzuara – bujqësia dhe agrobizneset.</p>
         <p>Programi mundëson financim dhe rritje të kapaciteteve teknike të Institucioneve Financiare.</p>
         <p>AASF ofron zgjidhje inovatore për financimin e bujqësisë dhe agrobiznesit shqiptar.</p>',
