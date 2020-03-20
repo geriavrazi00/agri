@@ -35,7 +35,7 @@
                                     <a href="/plans/{{$plan->id}}" class="btn btn-primary btn-circle btn-sm action-buttons" data-toggle="tooltip" title="{{ trans('messages.details') }}">
                                         <i class="fa fa-eye"></i>
                                     </a>
-                                    {{-- <a href="/plans/{{$plan->id}}/edit" class="btn btn-info btn-circle btn-sm edit-buttons" data-toggle="tooltip" title="Modifiko">
+                                    {{-- <a href="/plans/{{$plan->id}}/edit" class="btn btn-info btn-circle btn-sm edit-buttons" data-toggle="tooltip" title="{{ trans('messages.edit') }}">
                                         <i class="fa fa-edit"></i>
                                     </a> --}}
                                     <form method="POST" action="/plans/{{$plan->id}}/export/excel" style="display:inline; margin:0px; padding:0px;">

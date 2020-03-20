@@ -303,7 +303,8 @@ function businessDataValidation(
     element,
     cultureNumber,
     optionNumber,
-    categoryId
+    categoryId,
+    totalOptions
 ) {
     document
         .getElementById("business-2-" + optionNumber + "-" + categoryId)
@@ -330,6 +331,10 @@ function businessDataValidation(
         document
             .getElementById("business-2-" + optionNumber + "-" + categoryId)
             .removeAttribute("required");
+    }
+
+    if (totalOptions > 1) {
+        updateCultures(cultureNumber, optionNumber, categoryId);
     }
 }
 
@@ -542,4 +547,21 @@ function formatPercentage(input, blur) {
     var updated_len = input_val.length;
     caret_pos = updated_len - original_len + caret_pos;
     input[0].setSelectionRange(caret_pos, caret_pos);
+}
+
+function updateCultures(cultureNumber, optionNumber, categoryId) {
+    console.log("Update cultures");
+    console.log(document.getElementById("business-2-" + optionNumber + "-" + categoryId).options);
+
+    var element = document.getElementById("business-2-" + optionNumber + "-" + categoryId);
+    var length = element.options.length;
+
+    for (i = 0; i < length; i++) {
+        if (element.options[i].text.indexOf(" I") !== -1) {
+            console.log(element.options[i].text);
+            //or
+            //sel1.remove(i);
+            //break;
+        }
+    }
 }

@@ -25,10 +25,13 @@ class FormulaManager {
             $investmentLabelObjects = $selectedCategory->labels->where('type', '=', Constants::INVESTMENT_LABELS);
             $businessLabelObjects = $selectedCategory->labels->where('type', '=', Constants::BUSINESS_LABELS);
             $investmentLabels = array();
+            $investmentLabelsExtra = array();
             $businessLabels = array();
+            $extraInvestments = array();
 
             foreach ($investmentLabelObjects as $key => $labels) {
                 array_push($investmentLabels, $labels->value);
+                array_push($investmentLabelsExtra, $labels->extra_data);
             }
 
             foreach ($businessLabelObjects as $key => $labels) {
@@ -45,6 +48,7 @@ class FormulaManager {
             $input->setBusinessCode($request->get('business-code'));
             $input->setFarmCategory($selectedCategory);
             $input->setInvestmentLabels($investmentLabels);
+            $input->setInvestmentLabelsExtra($investmentLabelsExtra);
             $input->setBusinessLabels($businessLabels);
 
             $totalValuePlans = array();
@@ -56,8 +60,10 @@ class FormulaManager {
                 $totalValuePlan = array();
                 $investmentPlan = array();
                 $businessData = array();
+                $extraInvestment = array();
                 $totalInvestment = 0;
                 $totalOfTotalValue = 0;
+                $totalExtraInvestment = 0;
 
                 for($j = 0; $j < $investmentVariableNr; $j++) {
                     $totalValue = $request->get('investment-0-' . $j . '-' . $i . '-' . $selectedCategory->id) == null ? 0 : (float) $this->removeFormat($request->get('investment-0-' . $j . '-' . $i . '-' . $selectedCategory->id));
@@ -65,6 +71,7 @@ class FormulaManager {
 
                     $totalInvestment += $value;
                     $totalOfTotalValue += $totalValue;
+                    $totalExtraInvestment += $request->get('investment-extra-' . $j . '-' . $i . '-' . $selectedCategory->id) == null ? 0 : (float) $this->removeFormat($request->get('investment-extra-' . $j . '-' . $i . '-' . $selectedCategory->id));
 
                     array_push($totalValuePlan, $totalValue);
                     array_push($investmentPlan, $value);
@@ -72,6 +79,7 @@ class FormulaManager {
 
                 array_push($totalValuePlan, $totalOfTotalValue);
                 array_push($investmentPlan, $totalInvestment);
+                array_push($extraInvestment, $totalExtraInvestment);
 
                 for($j = 0; $j < $businessVariableNr; $j++) {
                     if($j == 0) {
@@ -85,6 +93,7 @@ class FormulaManager {
 
                 array_push($totalValuePlans, $totalValuePlan);
                 array_push($investmentPlans, $investmentPlan);
+                array_push($extraInvestments, $extraInvestment);
                 array_push($allBusinessData, $businessData);
             }
 
@@ -105,6 +114,7 @@ class FormulaManager {
             $input->setInvestmentPlans($investmentPlans);
             $input->setBusinessData($allBusinessData);
             $input->setLoanData($allLoanData);
+            $input->setExtraInvestments($extraInvestments);
 
             array_push($inputs, $input);
         }
@@ -147,7 +157,9 @@ class FormulaManager {
                     $valuesCulture = Value::where('technology_id', '=', $input->getBusinessData()[$i][1])
                         ->where('culture_id', '=', $selectedCulture->id)
                         ->first();
-                    $mainVariable = $input->getBusinessData()[$i][0];
+
+                    $extraInvestment = $input->getExtraInvestments()[$i][0];
+                    $mainVariable = $input->getBusinessData()[$i][0] + $extraInvestment;
 
                     $income = $valuesCulture->efficiency * $valuesCulture->price * $mainVariable;
                     $expenses = $valuesCulture->efficiency * $valuesCulture->cost * $mainVariable;

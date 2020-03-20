@@ -201,4 +201,8 @@ return [
 
     //Table titles
     'the_greenhouse' => 'Serra',
+
+    //Extra data
+    'extra_greenhouse' => 'Sip/dy',
+    'extra_sheep' => 'krerë',
 ];

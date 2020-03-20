@@ -8,10 +8,12 @@ class Inputs {
 	private $farmCategory;
 	private $investmentPlans;
     private $investmentLabels;
+    private $investmentLabelsExtra;
     private $totalValuePlans;
 	private $businessData;
 	private $businessLabels;
-	private $loanData;
+    private $loanData;
+    private $extraInvestments;
 
 	public function setApplicantName($applicantName) {
 		$this->applicantName = $applicantName;
@@ -53,6 +55,14 @@ class Inputs {
 		return $this->investmentLabels;
     }
 
+    public function setInvestmentLabelsExtra($investmentLabelsExtra) {
+		$this->investmentLabelsExtra = $investmentLabelsExtra;
+	}
+
+	public function getInvestmentLabelsExtra() {
+		return $this->investmentLabelsExtra;
+    }
+
     public function setTotalValuePlans($totalValuePlans) {
         $this->totalValuePlans = $totalValuePlans;
     }
@@ -83,7 +93,15 @@ class Inputs {
 
 	public function getLoanData() {
 		return $this->loanData;
+    }
+
+    public function setExtraInvestments($extraInvestments) {
+		$this->extraInvestments = $extraInvestments;
 	}
+
+	public function getExtraInvestments() {
+		return $this->extraInvestments;
+    }
 
 	public function convertToJson() {
 		$data = array();
@@ -93,10 +111,12 @@ class Inputs {
         $data["farmCategory"] = $this->getFarmCategory();
         $data["investmentPlans"] = $this->getInvestmentPlans();
         $data["investmentLabels"] = $this->getInvestmentLabels();
+        $data["investmentLabelsExtra"] = $this->getInvestmentLabelsExtra();
         $data["totalValuePlans"] = $this->getTotalValuePlans();
         $data["businessData"] = $this->getBusinessData();
         $data["businessLabels"] = $this->getBusinessLabels();
         $data["loanData"] = $this->getLoanData();
+        $data["extraInvestments"] = $this->getExtraInvestments();
 
         return $data;
 	}

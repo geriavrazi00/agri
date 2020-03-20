@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Category;
 use App\Constants;
 use App\Technology;
+use Jenssegers\Agent\Agent;
 
 use Log;
 
@@ -28,8 +29,9 @@ class HomeController extends Controller
         $categories = Category::orderBy('image')->get();
         $technologies = Technology::all();
         $categoriesData = $this->loadAllCategoryData($categories);
+        $agent = new Agent();
 
-        return view('home', compact('categories', 'categoriesData', 'technologies'));
+        return view('home', compact('categories', 'categoriesData', 'technologies', 'agent'));
     }
 
     private function loadAllCategoryData($categories) {

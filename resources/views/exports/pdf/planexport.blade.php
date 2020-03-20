@@ -15,10 +15,10 @@
         @if($category->businessData[$i][1] != 0)
             <table border="1" cellspacing="0" cellpadding="0" style="width: 60%;">
                 <tr>
-                    <th>
-                        <b>{{trans('messages.business_data')}}</b>
+                    <th style="text-align: center;">
+                        <b>{{trans('messages.business_data')}}{{$category->farmCategory->option_number > 1 ? " - " . (trans('messages.the_greenhouse') . " " . ($i + 1)) : '' }}</b>
                     </th>
-                    <th>
+                    <th style="text-align: center;">
                         <b>{{ trans('messages.values') }}</b>
                     </th>
                 </tr>
@@ -51,7 +51,7 @@
             <table border="1" cellspacing="0" cellpadding="0" style="width: 80%;">
                 <tr>
                     <th style="text-align: center;">
-                        <b>{{ trans('messages.investment_plan') }}</b>
+                        <b>{{ trans('messages.investment_plan') }}{{$category->farmCategory->option_number > 1 ? " - " . (trans('messages.the_greenhouse') . " " . ($i + 1)) : '' }}</b>
                     </th>
                     <th style="text-align: center;">
                         <b>{{ trans('messages.total_value') }}</b>
@@ -64,6 +64,20 @@
                     <tr>
                         <td>
                             {{ trans($category->investmentLabels[$j]) }}
+
+                            @if($j < (sizeof($category->investmentPlans[$i]) - 1) && $category->investmentLabelsExtra[$j])
+                                <span>(</span>
+                                @if($category->farmCategory->option_number > 1)
+                                    <span>{{ strtolower(trans('messages.extra_greenhouse')) }}</span>
+                                @endif
+
+                                {{ fmod($category->extraInvestments[$i][0], 1) ? number_format($category->extraInvestments[$i][0], 2) : number_format($category->extraInvestments[$i][0]) }}
+
+                                @if($category->farmCategory->option_number == 1)
+                                    <span>{{ trans('messages.extra_sheep') }}</span>
+                                @endif
+                                <span>)</span>
+                            @endif
                         </td>
                         <td style="text-align: right;"><span style="float: left;">ALL </span>{{ fmod($category->totalValuePlans[$i][$j], 1) ? number_format($category->totalValuePlans[$i][$j], 2) : number_format($category->totalValuePlans[$i][$j]) }}</td>
                         <td style="text-align: right;"><span style="float: left;">ALL </span>{{ fmod($category->investmentPlans[$i][$j], 1) ? number_format($category->investmentPlans[$i][$j], 2) : number_format($category->investmentPlans[$i][$j]) }}</td>

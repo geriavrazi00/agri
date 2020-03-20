@@ -11,6 +11,7 @@ use App\Plan;
 use App\Exports\PlanExcelExport;
 use App\Exports\PlanPdfExport;
 use Maatwebsite\Excel\Facades\Excel;
+use Jenssegers\Agent\Agent;
 
 class PlansController extends Controller
 {
@@ -31,10 +32,13 @@ class PlansController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(Plan $plan) {
+        $agent = new Agent();
+
         return view('/plans/viewplans', [
             'plan' => $plan,
             'inputs' => json_decode($plan->inputs),
-            'result' => json_decode($plan->results)
+            'result' => json_decode($plan->results),
+            'agent' => $agent
         ]);
     }
 

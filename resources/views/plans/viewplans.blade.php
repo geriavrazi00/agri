@@ -44,7 +44,7 @@
                                     <thead>
                                         <tr class="resulttablerow">
                                             <th class="resulttablehead">
-                                                <b>{{trans('messages.business_data')}}</b>
+                                                <b>{{trans('messages.business_data')}}{{$category->farmCategory->option_number > 1 ? " - " . (trans('messages.the_greenhouse') . " " . ($i + 1)) : '' }}</b>
                                             </th>
                                             <th class="resulttablehead">
                                                 <b>{{ trans('messages.values') }}</b>
@@ -85,7 +85,7 @@
                                     <thead>
                                         <tr class="resulttablerow">
                                             <th class="resulttablehead">
-                                                <b>{{ trans('messages.investment_plan') }}</b>
+                                                <b>{{ trans('messages.investment_plan') }}{{$category->farmCategory->option_number > 1 ? " - " . (trans('messages.the_greenhouse') . " " . ($i + 1)) : '' }}</b>
                                             </th>
                                             <th class="resulttablehead" style="text-align: right;">
                                                 <b>{{ trans('messages.total_value') }}</b>
@@ -100,6 +100,20 @@
                                             <tr class="resulttablerow">
                                                 <td class="resulttabledata">
                                                     {{ trans($category->investmentLabels[$j]) }}
+
+                                                    @if($j < (sizeof($category->investmentPlans[$i]) - 1) && $category->investmentLabelsExtra[$j])
+                                                        <span>(</span>
+                                                        @if($agent->isDesktop() && $category->farmCategory->option_number > 1)
+                                                            <span>{{ strtolower(trans('messages.extra_greenhouse')) }}</span>
+                                                        @endif
+
+                                                        {{ fmod($category->extraInvestments[$i][0], 1) ? number_format($category->extraInvestments[$i][0], 2) : number_format($category->extraInvestments[$i][0]) }}
+
+                                                        @if($agent->isDesktop() && $category->farmCategory->option_number == 1)
+                                                            <span>{{ trans('messages.extra_sheep') }}</span>
+                                                        @endif
+                                                        <span>)</span>
+                                                    @endif
                                                 </td>
                                                 <td class="resulttabledata" style="text-align: right;">
                                                     <span style="text-align: left;">ALL </span>{{ fmod($category->totalValuePlans[$i][$j], 1) ? number_format($category->totalValuePlans[$i][$j], 2) : number_format($category->totalValuePlans[$i][$j]) }}
