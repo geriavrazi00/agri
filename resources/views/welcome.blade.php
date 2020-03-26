@@ -43,7 +43,7 @@
     <div class="row align-items-center">
       <div class="col-lg-12">
         <div class="row" id="herorow">
-          <div class="col-lg-6">
+          <div class="col-lg-6 go-left">
             <p class="lead mt-4 mb-4" id="welcometext">
               {{ trans('auth.intro_message') }}
             </p>

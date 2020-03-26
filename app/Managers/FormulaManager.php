@@ -41,7 +41,7 @@ class FormulaManager {
             $investmentVariableNr = sizeof($investmentLabels);
             $businessVariableNr = sizeof($businessLabels);
 
-            array_push($investmentLabels, trans('messages.total'));
+            array_push($investmentLabels, 'messages.total'); // On the reading side of these data, all the labels are translated at runtime. Passing an already translated message, would leave the message static
 
             $input = new Inputs();
             $input->setApplicantName($request->get('applicant-name'));
@@ -126,7 +126,6 @@ class FormulaManager {
     	$result = new Result();
     	$cultures = array();
 
-    	$totalBruteIncome = 0;
     	$totalIncome = 0;
     	$totalExpense = 0;
     	$totalAmortization = 0;
@@ -141,8 +140,6 @@ class FormulaManager {
                     $totalAmortization += $amortizationConstants[$j]->amortization != 0
                         ? $input->getTotalValuePlans()[$i][$j]/$amortizationConstants[$j]->amortization
                         : 0;
-
-                    $totalBruteIncome += $input->getInvestmentPlans()[$i][$j];
                 }
             }
 
@@ -198,7 +195,7 @@ class FormulaManager {
         for($i = 0; $i < Constants::LOAN_COLUMNS; $i++) {
             if($inputs[0]->getLoanData()[$i][0] != 0) {
                 //Credit
-                $credit = $this->calculateCredit($inputs[0]->getLoanData()[$i][1]/100, $inputs[0]->getLoanData()[$i][2], $inputs[0]->getLoanData()[$i][3], $totalBruteIncome);
+                $credit = $this->calculateCredit($inputs[0]->getLoanData()[$i][1]/100, $inputs[0]->getLoanData()[$i][2], $inputs[0]->getLoanData()[$i][3], $inputs[0]->getLoanData()[$i][0]);
 
                 $fullInterest = array_sum($credit["paymentsPerYear"]);
                 $yearlyInterest +=  $inputs[0]->getLoanData()[$i][2] != 0 ? $fullInterest / $inputs[0]->getLoanData()[$i][2] : 0;

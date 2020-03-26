@@ -26,7 +26,7 @@ class HomeController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index() {
-        $categories = Category::orderBy('image')->get();
+        $categories = Category::with(['labels', 'cultures'])->orderBy('image')->get();
         $technologies = Technology::all();
         $categoriesData = $this->loadAllCategoryData($categories);
         $agent = new Agent();

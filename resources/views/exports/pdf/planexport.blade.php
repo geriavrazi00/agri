@@ -48,7 +48,7 @@
 
             <br/>
 
-            <table border="1" cellspacing="0" cellpadding="0" style="width: 80%;">
+            <table border="1" cellspacing="0" cellpadding="0" style="width: 100%;">
                 <tr>
                     <th style="text-align: center;">
                         <b>{{ trans('messages.investment_plan') }}{{$category->farmCategory->option_number > 1 ? " - " . (trans('messages.the_greenhouse') . " " . ($i + 1)) : '' }}</b>
@@ -95,7 +95,7 @@
 
 <br/>
 
-<table border="1" cellspacing="0" cellpadding="0"  style="width: 60%;">
+<table border="1" cellspacing="0" cellpadding="0"  style="width: 80%;">
     <tr>
         <th style="text-align: center;"><b>{{ trans('messages.loan_repayment') }}</b></th>
         <th style="text-align: center;"><b>{{ trans('messages.loan_data_1') }}</b></th>

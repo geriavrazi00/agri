@@ -58,6 +58,8 @@ return [
         'messages.are_you_sure',
         'messages.delete_message',
         'messages.cancel',
+        'cultures.greenhouse_first_period_products',
+        'cultures.greenhouse_second_period_products',
     ],
 
     /*

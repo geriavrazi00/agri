@@ -81,18 +81,14 @@
                             </li>
                             @endif
 
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    {{ trans('messages.language') }}
+                            <li class="nav-item" style="display: flex;">
+                                <a class="nav-link" href="{{ url('locale/' . App\Constants::ALBANIAN_LANGUAGE) }}">
+                                    <img src="{{ asset('img/flags/al.svg') }}"  width="30" height="20"/>
                                 </a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ url('locale/' . App\Constants::ALBANIAN_LANGUAGE) }}" style="padding-left: 0px;">
-                                        <img src="{{ asset('img/flags/al.svg') }}" style="width: 30px; height: 20px;"/> {{ trans('messages.albanian') }} {!! App::getLocale() == App\Constants::ALBANIAN_LANGUAGE ? '<i class="fas fa-check" style="color: #8ea604;"></i>' : '' !!}
-                                    </a>
-                                    <a class="dropdown-item" href="{{ url('locale/' . App\Constants::ENGLISH_LANGUAGE) }}" style="padding-left: 0px;">
-                                        <img src="{{ asset('img/flags/gb.svg') }}" style="width: 30px; height: 20px;"/> {{ trans('messages.english') }} {!! App::getLocale() == App\Constants::ENGLISH_LANGUAGE ? '<i class="fas fa-check" style="color: #8ea604;"></i>' : '' !!}
-                                    </a>
-                                </div>
+
+                                <a class="nav-link" href="{{ url('locale/' . App\Constants::ENGLISH_LANGUAGE) }}">
+                                    <img src="{{ asset('img/flags/gb.svg') }}" style="width: 30px; height: 20px;"/>
+                                </a>
                             </li>
                         </ul>
 

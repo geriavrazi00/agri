@@ -41,4 +41,7 @@ return [
     'pepper_2' => 'Spec II',
     'pumpkin_1' => 'Kungull I',
     'pumpkin_1_year' => 'Kungull 1 vjeçar',
+    'greenhouse_first_period_products' => ['Patëllxhan I', 'Domate I', 'Kastravec I', 'Kungull I'],
+    'greenhouse_second_period_products' => ['Domate II', 'Kastravec II', 'Spec II'],
+    'greenhouse_yearly_products' => ['Spec 1 vjeçar', 'Patëllxhan 1 vjeçar', 'Kungull 1 vjeçar'],
 ];

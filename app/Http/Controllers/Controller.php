@@ -7,6 +7,7 @@ use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Alert;
+use Log;
 
 class Controller extends BaseController
 {
@@ -19,7 +20,7 @@ class Controller extends BaseController
     			toast(session('success_message'),'success','top-right');
             	/*Alert::success('Sukses', session('success_message'))
                 	->showConfirmButton('Ok', '#2ab27b');*/
-        	}
+            }
 
             if(session('error_message')) {
             	toast(session('error_message'),'error','top-right');

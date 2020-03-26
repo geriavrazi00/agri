@@ -299,16 +299,8 @@ function validateLoanTotals(input, message, categories) {
     return true;
 }
 
-function businessDataValidation(
-    element,
-    cultureNumber,
-    optionNumber,
-    categoryId,
-    totalOptions
-) {
-    document
-        .getElementById("business-2-" + optionNumber + "-" + categoryId)
-        .setCustomValidity("");
+function businessDataValidation(clickedElement, cultureNumber, optionNumber, categoryId, totalOptions) {
+    document.getElementById("business-2-" + optionNumber + "-" + categoryId).setCustomValidity("");
 
     var isAnySelected = false;
 
@@ -334,7 +326,7 @@ function businessDataValidation(
     }
 
     if (totalOptions > 1) {
-        updateCultures(cultureNumber, optionNumber, categoryId);
+        updateCultures(clickedElement, optionNumber, categoryId);
     }
 }
 
@@ -549,19 +541,72 @@ function formatPercentage(input, blur) {
     input[0].setSelectionRange(caret_pos, caret_pos);
 }
 
-function updateCultures(cultureNumber, optionNumber, categoryId) {
-    console.log("Update cultures");
-    console.log(document.getElementById("business-2-" + optionNumber + "-" + categoryId).options);
+function updateCultures(clickedElement, optionNumber, categoryId) {
+    //First we get the culture strings grouped in the defined periods
+    var firstPeriodCultures = Lang.get('cultures.greenhouse_first_period_products');
+    var secondPeriodCultures = Lang.get('cultures.greenhouse_second_period_products');
 
-    var element = document.getElementById("business-2-" + optionNumber + "-" + categoryId);
-    var length = element.options.length;
+    //Convert the object strings into arrays
+    var firstPeriodCulturesArray = Object.keys(firstPeriodCultures).map(item => firstPeriodCultures[item]);
+    var secondPeriodCulturesArray = Object.keys(secondPeriodCultures).map(item => secondPeriodCultures[item]);
 
-    for (i = 0; i < length; i++) {
-        if (element.options[i].text.indexOf(" I") !== -1) {
-            console.log(element.options[i].text);
-            //or
-            //sel1.remove(i);
-            //break;
+    //Get the select element that will not to be changed based on the currently clicked select element
+    var elementToChange = null;
+    if(clickedElement.id.startsWith("business-2-")) {
+        elementToChange = document.getElementById("business-3-" + optionNumber + "-" + categoryId);
+    } else {
+        elementToChange = document.getElementById("business-2-" + optionNumber + "-" + categoryId);
+    }
+
+    //Get the length of the options that the select element has
+    var length = elementToChange.options.length;
+
+    //If we click the first option of a select element, the other element should have all of its options enabled
+    if(clickedElement.value === '') {
+        for (i = 0; i < length; i++) {
+            elementToChange.options[i].disabled = false;
+        }
+    } else {
+        //In case a culture option is selected, we get the text of the selected option
+        var selectedText = clickedElement.options[clickedElement.selectedIndex].text;
+
+
+        if (firstPeriodCulturesArray.includes(selectedText)) {
+            //If the text is present in the first period cultures, we disable all first period cultures in the other select and enable all second period cultures
+
+            for (i = 0; i < length; i++) {
+                for (j = 0; j < firstPeriodCulturesArray.length; j++) {
+                    if (elementToChange.options[i].text === firstPeriodCulturesArray[j] && elementToChange.options[i].disabled === false) {
+                        elementToChange.options[i].disabled = true;
+                    }
+                }
+            }
+
+            for (i = 0; i < length; i++) {
+                for (j = 0; j < secondPeriodCulturesArray.length; j++) {
+                    if (elementToChange.options[i].text === secondPeriodCulturesArray[j] && elementToChange.options[i].disabled === true) {
+                        elementToChange.options[i].disabled = false;
+                    }
+                }
+            }
+        } else if (secondPeriodCulturesArray.includes(selectedText)) {
+            //If the text is present in the second period cultures, we disable all second period cultures in the other select and enable all first period cultures
+
+            for (i = 0; i < length; i++) {
+                for (j = 0; j < secondPeriodCulturesArray.length; j++) {
+                    if (elementToChange.options[i].text === secondPeriodCulturesArray[j] && elementToChange.options[i].disabled === false) {
+                        elementToChange.options[i].disabled = true;
+                    }
+                }
+            }
+
+            for (i = 0; i < length; i++) {
+                for (j = 0; j < firstPeriodCulturesArray.length; j++) {
+                    if (elementToChange.options[i].text === firstPeriodCulturesArray[j] && elementToChange.options[i].disabled === true) {
+                        elementToChange.options[i].disabled = false;
+                    }
+                }
+            }
         }
     }
 }

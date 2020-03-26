@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use RealRashid\SweetAlert\Facades\Alert;
 use Auth;
 use DateTime;
+use Exception;
 use Log;
 use Redirect;
 use App\Plan;
@@ -42,13 +44,13 @@ class PlansController extends Controller
         ]);
     }
 
-    public function edit(Plan $plan) {
-        return view('/plans/viewplans', [
-            'plan' => $plan,
-            'inputs' => json_decode($plan->inputs),
-            'result' => json_decode($plan->results)
-        ]);
-    }
+    // public function edit(Plan $plan) {
+    //     return view('/plans/viewplans', [
+    //         'plan' => $plan,
+    //         'inputs' => json_decode($plan->inputs),
+    //         'result' => json_decode($plan->results)
+    //     ]);
+    // }
 
     /**
      * Download the specified resource in storage.

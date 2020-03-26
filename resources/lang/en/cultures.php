@@ -41,4 +41,7 @@ return [
     'pepper_2' => 'Pepper II',
     'pumpkin_1' => 'Pumpkin I',
     'pumpkin_1_year' => '1 year old pumpkin',
+    'greenhouse_first_period_products' => ['Eggplant I', 'Tomatoe I', 'Cucumber I', 'Pumpkin I'],
+    'greenhouse_second_period_products' => ['Tomatoe II', 'Cucumber II', 'Pepper II'],
+    'greenhouse_yearly_products' => ['1 year old pepper', '1 year old eggplant', '1 year old pumpkin'],
 ];
