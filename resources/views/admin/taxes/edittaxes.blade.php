@@ -19,7 +19,7 @@
                     @csrf
 
                     <div class="form-group row">
-                        <label for="name" class="col-md-4 col-form-label text-md-right" style="color: black;">{{ trans('messages.name') }}</label>
+                        <label for="name" class="col-md-4 col-form-label text-md-right" style="color: black; top: 5px;">{{ trans('messages.name') }}</label>
 
                         <div class="col-md-6">
                             <input id="name" type="text" style="color: black;" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ $tax->name }}" required autocomplete="name" autofocus oninvalid="createInvalidMsg(this, '{{trans('validation.field_required')}}', '');" oninput="this.setCustomValidity('')">
@@ -33,7 +33,7 @@
                     </div>
 
                     <div class="form-group row">
-                        <label for="bottom-threshold" class="col-md-4 col-form-label text-md-right" style="color: black;">{{ trans('messages.bottom_threshold') }}</label>
+                        <label for="bottom-threshold" class="col-md-4 col-form-label text-md-right" style="color: black; top: 5px;">{{ trans('messages.bottom_threshold') }}</label>
 
                         <div class="col-md-6">
                             <input type="text" id="bottom-threshold" name="bottom-threshold" class="form-control @error('bottom-threshold') is-invalid @enderror" onkeydown="return blockSpecialCharactersInInputNumber(event);"
@@ -49,12 +49,12 @@
                     </div>
 
                     <div class="form-group row">
-                        <label for="top-threshold" class="col-md-4 col-form-label text-md-right" style="color: black;">{{ trans('messages.top_threshold') }}</label>
+                        <label for="top-threshold" class="col-md-4 col-form-label text-md-right" style="color: black; top: 5px;">{{ trans('messages.top_threshold') }}</label>
 
                         <div class="col-md-6">
                             <input type="text" id="top-threshold" name="top-threshold" class="form-control @error('top-threshold') is-invalid @enderror" onkeydown="return blockSpecialCharactersInInputNumber(event);"
                             value="{{ $tax->top_threshold == null ? '' : $formulaManager->addFormat($tax->top_threshold) }}" step=".000001" oninvalid="createInvalidMsg(this, '{{trans('validation.field_required')}}', '{{trans('validation.non_negative_field')}}');"
-                            oninput="createInvalidMsg(this, '', '');" min="0" style="text-align: right; color: black;" pattern="{{ App\Constants::REG_EX_CURRENCY }}" data-type="number"/>
+                            oninput="createInvalidMsg(this, '', '');" min="0" style="text-align: right; color: black;" pattern="{{ App\Constants::REG_EX_CURRENCY }}" data-type="number" placeholder="{{trans('messages.value_can_be_empty')}}"/>
 
                             @error('top-threshold')
                                 <span class="invalid-feedback" role="alert">
@@ -65,7 +65,7 @@
                     </div>
 
                     <div class="form-group row">
-                        <label for="percentage" class="col-md-4 col-form-label text-md-right" style="color: black;">{{ trans('messages.percentage') }}</label>
+                        <label for="percentage" class="col-md-4 col-form-label text-md-right" style="color: black; top: 5px;">{{ trans('messages.percentage') }}</label>
 
                         <div class="col-md-6 input-group">
                             <input type="number" id="percentage" name="percentage" class="form-control @error('percentage') is-invalid @enderror" onkeydown="return blockSpecialCharactersInInputNumber(event);"

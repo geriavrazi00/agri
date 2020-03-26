@@ -188,6 +188,7 @@ return [
     'tax_created' => 'Tatimi u krijua me sukses!',
     'tax_updated' => 'Tatimi u përditësua me sukses!',
     'tax_deleted' => 'Tatimi u fshi me sukses!',
+    'value_can_be_empty' => 'Vlera mund të jetë bosh',
 
     //Error pages
     '401' => 'Akses i paautorizuar!',

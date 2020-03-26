@@ -20,7 +20,7 @@
                     @csrf
 
                     <div class="form-group row" style="padding-top: 10px;">
-                        <label for="password" class="col-md-4 col-form-label text-md-right" style="color: black; font-size: 16px;">{{ trans('messages.new_password') }}</label>
+                        <label for="password" class="col-md-4 col-form-label text-md-right" style="color: black; font-size: 16px; top: 5px;">{{ trans('messages.new_password') }}</label>
 
                         <div class="col-md-6">
                             <input id="password" type="password" style="color: black; font-size: 16px;" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" oninvalid="createInvalidMsg(this, '{{trans('validation.field_required')}}', '');" oninput="this.setCustomValidity('')">
@@ -34,7 +34,7 @@
                     </div>
 
                     <div class="form-group row" style="padding-top: 10px;">
-                        <label for="password-confirm" class="col-md-4 col-form-label text-md-right" style="color: black; font-size: 16px;">{{ trans('messages.confirmation') }}</label>
+                        <label for="password-confirm" class="col-md-4 col-form-label text-md-right" style="color: black; font-size: 16px; top: 5px;">{{ trans('messages.confirmation') }}</label>
 
                         <div class="col-md-6">
                             <input id="password-confirm" type="password" style="color: black; font-size: 16px;" class="form-control" name="password_confirmation" required autocomplete="new-password" oninvalid="createInvalidMsg(this, '{{trans('validation.field_required')}}', '');" oninput="this.setCustomValidity('')">

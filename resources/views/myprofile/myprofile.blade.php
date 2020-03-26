@@ -19,8 +19,8 @@
                     @method('PUT')
                     @csrf
 
-                    <div class="row" style="padding-top: 10px;">
-                        <label for="name" class="col-md-4 text-md-right" style="color: black;">{{ trans('messages.name') }}</label>
+                    <div class="form-group row" style="padding-top: 10px;">
+                        <label for="name" class="col-md-4 text-md-right" style="color: black; top: 12px;">{{ trans('messages.name') }}</label>
 
                         <div class="col-md-6">
                             <input id="name" type="text" style="color: black;" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') == null ? $user->name : old('name') }}" required autocomplete="name" autofocus oninvalid="createInvalidMsg(this, '{{trans('validation.field_required')}}', '');" oninput="this.setCustomValidity('')">
@@ -34,7 +34,7 @@
                     </div>
 
                     <div class="form-group row" style="padding-top: 10px;">
-                        <label for="email" class="col-md-4 text-md-right" style="color: black;">{{ trans('messages.email') }}</label>
+                        <label for="email" class="col-md-4 text-md-right" style="color: black; top: 12px;">{{ trans('messages.email') }}</label>
 
                         <div class="col-md-6">
                             <input id="email" type="email" style="color: black;" class="form-control @error('email') is-invalid @enderror" name="email" value="{{old('email') == null ? $user->email : old('email')}}" required autocomplete="email" oninvalid="createInvalidMsg(this, '{{trans('validation.field_required')}}', '{{trans('validation.wrong_format')}}');" oninput="createInvalidMsg(this, '', '{{trans('validation.wrong_format')}}');">

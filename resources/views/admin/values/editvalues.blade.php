@@ -36,8 +36,8 @@
                             @foreach ($category->cultures as $culture)
                                 @foreach ($culture->values  as $value)
                                     <tr>
-                                        <td>{{ trans($culture->name) }}</td>
-                                        <td>{{ trans($value->technology->name) }}</td>
+                                        <td style="font-weight: normal;">{{ trans($culture->name) }}</td>
+                                        <td style="font-weight: normal;">{{ trans($value->technology->name) }}</td>
                                         <td>
                                             <input type="text" id="efficiency-{{$culture->id}}-{{$value->id}}"
                                             name="efficiency-{{$culture->id}}-{{$value->id}}" class="form-control"

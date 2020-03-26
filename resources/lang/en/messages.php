@@ -189,6 +189,7 @@ return [
     'tax_created' => 'The tax was created successfully!',
     'tax_updated' => 'The tax was updated successfully!',
     'tax_deleted' => 'The tax was deleted successfully!',
+    'value_can_be_empty' => 'The value can be left empty',
 
     //Error pages
     '401' => 'Unauthorized access!',
