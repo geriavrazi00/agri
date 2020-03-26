@@ -60,6 +60,7 @@ return [
         'messages.cancel',
         'cultures.greenhouse_first_period_products',
         'cultures.greenhouse_second_period_products',
+        'cultures.greenhouse_yearly_products',
     ],
 
     /*

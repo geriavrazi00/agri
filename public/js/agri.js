@@ -545,10 +545,12 @@ function updateCultures(clickedElement, optionNumber, categoryId) {
     //First we get the culture strings grouped in the defined periods
     var firstPeriodCultures = Lang.get('cultures.greenhouse_first_period_products');
     var secondPeriodCultures = Lang.get('cultures.greenhouse_second_period_products');
+    var yearlyCultures = Lang.get('cultures.greenhouse_yearly_products');
 
     //Convert the object strings into arrays
     var firstPeriodCulturesArray = Object.keys(firstPeriodCultures).map(item => firstPeriodCultures[item]);
     var secondPeriodCulturesArray = Object.keys(secondPeriodCultures).map(item => secondPeriodCultures[item]);
+    var yearlyCulturesArray = Object.keys(yearlyCultures).map(item => yearlyCultures[item]);
 
     //Get the select element that will not to be changed based on the currently clicked select element
     var elementToChange = null;
@@ -561,16 +563,15 @@ function updateCultures(clickedElement, optionNumber, categoryId) {
     //Get the length of the options that the select element has
     var length = elementToChange.options.length;
 
-    //If we click the first option of a select element, the other element should have all of its options enabled
-    if(clickedElement.value === '') {
+    //In case a culture option is selected, we get the text of the selected option
+    var selectedText = clickedElement.options[clickedElement.selectedIndex].text;
+
+    //If we click the first option of a select element or an yearly culture, the other element should have all of its options enabled
+    if(clickedElement.value === '' || yearlyCulturesArray.includes(selectedText)) {
         for (i = 0; i < length; i++) {
             elementToChange.options[i].disabled = false;
         }
     } else {
-        //In case a culture option is selected, we get the text of the selected option
-        var selectedText = clickedElement.options[clickedElement.selectedIndex].text;
-
-
         if (firstPeriodCulturesArray.includes(selectedText)) {
             //If the text is present in the first period cultures, we disable all first period cultures in the other select and enable all second period cultures
 
