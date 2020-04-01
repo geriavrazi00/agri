@@ -44,4 +44,9 @@ return [
     'greenhouse_first_period_products' => ['Eggplant I', 'Tomatoe I', 'Cucumber I', 'Pumpkin I'],
     'greenhouse_second_period_products' => ['Tomatoe II', 'Cucumber II', 'Pepper II'],
     'greenhouse_yearly_products' => ['1 year old pepper', '1 year old eggplant', '1 year old pumpkin'],
+
+    //Open field
+    'melon' => 'Melon',
+    'watermelon' => 'Watermelon',
+    'cabbage' => 'Cabbage',
 ];

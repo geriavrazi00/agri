@@ -40,5 +40,8 @@ return [
 	'anti_hail' => 'Mekanikë bujqësore/rrjeta antibreshër',
 
 	//Total
-	'total' => 'Totali',
+    'total' => 'Totali',
+
+    //Open field
+    'mulching_plastic' => 'Plastmas për mulcerim',
 ];

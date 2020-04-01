@@ -44,4 +44,9 @@ return [
     'greenhouse_first_period_products' => ['Patëllxhan I', 'Domate I', 'Kastravec I', 'Kungull I'],
     'greenhouse_second_period_products' => ['Domate II', 'Kastravec II', 'Spec II'],
     'greenhouse_yearly_products' => ['Spec 1 vjeçar', 'Patëllxhan 1 vjeçar', 'Kungull 1 vjeçar'],
+
+    //Open field
+    'melon' => 'Pjepër',
+    'watermelon' => 'Shalqi',
+    'cabbage' => 'Lakër koke',
 ];

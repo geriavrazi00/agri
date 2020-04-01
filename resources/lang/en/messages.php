@@ -27,6 +27,7 @@ return [
     'cherries' => 'CHERRY',
     'grapes' => 'TABLE GRAPES',
     'greenhouses' => 'GREENHOUSE',
+    'open_field' => 'OPEN FIELD',
 
     //Technologies
     'technology' => 'Technology/Investment',

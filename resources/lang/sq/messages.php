@@ -27,6 +27,7 @@ return [
     'cherries' => 'QERSHI',
     'grapes' => 'RRUSH TAVOLINE',
     'greenhouses' => 'SERRË',
+    'open_field' => 'FUSHË E HAPUR',
 
     //Technologies
     'technology' => 'Teknologjia/Investimi',

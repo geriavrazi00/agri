@@ -40,5 +40,8 @@ return [
 	'anti_hail' => 'Agricultural mechanic/antihail net',
 
 	//Total
-	'total' => 'Total',
+    'total' => 'Total',
+
+    //Open field
+    'mulching_plastic' => 'Plastics for molding',
 ];
