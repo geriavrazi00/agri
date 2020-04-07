@@ -3,14 +3,14 @@
 @section('content')
 
 <div class="hero" style="padding: 20px; height: 100%;">
-	<div class="row justify-content-center">
+    <div class="row justify-content-center">
         <div class="col-md-7" style="padding-top: 56px;">
             <center>
                 <div style="display: inline-flex; text-align: center;">
-                    <h3 class="resulttablehead">{{ trans('messages.tax_management') }}</h3>
+                    <h3 class="resulttablehead">{{ trans('messages.roles_management') }}</h3>
 
-                    @can(App\Constants::CREATE_TAX)
-                        <a href="/taxes/create" class="btn btn-primary navbar-btn ml-0 ml-lg-3" style="height: fit-content;">
+                    @can(App\Constants::CREATE_ROLE)
+                        <a href="/roles/create" class="btn btn-primary navbar-btn ml-0 ml-lg-3" style="height: fit-content;">
                             {{ trans('messages.create') }}
                         </a>
                     @endcan
@@ -19,33 +19,31 @@
 
             <br/>
 
-			<div class="table card-body" style="background-color: white;">
-                <table id="taxestable" class="resulttable display responsive nowrap" style="width: 100%;">
+            <div class="table card-body" style="background-color: white;">
+                <table id="rolestable" class="resulttable display responsive nowrap" style="width: 100%;">
                     <thead>
                         <tr class="resulttablerow">
                             <th class="resulttablehead">{{ trans('messages.name') }}</th>
-                            <th class="resulttablehead">{{ trans('messages.percentage') }}</th>
                             <th class="resulttablehead" style="text-align: center;">{{ trans('messages.actions') }}</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($taxes as $tax)
+                        @foreach($roles as $role)
                             <tr class="resulttablerow">
-                                <td class="resulttabledata">{{ $tax->name }}</td>
-                                <td class="resulttabledata">{{ $tax->percentage + 0 }}%</td>
+                                <td class="resulttabledata">{{ $role->name }}</td>
                                 <td class="resulttabledata" style="text-align: center;">
-                                    <a href="/taxes/{{$tax->id}}" class="btn btn-primary btn-circle btn-sm action-buttons" data-toggle="tooltip" title="{{ trans('messages.details') }}">
+                                    <a href="/roles/{{$role->id}}" class="btn btn-primary btn-circle btn-sm action-buttons" data-toggle="tooltip" title="{{ trans('messages.details') }}">
                                         <i class="fa fa-eye"></i>
                                     </a>
 
-                                    @can(App\Constants::EDIT_TAX)
-                                        <a href="/taxes/{{$tax->id}}/edit" class="btn btn-success btn-circle btn-sm edit-buttons" data-toggle="tooltip" title="{{ trans('messages.edit') }}">
+                                    @can(App\Constants::EDIT_ROLE)
+                                        <a href="/roles/{{$role->id}}/edit" class="btn btn-success btn-circle btn-sm edit-buttons" data-toggle="tooltip" title="{{ trans('messages.edit') }}">
                                             <i class="fa fa-edit"></i>
                                         </a>
                                     @endcan
 
-                                    @can(App\Constants::DELETE_TAX)
-                                        <form method="POST" action="/taxes/{{$tax->id}}" style="display:inline; margin:0px; padding:0px;">
+                                    @can(App\Constants::DELETE_ROLE)
+                                        <form method="POST" action="/roles/{{$role->id}}" style="display:inline; margin:0px; padding:0px;">
                                             @method('DELETE')
                                             @csrf
 
@@ -60,8 +58,7 @@
                     </tbody>
 				</table>
 			</div>
-		</div>
-	</div>
+        </div>
+    </div>
 </div>
-
 @endsection

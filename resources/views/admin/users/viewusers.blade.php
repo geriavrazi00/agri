@@ -22,25 +22,36 @@
                     <label id="email" class="col-md-7 col-form-label">{{$user->email}}</label>
                 </div>
 
-                <div class="form-group row">
-                    <label for="role" class="col-md-5 col-form-label text-md-right">{{ trans('messages.role') }}</label>
-                    <label id="role" class="col-md-7 col-form-label">{{ trans($user->role->name) }}</label>
-                </div>
+                @role(App\Constants::ROLE_ADMIN_ID)
+                    <div class="form-group row">
+                        <label for="role" class="col-md-5 col-form-label text-md-right">{{ trans('messages.role') }}</label>
+                        <label id="role" class="col-md-7 col-form-label">{{ trans($user->roles[0]->name) }}</label>
+                    </div>
+                @endrole
 
                 <div class="col-md-12" style="text-align: right;">
-                    <a href="/users/{{$user->id}}/edit" class="btn btn-success">
-                        {{ trans('messages.edit') }}
-                    </a>
-                    <a href="/users/{{$user->id}}/password" class="btn btn-info">
-                        {{ trans('messages.change_password') }}
-                    </a>
-                    <form method="POST" action="/users/{{$user->id}}" style="display:inline; margin:0px; padding:0px;">
-                        @method('DELETE')
-                        @csrf
-                        <button type="submit" class="btn btn-danger" onclick="areYouSure(event, this);">
-                            {{ trans('messages.delete') }}
-                        </button>
-                    </form>
+                    @can(App\Constants::EDIT_USER)
+                        <a href="/users/{{$user->id}}/edit" class="btn btn-success">
+                            {{ trans('messages.edit') }}
+                        </a>
+                    @endcan
+
+                    @can(App\Constants::USER_PASSWORD)
+                        <a href="/users/{{$user->id}}/password" class="btn btn-info">
+                            {{ trans('messages.change_password') }}
+                        </a>
+                    @endcan
+
+                    @can(App\Constants::DELETE_USER)
+                        <form method="POST" action="/users/{{$user->id}}" style="display:inline; margin:0px; padding:0px;">
+                            @method('DELETE')
+                            @csrf
+                            <button type="submit" class="btn btn-danger" onclick="areYouSure(event, this);">
+                                {{ trans('messages.delete') }}
+                            </button>
+                        </form>
+                    @endcan
+
                     <a href="/users" class="btn btn-primary">
                         {{ trans('messages.back') }}
                     </a>

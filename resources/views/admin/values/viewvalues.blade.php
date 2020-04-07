@@ -48,9 +48,12 @@
                 <br />
 
                 <div class="col-md-12" style="text-align: right;">
-                    <a href="/values/{{$category->id}}/edit" class="btn btn-success">
-                        {{ trans('messages.edit') }}
-                    </a>
+                    @can(App\Constants::EDIT_COEFFICIENT)
+                        <a href="/values/{{$category->id}}/edit" class="btn btn-success">
+                            {{ trans('messages.edit') }}
+                        </a>
+                    @endcan
+
                     <a href="/values" class="btn btn-primary">
                         {{ trans('messages.back') }}
                     </a>

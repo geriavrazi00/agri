@@ -72,6 +72,7 @@ return [
     'administration' => 'Administration',
     'users' => 'Users',
     'coefficients' => 'Coefficients',
+    'roles' => 'Roles',
     'language' => 'Language',
     'albanian' => 'ALB',
     'english' => 'ENG',
@@ -136,13 +137,13 @@ return [
     'delete_message' => 'After deleting, you will not be albe to retrieve the data!',
     'cancel' => 'Cancel',
     'project_deleted' => 'The project was deleted successfully!',
+    'user' => 'User',
 
     //My profile
     'update_data' => 'Update my data',
     'name' => 'Name',
     'email' => 'E-mail address',
     'update' => 'Update',
-    'change_password' => 'Change password',
     'data_updated' => 'The data was updated successfully!',
     'password_updated' => 'The password was updated successfully!',
     'change_my_password' => 'Change my password',
@@ -169,6 +170,8 @@ return [
     'user_updated' => 'The user was updated successfully!',
     'user_password_updated' => 'The password of the user was updated successfully!',
     'user_deleted' => 'The user was deleted successfully!',
+    'institution' => 'Institution',
+    'no_institution_selected' => 'No institution selected',
 
     //Coefficients
     'coefficient_management' => 'Category coefficient management',
@@ -208,4 +211,37 @@ return [
     //Extra data
     'extra_greenhouse' => 'Surf/dy',
     'extra_sheep' => 'heads',
+
+    //Roles
+    'roles_management' => 'Roles management',
+    'create_role' => 'Create a role',
+    'edit_role' => 'Edit role',
+    'view_role' => 'View the data in detail',
+    'permissions' => 'Permissions',
+    'role_created' => 'The role was created successfully!',
+    'role_updated' => 'The role was updated successfully!',
+    'role_deleted' => 'The role was deleted successfully!',
+
+    //Permissions
+    'role-list' => 'Roles - list',
+    'role-create' => 'Roles - creation',
+    'role-edit' => 'Roles - editing',
+    'role-delete' => 'Roles - deletion',
+    'plan-list' => 'Plans - list',
+    'plan-create' => 'Plans - creation',
+    'plan-edit' => 'Plans - editing',
+    'plan-delete' => 'Plans - deletion',
+    'user-list' => 'Users - list',
+    'user-create'=> 'Users - creation',
+    'user-edit'=> 'Users - editing',
+    'user-password'=> 'Users - password',
+    'user-delete'=> 'Users - deletion',
+    'coefficient-list' => 'Coefficients - list',
+    'coefficient-create' => 'Coefficients - creation',
+    'coefficient-edit' => 'Coefficients - editing',
+    'coefficient-delete' => 'Coefficients - deletion',
+    'tax-list' => 'Taxes - list',
+    'tax-create' => 'Taxes - creation',
+    'tax-edit' => 'Taxes - editing',
+    'tax-delete' => 'Taxes - deletion',
 ];

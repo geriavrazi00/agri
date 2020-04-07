@@ -13,12 +13,10 @@
 
 
 -- Dumping database structure for agri_db
-DROP DATABASE IF EXISTS `agri_db`;
 CREATE DATABASE IF NOT EXISTS `agri_db` /*!40100 DEFAULT CHARACTER SET latin1 */;
 USE `agri_db`;
 
 -- Dumping structure for table agri_db.categories
-DROP TABLE IF EXISTS `categories`;
 CREATE TABLE IF NOT EXISTS `categories` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -28,9 +26,9 @@ CREATE TABLE IF NOT EXISTS `categories` (
   `culture_number` int(11) NOT NULL,
   `image` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table agri_db.categories: ~11 rows (approximately)
+-- Dumping data for table agri_db.categories: ~12 rows (approximately)
 DELETE FROM `categories`;
 /*!40000 ALTER TABLE `categories` DISABLE KEYS */;
 INSERT INTO `categories` (`id`, `created_at`, `updated_at`, `name`, `option_number`, `culture_number`, `image`) VALUES
@@ -44,11 +42,11 @@ INSERT INTO `categories` (`id`, `created_at`, `updated_at`, `name`, `option_numb
 	(8, '2019-11-26 06:09:20', '2019-11-26 06:09:21', 'messages.hazelnuts', 1, 2, 'lajthi.png'),
 	(9, '2019-11-26 06:26:16', '2019-11-26 06:26:17', 'messages.apples', 1, 2, 'molle.png'),
 	(10, '2019-11-26 06:41:15', '2019-11-26 06:41:15', 'messages.cherries', 1, 2, 'qershi.png'),
-	(11, '2019-11-26 06:48:54', '2019-11-26 06:48:55', 'messages.grapes', 1, 2, 'rrush.png');
+	(11, '2019-11-26 06:48:54', '2019-11-26 06:48:55', 'messages.grapes', 1, 2, 'rrush.png'),
+	(12, '2020-04-01 20:55:23', '2020-04-01 20:55:26', 'messages.open_field', 1, 2, 'fushe.png');
 /*!40000 ALTER TABLE `categories` ENABLE KEYS */;
 
 -- Dumping structure for table agri_db.cultures
-DROP TABLE IF EXISTS `cultures`;
 CREATE TABLE IF NOT EXISTS `cultures` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -58,9 +56,9 @@ CREATE TABLE IF NOT EXISTS `cultures` (
   PRIMARY KEY (`id`),
   KEY `cultures_category_id_foreign` (`category_id`),
   CONSTRAINT `cultures_category_id_foreign` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=45 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=48 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table agri_db.cultures: ~31 rows (approximately)
+-- Dumping data for table agri_db.cultures: ~34 rows (approximately)
 DELETE FROM `cultures`;
 /*!40000 ALTER TABLE `cultures` DISABLE KEYS */;
 INSERT INTO `cultures` (`id`, `created_at`, `updated_at`, `name`, `category_id`) VALUES
@@ -94,11 +92,13 @@ INSERT INTO `cultures` (`id`, `created_at`, `updated_at`, `name`, `category_id`)
 	(41, '2019-11-26 06:10:22', '2019-11-26 06:10:22', 'cultures.hazelnut', 8),
 	(42, '2019-11-26 06:27:49', '2019-11-26 06:27:50', 'cultures.apples', 9),
 	(43, '2019-11-26 06:42:24', '2019-11-26 06:42:25', 'cultures.cherries', 10),
-	(44, '2019-11-26 06:55:37', '2019-11-26 06:55:37', 'cultures.grapes', 11);
+	(44, '2019-11-26 06:55:37', '2019-11-26 06:55:37', 'cultures.grapes', 11),
+	(45, '2020-04-01 21:00:13', '2020-04-01 21:00:14', 'cultures.melon', 12),
+	(46, '2020-04-01 21:00:32', '2020-04-01 21:00:34', 'cultures.watermelon', 12),
+	(47, '2020-04-01 21:00:49', '2020-04-01 21:00:50', 'cultures.cabbage', 12);
 /*!40000 ALTER TABLE `cultures` ENABLE KEYS */;
 
 -- Dumping structure for table agri_db.labels
-DROP TABLE IF EXISTS `labels`;
 CREATE TABLE IF NOT EXISTS `labels` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -112,9 +112,9 @@ CREATE TABLE IF NOT EXISTS `labels` (
   PRIMARY KEY (`id`),
   KEY `labels_category_id_foreign` (`category_id`),
   CONSTRAINT `labels_category_id_foreign` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=118 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=129 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table agri_db.labels: ~108 rows (approximately)
+-- Dumping data for table agri_db.labels: ~116 rows (approximately)
 DELETE FROM `labels`;
 /*!40000 ALTER TABLE `labels` DISABLE KEYS */;
 INSERT INTO `labels` (`id`, `created_at`, `updated_at`, `value`, `order`, `category_id`, `type`, `amortization`, `extra_data`) VALUES
@@ -225,11 +225,18 @@ INSERT INTO `labels` (`id`, `created_at`, `updated_at`, `value`, `order`, `categ
 	(114, '2019-11-26 06:53:45', '2019-11-26 06:53:46', 'business_data.surface', 1, 11, 1, 0, 0),
 	(115, '2019-11-26 06:54:03', '2019-11-26 06:54:04', 'business_data.technology', 2, 11, 1, 0, 0),
 	(116, '2019-11-26 06:54:24', '2019-11-26 06:54:25', 'business_data.grape_cultivation', 3, 11, 1, 0, 0),
-	(117, '2019-11-26 06:54:35', '2019-11-26 06:54:36', 'business_data.other', 4, 11, 1, 0, 0);
+	(117, '2019-11-26 06:54:35', '2019-11-26 06:54:36', 'business_data.other', 4, 11, 1, 0, 0),
+	(118, '2020-04-01 21:04:24', '2020-04-01 21:04:24', 'investment_plan.agricultural_mechanic', 1, 12, 0, 20, 0),
+	(119, '2020-04-01 21:09:48', '2020-04-01 21:09:49', 'investment_plan.mulching_plastic', 2, 12, 0, 1, 0),
+	(120, '2020-04-01 21:11:00', '2020-04-01 21:11:00', 'investment_plan.drip_irrigation', 3, 12, 0, 10, 0),
+	(123, '2020-04-01 21:12:52', '2020-04-01 21:12:53', 'investment_plan.agricultural_inputs', 4, 12, 0, 0, 0),
+	(124, '2020-04-01 21:13:41', '2020-04-01 21:13:42', 'business_data.surface', 1, 12, 1, 0, 0),
+	(125, '2020-04-01 21:14:45', '2020-04-01 21:14:46', 'business_data.technology', 2, 12, 1, 0, 0),
+	(126, '2020-04-01 21:15:07', '2020-04-01 21:15:12', 'business_data.culture_1', 3, 12, 1, 0, 0),
+	(127, '2020-04-01 21:15:30', '2020-04-01 21:15:31', 'business_data.culture_2', 4, 12, 1, 0, 0);
 /*!40000 ALTER TABLE `labels` ENABLE KEYS */;
 
 -- Dumping structure for table agri_db.migrations
-DROP TABLE IF EXISTS `migrations`;
 CREATE TABLE IF NOT EXISTS `migrations` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `migration` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -271,7 +278,6 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 /*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
 
 -- Dumping structure for table agri_db.password_resets
-DROP TABLE IF EXISTS `password_resets`;
 CREATE TABLE IF NOT EXISTS `password_resets` (
   `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `token` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -285,7 +291,6 @@ DELETE FROM `password_resets`;
 /*!40000 ALTER TABLE `password_resets` ENABLE KEYS */;
 
 -- Dumping structure for table agri_db.plans
-DROP TABLE IF EXISTS `plans`;
 CREATE TABLE IF NOT EXISTS `plans` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -298,9 +303,9 @@ CREATE TABLE IF NOT EXISTS `plans` (
   PRIMARY KEY (`id`),
   KEY `plans_user_id_foreign` (`user_id`),
   CONSTRAINT `plans_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=111 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=112 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table agri_db.plans: ~28 rows (approximately)
+-- Dumping data for table agri_db.plans: ~5 rows (approximately)
 DELETE FROM `plans`;
 /*!40000 ALTER TABLE `plans` DISABLE KEYS */;
 INSERT INTO `plans` (`id`, `created_at`, `updated_at`, `user_id`, `applicant`, `business_code`, `inputs`, `results`) VALUES
@@ -308,11 +313,11 @@ INSERT INTO `plans` (`id`, `created_at`, `updated_at`, `user_id`, `applicant`, `
 	(107, '2020-03-26 01:15:27', '2020-03-26 01:17:32', 21, 'DELJA 2', 'DELJA 2', '[{"applicantName":"DELJA 2","businessCode":"DELJA 2","farmCategory":{"id":2,"created_at":"2019-11-09 13:15:52","updated_at":"2019-11-09 13:15:53","name":"messages.assaf_sheep","option_number":1,"culture_number":5,"image":"delequmshti.png","labels":[{"id":13,"created_at":"2019-11-16 03:03:40","updated_at":"2019-11-16 03:03:40","value":"investment_plan.stable_construction","order":1,"category_id":2,"type":0,"amortization":20,"extra_data":0},{"id":19,"created_at":"2019-11-16 03:07:15","updated_at":"2019-11-16 03:07:16","value":"business_data.headcount","order":1,"category_id":2,"type":1,"amortization":0,"extra_data":0},{"id":20,"created_at":"2019-11-16 03:08:28","updated_at":"2019-11-16 03:08:29","value":"business_data.technology","order":2,"category_id":2,"type":1,"amortization":0,"extra_data":0},{"id":14,"created_at":"2019-11-16 03:04:27","updated_at":"2019-11-16 03:04:28","value":"investment_plan.stable_reconstruction","order":2,"category_id":2,"type":0,"amortization":20,"extra_data":0},{"id":15,"created_at":"2019-11-16 03:04:55","updated_at":"2019-11-16 03:04:56","value":"investment_plan.buying_sheep","order":3,"category_id":2,"type":0,"amortization":0,"extra_data":1},{"id":21,"created_at":"2019-11-16 03:09:00","updated_at":"2019-11-16 03:09:00","value":"business_data.subproduct_1","order":3,"category_id":2,"type":1,"amortization":0,"extra_data":0},{"id":17,"created_at":"2019-11-16 03:05:35","updated_at":"2019-11-16 03:05:36","value":"investment_plan.food_purchases","order":4,"category_id":2,"type":0,"amortization":0,"extra_data":0},{"id":22,"created_at":"2019-11-16 03:09:20","updated_at":"2019-11-16 03:09:20","value":"business_data.subproduct_2","order":4,"category_id":2,"type":1,"amortization":0,"extra_data":0},{"id":18,"created_at":"2019-11-16 03:06:17","updated_at":"2019-11-16 03:06:18","value":"investment_plan.equipment_purchases","order":5,"category_id":2,"type":0,"amortization":12,"extra_data":0},{"id":23,"created_at":"2019-11-16 03:09:20","updated_at":"2019-11-16 03:09:20","value":"business_data.subproduct_3","order":5,"category_id":2,"type":1,"amortization":0,"extra_data":0},{"id":24,"created_at":"2019-11-16 03:09:20","updated_at":"2019-11-16 03:09:20","value":"business_data.subproduct_4","order":6,"category_id":2,"type":1,"amortization":0,"extra_data":0},{"id":25,"created_at":"2019-11-16 03:09:20","updated_at":"2019-11-16 03:09:20","value":"business_data.subproduct_5","order":7,"category_id":2,"type":1,"amortization":0,"extra_data":0}]},"investmentPlans":[[1000000,500000,0,0,0,1500000]],"investmentLabels":["investment_plan.stable_construction","investment_plan.stable_reconstruction","investment_plan.buying_sheep","investment_plan.food_purchases","investment_plan.equipment_purchases","messages.total"],"investmentLabelsExtra":[0,0,1,0,0],"totalValuePlans":[[1000000,500000,100000,0,100000,1700000]],"businessData":[[100,3,14,15,18,19,0]],"businessLabels":["business_data.headcount","business_data.technology","business_data.subproduct_1","business_data.subproduct_2","business_data.subproduct_3","business_data.subproduct_4","business_data.subproduct_5"],"loanData":[["1500000","12","5","12","12\\/03\\/2020"],["0",0,0,0,0]],"extraInvestments":[[0]]}]', '{"cultures":[["cultures.milk","messages.assaf_sheep",100,"500.0000000",50000,"100.0000000",50000,5000000,4965000],["cultures.lamb_for_meat","messages.assaf_sheep",100,"0.6500000",65,"6500.0000000",4225,274625,0],["cultures.female_lambs","messages.assaf_sheep",100,"0.6500000",65,"20000.0000000",13000,845000,0],["cultures.organic_fertilizer","messages.assaf_sheep",100,"0.1800000",18,"3000.0000000",540,54000,0]],"totalIncome":6776500,"totalExpense":4965000,"totalAmortization":83333.33333333333,"yearlyInterest":100400.2,"incomeBeforeTax":1627766.4666666668,"incomeTax":122082.485,"totalNetIncome":1505683.9816666667,"moneyFlux":1689417.515,"firstYearCredit":400400.0583282317,"dscr":4.219323848387365}'),
 	(108, '2020-03-26 01:17:38', '2020-03-26 01:20:53', 21, 'DELJA 3', 'DELJA 3', '[{"applicantName":"DELJA 3","businessCode":"DELJA 3","farmCategory":{"id":2,"created_at":"2019-11-09 13:15:52","updated_at":"2019-11-09 13:15:53","name":"messages.assaf_sheep","option_number":1,"culture_number":5,"image":"delequmshti.png","labels":[{"id":13,"created_at":"2019-11-16 03:03:40","updated_at":"2019-11-16 03:03:40","value":"investment_plan.stable_construction","order":1,"category_id":2,"type":0,"amortization":20,"extra_data":0},{"id":19,"created_at":"2019-11-16 03:07:15","updated_at":"2019-11-16 03:07:16","value":"business_data.headcount","order":1,"category_id":2,"type":1,"amortization":0,"extra_data":0},{"id":20,"created_at":"2019-11-16 03:08:28","updated_at":"2019-11-16 03:08:29","value":"business_data.technology","order":2,"category_id":2,"type":1,"amortization":0,"extra_data":0},{"id":14,"created_at":"2019-11-16 03:04:27","updated_at":"2019-11-16 03:04:28","value":"investment_plan.stable_reconstruction","order":2,"category_id":2,"type":0,"amortization":20,"extra_data":0},{"id":15,"created_at":"2019-11-16 03:04:55","updated_at":"2019-11-16 03:04:56","value":"investment_plan.buying_sheep","order":3,"category_id":2,"type":0,"amortization":0,"extra_data":1},{"id":21,"created_at":"2019-11-16 03:09:00","updated_at":"2019-11-16 03:09:00","value":"business_data.subproduct_1","order":3,"category_id":2,"type":1,"amortization":0,"extra_data":0},{"id":17,"created_at":"2019-11-16 03:05:35","updated_at":"2019-11-16 03:05:36","value":"investment_plan.food_purchases","order":4,"category_id":2,"type":0,"amortization":0,"extra_data":0},{"id":22,"created_at":"2019-11-16 03:09:20","updated_at":"2019-11-16 03:09:20","value":"business_data.subproduct_2","order":4,"category_id":2,"type":1,"amortization":0,"extra_data":0},{"id":18,"created_at":"2019-11-16 03:06:17","updated_at":"2019-11-16 03:06:18","value":"investment_plan.equipment_purchases","order":5,"category_id":2,"type":0,"amortization":12,"extra_data":0},{"id":23,"created_at":"2019-11-16 03:09:20","updated_at":"2019-11-16 03:09:20","value":"business_data.subproduct_3","order":5,"category_id":2,"type":1,"amortization":0,"extra_data":0},{"id":24,"created_at":"2019-11-16 03:09:20","updated_at":"2019-11-16 03:09:20","value":"business_data.subproduct_4","order":6,"category_id":2,"type":1,"amortization":0,"extra_data":0},{"id":25,"created_at":"2019-11-16 03:09:20","updated_at":"2019-11-16 03:09:20","value":"business_data.subproduct_5","order":7,"category_id":2,"type":1,"amortization":0,"extra_data":0}]},"investmentPlans":[[1000000,500000,0,0,0,1500000]],"investmentLabels":["investment_plan.stable_construction","investment_plan.stable_reconstruction","investment_plan.buying_sheep","investment_plan.food_purchases","investment_plan.equipment_purchases","messages.total"],"investmentLabelsExtra":[0,0,1,0,0],"totalValuePlans":[[1000000,500000,100000,0,100000,1700000]],"businessData":[[100,3,14,15,18,19,0]],"businessLabels":["business_data.headcount","business_data.technology","business_data.subproduct_1","business_data.subproduct_2","business_data.subproduct_3","business_data.subproduct_4","business_data.subproduct_5"],"loanData":[["750000.00","12","5","12","12\\/03\\/2020"],["750000.00","12","5","12","11\\/03\\/2020"]],"extraInvestments":[[0]]}]', '{"cultures":[["cultures.milk","messages.assaf_sheep",100,"500.0000000",50000,"100.0000000",50000,5000000,4965000],["cultures.lamb_for_meat","messages.assaf_sheep",100,"0.6500000",65,"6500.0000000",4225,274625,0],["cultures.female_lambs","messages.assaf_sheep",100,"0.6500000",65,"20000.0000000",13000,845000,0],["cultures.organic_fertilizer","messages.assaf_sheep",100,"0.1800000",18,"3000.0000000",540,54000,0]],"totalIncome":6776500,"totalExpense":4965000,"totalAmortization":83333.33333333333,"yearlyInterest":100400,"incomeBeforeTax":1627766.6666666667,"incomeTax":122082.5,"totalNetIncome":1505684.1666666667,"moneyFlux":1689417.5,"firstYearCredit":400400.0583282317,"dscr":4.219323810924833}'),
 	(109, '2020-03-26 01:21:01', '2020-03-26 01:22:06', 21, 'DELJA 4', 'DELJA 4', '[{"applicantName":"DELJA 4","businessCode":"DELJA 4","farmCategory":{"id":2,"created_at":"2019-11-09 13:15:52","updated_at":"2019-11-09 13:15:53","name":"messages.assaf_sheep","option_number":1,"culture_number":5,"image":"delequmshti.png","labels":[{"id":13,"created_at":"2019-11-16 03:03:40","updated_at":"2019-11-16 03:03:40","value":"investment_plan.stable_construction","order":1,"category_id":2,"type":0,"amortization":20,"extra_data":0},{"id":19,"created_at":"2019-11-16 03:07:15","updated_at":"2019-11-16 03:07:16","value":"business_data.headcount","order":1,"category_id":2,"type":1,"amortization":0,"extra_data":0},{"id":20,"created_at":"2019-11-16 03:08:28","updated_at":"2019-11-16 03:08:29","value":"business_data.technology","order":2,"category_id":2,"type":1,"amortization":0,"extra_data":0},{"id":14,"created_at":"2019-11-16 03:04:27","updated_at":"2019-11-16 03:04:28","value":"investment_plan.stable_reconstruction","order":2,"category_id":2,"type":0,"amortization":20,"extra_data":0},{"id":15,"created_at":"2019-11-16 03:04:55","updated_at":"2019-11-16 03:04:56","value":"investment_plan.buying_sheep","order":3,"category_id":2,"type":0,"amortization":0,"extra_data":1},{"id":21,"created_at":"2019-11-16 03:09:00","updated_at":"2019-11-16 03:09:00","value":"business_data.subproduct_1","order":3,"category_id":2,"type":1,"amortization":0,"extra_data":0},{"id":17,"created_at":"2019-11-16 03:05:35","updated_at":"2019-11-16 03:05:36","value":"investment_plan.food_purchases","order":4,"category_id":2,"type":0,"amortization":0,"extra_data":0},{"id":22,"created_at":"2019-11-16 03:09:20","updated_at":"2019-11-16 03:09:20","value":"business_data.subproduct_2","order":4,"category_id":2,"type":1,"amortization":0,"extra_data":0},{"id":18,"created_at":"2019-11-16 03:06:17","updated_at":"2019-11-16 03:06:18","value":"investment_plan.equipment_purchases","order":5,"category_id":2,"type":0,"amortization":12,"extra_data":0},{"id":23,"created_at":"2019-11-16 03:09:20","updated_at":"2019-11-16 03:09:20","value":"business_data.subproduct_3","order":5,"category_id":2,"type":1,"amortization":0,"extra_data":0},{"id":24,"created_at":"2019-11-16 03:09:20","updated_at":"2019-11-16 03:09:20","value":"business_data.subproduct_4","order":6,"category_id":2,"type":1,"amortization":0,"extra_data":0},{"id":25,"created_at":"2019-11-16 03:09:20","updated_at":"2019-11-16 03:09:20","value":"business_data.subproduct_5","order":7,"category_id":2,"type":1,"amortization":0,"extra_data":0}]},"investmentPlans":[[1000000,500000,0,0,0,1500000]],"investmentLabels":["investment_plan.stable_construction","investment_plan.stable_reconstruction","investment_plan.buying_sheep","investment_plan.food_purchases","investment_plan.equipment_purchases","messages.total"],"investmentLabelsExtra":[0,0,1,0,0],"totalValuePlans":[[1000000,500000,100000,0,100000,1700000]],"businessData":[[50,3,14,15,18,19,0]],"businessLabels":["business_data.headcount","business_data.technology","business_data.subproduct_1","business_data.subproduct_2","business_data.subproduct_3","business_data.subproduct_4","business_data.subproduct_5"],"loanData":[["1500000","12","5","12","05\\/03\\/2020"],["0",0,0,0,0]],"extraInvestments":[[50]]}]', '{"cultures":[["cultures.milk","messages.assaf_sheep",100,"500.0000000",50000,"100.0000000",50000,5000000,4965000],["cultures.lamb_for_meat","messages.assaf_sheep",100,"0.6500000",65,"6500.0000000",4225,274625,0],["cultures.female_lambs","messages.assaf_sheep",100,"0.6500000",65,"20000.0000000",13000,845000,0],["cultures.organic_fertilizer","messages.assaf_sheep",100,"0.1800000",18,"3000.0000000",540,54000,0]],"totalIncome":6776500,"totalExpense":4965000,"totalAmortization":83333.33333333333,"yearlyInterest":100400.2,"incomeBeforeTax":1627766.4666666668,"incomeTax":122082.485,"totalNetIncome":1505683.9816666667,"moneyFlux":1689417.515,"firstYearCredit":400400.0583282317,"dscr":4.219323848387365}'),
-	(110, '2020-03-26 20:58:42', '2020-03-26 21:07:34', 21, 'Final test', 'Final test', '[{"applicantName":"Final test","businessCode":"Final test","farmCategory":{"id":2,"created_at":"2019-11-09 13:15:52","updated_at":"2019-11-09 13:15:53","name":"messages.assaf_sheep","option_number":1,"culture_number":5,"image":"delequmshti.png","labels":[{"id":13,"created_at":"2019-11-16 03:03:40","updated_at":"2019-11-16 03:03:40","value":"investment_plan.stable_construction","order":1,"category_id":2,"type":0,"amortization":20,"extra_data":0},{"id":19,"created_at":"2019-11-16 03:07:15","updated_at":"2019-11-16 03:07:16","value":"business_data.headcount","order":1,"category_id":2,"type":1,"amortization":0,"extra_data":0},{"id":20,"created_at":"2019-11-16 03:08:28","updated_at":"2019-11-16 03:08:29","value":"business_data.technology","order":2,"category_id":2,"type":1,"amortization":0,"extra_data":0},{"id":14,"created_at":"2019-11-16 03:04:27","updated_at":"2019-11-16 03:04:28","value":"investment_plan.stable_reconstruction","order":2,"category_id":2,"type":0,"amortization":20,"extra_data":0},{"id":15,"created_at":"2019-11-16 03:04:55","updated_at":"2019-11-16 03:04:56","value":"investment_plan.buying_sheep","order":3,"category_id":2,"type":0,"amortization":0,"extra_data":1},{"id":21,"created_at":"2019-11-16 03:09:00","updated_at":"2019-11-16 03:09:00","value":"business_data.subproduct_1","order":3,"category_id":2,"type":1,"amortization":0,"extra_data":0},{"id":17,"created_at":"2019-11-16 03:05:35","updated_at":"2019-11-16 03:05:36","value":"investment_plan.food_purchases","order":4,"category_id":2,"type":0,"amortization":0,"extra_data":0},{"id":22,"created_at":"2019-11-16 03:09:20","updated_at":"2019-11-16 03:09:20","value":"business_data.subproduct_2","order":4,"category_id":2,"type":1,"amortization":0,"extra_data":0},{"id":18,"created_at":"2019-11-16 03:06:17","updated_at":"2019-11-16 03:06:18","value":"investment_plan.equipment_purchases","order":5,"category_id":2,"type":0,"amortization":12,"extra_data":0},{"id":23,"created_at":"2019-11-16 03:09:20","updated_at":"2019-11-16 03:09:20","value":"business_data.subproduct_3","order":5,"category_id":2,"type":1,"amortization":0,"extra_data":0},{"id":24,"created_at":"2019-11-16 03:09:20","updated_at":"2019-11-16 03:09:20","value":"business_data.subproduct_4","order":6,"category_id":2,"type":1,"amortization":0,"extra_data":0},{"id":25,"created_at":"2019-11-16 03:09:20","updated_at":"2019-11-16 03:09:20","value":"business_data.subproduct_5","order":7,"category_id":2,"type":1,"amortization":0,"extra_data":0}]},"investmentPlans":[[1000000,500000,0,0,0,1500000]],"investmentLabels":["investment_plan.stable_construction","investment_plan.stable_reconstruction","investment_plan.buying_sheep","investment_plan.food_purchases","investment_plan.equipment_purchases","messages.total"],"investmentLabelsExtra":[0,0,1,0,0],"totalValuePlans":[[1000000,500000,100000,0,100000,1700000]],"businessData":[[100,2,14,15,18,19,0]],"businessLabels":["business_data.headcount","business_data.technology","business_data.subproduct_1","business_data.subproduct_2","business_data.subproduct_3","business_data.subproduct_4","business_data.subproduct_5"],"loanData":[["3000000.00","12","5","12","11\\/03\\/2020"],["100000.00","12","5","12","12\\/03\\/2020"]],"extraInvestments":[[30]]},{"applicantName":"Final test","businessCode":"Final test","farmCategory":{"id":1,"created_at":"2019-10-14 01:29:25","updated_at":"2019-10-14 01:29:26","name":"messages.greenhouses","option_number":2,"culture_number":2,"image":"sera.png","labels":[{"id":1,"created_at":"2019-10-23 22:40:48","updated_at":"2019-10-23 22:40:49","value":"investment_plan.new_greenhouse","order":1,"category_id":1,"type":0,"amortization":20,"extra_data":1},{"id":8,"created_at":"2019-10-23 22:51:22","updated_at":"2019-10-23 22:51:22","value":"business_data.surface","order":1,"category_id":1,"type":1,"amortization":0,"extra_data":0},{"id":2,"created_at":"2019-10-23 22:41:53","updated_at":"2019-10-23 22:41:53","value":"investment_plan.plastic_change","order":2,"category_id":1,"type":0,"amortization":5,"extra_data":0},{"id":10,"created_at":"2019-10-23 22:51:37","updated_at":"2019-10-23 22:51:38","value":"business_data.technology","order":2,"category_id":1,"type":1,"amortization":0,"extra_data":0},{"id":4,"created_at":"2019-10-23 22:42:06","updated_at":"2019-10-23 22:42:07","value":"investment_plan.drip_irrigation","order":3,"category_id":1,"type":0,"amortization":10,"extra_data":0},{"id":11,"created_at":"2019-10-23 22:51:56","updated_at":"2019-10-23 22:51:57","value":"business_data.culture_1","order":3,"category_id":1,"type":1,"amortization":0,"extra_data":0},{"id":6,"created_at":"2019-10-23 22:49:23","updated_at":"2019-10-23 22:49:24","value":"investment_plan.agricultural_inputs","order":4,"category_id":1,"type":0,"amortization":0,"extra_data":0},{"id":12,"created_at":"2019-10-23 22:52:14","updated_at":"2019-10-23 22:52:15","value":"business_data.culture_2","order":4,"category_id":1,"type":1,"amortization":0,"extra_data":0},{"id":7,"created_at":"2019-10-23 22:49:54","updated_at":"2019-10-23 22:49:55","value":"investment_plan.other","order":5,"category_id":1,"type":0,"amortization":0,"extra_data":0}]},"investmentPlans":[[500000,200000,0,0,0,700000],[500000,100000,300000,0,0,900000]],"investmentLabels":["investment_plan.new_greenhouse","investment_plan.plastic_change","investment_plan.drip_irrigation","investment_plan.agricultural_inputs","investment_plan.other","messages.total"],"investmentLabelsExtra":[1,0,0,0,0],"totalValuePlans":[[1000000,400000,0,0,0,1400000],[1000000,200000,400000,0,0,1600000]],"businessData":[[8,3,1,2],[7,2,8,2]],"businessLabels":["business_data.surface","business_data.technology","business_data.culture_1","business_data.culture_2"],"loanData":[["3000000.00","12","5","12","11\\/03\\/2020"],["100000.00","12","5","12","12\\/03\\/2020"]],"extraInvestments":[[3],[7]]}]', '{"cultures":[["cultures.milk","messages.assaf_sheep",130,"400.0000000",52000,"100.0000000",40000,5200000,5184400],["cultures.lamb_for_meat","messages.assaf_sheep",130,"0.6000000",78,"6000.0000000",3600,280800,0],["cultures.female_lambs","messages.assaf_sheep",130,"0.6000000",78,"20000.0000000",12000,936000,0],["cultures.organic_fertilizer","messages.assaf_sheep",130,"0.1400000",18.200000000000003,"3000.0000000",420.00000000000006,54600.00000000001,0],["cultures.tomatoe_1","messages.greenhouses",11,"10000.0000000",110000,"43.0000000",430000,4730000,2838000],["cultures.tomatoe_2","messages.greenhouses",11,"8000.0000000",88000,"46.0000000",368000,4048000,2129600],["cultures.pepper_1_year","messages.greenhouses",14,"9000.0000000",126000,"68.0000000",612000,8568000,5292000],["cultures.tomatoe_2","messages.greenhouses",14,"8000.0000000",112000,"46.0000000",368000,5152000,2632000]],"totalIncome":29780600,"totalExpense":18076000,"totalAmortization":343333.3333333333,"yearlyInterest":207493.4,"incomeBeforeTax":11153773.266666666,"incomeTax":1673065.9899999998,"totalNetIncome":9480707.276666665,"moneyFlux":10031534.01,"firstYearCredit":827493.4538783454,"dscr":12.122795610023996}');
+	(110, '2020-03-26 20:58:42', '2020-03-26 21:07:34', 21, 'Final test', 'Final test', '[{"applicantName":"Final test","businessCode":"Final test","farmCategory":{"id":2,"created_at":"2019-11-09 13:15:52","updated_at":"2019-11-09 13:15:53","name":"messages.assaf_sheep","option_number":1,"culture_number":5,"image":"delequmshti.png","labels":[{"id":13,"created_at":"2019-11-16 03:03:40","updated_at":"2019-11-16 03:03:40","value":"investment_plan.stable_construction","order":1,"category_id":2,"type":0,"amortization":20,"extra_data":0},{"id":19,"created_at":"2019-11-16 03:07:15","updated_at":"2019-11-16 03:07:16","value":"business_data.headcount","order":1,"category_id":2,"type":1,"amortization":0,"extra_data":0},{"id":20,"created_at":"2019-11-16 03:08:28","updated_at":"2019-11-16 03:08:29","value":"business_data.technology","order":2,"category_id":2,"type":1,"amortization":0,"extra_data":0},{"id":14,"created_at":"2019-11-16 03:04:27","updated_at":"2019-11-16 03:04:28","value":"investment_plan.stable_reconstruction","order":2,"category_id":2,"type":0,"amortization":20,"extra_data":0},{"id":15,"created_at":"2019-11-16 03:04:55","updated_at":"2019-11-16 03:04:56","value":"investment_plan.buying_sheep","order":3,"category_id":2,"type":0,"amortization":0,"extra_data":1},{"id":21,"created_at":"2019-11-16 03:09:00","updated_at":"2019-11-16 03:09:00","value":"business_data.subproduct_1","order":3,"category_id":2,"type":1,"amortization":0,"extra_data":0},{"id":17,"created_at":"2019-11-16 03:05:35","updated_at":"2019-11-16 03:05:36","value":"investment_plan.food_purchases","order":4,"category_id":2,"type":0,"amortization":0,"extra_data":0},{"id":22,"created_at":"2019-11-16 03:09:20","updated_at":"2019-11-16 03:09:20","value":"business_data.subproduct_2","order":4,"category_id":2,"type":1,"amortization":0,"extra_data":0},{"id":18,"created_at":"2019-11-16 03:06:17","updated_at":"2019-11-16 03:06:18","value":"investment_plan.equipment_purchases","order":5,"category_id":2,"type":0,"amortization":12,"extra_data":0},{"id":23,"created_at":"2019-11-16 03:09:20","updated_at":"2019-11-16 03:09:20","value":"business_data.subproduct_3","order":5,"category_id":2,"type":1,"amortization":0,"extra_data":0},{"id":24,"created_at":"2019-11-16 03:09:20","updated_at":"2019-11-16 03:09:20","value":"business_data.subproduct_4","order":6,"category_id":2,"type":1,"amortization":0,"extra_data":0},{"id":25,"created_at":"2019-11-16 03:09:20","updated_at":"2019-11-16 03:09:20","value":"business_data.subproduct_5","order":7,"category_id":2,"type":1,"amortization":0,"extra_data":0}]},"investmentPlans":[[1000000,500000,0,0,0,1500000]],"investmentLabels":["investment_plan.stable_construction","investment_plan.stable_reconstruction","investment_plan.buying_sheep","investment_plan.food_purchases","investment_plan.equipment_purchases","messages.total"],"investmentLabelsExtra":[0,0,1,0,0],"totalValuePlans":[[1000000,500000,100000,0,100000,1700000]],"businessData":[[100,2,14,15,18,19,0]],"businessLabels":["business_data.headcount","business_data.technology","business_data.subproduct_1","business_data.subproduct_2","business_data.subproduct_3","business_data.subproduct_4","business_data.subproduct_5"],"loanData":[["3000000.00","12","5","12","11\\/03\\/2020"],["100000.00","12","5","12","12\\/03\\/2020"]],"extraInvestments":[[30]]},{"applicantName":"Final test","businessCode":"Final test","farmCategory":{"id":1,"created_at":"2019-10-14 01:29:25","updated_at":"2019-10-14 01:29:26","name":"messages.greenhouses","option_number":2,"culture_number":2,"image":"sera.png","labels":[{"id":1,"created_at":"2019-10-23 22:40:48","updated_at":"2019-10-23 22:40:49","value":"investment_plan.new_greenhouse","order":1,"category_id":1,"type":0,"amortization":20,"extra_data":1},{"id":8,"created_at":"2019-10-23 22:51:22","updated_at":"2019-10-23 22:51:22","value":"business_data.surface","order":1,"category_id":1,"type":1,"amortization":0,"extra_data":0},{"id":2,"created_at":"2019-10-23 22:41:53","updated_at":"2019-10-23 22:41:53","value":"investment_plan.plastic_change","order":2,"category_id":1,"type":0,"amortization":5,"extra_data":0},{"id":10,"created_at":"2019-10-23 22:51:37","updated_at":"2019-10-23 22:51:38","value":"business_data.technology","order":2,"category_id":1,"type":1,"amortization":0,"extra_data":0},{"id":4,"created_at":"2019-10-23 22:42:06","updated_at":"2019-10-23 22:42:07","value":"investment_plan.drip_irrigation","order":3,"category_id":1,"type":0,"amortization":10,"extra_data":0},{"id":11,"created_at":"2019-10-23 22:51:56","updated_at":"2019-10-23 22:51:57","value":"business_data.culture_1","order":3,"category_id":1,"type":1,"amortization":0,"extra_data":0},{"id":6,"created_at":"2019-10-23 22:49:23","updated_at":"2019-10-23 22:49:24","value":"investment_plan.agricultural_inputs","order":4,"category_id":1,"type":0,"amortization":0,"extra_data":0},{"id":12,"created_at":"2019-10-23 22:52:14","updated_at":"2019-10-23 22:52:15","value":"business_data.culture_2","order":4,"category_id":1,"type":1,"amortization":0,"extra_data":0},{"id":7,"created_at":"2019-10-23 22:49:54","updated_at":"2019-10-23 22:49:55","value":"investment_plan.other","order":5,"category_id":1,"type":0,"amortization":0,"extra_data":0}]},"investmentPlans":[[500000,200000,0,0,0,700000],[500000,100000,300000,0,0,900000]],"investmentLabels":["investment_plan.new_greenhouse","investment_plan.plastic_change","investment_plan.drip_irrigation","investment_plan.agricultural_inputs","investment_plan.other","messages.total"],"investmentLabelsExtra":[1,0,0,0,0],"totalValuePlans":[[1000000,400000,0,0,0,1400000],[1000000,200000,400000,0,0,1600000]],"businessData":[[8,3,1,2],[7,2,8,2]],"businessLabels":["business_data.surface","business_data.technology","business_data.culture_1","business_data.culture_2"],"loanData":[["3000000.00","12","5","12","11\\/03\\/2020"],["100000.00","12","5","12","12\\/03\\/2020"]],"extraInvestments":[[3],[7]]}]', '{"cultures":[["cultures.milk","messages.assaf_sheep",130,"400.0000000",52000,"100.0000000",40000,5200000,5184400],["cultures.lamb_for_meat","messages.assaf_sheep",130,"0.6000000",78,"6000.0000000",3600,280800,0],["cultures.female_lambs","messages.assaf_sheep",130,"0.6000000",78,"20000.0000000",12000,936000,0],["cultures.organic_fertilizer","messages.assaf_sheep",130,"0.1400000",18.200000000000003,"3000.0000000",420.00000000000006,54600.00000000001,0],["cultures.tomatoe_1","messages.greenhouses",11,"10000.0000000",110000,"43.0000000",430000,4730000,2838000],["cultures.tomatoe_2","messages.greenhouses",11,"8000.0000000",88000,"46.0000000",368000,4048000,2129600],["cultures.pepper_1_year","messages.greenhouses",14,"9000.0000000",126000,"68.0000000",612000,8568000,5292000],["cultures.tomatoe_2","messages.greenhouses",14,"8000.0000000",112000,"46.0000000",368000,5152000,2632000]],"totalIncome":29780600,"totalExpense":18076000,"totalAmortization":343333.3333333333,"yearlyInterest":207493.4,"incomeBeforeTax":11153773.266666666,"incomeTax":1673065.9899999998,"totalNetIncome":9480707.276666665,"moneyFlux":10031534.01,"firstYearCredit":827493.4538783454,"dscr":12.122795610023996}'),
+	(111, '2020-04-01 22:02:53', '2020-04-01 22:05:30', 21, 'Ferme e hapur', 'Ferme e hapur', '[{"applicantName":"Ferme e hapur","businessCode":"Ferme e hapur","farmCategory":{"id":12,"created_at":"2020-04-01 20:55:23","updated_at":"2020-04-01 20:55:26","name":"messages.open_field","option_number":1,"culture_number":2,"image":"fushe.png","labels":[{"id":118,"created_at":"2020-04-01 21:04:24","updated_at":"2020-04-01 21:04:24","value":"investment_plan.agricultural_mechanic","order":1,"category_id":12,"type":0,"amortization":20,"extra_data":0},{"id":124,"created_at":"2020-04-01 21:13:41","updated_at":"2020-04-01 21:13:42","value":"business_data.surface","order":1,"category_id":12,"type":1,"amortization":0,"extra_data":0},{"id":119,"created_at":"2020-04-01 21:09:48","updated_at":"2020-04-01 21:09:49","value":"investment_plan.mulching_plastic","order":2,"category_id":12,"type":0,"amortization":1,"extra_data":0},{"id":125,"created_at":"2020-04-01 21:14:45","updated_at":"2020-04-01 21:14:46","value":"business_data.technology","order":2,"category_id":12,"type":1,"amortization":0,"extra_data":0},{"id":120,"created_at":"2020-04-01 21:11:00","updated_at":"2020-04-01 21:11:00","value":"investment_plan.drip_irrigation","order":3,"category_id":12,"type":0,"amortization":10,"extra_data":0},{"id":126,"created_at":"2020-04-01 21:15:07","updated_at":"2020-04-01 21:15:12","value":"business_data.culture_1","order":3,"category_id":12,"type":1,"amortization":0,"extra_data":0},{"id":123,"created_at":"2020-04-01 21:12:52","updated_at":"2020-04-01 21:12:53","value":"investment_plan.agricultural_inputs","order":4,"category_id":12,"type":0,"amortization":0,"extra_data":0},{"id":127,"created_at":"2020-04-01 21:15:30","updated_at":"2020-04-01 21:15:31","value":"business_data.culture_2","order":4,"category_id":12,"type":1,"amortization":0,"extra_data":0}]},"investmentPlans":[[2000000,500000,100000,200000,2800000]],"investmentLabels":["investment_plan.agricultural_mechanic","investment_plan.mulching_plastic","investment_plan.drip_irrigation","investment_plan.agricultural_inputs","messages.total"],"investmentLabelsExtra":[0,0,0,0],"totalValuePlans":[[2000000,500000,100000,200000,2800000]],"businessData":[[20,1,45,47]],"businessLabels":["business_data.surface","business_data.technology","business_data.culture_1","business_data.culture_2"],"loanData":[["2800000","12","5","12","02\\/04\\/2020"],["0",0,0,0,0]],"extraInvestments":[[0]]}]', '{"cultures":[["cultures.melon","messages.open_field",20,"2500.0000000",50000,"37.0000000",92500,1850000,1350000],["cultures.cabbage","messages.open_field",20,"5500.0000000",110000,"15.0000000",82500,1650000,1100000]],"totalIncome":3500000,"totalExpense":2450000,"totalAmortization":610000,"yearlyInterest":187413.6,"incomeBeforeTax":252586.4,"incomeTax":0,"totalNetIncome":252586.4,"moneyFlux":1050000,"firstYearCredit":747413.4422126993,"dscr":1.4048449501945008}');
 /*!40000 ALTER TABLE `plans` ENABLE KEYS */;
 
 -- Dumping structure for table agri_db.plan_category
-DROP TABLE IF EXISTS `plan_category`;
 CREATE TABLE IF NOT EXISTS `plan_category` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `plan_id` bigint(20) unsigned NOT NULL,
@@ -322,9 +327,9 @@ CREATE TABLE IF NOT EXISTS `plan_category` (
   KEY `plan_category_category_id_foreign` (`category_id`),
   CONSTRAINT `plan_category_category_id_foreign` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`) ON DELETE CASCADE,
   CONSTRAINT `plan_category_plan_id_foreign` FOREIGN KEY (`plan_id`) REFERENCES `plans` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=83 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=84 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table agri_db.plan_category: ~36 rows (approximately)
+-- Dumping data for table agri_db.plan_category: ~6 rows (approximately)
 DELETE FROM `plan_category`;
 /*!40000 ALTER TABLE `plan_category` DISABLE KEYS */;
 INSERT INTO `plan_category` (`id`, `plan_id`, `category_id`) VALUES
@@ -333,11 +338,11 @@ INSERT INTO `plan_category` (`id`, `plan_id`, `category_id`) VALUES
 	(79, 108, 2),
 	(80, 109, 2),
 	(81, 110, 2),
-	(82, 110, 1);
+	(82, 110, 1),
+	(83, 111, 12);
 /*!40000 ALTER TABLE `plan_category` ENABLE KEYS */;
 
 -- Dumping structure for table agri_db.roles
-DROP TABLE IF EXISTS `roles`;
 CREATE TABLE IF NOT EXISTS `roles` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -355,7 +360,6 @@ INSERT INTO `roles` (`id`, `created_at`, `updated_at`, `name`) VALUES
 /*!40000 ALTER TABLE `roles` ENABLE KEYS */;
 
 -- Dumping structure for table agri_db.taxes
-DROP TABLE IF EXISTS `taxes`;
 CREATE TABLE IF NOT EXISTS `taxes` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -377,7 +381,6 @@ INSERT INTO `taxes` (`id`, `created_at`, `updated_at`, `name`, `bottom_threshold
 /*!40000 ALTER TABLE `taxes` ENABLE KEYS */;
 
 -- Dumping structure for table agri_db.technologies
-DROP TABLE IF EXISTS `technologies`;
 CREATE TABLE IF NOT EXISTS `technologies` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -396,7 +399,6 @@ INSERT INTO `technologies` (`id`, `created_at`, `updated_at`, `name`) VALUES
 /*!40000 ALTER TABLE `technologies` ENABLE KEYS */;
 
 -- Dumping structure for table agri_db.users
-DROP TABLE IF EXISTS `users`;
 CREATE TABLE IF NOT EXISTS `users` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -427,7 +429,6 @@ INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `re
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 
 -- Dumping structure for table agri_db.values
-DROP TABLE IF EXISTS `values`;
 CREATE TABLE IF NOT EXISTS `values` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -443,9 +444,9 @@ CREATE TABLE IF NOT EXISTS `values` (
   KEY `values_culture_id_foreign` (`culture_id`),
   CONSTRAINT `values_culture_id_foreign` FOREIGN KEY (`culture_id`) REFERENCES `cultures` (`id`) ON DELETE CASCADE,
   CONSTRAINT `values_technology_id_foreign` FOREIGN KEY (`technology_id`) REFERENCES `technologies` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=123 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=132 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table agri_db.values: ~93 rows (approximately)
+-- Dumping data for table agri_db.values: ~102 rows (approximately)
 DELETE FROM `values`;
 /*!40000 ALTER TABLE `values` DISABLE KEYS */;
 INSERT INTO `values` (`id`, `created_at`, `updated_at`, `technology_id`, `culture_id`, `efficiency`, `price`, `cost`, `multiply_by_production`) VALUES
@@ -541,7 +542,16 @@ INSERT INTO `values` (`id`, `created_at`, `updated_at`, `technology_id`, `cultur
 	(117, '2019-11-26 06:47:15', '2019-11-26 06:47:16', 3, 43, 2500.0000000, 74.0000000, 38.0000000, 0),
 	(118, '2019-11-26 06:55:59', '2019-11-26 06:56:00', 1, 44, 1800.0000000, 58.0000000, 40.0000000, 0),
 	(121, '2019-11-26 06:56:20', '2019-11-26 06:56:24', 2, 44, 2000.0000000, 62.0000000, 38.0000000, 0),
-	(122, '2019-11-26 06:57:16', '2019-11-26 06:57:17', 3, 44, 2200.0000000, 66.5000000, 36.3000000, 0);
+	(122, '2019-11-26 06:57:16', '2019-11-26 06:57:17', 3, 44, 2200.0000000, 66.5000000, 36.3000000, 0),
+	(123, '2020-04-01 21:19:51', '2020-04-01 21:19:55', 1, 45, 2500.0000000, 37.0000000, 27.0000000, 0),
+	(124, '2020-04-01 21:21:10', '2020-04-01 21:21:11', 2, 45, 2800.0000000, 38.0000000, 28.0000000, 0),
+	(125, '2020-04-01 21:21:59', '2020-04-01 21:22:00', 3, 45, 3000.0000000, 40.8000000, 30.5000000, 0),
+	(126, '2020-04-01 21:22:56', '2020-04-01 21:22:57', 1, 46, 6000.0000000, 17.0000000, 11.5000000, 0),
+	(127, '2020-04-01 21:23:41', '2020-04-01 21:23:42', 2, 46, 6500.0000000, 18.0000000, 12.0000000, 0),
+	(128, '2020-04-01 21:24:24', '2020-04-01 21:24:25', 3, 46, 7000.0000000, 19.3000000, 13.1000000, 0),
+	(129, '2020-04-01 21:26:47', '2020-04-01 21:26:48', 1, 47, 5500.0000000, 15.0000000, 10.0000000, 0),
+	(130, '2020-04-01 21:27:11', '2020-04-01 21:27:12', 2, 47, 6000.0000000, 15.5000000, 10.5000000, 0),
+	(131, '2020-04-01 21:27:44', '2020-04-01 21:27:45', 3, 47, 6500.0000000, 16.2000000, 11.3000000, 0);
 /*!40000 ALTER TABLE `values` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;

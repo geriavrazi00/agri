@@ -129,9 +129,9 @@ input.form-control:disabled {
 
 /* Checkbox Toggles  */
 
-input[type="checkbox"] {
+/* input[type="checkbox"] {
     visibility: hidden;
-}
+} */
 
 label.cost-calculator-toggle {
     position: relative;

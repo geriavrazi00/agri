@@ -21,6 +21,9 @@
                         <tr class="resulttablerow">
                             <th class="resulttablehead">{{ trans('messages.applicant') }}</th>
                             <th class="resulttablehead">{{ trans('messages.business_code') }}</th>
+                            @unlessrole(App\Constants::ROLE_BASIC_USER)
+                                <th class="resulttablehead">{{ trans('messages.user') }}</th>
+                            @endunlessrole
                             <th class="resulttablehead">{{ trans('messages.application_date') }}</th>
                             <th class="resulttablehead" style="text-align: center;">{{ trans('messages.actions') }}</th>
                         </tr>
@@ -30,6 +33,9 @@
                             <tr class="resulttablerow">
                                 <td class="resulttabledata">{{$plan->applicant}}</td>
                                 <td class="resulttabledata">{{$plan->business_code}}</td>
+                                @unlessrole(App\Constants::ROLE_BASIC_USER)
+                                    <td class="resulttabledata">{{$plan->user->name}}</td>
+                                @endunlessrole
                                 <td class="resulttabledata">{{$plan->created_at}}</td>
                                 <td class="resulttabledata" style="text-align: center;">
                                     <a href="/plans/{{$plan->id}}" class="btn btn-primary btn-circle btn-sm action-buttons" data-toggle="tooltip" title="{{ trans('messages.details') }}">
@@ -50,14 +56,17 @@
                                             <i class="fa fa-file-pdf-o"></i>
                                         </button>
                                     </form>
-                                    <form method="POST" action="/plans/{{$plan->id}}" style="display:inline; margin:0px; padding:0px;">
-                                        @method('DELETE')
-                                        @csrf
 
-                                        <button type="submit" class="btn btn-danger btn-circle btn-sm action-buttons" data-toggle="tooltip" title="{{ trans('messages.delete') }}" onclick="areYouSure(event, this);">
-                                            <i class="fa fa-trash"></i>
-                                        </button>
-                                    </form>
+                                    @can(App\Constants::DELETE_PLAN)
+                                        <form method="POST" action="/plans/{{$plan->id}}" style="display:inline; margin:0px; padding:0px;">
+                                            @method('DELETE')
+                                            @csrf
+
+                                            <button type="submit" class="btn btn-danger btn-circle btn-sm action-buttons" data-toggle="tooltip" title="{{ trans('messages.delete') }}" onclick="areYouSure(event, this);">
+                                                <i class="fa fa-trash"></i>
+                                            </button>
+                                        </form>
+                                    @endcan
                                 </td>
                             </tr>
                         @endforeach

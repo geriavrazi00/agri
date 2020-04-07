@@ -4,17 +4,16 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddForeignKeyOfRolesToUsers extends Migration
+class AddFatherIdToUsersTable extends Migration
 {
     /**
      * Run the migrations.
      *
      * @return void
      */
-    public function up()
-    {
+    public function up() {
         Schema::table('users', function (Blueprint $table) {
-            $table->foreign('role_id')->references('id')->on('roles')->onDelete('cascade');
+            $table->bigInteger('user_related_id')->after('deleted_at')->default(null)->nullable();
         });
     }
 
@@ -23,8 +22,9 @@ class AddForeignKeyOfRolesToUsers extends Migration
      *
      * @return void
      */
-    public function down()
-    {
-        //
+    public function down() {
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn('user_related_id');
+        });
     }
 }

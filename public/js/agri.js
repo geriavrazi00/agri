@@ -611,3 +611,15 @@ function updateCultures(clickedElement, optionNumber, categoryId) {
         }
     }
 }
+
+function institutionSelectStatus(element, id) {
+    var selectedRoleId = element.options[element.selectedIndex].value;
+
+    if (selectedRoleId === id) {
+        document.getElementById("institution").disabled = false;
+        document.getElementById("institution").style.color = 'black';
+    } else {
+        document.getElementById("institution").disabled = true;
+        document.getElementById("institution").style.color = '#aca5a5';
+    }
+}

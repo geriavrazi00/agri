@@ -16,8 +16,10 @@
         "jenssegers/agent": "^2.6",
         "laravel/framework": "5.8.*",
         "laravel/tinker": "^1.0",
+        "laravelcollective/html": "5.8.0",
         "maatwebsite/excel": "^3.1",
-        "realrashid/sweet-alert": "^3.0"
+        "realrashid/sweet-alert": "^3.0",
+        "spatie/laravel-permission": "^3.11"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.2",

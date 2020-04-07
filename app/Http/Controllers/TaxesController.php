@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Tax;
 use App\Managers\FormulaManager;
 use Illuminate\Http\Request;
-use Redirect;
+use Illuminate\Support\Facades\Redirect;
 use Log;
 
 class TaxesController extends Controller
@@ -16,6 +16,11 @@ class TaxesController extends Controller
         parent::__construct();
         // Fetch the Formula Manager object
         $this->formulaManager = $formulaManager;
+
+        $this->middleware('permission:tax-list|tax-create|tax-edit|tax-delete', ['only' => ['index','show']]);
+        $this->middleware('permission:tax-create', ['only' => ['create','store']]);
+        $this->middleware('permission:tax-edit', ['only' => ['edit','update']]);
+        $this->middleware('permission:tax-delete', ['only' => ['destroy']]);
     }
 
     /**

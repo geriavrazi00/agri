@@ -52,12 +52,18 @@
                     </button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav ml-auto">
-                            <li class="nav-item">
-                                <a class="nav-link {{ Request::is('home') ? 'active-nav' : '' }}" href="/home">{{ trans('messages.dashboard') }}</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link {{ (Request::is('plans') || Request::is('plans/*')) ? 'active-nav' : '' }}" href="/plans">{{ trans('messages.processed_projects') }}</a>
-                            </li>
+                            @can(App\Constants::CREATE_PLAN)
+                                <li class="nav-item">
+                                    <a class="nav-link {{ Request::is('home') ? 'active-nav' : '' }}" href="/home">{{ trans('messages.dashboard') }}</a>
+                                </li>
+                            @endcan
+
+                            @canany([App\Constants::PLAN_LIST, App\Constants::DELETE_PLAN])
+                                <li class="nav-item">
+                                    <a class="nav-link {{ (Request::is('plans') || Request::is('plans/*')) ? 'active-nav' : '' }}" href="/plans">{{ trans('messages.processed_projects') }}</a>
+                                </li>
+                            @endcanany
+
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle {{ (Request::is('myprofile') || Request::is('myprofile/*') ) ? 'active-nav' : ''}}" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     {{ trans('messages.my_profile') }}
@@ -68,18 +74,40 @@
                                 </div>
                             </li>
 
-                            @if (Auth::user()->role->id == App\Constants::ROLE_ADMIN)
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle {{ (Request::is('users') || Request::is('users/*') || Request::is('values') || Request::is('values/*') || Request::is('taxes') || Request::is('taxes/*')) ? 'active-nav' : ''}}" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    {{ trans('messages.administration') }}
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item {{ (Request::is('users') || Request::is('users/*')) ? 'active-nav' : '' }}" href="/users">{{ trans('messages.users') }}</a>
-                                    <a class="dropdown-item {{ (Request::is('values') || Request::is('values/*')) ? 'active-nav' : '' }}" href="/values">{{ trans('messages.coefficients') }}</a>
-                                    <a class="dropdown-item {{ (Request::is('taxes') || Request::is('taxes/*')) ? 'active-nav' : '' }}" href="/taxes">{{ trans('messages.taxes') }}</a>
-                                </div>
-                            </li>
-                            @endif
+                            @role(App\Constants::ROLE_ADMIN_ID)
+                                @canany([App\Constants::USER_LIST, App\Constants::CREATE_USER, App\Constants::EDIT_USER, App\Constants::USER_PASSWORD, App\Constants::DELETE_USER, App\Constants::COEFFICIENT_LIST, App\Constants::EDIT_COEFFICIENT, App\Constants::TAX_LIST, App\Constants::CREATE_TAX, App\Constants::EDIT_TAX, App\Constants::DELETE_TAX, App\Constants::ROLE_LIST, App\Constants::CREATE_ROLE, App\Constants::EDIT_ROLE, App\Constants::DELETE_ROLE])
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle {{ (Request::is('users') || Request::is('users/*') || Request::is('values') || Request::is('values/*') || Request::is('taxes') || Request::is('taxes/*') || Request::is('roles') || Request::is('roles/*')) ? 'active-nav' : ''}}" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            {{ trans('messages.administration') }}
+                                        </a>
+                                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                            @canany([App\Constants::USER_LIST, App\Constants::CREATE_USER, App\Constants::EDIT_USER, App\Constants::USER_PASSWORD, App\Constants::DELETE_USER])
+                                                <a class="dropdown-item {{ (Request::is('users') || Request::is('users/*')) ? 'active-nav' : '' }}" href="/users">{{ trans('messages.users') }}</a>
+                                            @endcanany
+
+                                            @canany([App\Constants::COEFFICIENT_LIST, App\Constants::EDIT_COEFFICIENT])
+                                                <a class="dropdown-item {{ (Request::is('values') || Request::is('values/*')) ? 'active-nav' : '' }}" href="/values">{{ trans('messages.coefficients') }}</a>
+                                            @endcanany
+
+                                            @canany([App\Constants::TAX_LIST, App\Constants::CREATE_TAX, App\Constants::EDIT_TAX, App\Constants::DELETE_TAX])
+                                                <a class="dropdown-item {{ (Request::is('taxes') || Request::is('taxes/*')) ? 'active-nav' : '' }}" href="/taxes">{{ trans('messages.taxes') }}</a>
+                                            @endcanany
+
+                                            @canany([App\Constants::ROLE_LIST, App\Constants::CREATE_ROLE, App\Constants::EDIT_ROLE, App\Constants::DELETE_ROLE])
+                                                <a class="dropdown-item {{ (Request::is('roles') || Request::is('roles/*')) ? 'active-nav' : '' }}" href="/roles">{{ trans('messages.roles') }}</a>
+                                            @endcanany
+                                        </div>
+                                    </li>
+                                @endcanany
+                            @endrole
+
+                            @role(App\Constants::ROLE_INSTITUTION_ID)
+                                @canany([App\Constants::USER_LIST, App\Constants::CREATE_USER, App\Constants::EDIT_USER, App\Constants::USER_PASSWORD, App\Constants::DELETE_USER])
+                                    <li class="nav-item">
+                                        <a class="nav-link {{ (Request::is('users') || Request::is('users/*')) ? 'active-nav' : '' }}" href="/users">{{ trans('messages.users') }}</a>
+                                    </li>
+                                @endcanany
+                            @endrole
 
                             <li class="nav-item" style="display: flex;">
                                 <a class="nav-link" href="{{ url('locale/' . App\Constants::ALBANIAN_LANGUAGE) }}">

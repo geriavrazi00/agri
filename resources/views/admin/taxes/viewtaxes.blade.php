@@ -47,16 +47,22 @@
                 </div>
 
                 <div class="col-md-12" style="text-align: right;">
-                    <a href="/taxes/{{$tax->id}}/edit" class="btn btn-success">
-                        {{ trans('messages.edit') }}
-                    </a>
-                    <form method="POST" action="/taxes/{{$tax->id}}" style="display:inline; margin:0px; padding:0px;">
-                        @method('DELETE')
-                        @csrf
-                        <button type="submit" class="btn btn-danger" onclick="areYouSure(event, this);">
-                            {{ trans('messages.delete') }}
-                        </button>
-                    </form>
+                    @can(App\Constants::EDIT_TAX)
+                        <a href="/taxes/{{$tax->id}}/edit" class="btn btn-success">
+                            {{ trans('messages.edit') }}
+                        </a>
+                    @endcan
+
+                    @can(App\Constants::DELETE_TAX)
+                        <form method="POST" action="/taxes/{{$tax->id}}" style="display:inline; margin:0px; padding:0px;">
+                            @method('DELETE')
+                            @csrf
+                            <button type="submit" class="btn btn-danger" onclick="areYouSure(event, this);">
+                                {{ trans('messages.delete') }}
+                            </button>
+                        </form>
+                    @endcan
+
                     <a href="/taxes" class="btn btn-primary">
                         {{ trans('messages.back') }}
                     </a>

@@ -55,6 +55,8 @@ Route::group(['middleware' => 'language'], function () {
     Route::post('/export/pdf', 'ResultController@exportPdf')->middleware('auth');
     Route::post('/plans/save', 'ResultController@savePlan')->middleware('auth');
 
+    Route::resource('roles', 'RolesController')->middleware('auth');
+
     /* Plans */
     Route::resource('plans', 'PlansController')->only([
         'index', 'show', /*'edit',*/ 'destroy'
@@ -68,7 +70,7 @@ Route::group(['middleware' => 'language'], function () {
     Route::get('/myprofile/password', 'MyProfileController@changePassword')->middleware('auth');
     Route::put('/myprofile/password/save', 'MyProfileController@savePassword')->middleware('auth');
 
-    Route::group(['middleware' => 'role'], function() {
+    //Route::group(['middleware' => 'role'], function() {
         /* Users */
         Route::resource('users', 'UsersController')->middleware('auth');
         Route::get('/users/{id}/password', 'UsersController@changePassword')->middleware('auth');
@@ -82,5 +84,5 @@ Route::group(['middleware' => 'language'], function () {
 
         /* Taxes */
         Route::resource('taxes', 'TaxesController')->middleware('auth');
-    });
+    //});
 });

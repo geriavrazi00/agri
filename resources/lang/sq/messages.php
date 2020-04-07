@@ -72,6 +72,7 @@ return [
     'administration' => 'Administrim',
     'users' => 'Përdoruesit',
     'coefficients' => 'Koefiçentët',
+    'roles' => 'Rolet',
     'language' => 'Gjuha',
     'albanian' => 'SHQ',
     'english' => 'ANG',
@@ -136,6 +137,7 @@ return [
     'delete_message' => 'Pas fshirjes nuk mund ti rimerrni të dhënat mbrapsht!',
     'cancel' => 'Anullo',
     'project_deleted' => 'Projekti u fshi me sukses!',
+    'user' => 'Përdoruesi',
 
     //My profile
     'update_data' => 'Përditëso të dhënat e mia',
@@ -168,6 +170,8 @@ return [
     'user_updated' => 'Përdoruesi u përditësua me sukses!',
     'user_password_updated' => 'Fjalëkalimi i përdoruesit u përditësua me sukses!',
     'user_deleted' => 'Përdoruesi u fshi me sukses!',
+    'institution' => 'Institucioni',
+    'no_institution_selected' => 'Asnjë institucion i zgjedhur',
 
     //Coefficients
     'coefficient_management' => 'Menaxhimi i koefiçentëve të kategorive',
@@ -207,4 +211,37 @@ return [
     //Extra data
     'extra_greenhouse' => 'Sip/dy',
     'extra_sheep' => 'krerë',
+
+    //Roles
+    'roles_management' => 'Menaxhimi i roleve',
+    'create_role' => 'Krijo një rol',
+    'edit_role' => 'Modifiko rolin',
+    'view_role' => 'Shiko të dhënat në detaje',
+    'permissions' => 'Të drejtat',
+    'role_created' => 'Roli u krijua me sukses!',
+    'role_updated' => 'Roli u përditësua me sukses!',
+    'role_deleted' => 'Roli u fshi me sukses!',
+
+    //Permissions
+    'role-list' => 'Rolet - lista',
+    'role-create' => 'Rolet - krijim',
+    'role-edit' => 'Rolet - modifikim',
+    'role-delete' => 'Rolet - fshirje',
+    'plan-list' => 'Planet - lista',
+    'plan-create' => 'Planet - krijim',
+    'plan-edit' => 'Planet - modifikim',
+    'plan-delete' => 'Planet - fshirje',
+    'user-list' => 'Përdoruesit - lista',
+    'user-create'=> 'Përdoruesit - krijim',
+    'user-edit'=> 'Përdoruesit - modifikim',
+    'user-password'=> 'Përdoruesit - fjalëkalimi',
+    'user-delete'=> 'Përdoruesit - fshirje',
+    'coefficient-list' => 'Koefiçentët - lista',
+    'coefficient-create' => 'Koefiçentët - krijim',
+    'coefficient-edit' => 'Koefiçentët - modifikim',
+    'coefficient-delete' => 'Koefiçentët - fshirje',
+    'tax-list' => 'Tatimet - lista',
+    'tax-create' => 'Tatimet - krijim',
+    'tax-edit' => 'Tatimet - modifikim',
+    'tax-delete' => 'Tatimet - fshirje',
 ];

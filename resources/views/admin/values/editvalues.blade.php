@@ -74,11 +74,13 @@
                     <br />
 
                     <div class="col-md-12" style="text-align: right;">
-                        <button type="submit" class="btn btn-success">
-                            {{ trans('messages.update') }}
-                        </button>
+                        @can(App\Constants::EDIT_COEFFICIENT)
+                            <button type="submit" class="btn btn-success">
+                                {{ trans('messages.update') }}
+                            </button>
+                        @endcan
 
-                        <a href="{{ url()->previous() }}" class="btn btn-primary">
+                        <a href="/values" class="btn btn-primary">
                             {{ trans('messages.back') }}
                         </a>
                     </div>

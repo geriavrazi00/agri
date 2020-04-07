@@ -1,25 +1,40 @@
 <?php
 
+
 namespace App\Http\Controllers;
 
-use App\Role;
+use App\Constants;
 use App\User;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
-use Auth;
-use Hash;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Redirect;
 use Log;
-use Redirect;
+use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 use Validator;
 
 class UsersController extends Controller {
+
+    function __construct() {
+        parent::__construct();
+
+        $this->middleware('permission:user-list|user-create|user-edit|user-password|user-delete', ['only' => ['index','show']]);
+        $this->middleware('permission:user-create', ['only' => ['create','store']]);
+        $this->middleware('permission:user-edit', ['only' => ['edit','update']]);
+        $this->middleware('permission:user-password', ['only' => ['changePassword','savePassword']]);
+        $this->middleware('permission:user-delete', ['only' => ['destroy']]);
+    }
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index() {
-        $users = User::where('id', '!=', Auth::user()->id)->orderBy('name')->get();
+        $users = $this->evaluateUsersToLoad();
         return view('/admin/users/userslist', compact('users'));
     }
 
@@ -29,8 +44,12 @@ class UsersController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function create() {
-        $roles = Role::orderBy('id', 'desc')->get();
-        return view('/admin/users/createusers', compact('roles'));
+        $roles = Role::orderBy('name')->get();
+        $institutions = User::whereHas('roles', function (Builder $query) {
+            $query->where('id', '=', Constants::ROLE_INSTITUTION_ID);
+        })->get();
+
+        return view('/admin/users/createusers', compact('roles', 'institutions'));
     }
 
     /**
@@ -54,14 +73,20 @@ class UsersController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request) {
-        $validatedData = $this->validator($request);
+        $this->validator($request);
 
-        User::create([
-            'name' => $request['name'],
-            'email' => $request['email'],
-            'password' => Hash::make($request['password']),
-            'role_id' => $request['role'],
-        ]);
+        $roleId = $this->evaluateRole($request['role']);
+        $role = Role::where('id', '=', $roleId)->with('permissions')->first();
+        $permissions = $role->permissions;
+
+        $user = new User();
+        $user->name = $request['name'];
+        $user->email = $request['email'];
+        $user->password = Hash::make($request['password']);
+        $user->syncRoles([$roleId]);
+        $user->syncPermissions($permissions);
+        $user = $this->evaluateInstitutionRelation($user, $request['institution']);
+        $user->save();
 
         return Redirect::to('/users')->withSuccessMessage(trans('messages.user_created'));
     }
@@ -73,7 +98,9 @@ class UsersController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function show(User $user) {
-        return view('/admin/users/viewusers', ['user' => $user]);
+        if ($this->evaluateUserSelected($user))
+            return view('/admin/users/viewusers', ['user' => $user]);
+        else return Redirect::to('/404');
     }
 
     /**
@@ -83,10 +110,19 @@ class UsersController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function edit(User $user) {
-        return view('/admin/users/editusers', [
-            'user' => $user,
-            'roles' => Role::orderBy('id', 'desc')->get(),
-        ]);
+        if ($this->evaluateUserSelected($user)) {
+            $institutions = User::whereHas('roles', function (Builder $query) {
+                $query->where('id', '=', Constants::ROLE_INSTITUTION_ID);
+            })->get();
+
+            return view('/admin/users/editusers', [
+                'user' => $user,
+                'roles' => Role::orderBy('name')->get(),
+                'institutions' => $institutions,
+            ]);
+        } else {
+            return Redirect::to('/404');
+        }
     }
 
     /**
@@ -106,13 +142,25 @@ class UsersController extends Controller {
             return back()->withErrors($validator)->withInput();
         }
 
-        User::where('id', '=', $id)->update([
-            'name' => $request['name'],
-            'email' => $request['email'],
-            'role_id' => $request['role'],
-        ]);
+        $user = User::find($id);
 
-        return Redirect::to('/users')->withSuccessMessage(trans('messages.user_updated'));
+        if ($this->evaluateUserSelected($user)) {
+            $roleId = $this->evaluateRole($request['role']);
+            $role = Role::where('id', '=', $roleId)->with('permissions')->first();
+            $permissions = $role->permissions;
+
+            $user->name = $request['name'];
+            $user->email = $request['email'];
+            $user->password = Hash::make($request['password']);
+            $user->syncRoles([$roleId]);
+            $user->syncPermissions($permissions);
+            $user = $this->evaluateInstitutionRelation($user, $request['institution']);
+            $user->save();
+
+            return Redirect::to('/users')->withSuccessMessage(trans('messages.user_updated'));
+        } else {
+            return Redirect::to('/404');
+        }
     }
 
     /**
@@ -123,7 +171,12 @@ class UsersController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function changePassword($id) {
-        return view('/admin/users/userspassword', ['user' => User::findOrFail($id)]);
+        $user = User::findOrFail($id);
+        if ($this->evaluateUserSelected($user)) {
+            return view('/admin/users/userspassword', compact('user'));
+        } else {
+            return Redirect::to('/404');
+        }
     }
 
     /**
@@ -142,11 +195,17 @@ class UsersController extends Controller {
             return back()->withErrors($validator);
         }
 
-        User::where('id', '=', $id)->update([
-            'password' => Hash::make($request['password']),
-        ]);
+        $user = User::find($id);
 
-        return Redirect::to('/users')->withSuccessMessage(trans('messages.user_password_updated'));
+        if ($this->evaluateUserSelected($user)) {
+            User::where('id', '=', $id)->update([
+                'password' => Hash::make($request['password']),
+            ]);
+
+            return Redirect::to('/users')->withSuccessMessage(trans('messages.user_password_updated'));
+        } else {
+            return Redirect::to('/404');
+        }
     }
 
     /**
@@ -156,7 +215,54 @@ class UsersController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function destroy($id) {
-        User::where('id', '=', $id)->delete();
-        return Redirect::to('/users')->withSuccessMessage(trans('messages.user_deleted'));
+        $user = User::find($id);
+
+        if ($this->evaluateUserSelected($user)) {
+            $user->delete();
+            return Redirect::to('/users')->withSuccessMessage(trans('messages.user_deleted'));
+        } else {
+            return Redirect::to('/404');
+        }
+    }
+
+    private function evaluateUsersToLoad() {
+        if (Auth::user()->roles[0]->id == Constants::ROLE_INSTITUTION_ID) {
+            $users = User::where('id', '!=', Auth::user()->id)
+                ->where('user_related_id', '=', Auth::user()->id)
+                ->orderBy('name')->get();
+        } else {
+            $users = User::where('id', '!=', Auth::user()->id)->orderBy('name')->get();
+        }
+
+        return $users;
+    }
+
+    private function evaluateRole($selectedRole) {
+        if (Auth::user()->roles[0]->id == Constants::ROLE_ADMIN_ID) {
+            $role = $selectedRole;
+        } else {
+            $role = Constants::ROLE_BASIC_USER;
+        }
+
+        return $role;
+    }
+
+    private function evaluateInstitutionRelation($user, $institutionId) {
+        if (Auth::user()->roles[0]->id == Constants::ROLE_ADMIN_ID) {
+            $user->user_related_id = $institutionId;
+        } else if (Auth::user()->roles[0]->id == Constants::ROLE_INSTITUTION_ID) {
+            $user->user_related_id = Auth::user()->id;
+        }
+
+        return $user;
+    }
+
+    private function evaluateUserSelected($user) {
+        if (Auth::user()->roles[0]->id == Constants::ROLE_INSTITUTION_ID) {
+            if (Auth::user()->id == $user->user_related_id) return true;
+            else return false;
+        }
+
+        return true;
     }
 }

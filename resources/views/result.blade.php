@@ -114,14 +114,16 @@
                 <br/>
 
                 <div class="col-md-12" style="text-align: right;">
-                    <form method="POST" action="/plans/save" style="display: inline; margin: 0px;">
-                        @csrf
-                        <input type="hidden" id="inputs" name="inputs" value="{{ $inputs }}" />
-                        <input type="hidden" id="result" name="result" value="{{ json_encode($result->convertToJson()) }}" />
-                        <input type="hidden" id="date" name="date" value="{{ $date }}" />
+                    @can(App\Constants::CREATE_PLAN)
+                        <form method="POST" action="/plans/save" style="display: inline; margin: 0px;">
+                            @csrf
+                            <input type="hidden" id="inputs" name="inputs" value="{{ $inputs }}" />
+                            <input type="hidden" id="result" name="result" value="{{ json_encode($result->convertToJson()) }}" />
+                            <input type="hidden" id="date" name="date" value="{{ $date }}" />
 
-                        <button type="submit" class="btn btn-primary">{{ trans('messages.save_project') }}</button>
-                    </form>
+                            <button type="submit" class="btn btn-primary">{{ trans('messages.save_project') }}</button>
+                        </form>
+                    @endcan
 
                     <form method="POST" action="/export/excel" style="display: inline; margin: 0px;">
                         @csrf

@@ -19,7 +19,7 @@ class Plan extends Model
      * Get the category associated with the user.
      */
     public function user() {
-        return $this->hasOne('App\User');
+        return $this->belongsTo('App\User');
     }
 
     /**

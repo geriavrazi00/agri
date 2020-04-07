@@ -277,14 +277,16 @@
                         </button>
                     </form>
 
-                    <form method="POST" action="/plans/{{$plan->id}}" style="display: inline; margin: 0px;">
-                        @method('DELETE')
-                        @csrf
+                    @can(App\Constants::DELETE_PLAN)
+                        <form method="POST" action="/plans/{{$plan->id}}" style="display: inline; margin: 0px;">
+                            @method('DELETE')
+                            @csrf
 
-                        <button type="submit" class="btn btn-danger" onclick="areYouSure(event, this);">
-                            {{ trans('messages.delete') }}
-                        </button>
-                    </form>
+                            <button type="submit" class="btn btn-danger" onclick="areYouSure(event, this);">
+                                {{ trans('messages.delete') }}
+                            </button>
+                        </form>
+                    @endcan
 
                     <form style="display: inline; margin: 0px;">
                         <a href="/plans" class="btn btn-primary">

@@ -41,11 +41,13 @@
                     </div>
 
                     <div class="col-md-12" style="text-align: right;">
-                        <button type="submit" class="btn btn-success">
-                            {{ trans('messages.save') }}
-                        </button>
+                        @can(App\Constants::USER_PASSWORD)
+                            <button type="submit" class="btn btn-success">
+                                {{ trans('messages.save') }}
+                            </button>
+                        @endcan
 
-                        <a href="{{ url()->previous() }}" class="btn btn-primary">
+                        <a href="/users" class="btn btn-primary">
                             {{ trans('messages.back') }}
                         </a>
                     </div>

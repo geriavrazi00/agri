@@ -46,26 +46,45 @@
                         </div>
                     </div>
 
-                    <div class="form-group row">
-                        <label for="role" class="col-md-4 col-form-label text-md-right">{{ trans('messages.role') }}</label>
+                    @role(App\Constants::ROLE_ADMIN_ID)
+                        <div class="form-group row">
+                            <label for="role" class="col-md-4 col-form-label text-md-right">{{ trans('messages.role') }}</label>
 
-                        <div class="col-md-6">
-                        	<select id="role" class="form-control" name="role" required style="border-radius:5px; color: black;">
-                        		@foreach($roles as $role)
-                        			<option value="{{$role->id}}" {{old('role') == $user->role->id ? 'selected' : ($role->id == $user->role->id ? 'selected' : '')}}>
-                        				{{ trans($role->name) }}
-                        			</option>
-                        		@endforeach
-                        	</select>
+                            <div class="col-md-6">
+                                <select id="role" class="form-control" name="role" required style="border-radius:5px; color: black;" onchange="institutionSelectStatus(this, '{{App\Constants::ROLE_BASIC_USER}}');">
+                                    @foreach($roles as $role)
+                                        <option value="{{$role->id}}" {{old('role') == $user->roles[0]->id ? 'selected' : ($role->id == $user->roles[0]->id ? 'selected' : '')}}>
+                                            {{ trans($role->name) }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
                         </div>
-                    </div>
+
+                        <div class="form-group row">
+                            <label for="institution" class="col-md-4 col-form-label text-md-right" style="color: black;">{{ trans('messages.institution') }}</label>
+
+                            <div class="col-md-6">
+                                <select id="institution" class="form-control" name="institution" {{$user->roles[0]->id != App\Constants::ROLE_BASIC_USER ? 'disabled style="border-radius:5px;"' : "style=border-radius:5px;color:black;"}}>
+                                    <option value="">{{trans('messages.no_institution_selected')}}</option>
+                                    @foreach($institutions as $institution)
+                                        <option value="{{$institution->id}}" {{$user->user_related_id == $institution->id ? 'selected' : ''}}>
+                                            {{ trans($institution->name) }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                    @endrole
 
                     <div class="col-md-12" style="text-align: right;">
-                        <button type="submit" class="btn btn-success">
-                            {{ trans('messages.edit') }}
-                        </button>
+                        @can(App\Constants::EDIT_USER)
+                            <button type="submit" class="btn btn-success">
+                                {{ trans('messages.update') }}
+                            </button>
+                        @endcan
 
-                        <a href="{{ url()->previous() }}" class="btn btn-primary">
+                        <a href="/users" class="btn btn-primary">
                             {{ trans('messages.back') }}
                         </a>
                     </div>

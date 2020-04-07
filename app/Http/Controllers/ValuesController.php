@@ -17,6 +17,9 @@ class ValuesController extends Controller
         parent::__construct();
         // Fetch the Formula Manager object
         $this->formulaManager = $formulaManager;
+
+        $this->middleware('permission:coefficient-list|coefficient-edit', ['only' => ['index','show']]);
+        $this->middleware('permission:coefficient-edit', ['only' => ['edit','update']]);
     }
 
     /**

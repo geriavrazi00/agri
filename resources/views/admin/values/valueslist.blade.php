@@ -29,9 +29,12 @@
                                     <a href="/values/{{$category->id}}" class="btn btn-primary btn-circle btn-sm action-buttons" data-toggle="tooltip" title="{{ trans('messages.details') }}">
                                         <i class="fa fa-eye"></i>
                                     </a>
-                                    <a href="/values/{{$category->id}}/edit" class="btn btn-success btn-circle btn-sm edit-buttons" data-toggle="tooltip" title="{{ trans('messages.edit_coefficient') }}">
-                                        <i class="fa fa-edit"></i>
-                                    </a>
+
+                                    @can(App\Constants::EDIT_COEFFICIENT)
+                                        <a href="/values/{{$category->id}}/edit" class="btn btn-success btn-circle btn-sm edit-buttons" data-toggle="tooltip" title="{{ trans('messages.edit_coefficient') }}">
+                                            <i class="fa fa-edit"></i>
+                                        </a>
+                                    @endcan
                                 </td>
                             </tr>
                         @endforeach
