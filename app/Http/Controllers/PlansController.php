@@ -108,10 +108,14 @@ class PlansController extends Controller
      */
     private function evaluatePlans() {
         if (Auth::user()->roles[0]->id == Constants::ROLE_ADMIN_ID) {
-            $plans = Plan::with('user')->with('user')->orderBy('created_at', 'desc')->get();
+            $plans = Plan::whereHas('user', function (Builder $query) {
+                    $query->where('deleted_at', '=', null);
+                })->with('user')
+                ->orderBy('created_at', 'desc')
+                ->get();
         } else if (Auth::user()->roles[0]->id == Constants::ROLE_INSTITUTION_ID) {
             $plans = Plan::whereHas('user', function (Builder $query) {
-                    $query->where('user_related_id', '=', Auth::user()->id);
+                    $query->where('user_related_id', '=', Auth::user()->id)->where('deleted_at', '=', null);
                 })->orWhere('user_id', '=', Auth::user()->id)
                 ->with('user')
                 ->orderBy('created_at', 'desc')

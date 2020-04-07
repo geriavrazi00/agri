@@ -75,7 +75,7 @@
                             </li>
 
                             @role(App\Constants::ROLE_ADMIN_ID)
-                                @canany([App\Constants::USER_LIST, App\Constants::CREATE_USER, App\Constants::EDIT_USER, App\Constants::USER_PASSWORD, App\Constants::DELETE_USER, App\Constants::COEFFICIENT_LIST, App\Constants::EDIT_COEFFICIENT, App\Constants::TAX_LIST, App\Constants::CREATE_TAX, App\Constants::EDIT_TAX, App\Constants::DELETE_TAX, App\Constants::ROLE_LIST, App\Constants::CREATE_ROLE, App\Constants::EDIT_ROLE, App\Constants::DELETE_ROLE])
+                                @canany([App\Constants::USER_LIST, App\Constants::CREATE_USER, App\Constants::EDIT_USER, App\Constants::USER_PASSWORD, App\Constants::DELETE_USER, App\Constants::COEFFICIENT_LIST, App\Constants::EDIT_COEFFICIENT, App\Constants::TAX_LIST, App\Constants::CREATE_TAX, App\Constants::EDIT_TAX, App\Constants::DELETE_TAX/*, App\Constants::ROLE_LIST, App\Constants::CREATE_ROLE, App\Constants::EDIT_ROLE, App\Constants::DELETE_ROLE*/])
                                     <li class="nav-item dropdown">
                                         <a class="nav-link dropdown-toggle {{ (Request::is('users') || Request::is('users/*') || Request::is('values') || Request::is('values/*') || Request::is('taxes') || Request::is('taxes/*') || Request::is('roles') || Request::is('roles/*')) ? 'active-nav' : ''}}" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             {{ trans('messages.administration') }}
@@ -93,9 +93,9 @@
                                                 <a class="dropdown-item {{ (Request::is('taxes') || Request::is('taxes/*')) ? 'active-nav' : '' }}" href="/taxes">{{ trans('messages.taxes') }}</a>
                                             @endcanany
 
-                                            @canany([App\Constants::ROLE_LIST, App\Constants::CREATE_ROLE, App\Constants::EDIT_ROLE, App\Constants::DELETE_ROLE])
+                                            {{-- @canany([App\Constants::ROLE_LIST, App\Constants::CREATE_ROLE, App\Constants::EDIT_ROLE, App\Constants::DELETE_ROLE])
                                                 <a class="dropdown-item {{ (Request::is('roles') || Request::is('roles/*')) ? 'active-nav' : '' }}" href="/roles">{{ trans('messages.roles') }}</a>
-                                            @endcanany
+                                            @endcanany --}}
                                         </div>
                                     </li>
                                 @endcanany

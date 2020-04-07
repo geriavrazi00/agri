@@ -218,6 +218,7 @@ class UsersController extends Controller {
         $user = User::find($id);
 
         if ($this->evaluateUserSelected($user)) {
+            $this->deleteUsersConnected($user);
             $user->delete();
             return Redirect::to('/users')->withSuccessMessage(trans('messages.user_deleted'));
         } else {
@@ -264,5 +265,16 @@ class UsersController extends Controller {
         }
 
         return true;
+    }
+
+    /** If the selected user is an institution, delete also all the related users to it */
+    private function deleteUsersConnected($user) {
+        if ($user->roles[0]->id == Constants::ROLE_INSTITUTION_ID) {
+            $connectedUsers = User::where('user_related_id', '=', $user->id)->get();
+
+            foreach ($connectedUsers as $user) {
+                $user->delete();
+            }
+        }
     }
 }

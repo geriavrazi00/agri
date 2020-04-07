@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Session;
 
 /*
 |--------------------------------------------------------------------------
@@ -55,8 +57,6 @@ Route::group(['middleware' => 'language'], function () {
     Route::post('/export/pdf', 'ResultController@exportPdf')->middleware('auth');
     Route::post('/plans/save', 'ResultController@savePlan')->middleware('auth');
 
-    Route::resource('roles', 'RolesController')->middleware('auth');
-
     /* Plans */
     Route::resource('plans', 'PlansController')->only([
         'index', 'show', /*'edit',*/ 'destroy'
@@ -70,19 +70,20 @@ Route::group(['middleware' => 'language'], function () {
     Route::get('/myprofile/password', 'MyProfileController@changePassword')->middleware('auth');
     Route::put('/myprofile/password/save', 'MyProfileController@savePassword')->middleware('auth');
 
-    //Route::group(['middleware' => 'role'], function() {
-        /* Users */
-        Route::resource('users', 'UsersController')->middleware('auth');
-        Route::get('/users/{id}/password', 'UsersController@changePassword')->middleware('auth');
-        Route::put('/users/{id}/password/save', 'UsersController@savePassword')->middleware('auth');
+    /* Users */
+    Route::resource('users', 'UsersController')->middleware('auth');
+    Route::get('/users/{id}/password', 'UsersController@changePassword')->middleware('auth');
+    Route::put('/users/{id}/password/save', 'UsersController@savePassword')->middleware('auth');
 
-        /* Values */
-        Route::get('/values', 'ValuesController@index')->middleware('auth');
-        Route::get('/values/{id}', 'ValuesController@show')->middleware('auth');
-        Route::get('/values/{id}/edit', 'ValuesController@edit')->middleware('auth');
-        Route::put('/values/{id}', 'ValuesController@update')->middleware('auth');
+    /* Values */
+    Route::get('/values', 'ValuesController@index')->middleware('auth');
+    Route::get('/values/{id}', 'ValuesController@show')->middleware('auth');
+    Route::get('/values/{id}/edit', 'ValuesController@edit')->middleware('auth');
+    Route::put('/values/{id}', 'ValuesController@update')->middleware('auth');
 
-        /* Taxes */
-        Route::resource('taxes', 'TaxesController')->middleware('auth');
-    //});
+    /* Taxes */
+    Route::resource('taxes', 'TaxesController')->middleware('auth');
+
+    /* Roles */
+    // Route::resource('roles', 'RolesController')->middleware('auth');
 });
