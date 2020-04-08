@@ -542,15 +542,18 @@ function formatPercentage(input, blur) {
 }
 
 function updateCultures(clickedElement, optionNumber, categoryId) {
+
     //First we get the culture strings grouped in the defined periods
-    var firstPeriodCultures = Lang.get('cultures.greenhouse_first_period_products');
-    var secondPeriodCultures = Lang.get('cultures.greenhouse_second_period_products');
-    var yearlyCultures = Lang.get('cultures.greenhouse_yearly_products');
+    //var firstPeriodCultures = Lang.get('cultures.greenhouse_first_period_products');
+    //var secondPeriodCultures = Lang.get('cultures.greenhouse_second_period_products');
 
     //Convert the object strings into arrays
-    var firstPeriodCulturesArray = Object.keys(firstPeriodCultures).map(item => firstPeriodCultures[item]);
-    var secondPeriodCulturesArray = Object.keys(secondPeriodCultures).map(item => secondPeriodCultures[item]);
-    var yearlyCulturesArray = Object.keys(yearlyCultures).map(item => yearlyCultures[item]);
+    //var firstPeriodCulturesArray = Object.keys(firstPeriodCultures).map(item => firstPeriodCultures[item]);
+    //var secondPeriodCulturesArray = Object.keys(secondPeriodCultures).map(item => secondPeriodCultures[item]);
+
+    var firstPeriodCulturesArray = ['Eggplant I', 'Tomatoe I', 'Cucumber I', 'Pumpkin I', 'Patëllxhan I', 'Domate I', 'Kastravec I', 'Kungull I'];
+    var secondPeriodCulturesArray = ['Tomatoe II', 'Cucumber II', 'Pepper II', 'Domate II', 'Kastravec II', 'Spec II'];
+    var yearlyCulturesArray = ['1 year old pepper', '1 year old eggplant', '1 year old pumpkin', 'Spec 1 vjeçar', 'Patëllxhan 1 vjeçar', 'Kungull 1 vjeçar'];
 
     //Get the select element that will not to be changed based on the currently clicked select element
     var elementToChange = null;
@@ -572,6 +575,7 @@ function updateCultures(clickedElement, optionNumber, categoryId) {
             elementToChange.options[i].disabled = false;
         }
     } else {
+
         if (firstPeriodCulturesArray.includes(selectedText)) {
             //If the text is present in the first period cultures, we disable all first period cultures in the other select and enable all second period cultures
 
