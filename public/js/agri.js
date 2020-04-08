@@ -625,5 +625,6 @@ function institutionSelectStatus(element, id) {
     } else {
         document.getElementById("institution").disabled = true;
         document.getElementById("institution").style.color = '#aca5a5';
+        document.getElementById("institution").value = "";
     }
 }

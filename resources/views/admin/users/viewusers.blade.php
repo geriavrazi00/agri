@@ -25,8 +25,14 @@
                 @role(App\Constants::ROLE_ADMIN_ID)
                     <div class="form-group row">
                         <label for="role" class="col-md-5 col-form-label text-md-right">{{ trans('messages.role') }}</label>
-                        <label id="role" class="col-md-7 col-form-label">{{ trans($user->roles[0]->name) }}</label>
+                        <label id="role" class="col-md-7 col-form-label">{{ trans('messages.' . $user->roles[0]->name) }}</label>
                     </div>
+                    @if($user->roles[0]->id == App\Constants::ROLE_BASIC_USER)
+                        <div class="form-group row">
+                            <label for="institution" class="col-md-5 col-form-label text-md-right">{{ trans('messages.institution') }}</label>
+                            <label id="institution" class="col-md-7 col-form-label">{{ $user->user_related_id == null ? '-' : App\User::find($user->user_related_id)->name }}</label>
+                        </div>
+                    @endif
                 @endrole
 
                 <div class="col-md-12" style="text-align: right;">

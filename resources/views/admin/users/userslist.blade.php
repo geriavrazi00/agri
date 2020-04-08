@@ -37,7 +37,7 @@
                                 <td class="resulttabledata">{{$user->name}}</td>
                                 <td class="resulttabledata">{{$user->email}}</td>
                                 @role(App\Constants::ROLE_ADMIN_ID)
-                                    <td class="resulttabledata">{{$user->roles[0]->name}}</td>
+                                    <td class="resulttabledata">{{ trans('messages.' . $user->roles[0]->name) }}</td>
                                 @endrole
                                 <td class="resulttabledata" style="text-align: center;">
                                     <a href="/users/{{$user->id}}" class="btn btn-primary btn-circle btn-sm action-buttons" data-toggle="tooltip" title="{{ trans('messages.details') }}">

@@ -132,7 +132,8 @@ class PlansController extends Controller
      */
     private function evaluatePlanSelected($plan) {
         if (Auth::user()->roles[0]->id == Constants::ROLE_ADMIN_ID) {
-            return true;
+            if ($plan->user != null) return true;
+            else return false;
         } else if (Auth::user()->roles[0]->id == Constants::ROLE_INSTITUTION_ID) {
             $userIds = array();
             array_push($userIds, Auth::user()->id);

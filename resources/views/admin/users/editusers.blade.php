@@ -54,7 +54,7 @@
                                 <select id="role" class="form-control" name="role" required style="border-radius:5px; color: black;" onchange="institutionSelectStatus(this, '{{App\Constants::ROLE_BASIC_USER}}');">
                                     @foreach($roles as $role)
                                         <option value="{{$role->id}}" {{old('role') == $user->roles[0]->id ? 'selected' : ($role->id == $user->roles[0]->id ? 'selected' : '')}}>
-                                            {{ trans($role->name) }}
+                                            {{ trans('messages.' . $role->name) }}
                                         </option>
                                     @endforeach
                                 </select>

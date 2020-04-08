@@ -113,7 +113,8 @@ class UsersController extends Controller {
         if ($this->evaluateUserSelected($user)) {
             $institutions = User::whereHas('roles', function (Builder $query) {
                 $query->where('id', '=', Constants::ROLE_INSTITUTION_ID);
-            })->get();
+            })->where('id', '!=', $user->id)
+            ->get();
 
             return view('/admin/users/editusers', [
                 'user' => $user,
