@@ -22,7 +22,7 @@ return [
         <p>The program provides Financial and Technical Support for the Partner Financial Institutions (PFIs).</p>
         <p>AASF represents an innovative financial instrument to encourage lending by financial institutions to the whole agribusiness
         value chain.</p>',
-    'intro_message' => 'The AASF Agro-finance application helps you in calculating the profitability of investment plans of agricultural
+    'intro_message' => 'The AASF Agro-Finance application helps you in calculating the profitability of investment plans of agricultural
         activity.',
     'login' => 'Login',
     'failed' => 'These credentials do not match our records.',
