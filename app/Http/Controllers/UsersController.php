@@ -220,7 +220,7 @@ class UsersController extends Controller {
 
         if ($this->evaluateUserSelected($user)) {
             $this->deleteUsersConnected($user);
-            $user->delete();
+            $user->forceDelete();
             return Redirect::to('/users')->withSuccessMessage(trans('messages.user_deleted'));
         } else {
             return Redirect::to('/404');
@@ -274,7 +274,7 @@ class UsersController extends Controller {
             $connectedUsers = User::where('user_related_id', '=', $user->id)->get();
 
             foreach ($connectedUsers as $user) {
-                $user->delete();
+                $user->forceDelete();
             }
         }
     }
