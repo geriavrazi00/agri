@@ -37,7 +37,7 @@
                         <div class="col-md-6">
                             <input type="text" id="bottom-threshold" name="bottom-threshold" class="form-control @error('bottom-threshold') is-invalid @enderror" onkeydown="return blockSpecialCharactersInInputNumber(event);"
                             value="{{ old('bottom-threshold') == null ? '' : $formulaManager->addFormat(old('bottom-threshold')) }}" step=".000001" oninvalid="createInvalidMsg(this, '{{trans('validation.field_required')}}', '{{trans('validation.non_negative_field')}}');"
-                            oninput="createInvalidMsg(this, '', '');" required min="0" style="text-align: right; color: black;" pattern="{{ App\Constants::REG_EX_CURRENCY }}" data-type="number"/>
+                            oninput="createInvalidMsg(this, '', '');" required min="0" style="text-align: right; color: black;" pattern="{{ !$agent->is('IE') ? App\Constants::REG_EX_CURRENCY : '' }}" {{!$agent->is('IE') ? 'data-type=number' : ''}} />
 
                             @error('bottom-threshold')
                                 <span class="invalid-feedback" role="alert">
@@ -53,7 +53,7 @@
                         <div class="col-md-6">
                             <input type="text" id="top-threshold" name="top-threshold" class="form-control @error('top-threshold') is-invalid @enderror" onkeydown="return blockSpecialCharactersInInputNumber(event);"
                             value="{{ old('top-threshold') == null ? '' : $formulaManager->addFormat(old('top-threshold')) }}" step=".000001" oninvalid="createInvalidMsg(this, '{{trans('validation.field_required')}}', '{{trans('validation.non_negative_field')}}');"
-                            oninput="createInvalidMsg(this, '', '');" min="0" style="text-align: right; color: black;" pattern="{{ App\Constants::REG_EX_CURRENCY }}" data-type="number"/>
+                            oninput="createInvalidMsg(this, '', '');" min="0" style="text-align: right; color: black;" pattern="{{ !$agent->is('IE') ? App\Constants::REG_EX_CURRENCY : '' }}" {{!$agent->is('IE') ? 'data-type=number' : ''}} />
 
                             @error('top-threshold')
                                 <span class="invalid-feedback" role="alert">

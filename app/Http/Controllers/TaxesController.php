@@ -7,6 +7,7 @@ use App\Managers\FormulaManager;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Log;
+use Jenssegers\Agent\Agent;
 
 class TaxesController extends Controller
 {
@@ -57,7 +58,12 @@ class TaxesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create() {
-        return view('/admin/taxes/createtaxes', ['formulaManager' => $this->formulaManager]);
+        $agent = new Agent();
+
+        return view('/admin/taxes/createtaxes', [
+            'formulaManager' => $this->formulaManager,
+            'agent' => $agent
+        ]);
     }
 
     /**
@@ -98,9 +104,12 @@ class TaxesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit(Tax $tax) {
+        $agent = new Agent();
+
         return view('/admin/taxes/edittaxes', [
             'tax' => $tax,
-            'formulaManager' => $this->formulaManager
+            'formulaManager' => $this->formulaManager,
+            'agent' => $agent
         ]);
     }
 

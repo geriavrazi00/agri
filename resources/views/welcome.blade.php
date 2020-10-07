@@ -2,17 +2,17 @@
 
 @section('content')
 <div class="logos">
-  <div>
-    <img id="logo" src="img/logo/aasf.png" style="padding-top:3vw; padding-bottom:2vw; padding-right: 4vw; padding-left: 4vw;">
+  <div class="col-md-3">
+    <img id="logo" src="img/logo/aasf.png" style="padding-left: 0px; padding-right: 0px; padding-top: 30px; padding-bottom: 30px;"/>
   </div>
-  <div>
-    <img id="logo" src="img/logo/bankaeuropiane.png" style="padding-left: 7vw; padding-right: 7vw;">
+  <div class="col-md-3">
+    <img id="logo" src="img/logo/bankaeuropiane.png" />
   </div>
-  <div>
-    <img id="logo" src="img/logo/ministriabujqesise.png">
+  <div class="col-md-3">
+    <img id="logo" src="img/logo/ministriabujqesise.png" />
   </div>
-  <div>
-    <img id="logo" src="img/logo/ministriafinancave.png">
+  <div class="col-md-3">
+    <img id="logo" src="img/logo/ministriafinancave.png" />
   </div>
 </div>
 <!-- Popup -->

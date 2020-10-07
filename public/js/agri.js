@@ -199,16 +199,31 @@ function blockSpecialCharactersInInputNumber(event) {
      * 	187 -> + in keyboard
      */
 
-    if (
-        event.keyCode == 69 ||
-        event.keyCode == 109 ||
-        event.keyCode == 107 ||
-        event.keyCode == 187 ||
-        event.keyCode == 189
-    ) {
-        return false;
-    }
-    return true;
+    event = (event) ? event : window.event;
+    var charCode = (event.which) ? event.which : event.keyCode;
+
+    if (!event.shiftKey && !event.altKey && !event.ctrlKey &&
+        // numbers
+        charCode >= 48 && charCode <= 57 ||
+        // Numeric keypad
+        charCode >= 96 && charCode <= 105 ||
+        // comma, period and minus, . on keypad
+        charCode == 190 || charCode == 188 || charCode == 109 || charCode == 110 ||
+        // Backspace and Tab and Enter
+        charCode == 8 || charCode == 9 || charCode == 13 ||
+        // Home and End
+        charCode == 35 || charCode == 36 ||
+        // left and right arrows
+        charCode == 37 || charCode == 39 ||
+        // Del and Ins
+        charCode == 46 || charCode == 45) {
+            return true;
+        }
+
+    // if (charCode > 31 && (charCode != 46 && (charCode < 48 || charCode > 57))) {
+    //     return false;
+    // }
+    return false;
 }
 
 function createInvalidMsg(input, requiredMessage, alternativeMessage) {
@@ -223,15 +238,6 @@ function createInvalidMsg(input, requiredMessage, alternativeMessage) {
     } else {
         input.setCustomValidity("");
     }
-
-    //input.scrollIntoView({ top: 200, behavior: "smooth" });
-
-    // console.log(input.id);
-    // document.getElementById(input.id).scrollIntoView({ top: 0, behavior: "smooth" });
-    // var target = 0;
-    // var header = 56;
-
-    // $(window).scrollTop( target - header )
 
     return true;
 }
@@ -362,7 +368,7 @@ function areYouSure(e, element) {
         icon: "warning",
         buttons: [Lang.get('messages.cancel'), "Ok!"],
         dangerMode: true
-    }).then(willDelete => {
+    }).then(function (willDelete) {
         if (willDelete) {
             form.submit();
         }
@@ -461,6 +467,10 @@ function formatNumberWithCommas(input, blur) {
     var updated_len = input_val.length;
     caret_pos = updated_len - original_len + caret_pos;
     input[0].setSelectionRange(caret_pos, caret_pos);
+
+    // if (blur === "blur") {
+    //     console.log("blur");
+    // }
 }
 
 //Formating the percentage fields to currency
@@ -557,7 +567,8 @@ function updateCultures(clickedElement, optionNumber, categoryId) {
 
     //Get the select element that will not to be changed based on the currently clicked select element
     var elementToChange = null;
-    if(clickedElement.id.startsWith("business-2-")) {
+
+    if(clickedElement.id.indexOf("business-2-") == 0) {
         elementToChange = document.getElementById("business-3-" + optionNumber + "-" + categoryId);
     } else {
         elementToChange = document.getElementById("business-2-" + optionNumber + "-" + categoryId);

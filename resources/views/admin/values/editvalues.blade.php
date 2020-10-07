@@ -42,28 +42,28 @@
                                             <input type="text" id="efficiency-{{$culture->id}}-{{$value->id}}"
                                             name="efficiency-{{$culture->id}}-{{$value->id}}" class="form-control"
                                             onkeydown="return blockSpecialCharactersInInputNumber(event);"
-                                            value="{{ $formulaManager->addFormat($value->efficiency) }}" step=".000001"
+                                            value="{{ $agent->is('IE') ? $value->efficiency + 0 : $formulaManager->addFormat($value->efficiency) }}" step=".000001"
                                             oninvalid="createInvalidMsg(this, '{{trans('validation.field_required')}}', '{{trans('validation.non_negative_field')}}');"
-                                            oninput="createInvalidMsg(this, '', '');" required min="0" style="text-align: right; color: black;" pattern="{{ App\Constants::REG_EX_CURRENCY }}"
-                                            data-type="number"/>
+                                            oninput="createInvalidMsg(this, '', '');" required min="0" style="text-align: right; color: black;" pattern="{{ !$agent->is('IE') ? App\Constants::REG_EX_CURRENCY : '' }}"
+                                            {{!$agent->is('IE') ? 'data-type=number' : ''}} />
                                         </td>
                                         <td>
                                             <input type="text" id="price-{{$culture->id}}-{{$value->id}}"
                                             name="price-{{$culture->id}}-{{$value->id}}" class="form-control"
                                             onkeydown="return blockSpecialCharactersInInputNumber(event);"
-                                            value="{{ $formulaManager->addFormat($value->price) }}" step=".000001"
+                                            value="{{ $agent->is('IE') ? $value->price + 0 : $formulaManager->addFormat($value->price) }}" step=".000001"
                                             oninvalid="createInvalidMsg(this, '{{trans('validation.field_required')}}', '{{trans('validation.non_negative_field')}}');"
                                             oninput="createInvalidMsg(this, '', '');" required min="0" style="text-align: right; color: black;"
-                                            pattern="{{ App\Constants::REG_EX_CURRENCY }}" data-type="number"/>
+                                            pattern="{{ !$agent->is('IE') ? App\Constants::REG_EX_CURRENCY : '' }}" {{!$agent->is('IE') ? 'data-type=number' : ''}} />
                                         </td>
                                         <td>
                                             <input type="text" id="cost-{{$culture->id}}-{{$value->id}}"
                                             name="cost-{{$culture->id}}-{{$value->id}}" class="form-control"
                                             onkeydown="return blockSpecialCharactersInInputNumber(event);"
-                                            value="{{ $formulaManager->addFormat($value->cost) }}" step=".000001"
+                                            value="{{ $agent->is('IE') ? $value->cost + 0 : $formulaManager->addFormat($value->cost) }}" step=".000001"
                                             oninvalid="createInvalidMsg(this, '{{trans('validation.field_required')}}', '{{trans('validation.non_negative_field')}}');"
                                             oninput="createInvalidMsg(this, '', '');" required min="0" style="text-align: right; color: black;"
-                                            pattern="{{ App\Constants::REG_EX_CURRENCY }}" data-type="number"/>
+                                            pattern="{{ !$agent->is('IE') ? App\Constants::REG_EX_CURRENCY : '' }}" {{!$agent->is('IE') ? 'data-type=number' : ''}} />
                                         </td>
                                     </tr>
                                 @endforeach

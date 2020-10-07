@@ -24,18 +24,18 @@
 
                     <div class="col-md-12">
                         <label id="applicantname" style="font-weight: 700;">{{ trans('messages.applicant_name') }}</label>
-                        <input id="applicantnameinput" type="text" name="applicant-name" required oninvalid="createInvalidMsg(this, '{{trans('validation.applicant_name_required')}}', '');" oninput="createInvalidMsg(this, '', '');" />
+                        <input id="applicantnameinput" type="text" name="applicant-name" required oninvalid="createInvalidMsg(this, '{{trans('validation.applicant_name_required')}}', '');" onmousemove="createInvalidMsg(this, '', '');" />
                     </div>
 
                     <br/>
 
                     <div class="col-md-12">
                         <label id="applicantname" style="font-weight: 700;">{{ trans('messages.business_code') }}</label>
-                        <input id="applicantnameinput" type="text" name="business-code" required oninvalid="createInvalidMsg(this, '{{trans('validation.business_code_required')}}', '');" oninput="createInvalidMsg(this, '', '');" />
+                        <input id="applicantnameinput" type="text" name="business-code" required oninvalid="createInvalidMsg(this, '{{trans('validation.business_code_required')}}', '');" onmousemove="createInvalidMsg(this, '', '');" />
                     </div>
                 </div>
 
-                <br />
+                <br/>
 
                 <!-- Order Wizard Start -->
                 <div id="orderWizard">
@@ -54,50 +54,51 @@
                             </div>
 
                             <div class="row col-md-10" style="margin: auto;">
-                                @for($i = 0; $i < sizeof($categories); $i++)
+                                @foreach ($categories as $cat)
                                     <div class="col-md-3" style="text-align: center;">
-                                        <div class="button" id="category-{{$categories[$i]->id}}-button" style="text-align: -webkit-center;">
-                                            <div id="category-{{$categories[$i]->id}}-div" class="rtable-cell item-cell-type">
-                                                <a onclick="selectCategories('{{$categories[$i]}}', '{{$categories}}');" style="cursor: pointer;">
-                                                    <img src="img/product-images/{{$categories[$i]->image}}" style="width:100px; height:100px;" />
+                                        <div class="button" id="category-{{$cat->id}}-button" style="text-align: -webkit-center;">
+                                            <div id="category-{{$cat->id}}-div" class="rtable-cell item-cell-type">
+                                                <a onclick="selectCategories('{{$cat}}', '{{$categories}}');" style="cursor: pointer;">
+                                                    <img src="img/product-images/{{$cat->image}}" style="width:100px; height:100px;" />
                                                 </a>
                                                 <input class="form-control in-odd-row item-name" hidden name="item-name-1" type="text" value="Product or Service Name 1" />
                                             </div>
                                             <div>
-                                                <p id="servicename">{{ trans($categories[$i]->name) }}</p>
+                                                <p id="servicename">{{ trans($cat->name) }}</p>
                                             </div>
                                         </div>
+                                    </div>
+                                @endforeach
                             </div>
-                            @endfor
-                        </div>
 
-                        <br />
-
-                        <div class="divider">
-                            <div class="dividermask"></div>
-                        </div>
-
-                        @foreach($categoriesData as $key => $category)
-                        @if($category['investments'] != null)
-                        <div id="category-{{$key}}" style="display: none; width: 100%;">
-                            <div id="category-{{$key}}-anchor" style="width: 100%; padding-top: 56px;"></div>
-                            @include('inputs')
-                        </div>
-                        @endif
-                        @endforeach
-
-                        <br /><br />
-
-                        <div id="loan" style="display: none; width: 100%; padding-top: 20px;">
-                            @include('loan')
-
-                            <input type="hidden" id="selected-categories[]" name="selected-categories[]" />
                             <br />
-                            <center>
-                                <button id="submitbutton" class="btn btn-primary" type="submit">
-                                    {{trans('messages.generate')}}
-                                </button>
-                            </center>
+
+                            <div class="divider">
+                                <div class="dividermask"></div>
+                            </div>
+
+                            @foreach($categoriesData as $key => $category)
+                                @if($category['investments'] != null)
+                                    <div id="category-{{$key}}" style="display: none; width: 100%;">
+                                        <div id="category-{{$key}}-anchor" style="width: 100%; padding-top: 56px;"></div>
+                                        @include('inputs')
+                                    </div>
+                                @endif
+                            @endforeach
+
+                            <br /><br />
+
+                            <div id="loan" style="display: none; width: 100%; padding-top: 20px;">
+                                @include('loan')
+
+                                <input type="hidden" id="selected-categories[]" name="selected-categories[]" />
+                                <br />
+                                <center>
+                                    <button id="submitbutton" class="btn btn-primary" type="submit">
+                                        {{trans('messages.generate')}}
+                                    </button>
+                                </center>
+                            </div>
                         </div>
                     </div>
                 </div>

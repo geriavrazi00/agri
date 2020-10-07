@@ -6,8 +6,9 @@ use App\Category;
 use App\Managers\FormulaManager;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 use Log;
-use Redirect;
+use Jenssegers\Agent\Agent;
 
 class ValuesController extends Controller
 {
@@ -49,9 +50,12 @@ class ValuesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id) {
+        $agent = new Agent();
+
         return view ('/admin/values/editvalues', [
             'category' => Category::find($id),
-            'formulaManager' => $this->formulaManager
+            'formulaManager' => $this->formulaManager,
+            'agent' => $agent
         ]);
     }
 
