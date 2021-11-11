@@ -14,6 +14,10 @@ return [
         position of the farm, used agro services, the method of cultivation (intensive or traditional), climate factors, etc.
         This platform enables you to select the farm operating level.',
     'inputs' => 'Inputs',
+    'pi' => '© PI Innovative Solutions 2021',
+    'all_rights_reserved' => 'All rights reserved',
+    'hello' => 'Hello!',
+    'authenticate' => 'Enter your username and password to access the system',
 
     //Categories
     'assaf_sheep' => 'ASSAF MILKED SHEEP',

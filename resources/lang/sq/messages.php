@@ -14,6 +14,10 @@ return [
         shërbimeve agroteknike që përdor, mënyrën e kultivimit (intensive apo tradicionale), faktorëve klimaterik etj.
         Kjo platformë të mundëson të përzgjedhësh nivelin operues të fermës.',
     'inputs' => 'Inputet',
+    'pi' => '© PI Innovative Solutions 2021',
+    'all_rights_reserved' => 'Të gjitha të drejtat e rezervuara',
+    'hello' => 'Përshëndetje!',
+    'authenticate' => 'Plotësoni emrin e përdoruesit tuaj dhe fjalëkalimin për të hyrë në sistem',
 
     //Categories
     'assaf_sheep' => 'DELE ASSAF QUMËSHTI',

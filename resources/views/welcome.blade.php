@@ -1,6 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
+{{--
+    OLD LOGIN
+
 <div class="logos">
   <div class="col-md-3">
     <img id="logo" src="img/logo/aasf.png" style="padding-left: 0px; padding-right: 0px; padding-top: 30px; padding-bottom: 30px;"/>
@@ -81,30 +84,72 @@
                     {{-- <div class="row align-items-center remember">
                       <input type="checkbox">Remember Me
                     </div> --}}
-                    <div class="form-group">
+                    {{-- <div class="form-group">
                       <input type="submit" value="{{ trans('auth.login') }}" class="btn float-right login_btn">
                     </div>
                   </form>
-                </div>
+                </div> --}}
                 <!-- <div class="card-footer">
                   <div class="d-flex justify-content-center">
                     <a href="#">Forgot your password?</a>
                   </div>
                 </div> -->
-              </div>
+              {{-- </div>
             </div>
-          </div>
-          <!--   @if (Route::has('password.request'))
-                        <a class="btn btn-link" href="{{ route('password.request') }}">
-                            {{ __('Forgot Your Password?') }}
-                        </a>
-                        @endif -->
+          </div> --}
         </div>
       </div>
     </div>
   </div>
-</section>
+</section> --}}
 
+<section class="login-form loginbg">
+    <div class="row">
+        <div class="col-md-6 logind1 dnon" style="padding: 0px">
+            <div class="logind1sb">
+                <span>
+                    {{trans('messages.pi')}}
+                    <br>
+                    <a href="#">{{trans('messages.all_rights_reserved')}}</a>
+                </span>
+            </div>
+        </div>
+        <div class="col-md-6 logind2">
+            <div>
+                <h2>{{trans('messages.hello')}}</h2>
+				<p>{{trans('messages.authenticate')}}</p>
+
+                <div class="loginformd">
+                    <form method="POST" action="{{ route('login') }}">
+                        @csrf
+
+                        <div class="form-input mb-40">
+                            <div class="form-input-box">
+                                <input type="email" id="email" class="form-control  @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplet="email" autofocus oninvalid="createInvalidMsg(this, '{{trans('validation.field_required')}}', '{{trans('validation.wrong_format')}}');" oninput="createInvalidMsg(this, '', '{{trans('validation.wrong_format')}}');">
+                                @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="form-input mb-40">
+                            <div class="form-input-box">
+                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" oninvalid="createInvalidMsg(this, '{{trans('validation.password_required')}}', '');" oninput="createInvalidMsg(this, '', '');">
+                                @error('password')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+                        <input type="submit" value="{{ trans('auth.login') }}" class="btn login_btn">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
 
 
