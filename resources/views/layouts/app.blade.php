@@ -42,7 +42,7 @@
 <body>
     <div id="app" style="padding-top: 0px;">
         <!-- Preloader -->
-        <div class="preloader"></div>
+        {{-- <div class="preloader"></div> --}}
 
         <!-- Navbar -->
         @auth
